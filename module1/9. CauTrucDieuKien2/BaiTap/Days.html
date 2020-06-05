@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</p><input type="number" id="Thang"/>
+<input type="button" onclick="Nhap()" value="Tính Số Ngày"/>
+<p id="ngay1"></p>
+<input type="number" id="Thang1"/>
+<input type="button" onclick="Nhap1()" value="Tính Số Ngày"/>
+<p id="ngay2"></p>
+<script>
+    function Nhap() {
+        let day1= parseInt(document.getElementById('Thang').value);
+        switch (day1) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById('ngay1').innerHTML='Tháng có 31 ngày';
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 8:
+            case 11:
+                document.getElementById('ngay1').innerHTML='Tháng có 30 ngày';
+                break;
+            case 2:
+                document.getElementById('ngay1').innerHTML='Tháng có 28 hoặc 29 ngày';
+                break;
+
+        }
+    }
+    function Nhap1(){
+        let day2= parseInt(document.getElementById('Thang1').value);
+        switch (day2) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById('ngay2').innerHTML='Tháng có 31 ngày';
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 8:
+            case 11:
+                document.getElementById('ngay2').innerHTML='Tháng có 30 ngày';
+                break;
+            case 2:
+                document.getElementById('ngay2').innerHTML='Tháng có 28 hoặc 29 ngày';
+                break;
+
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

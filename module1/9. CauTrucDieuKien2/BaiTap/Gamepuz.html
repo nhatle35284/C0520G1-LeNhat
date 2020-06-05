@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <style>
+       .img {
+           width: 1000px;
+           height: 1000px;
+
+       }
+   </style>
+</head>
+<body>
+<button type="button" onclick="dang1()" class="img"><img src="../img/meo1.jpg" id="anh1"/></button>
+<button id="anh2" onclick="dang2()"><img src="../img/meo2.jpg"/></button>
+<button id="anh3" onclick="dang3()"><img src="../img/meo3.jpg"/></button>
+<button id="anh4" onclick="dang4()"><img src="../img/meo5.jpg"/></button>
+<button id="anh5" onclick="dang5()"><img src="../img/meo6.jpg"/></button>
+<script>
+    function dang1() {
+        let a1=document.getElementById('anh1').getAttribute('src');
+        if (a1 === "../img/gau2.jpg" ) {
+            document.getElementById('anh1').src="../img/meo1.jpg";
+        }
+        else if (a1=== "../img/meo1.jpg") {
+            document.getElementById('anh1').src="../img/khi1.jpg";
+        }
+        else {
+            document.getElementById('anh1').src="../img/gau1.jpg" ;
+        }
+    }
+</script>
+</body>
+</html>

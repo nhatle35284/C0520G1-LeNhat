@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 >Caculator</h1>
+<p><input type="number" id='dulieu1'/>
+<input type="number" id="dulieu2"/></p>
+<input type="button" onclick="cong()" value="Addtion (+)"/>
+<input type="button" onclick="tru()" value="Subtraction (-)"/>
+<input type="button" onclick="nhan()" value="Mutiplicaton (X)"/>
+<input type="button" onclick="chia()" value="Divison (/)"/>
+<p id="kq"></p>
+<script>
+    function cong() {
+        let p1=parseInt(document.getElementById('dulieu1').value);
+        let p2=parseInt(document.getElementById('dulieu2').value);
+        let dapso= p1+p2;
+        document.getElementById('kq').innerHTML="Kết Quả Phép Tính Là " + dapso;
+    }
+    function tru() {
+        let p1=parseInt(document.getElementById('dulieu1').value);
+        let p2=parseInt(document.getElementById('dulieu2').value);
+        let dapso= p1-p2;
+        document.getElementById('kq').innerHTML='Kết Quả Phép Tính Là '+ dapso;
+    } function nhan() {
+        let p1=parseInt(document.getElementById('dulieu1').value);
+        let p2=parseInt(document.getElementById('dulieu2').value);
+        let dapso= p1*p2;
+        document.getElementById('kq').innerHTML='Kết Quả Phép Tính Là '+ dapso;
+    } function chia() {
+        let p1=parseInt(document.getElementById('dulieu1').value);
+        let p2=parseInt(document.getElementById('dulieu2').value);
+        let dapso= p1/p2;
+        document.getElementById('kq').innerHTML='Kết Quả Phép Tính Là '+ dapso;
+    }
+</script>
+
+
+</body>
+</html>

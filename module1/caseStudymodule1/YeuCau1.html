@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   let name =  prompt('Vui Lòng Nhập Tên');
+   let cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+   let birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+   let address = prompt('Address :');
+   let typecustumer = prompt('Customer Type : ');
+   let quantilyincluded = prompt('QuantilyIncluded :');
+   let voucher = prompt('Voucher');
+   let rentDays = prompt('rentDays:');
+   let typeservice = prompt('Type of service :');
+   let kindroom = prompt('Kind of room :');
+   let totalPay = 300*rentDays*(1-voucher/100);
+   alert("name"+name+
+           "cmnd"+cmnd+
+           "rentDays"+rentDays+
+           "+voucher"+voucher+
+           "totalPay"+totalPay
+   )
+
+</script>
+
+</body>
+</html>
