@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>Good</label>
+<input type="radio" value="good" onclick="Chon('good')" id='good'/>
+<label>Fast</label>
+<input type="radio" onclick="Chon('Fast')" value="Fast" id="Fast"/>
+<label>Cheap</label>
+<input type="radio" onclick="Chon('Cheap')" value="Cheap" id="Cheap"/>
+<script>
+    function Chon (check) {
+    let Objgood= document.getElementById('good');
+    let ObjFast= document.getElementById('Fast');
+    let ObjCheap= document.getElementById('Cheap');
+    switch (check) {
+        case 'good':
+            if (ObjCheap.checked) {
+                ObjFast.checked=false
+            }
+            break;
+        case 'Fast':
+            if (Objgood.checked) {
+                ObjCheap.checked=false
+            }
+            break;
+        case 'Cheap':
+            if (ObjFast.checked) {
+                Objgood.checked=false}
+            break;
+    }
+    }
+</script>
+
+</body>
+</html>

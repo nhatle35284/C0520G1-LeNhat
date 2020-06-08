@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <style>
+       img {
+           width: 800px;
+           height: 100px;
+       }
+   </style>
+</head>
+
+<button id="photo"  onclick="dang1();dung()" ><img src="../img/meo1.jpg" id="anh1"/></button>
+<button id="photo1" onclick="dang2();dung()" ><img src="../img/meo2.jpg" id="anh2"/></button>
+<button id="photo2" onclick="dang3();dung()" ><img src="../img/khi3.jpg" id="anh3"/></button>
+<button id="photo3" onclick="dang4();dung()" ><img src="../img/meo4.jpg" id="anh4"/></button>
+<button id="photo4" onclick="dang5();dung()" ><img src="../img/meo5.jpg" id="anh5"/></button>
+<script>
+    function dung() {
+        let a1=document.getElementById('anh1').getAttribute('src');
+        let a2=document.getElementById('anh2').getAttribute('src');
+        let a3=document.getElementById('anh3').getAttribute('src');
+        let a4=document.getElementById('anh4').getAttribute('src');
+        let a5=document.getElementById('anh5').getAttribute('src');
+        if( a1==="../img/meo1.jpg" && a2=="../img/meo2.jpg" && a3=="../img/meo3.jpg" && a4=="../img/meo4.jpg" && a5=="../img/meo5.jpg" ||
+            a1==="../img/khi1.jpg" && a2=="../img/khi2.jpg" && a3=="../img/khi3.jpg" && a4=="../img/khi4.jpg" && a5=="../img/khi5.jpg" ||
+            a1==="../img/meo1.jpg" && a2=="../img/gau2.jpg" && a3=="../img/gau3.jpg" && a4=="../img/gau4.jpg" && a5=="../img/gau5.jpg"){
+            document.getElementById('photo').style.borderColor='red';
+            document.getElementById('photo1').style.borderColor='red';
+            document.getElementById('photo2').style.borderColor='red';
+            document.getElementById('photo3').style.borderColor='red';
+            document.getElementById('photo4').style.borderColor='red';
+        }
+
+    }
+    function dang1() {
+        let a1=document.getElementById('anh1').getAttribute('src');
+        if (a1 === "../img/gau1.jpg" ) {
+            document.getElementById('anh1').src="../img/meo1.jpg";
+        }
+        else if (a1=== "../img/meo1.jpg") {
+            document.getElementById('anh1').src="../img/khi1.jpg";
+        }
+        else {
+            document.getElementById('anh1').src="../img/gau1.jpg" ;
+        }
+    }
+    function dang2() {
+        let a2=document.getElementById('anh2').getAttribute('src');
+        if (a2 === "../img/gau2.jpg" ) {
+            document.getElementById('anh2').src="../img/meo2.jpg";
+        }
+        else if (a2 === "../img/meo2.jpg") {
+            document.getElementById('anh2').src="../img/khi2.jpg";
+        }
+        else {
+            document.getElementById('anh2').src="../img/gau2.jpg" ;
+        }
+    }
+    function dang3() {
+        let a3=document.getElementById('anh3').getAttribute('src');
+        if (a3 === "../img/gau3.jpg" ) {
+            document.getElementById('anh3').src="../img/meo3.jpg";
+        }
+        else if (a3 === "../img/meo3.jpg") {
+            document.getElementById('anh3').src="../img/khi3.jpg";
+        }
+        else {
+            document.getElementById('anh3').src="../img/gau3.jpg" ;
+        }
+    }
+    function dang4() {
+        let a4=document.getElementById('anh4').getAttribute('src');
+        if (a4 === "../img/gau4.jpg" ) {
+            document.getElementById('anh4').src="../img/meo4.jpg";
+        }
+        else if (a4 === "../img/meo4.jpg") {
+            document.getElementById('anh4').src="../img/khi4.jpg";
+        }
+        else {
+            document.getElementById('anh4').src="../img/gau4.jpg" ;
+        }
+    }
+    function dang5() {
+        let a5=document.getElementById('anh5').getAttribute('src');
+        if (a5 === "../img/gau5.jpg" ) {
+            document.getElementById('anh5').src="../img/meo5.jpg";
+        }
+        else if (a5 === "../img/meo5.jpg") {
+            document.getElementById('anh5').src="../img/khi5.jpg";
+        }
+        else {
+            document.getElementById('anh5').src="../img/gau5.jpg" ;
+        }
+    }
+   </script>
+</body>
+</html>

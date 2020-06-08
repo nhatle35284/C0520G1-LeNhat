@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoa Hồng doanh thu</title>
+</head>
+<body>
+<script>
+    let doanhthu=parseInt(prompt('Nhập danh thu bán của bạn'));
+    if (doanhthu>400) {
+        if (doanhthu>600) {
+            if (doanhthu>800) {
+                alert('Hoa hồng của Bạn Là '+ doanhthu*5/100);
+            } else {
+                alert('Hoa hồng của bạn là '+ doanhthu*4/100);
+            }
+        } else {
+            alert('Hoa hồng của bạn là ' + doanhthu*3/100);
+        }
+    }else {
+        alert('Hoa hồng của bạn là '+ doanhthu*2/100);
+    }
+</script>
+
+</body>
+</html>

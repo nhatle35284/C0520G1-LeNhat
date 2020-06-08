@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cước Điện Thoại</title>
+</head>
+<body>
+<script>
+    let phutGoi= parseInt(prompt('Số phút đã gọi'));
+    if (phutGoi<=50) {
+        alert('Cước thuê bao của bạn là ' + (25000+600*phutGoi));
+    } else if (phutGoi<=200) {
+        alert('Cước thuê bo của bạn là ' + (25000+50*600+(phutGoi-50)*400));
+    } else {
+        alert('Cước thuê bao của bạn là ' + (25000+50*600+(phutGoi-50)*400+(phutGoi-200)*200))
+    }
+</script>
+
+</body>
+</html>

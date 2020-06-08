@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính thuế thu Nhập Cá Nhân</title>
+</head>
+<body>
+<script>
+    let mucluong=parseInt(prompt('Nhập thu Nhập hàng tháng Của bạn'));
+    if (mucluong>5000) {
+        if (mucluong>10000) {
+            if (mucluong>18000) {
+                if (mucluong>32000) {
+                    if (mucluong>52000) {
+                        if (mucluong>80000) {
+                            alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*35/100-9850))
+                        }
+                        else {
+                            alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*30/100-5850))
+                        }
+                    }
+                    else {
+                        alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*25/100-3250))
+                    }
+                }
+                else {
+                    alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*20/100-1650))
+                }
+            }
+            else {
+                alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*15/100-750))
+            }
+        }
+        else {
+            alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*10/100-250))
+        }
+    } else {
+        alert('Thuế thu Nhập Cá Nhân Của bạn Là:' + (mucluong*5/100))
+    }
+</script>
+</body>
+</html>

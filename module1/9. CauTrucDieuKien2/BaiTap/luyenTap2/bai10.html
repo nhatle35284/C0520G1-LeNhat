@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giá tiền Điện</title>
+</head>
+<body>
+<script>
+    let soDien = parseFloat(prompt("nhập Số điện"));
+    let soDau= 50*1549;
+    let soHai= 50*1600;
+    let soBa= 100*1858;
+    let soBon= 100*2340;
+    let soNam= 100*2615;
+    if (soDien<=50) {
+        if (soDien<=100) {
+            if (soDien<=200) {
+                if (soDien<=300) {
+                    if (soDien<=400) {
+                        alert('Giá Điện tháng này là : '+(soDau+soHai+soBa+soBon+(soDien-200)*1858));
+                    } else {
+                        alert('Giá Điện tháng này là : '+(soDau+soHai+soBa+(soDien-300)*2340));
+                    }
+                } else {
+                    alert('Giá Điện tháng này là : '+(soDau+soHai+(soDien-200)*1858));
+                }
+            } else {
+                alert('Giá Điện tháng này là : '+(soDau+(soDien-50)*1600));
+            }
+        } else {
+            alert('Giá Điện tháng này là : '+ (soDien*1549));
+        }
+    }  else {
+        alert('Giá Điện tháng này là : '+ (soDau+soHai+soBa+soBon+soNam+(soDien-400)*3000);
+    }
+</script>
+
+</body>
+</html>

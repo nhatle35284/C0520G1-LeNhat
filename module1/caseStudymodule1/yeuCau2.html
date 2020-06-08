@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu Cầu 2</title>
+</head>
+<body>
+<script>
+    let name ="Nhật";
+    let cmnd ="6478285";
+    let birthday ="12/1/1975";
+    let address = "Đà Nẵng";
+    let typecustomer = "Diamond";
+    let quantilyincluded ="11";
+    let voucher ="10";
+    let rentDays = "5";
+    let typeservice ="Villa";
+    let kindroom = "Vip";
+    let choose= parseInt(prompt('1.Hiển Thị Toàn bộ Thông tin ccuar Customer'+"\n"+
+    '2.Chỉnh Sủa Thông Tin của Custommer'+"\n"+
+    '3.Hiển Thị Thông Tin Customer phải Trả'));
+    switch (choose) {
+        case 1: {
+            alert("name:"+name+"\n"+
+                "cmnd: "+cmnd+"\n"+
+                "birthday: "+birthday+"\n"+
+                "Address: "+address+"\n"+
+                "typeCustomer: "+typecustomer+"\n"+
+                "quatilyIncluded: "+quantilyincluded+"\n"+
+                "rentDays: "+rentDays+"\n"+
+                "voucher: "+voucher+"\n"+
+                "Typeservice: "+typeservice+"\n"+
+                "kindRoom: "+kindroom);
+            break;
+        }
+        case 2: {
+            let Edit = parseInt(prompt("1.name: "+name+"\n"+
+                "2.cmnd: "+cmnd+"\n"+
+                "3.birthday: "+birthday+"\n"+
+                "4.Address: "+address+"\n"+
+                "5.typeCustomer: "+typecustomer+"\n"+
+                "6.quatilyIncluded: "+quantilyincluded+"\n"+
+                "7.rentDays: "+rentDays+"\n"+
+                "8.voucher: "+voucher+"\n"+
+                "9.Typeservice: "+typeservice+"\n"+
+                "10.kindRoom: "+kindroom));
+                switch (Edit) {
+                    case 1: {
+                        name=prompt('Nhập lại Tên');
+                        break;
+                    }
+                    case 2: {
+                        cmnd=prompt('Nhập lại cmnd');
+                        break;
+                    }
+                    case 3: {
+                        birthday=prompt('Nhập lại ngày sinh');
+                        break;
+                    }
+                    case 4: {
+                        address=prompt('Nhập lại Dịa Chỉ');
+                        break;
+                    }
+                    case 5: {
+                        typecustomer=prompt('Nhập lại loại Khách Hàng');
+                        break;
+                    }
+                    case 6: {
+                        quantilyincluded=prompt('Nhập lại Số Lượng Đi kèm');
+                        break;
+                    }
+                    case 7: {
+                        rentDays=prompt('Nhập lại số ngày thuê');
+                        break;
+                    }
+                    case 8: {
+                        voucher=prompt('Nhập lại Giảm Giá');
+                        break;
+                    }
+                    case 9: {
+                        typeservice=prompt('Nhập lại Loại dịch vụ');
+                        break;
+                    }
+                    case 10: {
+                        kindroom=prompt('Nhập lại Loại phòng');
+                        break;
+                    }
+                    default : {
+                        alert("Faield");
+                    }
+            }
+            alert("name: "+name+"\n"+
+                "cmnd: "+cmnd+"\n"+
+                "birthday: "+birthday+"\n"+
+                "Address: "+address+"\n"+
+                "typeCustomer: "+typecustomer+"\n"+
+                "quatilyIncluded: "+quantilyincluded+"\n"+
+                "rentDays: "+rentDays+"\n"+
+                "voucher: "+voucher+"\n"+
+                "Typeservice: "+typeservice+"\n"+
+                "kindRoom: "+kindroom+"\n");
+                break;
+        }
+        default : {
+            alert("Bạn hãy chọn các chúc năng trong trình đơn");
+        }
+        case 3: {
+            if (typeservice==="Villa") {
+                    if (address==="Đà Nẵng") {
+                        if (typecustomer==="Diamond") {
+                            totalPay= 500*rentDays*(1-voucher/100)-35;
+                        } else if (typecustomer==="Platium") {
+                            totalPay= 500*rentDays*(1-voucher/100)-30;
+                        } else if (typecustomer==="Gold") {
+                            totalPay= 500*rentDays*(1-voucher/100)-25;
+                        } else if (typecustomer==="Silver") {
+                            totalPay= 500*rentDays*(1-voucher/100)-22;
+                        } else {
+                            totalPay= 500*rentDays*(1-voucher/100)-20;
+                        }
+                    } else if (address==="Huế") {
+                        if (typecustomer==="Diamond") {
+                            totalPay= 500*rentDays*(1-voucher/100)-25;
+                        } else if (typecustomer==="Platium") {
+                            totalPay= 500*rentDays*(1-voucher/100)-20;
+                        } else if (typecustomer==="Gold") {
+                            totalPay= 500*rentDays*(1-voucher/100)-15;
+                        } else if (typecustomer==="Silver") {
+                            totalPay= 500*rentDays*(1-voucher/100)-12;
+                        } else {
+                            totalPay= 500*rentDays*(1-voucher/100)-10;
+                        }
+                    } else {
+                        if (typecustomer==="Diamond") {
+                            totalPay= 500*rentDays*(1-voucher/100)-20;
+                        } else if (typecustomer==="Platium") {
+                            totalPay= 500*rentDays*(1-voucher/100)-15;
+                        } else if (typecustomer==="Gold") {
+                            totalPay= 500*rentDays*(1-voucher/100)-10;
+                        } else if (typecustomer==="Silver") {
+                            totalPay= 500*rentDays*(1-voucher/100)-7;
+                        } else {
+                            totalPay= 500*rentDays*(1-voucher/100)-5;
+                        }
+                    }
+            } else if (typeservice==="House") {
+                if (address==="Đà Nẵng") {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 300*rentDays*(1-voucher/100)-35;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 300*rentDays*(1-voucher/100)-30;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 300*rentDays*(1-voucher/100)-25;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 300*rentDays*(1-voucher/100)-22;
+                    } else {
+                        totalPay= 300*rentDays*(1-voucher/100)-20;
+                    }
+                } else if (address==="Huế") {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 300*rentDays*(1-voucher/100)-25;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 300*rentDays*(1-voucher/100)-20;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 300*rentDays*(1-voucher/100)-15;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 300*rentDays*(1-voucher/100)-12;
+                    } else {
+                        totalPay= 300*rentDays*(1-voucher/100)-10;
+                    }
+                } else {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 300*rentDays*(1-voucher/100)-20;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 300*rentDays*(1-voucher/100)-15;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 300*rentDays*(1-voucher/100)-10;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 300*rentDays*(1-voucher/100)-7;
+                    } else {
+                        totalPay= 300*rentDays*(1-voucher/100)-5;
+                    }
+                }
+
+            } else if (typeservice==="Room") {
+                if (address==="Đà Nẵng") {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 100*rentDays*(1-voucher/100)-35;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 100*rentDays*(1-voucher/100)-30;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 100*rentDays*(1-voucher/100)-25;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 100*rentDays*(1-voucher/100)-22;
+                    } else {
+                        totalPay= 100*rentDays*(1-voucher/100)-20;
+                    }
+                } else if (address==="Huế") {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 100*rentDays*(1-voucher/100)-25;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 100*rentDays*(1-voucher/100)-20;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 100*rentDays*(1-voucher/100)-15;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 100*rentDays*(1-voucher/100)-12;
+                    } else {
+                        totalPay= 100*rentDays*(1-voucher/100)-10;
+                    }
+                } else {
+                    if (typecustomer==="Diamond") {
+                        totalPay= 100*rentDays*(1-voucher/100)-20;
+                    } else if (typecustomer==="Platium") {
+                        totalPay= 100*rentDays*(1-voucher/100)-15;
+                    } else if (typecustomer==="Gold") {
+                        totalPay= 100*rentDays*(1-voucher/100)-10;
+                    } else if (typecustomer==="Silver") {
+                        totalPay= 100*rentDays*(1-voucher/100)-7;
+                    } else {
+                        totalPay= 100*rentDays*(1-voucher/100)-5;
+                    }
+                }
+            }
+
+        alert(totalPay);
+    }
+    }
+</script>
+</body>
+</html>

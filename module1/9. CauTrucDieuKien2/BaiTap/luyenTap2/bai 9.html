@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra có phải tam giác</title>\
+</head>
+<body>
+<script>
+    let canh1= parseInt(prompt('Nhập cạnh a'));
+    let canh2= parseInt(prompt('Nhập cạnh b'));
+    let canh3= parseInt(prompt('Nhập cạnh c'));
+    if (canh1>0 && canh2>0 && canh3>0) {
+        alert('Là 1 tam giác')
+    } else if (canh1+canh2>canh3) {
+        alert('Là 1 tam giác')
+    } else if (canh2+canh3>canh1) {
+        alert('là 1 tam giác')
+    } else if (canh1+canh3>canh2) {
+        alert('Là 1 tam giác')
+    } else {
+        alert('không phải tam giác')
+    }
+</script>
+
+</body>
+</html>
