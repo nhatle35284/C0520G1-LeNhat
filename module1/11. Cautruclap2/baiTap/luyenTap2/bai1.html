@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In Dãy Finonaci</title>
+</head>
+<body>
+<script>
+    let soOne = 0 ;
+    let soTwo = 1 ;
+    let Run = 0 ;
+    var soThree3;
+    for (; Run < 50; Run++) {
+        if (Run < 2) {
+            soThree3 = Run;
+        } else {
+            soThree3 = soTwo + soOne;
+            soOne = soTwo;
+            soTwo = soThree3;
+        }
+        document.write(soThree3 + "<br>");
+    }
+</script>
+
+</body>
+</html>

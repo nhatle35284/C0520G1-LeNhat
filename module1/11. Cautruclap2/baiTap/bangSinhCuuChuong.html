@@ -6,20 +6,17 @@
 </head>
 <body>
 <script>
-    let st ;
-    st="<table border='1'>";
-    b=a=1;
-    while (a <= 10) {
-        st = st + "<tr>";
-        while (b <= 10) {
-            st = st + "<td>" + a * b + "</td>";
-            b++;
-        } st=st+'</tr>';
-        b=1;
-        a++;
+    let sout;
+    sout="<table border='1' width='300' cellspacing='0'>";
+    for (i=2 ; i<=10 ; i++) {
+        sout=sout+"<tr>";
+        for ( j=1 ; j<=10 ; j++) {
+            sout= sout + "<td>" +(i+'x'+j+'='+i*j)+ "</td>";
+        }
+        sout=sout+"</tr>";
     }
-    st=st+"</table>";
-    document.write()
+    sout=sout+"</table>";
+    document.write(sout);
 </script>
 
 </body>

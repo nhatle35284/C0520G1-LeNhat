@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" onclick="nhapSo()" value="Play">
+<!--<input type="button" onclick="Return()" value="Reset">-->
+
+<script>
+    function nhapSo() {
+        let i=0;
+        let conSo=parseInt(prompt("Nhập số"));
+        while (conSo<100 , i<2) {
+            if (conSo===Math.random()*100) {
+                alert("Chúc Mừng");
+                i++;
+                break;
+            } else if (conSo>Math.random()*100) {
+                alert("Lớn Hơn");
+                conSo=parseInt(prompt("Nhập Lại"));
+                i++;
+            } else if (conSo<Math.random()*100) {
+                alert("Bé Hơn");
+                conSo=parseInt(prompt("Nhập Lại"));
+                i++;
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

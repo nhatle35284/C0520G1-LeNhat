@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let name;
+    let cmnd;
+    let birthday;
+    let email;
+    let address;
+    let typecustomer;
+    let quantilyincluded;
+    let voucher;
+    let rentDays;
+    let typeservice;
+    let kindroom;
+    let check =false;
+    name =  prompt('Vui Lòng Nhập Tên');
+    cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+    birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+    do {
+        let countAt=0;
+        let countDoc=0;
+        email = prompt('Input email');
+        for (let i=0;i<email.length;i++) {
+            if (email.charAt(i)==="@") {
+                countAt++;
+                for (let j=i+1;i<email.length;j++) {
+                    if (email.charAt(j)===".") {
+                        countDoc++;
+                    }
+                }
+            }
+        }
+        if (countAt!==1||countDoc<1) {
+            alert("email bạn nhập không hợp lệ")
+        } else {
+            check=true;
+        }
+    } while (check);
+    address = prompt('Address :');
+    typecustomer = prompt('Customer Type : ');
+    quantilyincluded = prompt('QuantilyIncluded :');
+    voucher = prompt('Voucher');
+    rentDays = prompt('rentDays:');
+    typeservice = prompt('Type of service :');
+    kindroom = prompt('Kind of room :');
+
+
+</script>
+
+</body>
+</html>
