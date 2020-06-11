@@ -19,7 +19,22 @@
     let kindroom;
     let check =false;
     name =  prompt('Vui Lòng Nhập Tên');
-    cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+    do {
+        cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+        if (!isNaN(cmnd)) {
+            cmnd=Number.parseFloat(cmnd);
+        }
+        if (!Number.isInteger(cmnd)) {
+            alert('Số Chúng Minh bạn nhập không đúng');
+            continue;
+        }
+        if (cmnd<10000000||cmnd>99000000) {
+            alert('Số Chứng Minh bạn nhập không đúng');
+            continue;
+        }
+        check=true
+    } while (!check);
+    check=false;
     birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
     do {
         let countAt=0;
@@ -28,7 +43,7 @@
         for (let i=0;i<email.length;i++) {
             if (email.charAt(i)==="@") {
                 countAt++;
-                for (let j=i+1;i<email.length;j++) {
+                for (let j=i+1;j<email.length;j++) {
                     if (email.charAt(j)===".") {
                         countDoc++;
                     }
@@ -40,7 +55,9 @@
         } else {
             check=true;
         }
-    } while (check);
+    }
+    while (!check);
+    check=false;
     address = prompt('Address :');
     typecustomer = prompt('Customer Type : ');
     quantilyincluded = prompt('QuantilyIncluded :');

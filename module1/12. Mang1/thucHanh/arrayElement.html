@@ -8,26 +8,61 @@
     </style>
 </head>
 <body>
-<input type="text" id="txtValue"></input>
-<input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();"></input>
-<input type="button" id="btnDisplay" value="Display" onclick="display_array();"></input>
-<div id="result"></div>
+<input type="text" id="text_element">
+<input type="button" onclick="add_element()" value="add" id="button_add">
+<input type="button" onclick="display()" value="Display" id="button-display">
+<p id="Results"></p>
 <script>
-    let x = 0;
-    let array = Array();
-    function add_element_to_array() {
-        array[x] = document.getElementById("txtValue").value;
-        alert("Element: " + array[x] + " Added at index " + x);
+    let x=0;
+    let array=Array();
+    function add_element() {
+        array[x]=document.getElementById("text_element").value;
+        alert("Element: "+ array[x]+"Add at index"+x);
         x++;
-        document.getElementById("txtValue ").value = "";
+        document.getElementById('text_element').value="";
     }
-    function display_array() {
-        let e = "<hr/>";
-        for (let i = 0; i < array.length; i++) {
-            e += "Element " + i + " = " + array[i] + "<br/>";
+    function display() {
+        let e='<hr>';
+        for (let i=0;i<array.length;i++) {
+            e+="Element" +i+ "="+array[i]+"<br/>"
         }
-        document.getElementById("result").innerHTML = e;
+        document.getElementById("Results").innerHTML=e;
     }
 </script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<input type="text" id="txtValue"></input>-->
+<!--<input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();"></input>-->
+<!--<input type="button" id="btnDisplay" value="Display" onclick="display_array();"></input>-->
+<!--<div id="result"></div>-->
+<!--<script>-->
+<!--    let x = 0;-->
+<!--    let array = Array();-->
+<!--    function add_element_to_array() {-->
+<!--        array[x] = document.getElementById("txtValue").value;-->
+<!--        alert("Element: " + array[x] + " Added at index " + x);-->
+<!--        x++;-->
+<!--        document.getElementById("txtValue ").value = "";-->
+<!--    }-->
+<!--    function display_array() {-->
+<!--        let e = "<hr/>";-->
+<!--        for (let i = 0; i < array.length; i++) {-->
+<!--            e += "Element " + i + " = " + array[i] + "<br/>";-->
+<!--        }-->
+<!--        document.getElementById("result").innerHTML = e;-->
+<!--    }-->
+<!--</script>-->
