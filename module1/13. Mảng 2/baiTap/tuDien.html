@@ -6,16 +6,18 @@
 </head>
 <body>
 <script>
-    let English=["Red","Blue","Black","White"];
+    let English= ["Red","Green","Black","White"];
     let tiengViet=["Đỏ","Xanh","Đen","Trắng"];
+    let tuDien=prompt("Nhâp Từ Muốn Tìm");
+     let index=-1;
     for (let i=0;i<English.length;i++) {
-        for (let j=0;j<tiengViet;j++) {
-            if (English[i]===tiengViet[i]) {
-                alert(tiengViet[i])
-            } else {
-                alert("Không Tìm Thấy")
+            if (tuDien===English[i]) {
+                index=i;
+                alert(tiengViet[i]);
+               break;
             }
-        }
+        } if (index===-1) {
+        alert("Không Tìm thấy!!!")
     }
 </script>
 

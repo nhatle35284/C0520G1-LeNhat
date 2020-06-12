@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let range=[12,2,3,45,16,31,15];
+    let max=0;
+    let total=0;
+    for (let i=0;i<range.length;i++) {
+        total+=range[i];
+        if (range[i]>max) {
+            max=range[i];
+        }
+    }alert("Số Lớn Nhất Là: "+max+" Trung Bình mảng là : "+(total/(range.length)))
+</script>
+
+</body>
+</html>
