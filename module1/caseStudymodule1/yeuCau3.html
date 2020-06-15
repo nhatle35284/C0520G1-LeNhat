@@ -18,7 +18,20 @@
     let typeservice;
     let kindroom;
     let check =false;
+    let tempName="";
     name =  prompt('Vui Lòng Nhập Tên');
+    name=name.trim().toLowerCase();
+    for (let i=0;i<name.length;i++) {
+        if (name.charAt(i)===" " && name.charAt(i+1)===" ") {
+            continue;
+        }
+        if (i===0 ||name.charAt(i-1)===" ") {
+            tempName+=name.charAt(i).toUpperCase();
+            continue;
+        }
+        tempName+=name.charAt(i);
+    }
+    name=tempName;
     do {
         cmnd = prompt('Vui Lòng Sô CMND của Bạn');
         if (!isNaN(cmnd)) {

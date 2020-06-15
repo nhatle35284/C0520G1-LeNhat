@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    find=prompt("Nhập Tên Một Ngôi Sao để tìm chòm sao của ngôi sao");
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe","Regulus"];
+    let chomSao = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major","Leo"];
+    // let kq=" ";
+    function chuoi() {
+        for (let i=0;i<ngoiSao.length;i++) {
+            if (find===ngoiSao[i]) {
+                kq=(chomSao[i])
+            } else {
+                kq = "Không Tìm Thấy";
+            }
+        }
+        return kq;
+    }
+    kq=chuoi();
+</script>
+</body>
+</html>

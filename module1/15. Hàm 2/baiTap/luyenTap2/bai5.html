@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nhap1= parseInt(prompt("Nhập Số Đầu Tiên"));
+    let nhap2= parseInt(prompt("Nhập Số Đầu Tiên"));
+    let nhap3= parseInt(prompt("Nhập Số Đầu Tiên"));
+    let min=0;
+    function soNhoNhat() {
+        if (nhap1<nhap2) {
+            if (nhap1<nhap3) {
+                min=nhap1;
+            }
+            else if (nhap2<nhap3) {
+                min=nhap2;
+            }
+            else {
+                min=nhap3;
+            }
+        } return min;
+    }
+    soNhoNhat();
+    alert(min)
+</script>
+</body>
+</html>

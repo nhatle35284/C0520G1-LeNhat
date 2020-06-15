@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function processAccsen(ansew) {
+        let result;
+        if (ansew) {
+            result = "Welcom to me";
+        }  else {
+            result = "Bye bye";
+        }
+        return result;
+    }
+    let confimAnsewn= confirm("Shall we play a game?");
+    let theAnsewn= processAccsen(confimAnsewn);
+    alert(theAnsewn);
+</script>
+</body>
+</html>

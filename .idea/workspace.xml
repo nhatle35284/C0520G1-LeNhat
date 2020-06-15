@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f76c283c-8936-4e9e-b349-a53239a87e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/module1/14. Hàm 1/thucHanh/processConfirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/14. Hàm 1/thucHanh/temperatureConvert.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/14. Hàm 1/thucHanh/timGiaTriNhoNhat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap1/bai1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap1/bai2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap1/bai3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap1/bai4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap1/bai5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap2/bai1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module1/15. Hàm 2/baiTap/luyenTap2/bai2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/11. Cautruclap2/baiTap/kiemTraSoNguyenTo.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/11. Cautruclap2/baiTap/kiemTraSoNguyenTo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/12. Mang1/thucHanh/caroGame.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/12. Mang1/thucHanh/caroGame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai3.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai4.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai5.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/luyenTap2/bai5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/ticTacToe.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/ticTacToe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/tuDien.html" beforeDir="false" afterPath="$PROJECT_DIR$/module1/13. Mảng 2/baiTap/tuDien.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dJE0bDTGOptej7CAaMpe2RfdRa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module1" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f76c283c-8936-4e9e-b349-a53239a87e69" name="Default Changelist" comment="" />
+      <created>1592134574224</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592134574224</updated>
+      <workItem from="1592134580067" duration="26000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1592134601042">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592134601042" />
+  </component>
+</project>

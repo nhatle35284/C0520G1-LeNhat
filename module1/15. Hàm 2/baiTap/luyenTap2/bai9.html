@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let chain=['a','c','d','e','a','d','a','a','c','c'];
+    let motKyTu=prompt("Nhập Ký tự để kiểm tra Số lần Xuất hiện :");
+    let dem=0;
+    function kiemTra() {
+        for (let i=0;i<chain.length;i++) {
+            if (chain[i]==motKyTu) {
+                dem++;
+            } else {
+                dem=-1;
+            }
+        } return dem;
+    } kiemTra();
+    alert(dem);
+</script>
+</body>
+</html>
