@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let chuoi = prompt("Nhâp Một Chuỗi");
+    if (kiemTra(chuoi)) {
+        alert("Chuỗi Đối Xứng")
+    } else {
+        alert("Chuỗi không Đối Xứng")
+    }
+
+    function kiemTra(str) {
+        let cnt=0;
+        let first = 0;
+        let last = str.length - 1;
+        if (str[first] !== str[last]) {
+            return false;
+        } else if (first >= last) {
+            return true;
+        } else {
+            cnt++;
+            alert(cnt);
+            return kiemTra(str.slice(1, str.length - 1));
+
+        }
+    }
+</script>
+</body>
+</html>

@@ -11,14 +11,14 @@
     let dem=0;
     function kiemTra() {
         for (let i=0;i<chain.length;i++) {
-            if (chain[i]==motKyTu) {
-                dem++;
-            } else {
+            if (motKyTu===chain[i]) {
+               kq= dem += 1;
+            } else if (motKyTu!==chain[i]) {
                 dem=-1;
             }
-        } return dem;
+        }
     } kiemTra();
-    alert(dem);
+    alert(kq);
 </script>
 </body>
 </html>

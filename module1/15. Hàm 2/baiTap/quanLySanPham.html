@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm</title>
+</head>
+<body>
+<style>
+    table,td,tr{
+        width: 400px;
+    }
+    div {
+        text-align: center;
+        background-color: #dddddd;
+        width: 400px;
+        height: 100px;
+    }
+    input {
+        height: 50px;
+        margin-top: 20px;
+    }
+    tr:nth-child(odd){
+        background-color: #dddddd;
+    }
+</style>
+<h2>Add New Product</h2>
+<div>
+<input type="text" placeholder="New Product" id="input"/>
+<input style="background-color: chartreuse" type="button" value="Add" id="add" onclick="add()"/>
+</div>
+<h2>Display All Product</h2>
+<p id="add2"></p>
+<script>
+    let array = new Array();
+    let tableSing = " ";
+    display();
+
+    function add() {
+        add1 = document.getElementById('input').value;
+        document.getElementById('input').value="";
+        if (add1==="") {
+            alert("Vui lòng nhập tên sản phẩm")
+        } else {
+            array.push(add1);
+        }
+        tableSing = " ";
+        display();
+    }
+
+    function display() {
+        tableSing += "<table>";
+        for (let i = 0; i < array.length; i++) {
+            tableSing += "<tr>" +
+                "<td>" + (i + 1) + "</td>" +
+                "<td>" + array[i] + "</td>" +
+                "<td><input style='background-color: chartreuse' type=\"button\" value=\"Edit\" id=\"edit\" onclick=\"edit(" + i + ")\"></td>" +
+                "<td><input style='background-color: chartreuse' type=\"button\" value=\"Delete\" id=\"delete\" onclick=\"deleter(" + i + ")\"></td>";
+            tableSing += "</tr>";
+        }
+        tableSing += "</table>";
+        document.getElementById('add2').innerHTML = tableSing;
+    }
+
+    function edit(gia) {
+        let editName = prompt("Nhập tên Sản Phẩm Mới");
+        array[gia] = editName;
+        tableSing = " ";
+        display()
+    }
+
+    function deleter(xoa) {
+        let delet = confirm(array[xoa]);
+        if (delet) {
+            array.splice(xoa, 1);
+        }
+        tableSing = " ";
+        display();
+    }
+</script>
+</body>
+</html>

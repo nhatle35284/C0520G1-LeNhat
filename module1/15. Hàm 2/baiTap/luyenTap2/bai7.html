@@ -6,12 +6,18 @@
 </head>
 <body>
 <script>
-    let nhap1=parseInt(prompt("Nhập Số Bất kì Đầu Tiên :"));
-    let nhap2=parseInt(prompt("Nhập Số Bất kì Thứ 2 :"));
-    function doiViTri(nhap2,nhap1) {
+    let nhap1 = parseInt(prompt("Nhập Số Bất kì Đầu Tiên :"));
+    let nhap2 = parseInt(prompt("Nhập Số Bất kì Thứ 2 :"));
 
+    function doiViTri(x, b) {
+        let doi = "";
+        doi = x;
+        x = b;
+        b = doi;
+        alert('Gia tri đầu tiên : ' + x);
+        alert('Gia tri thứ 2 : ' + b);
     }
-    alert(doiViTri())
+    doiViTri(nhap1, nhap2);
 </script>
 </body>
 </html>
