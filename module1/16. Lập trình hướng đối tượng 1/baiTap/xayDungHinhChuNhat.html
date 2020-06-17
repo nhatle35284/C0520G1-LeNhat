@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="hcn" width="400" height="200" style="border: 1px solid blue"></canvas>
+<script>
+    class Rectangle {
+        constructor(chieuDai, chieuRong,) {
+            this.chieuDai = chieuDai;
+            this.chieuRong = chieuRong;
+        }
+        getDienTich () {
+            this.dienTich = this.chieuRong*this.chieuRong
+        }
+        getChuVi () {
+            this.chuVi = (chieuDai + chieuRong) / 2;
+        }
+        veHinhChuNhat() {
+            let c = document.getElementById("hcn");
+            let ctx = c.getContext("2d");
+            ctx.fillRect(50, 50, this.chieuDai, this.chieuRong);
+        }
+    }
+    let rectangle = new Rectangle(202, 100);
+    rectangle.getDienTich();
+    alert(rectangle.chieuDai + " " + rectangle.chieuRong);
+    rectangle.veHinhChuNhat()
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrayNameCustomer = [];
+    while (true) {
+        let luaChon = parseInt(prompt("1.Add new customer" + "\n" + "2.Delete customer"));
+        switch (luaChon) {
+            case 1: {
+                let number = parseInt(prompt("Input number customer"));
+                for (let i = 0; i < number; i++) {
+                    let nameCutomer = prompt("Input custommer");
+                    arrayNameCustomer.push(nameCutomer);
+                    arrayNameCustomer.sort();
+                }
+                let result = "";
+                for (let i = 0; i < arrayNameCustomer.length; i++) {
+                    result += "No" + (i + 1) + ". " + arrayNameCustomer[i] + "\n";
+                }
+                alert(result);
+                break
+        }
+            case 2: {
+                let nameCutomer = prompt("Input name want delete");
+                for (let i = 0; i < arrayNameCustomer.length; i++) {
+                    if (arrayNameCustomer[i] === nameCutomer) {
+                        arrayNameCustomer.splice(i, 1);
+                    }
+                }
+                let result = "";
+                for (let i = 0; i < arrayNameCustomer.length; i++) {
+                    result += "No" + (i + 1) + ". " + arrayNameCustomer[i] + "\n";
+                }
+                alert(result);
+                break;
+            }
+            default: {
+                alert("Faild!!!")
+            }
+        }
+    }
+</script>
+</body>
+</html>

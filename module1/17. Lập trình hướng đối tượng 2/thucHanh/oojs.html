@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function createNewPerson(name) {
+    //     let obj = {};
+    //     obj.name = name;
+    //     obj.greeting = function() {
+    //         alert('Hi! I\'m ' + this.name + '.');
+    //     };
+    //     return obj;
+    // }
+    // let salva = createNewPerson('Salva');
+    // salva.name;
+    // salva.greeting();
+
+
+    class createNewPerson {
+        constructor(name) {
+            let obj ={};
+            obj.name=name;
+            obj.gretting = 'Hi! I\'m ' +obj.name +'.';
+            return obj;
+        };
+    }
+    let salva = new createNewPerson('Salva');
+    alert(salva.gretting);
+</script>
+</body>
+</html>

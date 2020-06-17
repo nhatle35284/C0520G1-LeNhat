@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô Phỏng sự Hoạt Động Đèn Pin</title>
+</head>
+<body>
+<script>
+    class Battery {
+        constructor() {
+        }
+
+        setEnergy (energy) {
+            this.energy = energy;
+        };
+
+        getEnergy () {
+            return this.energy;
+        };
+    }
+    class FlashLamp {
+        constructor() {
+        }
+
+        setBattery (battery) {
+            this.battery = battery;
+        };
+
+        getBatteryInfo () {
+            return this.battery.getEnergy();
+        };
+
+        light () {
+            if(this.status){
+                alert("Lighting");
+            } else {
+                alert("Not lighting");
+            }
+        };
+
+        turnOn () {
+            this.status = true;
+        };
+
+        turnOff () {
+            this.status = false;
+        }
+    }
+    let battery = new Battery();
+    battery.setEnergy(10);
+
+    let flashLamp = new FlashLamp();
+    flashLamp.setBattery(battery);
+
+    document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+    flashLamp.light();
+
+    document.write("Turn on<br/>");
+    flashLamp.turnOn();
+    flashLamp.light();
+    document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+
+    document.write("Turn off<br/>");
+    flashLamp.turnOff();
+    flashLamp.light();
+</script>
+</body>
+</html>
+<!--class Battery {-->
+<!--constructor(energy) {-->
+<!--this.energy=energy;-->
+<!--}-->
+<!--setEnergy (energy) {-->
+<!--this.energy=energy;-->
+<!--}-->
+<!--getEnery (energy) {-->
+<!--return this.energy-->
+<!--}-->
+<!--}-->
+<!--class Flashlamp {-->
+<!--constructor(battery) {-->
+<!--this.battery;-->
+<!--}-->
+<!--setBattery (battery) {-->
+<!--this.bettry = battery;-->
+<!--}-->
+<!--getBatteryInfo (battery) {-->
+<!--return this.bettry.getEnery();-->
+<!--}-->
+<!--light () {-->
+<!--if (this.status) {-->
+<!--alert("Linght");-->
+<!--}else {-->
+<!--alert("Not linght");-->
+<!--}-->
+<!--}-->
+<!--turnOn ()  {-->
+<!--this.status = true;-->
+<!--}-->
+<!--turnOff () {-->
+<!--this.status = false;-->
+<!--}-->
+<!--}-->
+<!--let battery = new Battery(5);-->
+<!--battery.energy;-->
+<!--battery.setEnergy(10);-->
+<!--let flashLamp = new FlashLamp();-->
+<!--flashLamp.setBattery(battery);-->
+<!--document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");-->
+<!--flashLamp.light();-->
+
+<!--document.write("Turn on<br/>");-->
+<!--flashLamp.turnOn();-->
+<!--flashLamp.light();-->
+<!--document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");-->
+
+<!--document.write("Turn off<br/>");-->
+<!--flashLamp.turnOff();-->
+<!--flashLamp.light();-->
