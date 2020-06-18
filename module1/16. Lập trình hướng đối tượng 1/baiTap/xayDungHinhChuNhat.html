@@ -13,10 +13,10 @@
             this.chieuRong = chieuRong;
         }
         getDienTich () {
-            this.dienTich = this.chieuRong*this.chieuRong
+            return (this.chieuDai*this.chieuRong);
         }
         getChuVi () {
-            this.chuVi = (chieuDai + chieuRong) / 2;
+           return ((this.chieuDai + this.chieuRong) * 2);
         }
         veHinhChuNhat() {
             let c = document.getElementById("hcn");
@@ -25,9 +25,10 @@
         }
     }
     let rectangle = new Rectangle(202, 100);
-    rectangle.getDienTich();
     alert(rectangle.chieuDai + " " + rectangle.chieuRong);
-    rectangle.veHinhChuNhat()
+    alert("Diện tích hình chữ nhật là: "+rectangle.getDienTich());
+    alert("Chu vi hình chữ Nhật là: "+rectangle.getChuVi());
+    rectangle.veHinhChuNhat();
 </script>
 </body>
 </html>

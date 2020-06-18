@@ -9,17 +9,18 @@
     class Temperrature {
         constructor(doC) {
             this.doC = doC;
-        }
-        getDoF (number) {
-           alert(number)
+        };
+        getDoF () {
+          return (9/5*this.doC +32);
         }
         getDoK () {
-            this.doK = nhietDo+273;
+            alert("Kenvin là :"+(this.doC+273));
         }
     } let temperrature = new Temperrature(25);
-    temperrature.getDoF( 9/5*doC+32);
-    temperrature.getDoK(temperrature);
+    alert(temperrature.getDoF());
     alert("Nhiệt Độ là : " + temperrature.doC);
+    temperrature.getDoK();
+
 </script>
 </body>
 </html>
