@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function compareTriplets(a, b) {
+        for (let i =0;i<a.length;i++) {
+            if (a[i]>b[i]) {
+                a++;
+            }
+            else {
+                b++;
+            }
+        }
+        return a;b;
+    }
+
+    function main() {
+        const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+        const a = readLine().replace(/\s+$/g, '').split(' ').map(aTemp => parseInt(aTemp, 10));
+
+        const b = readLine().replace(/\s+$/g, '').split(' ').map(bTemp => parseInt(bTemp, 10));
+
+        const result = compareTriplets(a, b);
+
+        ws.write(result.join(' ') + '\n');
+
+        ws.end();
+    }
+</script>
+</body>
+</html>

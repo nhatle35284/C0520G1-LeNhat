@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công Tắc và Bóng Đèn</title>
+</head>
+<body>
+<img id="image"/>
+<p id="display"></p>
+<button id="on" onclick="on()">Turn On</button>
+<button id="off" onclick="off()">Turn Off</button>
+<script>
+    class SwitchButton {
+        constructor(status,lamp) {
+            this.status = status;
+        }
+        switchButton () {
+        }
+        switchOff () {
+            document.getElementById("image").innerHTML = "<img src=\"../img/off_bulboff.gif\" height=\"180\" width=\"100\"/>";
+            document.getElementById("display").innerHTML = "Bóng đèn đang tắt";
+        }
+        switchOn () {
+            document.getElementById("image").innerHTML = "<img src=\"../img/on_bulbon.gif\" height=\"180\" width=\"100\"/>"
+            document.getElementById("display").innerHTML = "Bóng Dèn Đang Bật"
+        }
+    }
+    class ElectricLamp {
+        constructor() {
+        }
+        status () {
+        }
+        ElectricLamp () {
+        }
+        turnOff () {
+            document.getElementById("display").innerHTML= "<img src=\"../img/off_bulboff.gif\" height=\"180\" width=\"100\"/>"
+        }
+        turnOn () {
+            document.getElementById("display").innerHTML= "<img src=\"../img/on_bulbon.gif\" height=\"180\" width=\"100\"/>"
+        }
+    }
+</script>
+</body>
+</html>
