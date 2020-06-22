@@ -48,7 +48,20 @@
         check=true
     } while (!check);
     check=false;
-    birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+    do {
+        birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+        let day= birthday.sub(0,2);
+        let month= birthday.sub(3,2);
+        let year =birthday.sub(6,4);
+                if (birthday.length===10 && birthday.charAt(2)==="/" && birthday.charAt(5)==="/" &&
+                0<day<31 && 0<month<12 && 1900<year<2002) {
+                    check=true;
+                } else {
+                    alert('Nhập lại đi');
+                    check=false
+                }
+    } while (!check);
+    check=false;
     do {
         let countAt=0;
         let countDoc=0;

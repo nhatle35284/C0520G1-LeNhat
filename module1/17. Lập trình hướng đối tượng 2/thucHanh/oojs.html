@@ -17,18 +17,23 @@
     // let salva = createNewPerson('Salva');
     // salva.name;
     // salva.greeting();
-
-
-    class createNewPerson {
-        constructor(name) {
-            let obj ={};
-            obj.name=name;
-            obj.gretting = 'Hi! I\'m ' +obj.name +'.';
-            return obj;
-        };
+    let c=0;
+    let ar = "nha/tde/1221";
+    if (ar.charAt(3)==="/"&&ar.charAt(7)==='/') {
+        alert(ar.length);
+        c++;
     }
-    let salva = new createNewPerson('Salva');
-    alert(salva.gretting);
+    alert(c)
+    // class createNewPerson {
+    //     constructor(name) {
+    //         let obj ={};
+    //         obj.name=name;
+    //         obj.gretting = 'Hi! I\'m ' +obj.name +'.';
+    //         return obj;
+    //     };
+    // }
+    // let salva = new createNewPerson('Salva');
+    // alert(salva.gretting);
 </script>
 </body>
 </html>

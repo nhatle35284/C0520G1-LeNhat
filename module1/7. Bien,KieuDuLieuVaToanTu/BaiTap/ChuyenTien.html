@@ -6,35 +6,36 @@
 </head>
 <body>
 <form>
-    <label>amuonunt</label>
+    <label>Amuonunt
     <input  type="number" name="number" min="0" id="money"/>
-    <select id="go">
+    </label>
+    <label for="go"></label><select id="go">
         <option value="VNĐ">VNĐ</option>
         <option value="USD">USD</option>
     </select>
-    <select id="to">
+    <label for="to"></label><select id="to">
         <option value="USD">USD</option>
         <option value="VNĐ">VNĐ</option>
     </select>
-    <input type="button" onclick="doi()" value="convert"/>
+    <input type="button" onclick="doiTien()" value="convert"/>
     <p id="kt"></p>
 </form>
 <script>
-    function doi() {
+    function doiTien() {
        let tienNhap= parseInt(document.getElementById("money").value);
         let cache1= document.getElementById("go").value;
         let cache2= document.getElementById('to').value;
         let ketqua=0;
         if ( cache1==='VNĐ' && cache2==='USD'){
             ketqua = tienNhap/23000;
-            document.getElementById('kt').innerHTML=ketqua;
+            document.getElementById('kt').innerHTML="Kết quả là: "+ketqua;
         }
         else if (cache1==='USD' && cache2==='VNĐ'){
             ketqua=tienNhap*23000;
-            document.getElementById('kt').innerHTML=ketqua;
+            document.getElementById('kt').innerHTML="Kết quả là: "+ketqua;
         }
         else  {
-            document.getElementById("kt").innerHTML=tienNhap;
+            document.getElementById("kt").innerHTML="Kết quả là: "+tienNhap;
         }
     }
 

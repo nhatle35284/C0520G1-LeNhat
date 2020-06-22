@@ -35,13 +35,13 @@
         if (checkPlayer1 && !checkInputed(i, j)) {
             array[i][j] = "X";
             checkPlayer1 = false;
-            if (checkWin1()) {
+            if (checkWin1("X")) {
                 alert(" player1 win!!!")
             }
         } else if (!checkPlayer1 && !checkInputed(i, j)) {
             array[i][j] = "O";
             checkPlayer1 = true;
-            if (checkWin2()) {
+            if (checkWin1("O")) {
                 alert(" Player2 win!!!")
             }
         }
@@ -56,47 +56,48 @@
         }
     }
 
-    function checkWin1() {
+    function checkWin1(tic) {
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
-                if (array[i][j] === "X") {
-                    if (array[i][j + 1] === "X" && array[i][j + 2] === "X") {
-                        return true;
-                    }
-                    if (array[i + 1][j] === "X" && array[i + 2][j] === "X") {
-                        return true;
-                    }
-                    if (array[i + 1][j + 1] === "X" && array[i + 2][j + 2] === "X") {
-                        return true;
-                    }
-                    if (array[i + 1][j - 1] === "X" && array[i + 2][j - 2] === "X") {
-                        return true;
-                    }
-                }
-            }
-        }
-    }
+                if (array[i][j] === tic) {
 
-    function checkWin2() {
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; j < 10; j++) {
-                if (array[i][j] === "O") {
-                    if (array[i][j + 1] === "O" && array[i][j + 2] === "O") {
+                    if (array[i][j + 1] === tic && array[i][j + 2] === tic) {
                         return true;
                     }
-                    if (array[i + 1][j] === "O" && array[i + 2][j] === "O") {
+                    if (array[i + 1][j] === tic && array[i + 2][j] === tic) {
                         return true;
                     }
-                    if (array[i + 1][j + 1] === "O" && array[i + 2][j + 2] === "O") {
+                    if (array[i + 1][j + 1] === tic && array[i + 2][j + 2] === tic) {
                         return true;
                     }
-                    if (array[i + 1][j - 1] === "O" && array[i + 2][j - 2] === "O") {
+                    if (array[i + 1][j - 1] === tic && array[i + 2][j - 2] === tic) {
                         return true;
                     }
                 }
             }
         }
     }
+    //Kiểm Tra người chơi "0"
+    // function checkWin2() {
+    //     for (let i = 0; i < 10; i++) {
+    //         for (let j = 0; j < 10; j++) {
+    //             if (array[i][j] === "O") {
+    //                 if (array[i][j + 1] === "O" && array[i][j + 2] === "O") {
+    //                     return true;
+    //                 }
+    //                 if (array[i + 1][j] === "O" && array[i + 2][j] === "O") {
+    //                     return true;
+    //                 }
+    //                 if (array[i + 1][j + 1] === "O" && array[i + 2][j + 2] === "O") {
+    //                     return true;
+    //                 }
+    //                 if (array[i + 1][j - 1] === "O" && array[i + 2][j - 2] === "O") {
+    //                     return true;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 </script>
 </body>
 </html>

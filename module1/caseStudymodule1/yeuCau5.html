@@ -7,28 +7,6 @@
 <body>
 <script>
     let arrListCustomer = [];
-    function displayCustomer() {
-        let temp = "";
-        for (let i = 0; i < arrListCustomer.length; i++) {
-            temp += i + ". Name: " + arrListCustomer[i][0] + "\n";
-        }
-        let chooseDisplay = parseInt(prompt(temp));
-        alert("name:" + arrListCustomer[chooseDisplay][0] + "\n" +
-            "email:" + arrListCustomer[chooseDisplay][1] + "\n" +
-            "cmnd: " + arrListCustomer[chooseDisplay][2] + "\n" +
-            "birthday: " + arrListCustomer[chooseDisplay][3] + "\n" +
-            "Address: " + arrListCustomer[chooseDisplay][4] + "\n" +
-            "typeCustomer: " + arrListCustomer[chooseDisplay][5] + "\n" +
-            "quatilyIncluded: " + arrListCustomer[chooseDisplay][6] + "\n" +
-            "rentDays: " + arrListCustomer[chooseDisplay][7] + "\n" +
-            "voucher: " + arrListCustomer[chooseDisplay][8] + "\n" +
-            "Typeservice: " + arrListCustomer[chooseDisplay][9] + "\n" +
-            "kindRoom: " + arrListCustomer[chooseDisplay][10]);
-        displayMainMenu()
-    }
-    function deleteCustomer() {
-
-    }
     function editCustomer() {
         let temp = "";
         for (let i = 0; i < arrListCustomer.length; i++) {
@@ -124,7 +102,39 @@
                 alert("Unsuccessfull !!!!")
             }
         }
-
+        function displayCustomer() {
+            let temp = "";
+            for (let i = 0; i < arrListCustomer.length; i++) {
+                temp += i + ". Name: " + arrListCustomer[i][0] + "\n";
+            }
+            let chooseDisplay = parseInt(prompt(temp));
+            alert("name:" + arrListCustomer[chooseDisplay][0] + "\n" +
+                "email:" + arrListCustomer[chooseDisplay][1] + "\n" +
+                "cmnd: " + arrListCustomer[chooseDisplay][2] + "\n" +
+                "birthday: " + arrListCustomer[chooseDisplay][3] + "\n" +
+                "Address: " + arrListCustomer[chooseDisplay][4] + "\n" +
+                "typeCustomer: " + arrListCustomer[chooseDisplay][5] + "\n" +
+                "quatilyIncluded: " + arrListCustomer[chooseDisplay][6] + "\n" +
+                "rentDays: " + arrListCustomer[chooseDisplay][7] + "\n" +
+                "voucher: " + arrListCustomer[chooseDisplay][8] + "\n" +
+                "Typeservice: " + arrListCustomer[chooseDisplay][9] + "\n" +
+                "kindRoom: " + arrListCustomer[chooseDisplay][10]);
+            displayMainMenu();
+        }
+        function deleteCustomer() {
+            let temp = "";
+            for (let i = 0; i < arrListCustomer.length; i++) {
+                temp += i + ". Name: " + arrListCustomer[i][0] + "\n";
+            }
+            let chooseDelete = parseInt(prompt(temp));
+            let check= confirm("Are You want delete customer");
+            if (check) {
+                arrListCustomer.splice(chooseDelete,1);
+                alert("Bạn Đã xóa customer thành công");
+            } else {
+                alert("bạn Không Muốn xóa customer")
+            }displayCustomer()
+        }
         function addNewCustomer() {
             let cusInformation = [];
             let name = prompt('Vui Lòng Nhập Tên');

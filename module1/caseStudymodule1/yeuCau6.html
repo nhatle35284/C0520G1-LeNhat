@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Customer {
+        constructor() {
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setEmail(email) {
+            this.email = email;
+        }
+
+        getEmail() {
+            return this.email;
+        }
+
+        setCmnd(cmnd) {
+            this.cmnd = cmnd;
+        }
+
+        getCmnd() {
+            return this.cmnd;
+        }
+
+        setBirthday(birthday) {
+            this.birthday = birthday;
+        }
+
+        getBirthday() {
+            return this.birthday;
+        }
+
+        setAddress(address) {
+            this.address = address;
+        }
+
+        getAddress() {
+            return this.address;
+        }
+
+        setTypeCustomer(typeCustomer) {
+            this.typeCustomer = typeCustomer;
+        }
+
+        getTypeCustomer() {
+            return this.typeCustomer;
+        }
+
+        setQuatilyIncluded(quatilyincluded) {
+            this.qualityIncluded = quatilyincluded;
+        }
+
+        getQuatilyIncluded() {
+            return this.qualityIncluded;
+        }
+
+        setRentDays(rentDays) {
+            this.rentDays = rentDays;
+        }
+
+        getRentDays() {
+            return this.rentDays;
+        }
+
+        setVoucher(voucher) {
+            this.voucher = voucher;
+        }
+
+        getVoucher() {
+            return this.voucher;
+        }
+
+        setTypeService(typeService) {
+            this.typeService = typeService;
+        }
+
+        getTypeService() {
+            return this.typeService;
+        }
+
+        setKindRoom(kindRoom) {
+            this.kindRoom = kindRoom;
+        }
+
+        getKindRoom() {
+            return this.kindRoom;
+        }
+
+        totalPay() {
+            let money = 0;
+            if (this.typeService === "Villa") {
+                money = 500;
+            } else if (this.typeService === "House") {
+                money = 300;
+            } else if (this.typeService === "Room") {
+                money = 100;
+            }
+            return (this.getRentDays() * money * (1 - this.getVoucher() / 100));
+        }
+
+    }
+    let arrayListCustomer = [];
+
+    function displayMainMenu() {
+        let choose = parseInt(prompt("1.Add new Customer" + "\n 2.Display information customer" +
+            "\n 3.Display totalPay of Customer" + "\n 4.Edit information customer" + "\n 5.Delete information cusstomer"));
+        switch (choose) {
+            case 1: {
+                addNewCustomer();
+                break;
+            }
+            case 2: {
+                displayCustomer();
+                break;
+            }
+            case 3: {
+                displayTotalPay();
+                break;
+            }
+            case 4: {
+                editCustomer();
+                    break;
+            }
+            case 5: {
+                deleteCustomer();
+            }
+            default: {
+                alert("Faild!!!");
+            }
+        }
+    }
+
+    function addNewCustomer() {
+        let customer = new Customer();
+        let name = prompt('Vui Lòng Nhập Tên');
+        let email = prompt('Vui lòng Nhập email');
+        let cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+        let birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+        let address = prompt('Address :');
+        let typecustomer = prompt('Customer Type : ');
+        let quantilyincluded = prompt('QuantilyIncluded :');
+        let voucher = prompt('Voucher');
+        let rentDays = prompt('rentDays:');
+        let typeservice = prompt('Type of service :');
+        let kindRoom = prompt('Kind of room :');
+        customer.setName(name);
+        customer.setEmail(email);
+        customer.setCmnd(cmnd);
+        customer.setBirthday(birthday);
+        customer.setAddress(address);
+        customer.setTypeCustomer(typecustomer);
+        customer.setTypeService(typeservice);
+        customer.setQuatilyIncluded(quantilyincluded);
+        customer.setVoucher(voucher);
+        customer.setRentDays(rentDays);
+        customer.setKindRoom(kindRoom);
+        arrayListCustomer.push(customer);
+        alert("Bạn Đã Thêm Thành Công");
+        displayMainMenu();
+    }
+    displayMainMenu();
+    function editCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrayListCustomer.length; i++) {
+            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        let edit = parseInt(prompt("1.name: " + arrayListCustomer[chooseDisplay].getName()+ "\n" +
+            "2.email: " + arrayListCustomer[chooseDisplay].getEmail() + "\n" +
+            "3.cmnd: " + arrayListCustomer[chooseDisplay].getCmnd() + "\n" +
+            "4.birthday: " + arrayListCustomer[chooseDisplay].getBirthday() + "\n" +
+            "5.Address: " + arrayListCustomer[chooseDisplay].getAddress() + "\n" +
+            "6.typeCustomer: " + arrayListCustomer[chooseDisplay].getTypeCustomer() + "\n" +
+            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay].getQuatilyIncluded() + "\n" +
+            "8.rentDays: " + arrayListCustomer[chooseDisplay].getRentDays() + "\n" +
+            "9.voucher: " + arrayListCustomer[chooseDisplay].getVoucher() + "\n" +
+            "10.Typeservice: " + arrayListCustomer[chooseDisplay].getTypeService() + "\n" +
+            "11.kindRoom: " + arrayListCustomer[chooseDisplay].getKindRoom()));
+
+        switch (edit) {
+            case 1: {
+                arrayListCustomer[chooseDisplay].setName(prompt("Nhập tên muốn sửa"));
+                break;
+            }
+            case 2: {
+                arrayListCustomer[chooseDisplay].setEmail(prompt("Nhập email muốn sửa"));
+                break;
+            }
+            case 3: {
+                arrayListCustomer[chooseDisplay].setCmnd(prompt("Nhập cmnd muốn sửa"));
+                break;
+            }
+            case 4: {
+                arrayListCustomer[chooseDisplay].setBirthday(prompt("Nhập ngày sinh muốn sửa"));
+                break;
+            }
+            case 5: {
+                arrayListCustomer[chooseDisplay].setAddress(prompt("Nhập địa chỉ muốn sửa"));
+                break;
+            }
+            case 6: {
+                arrayListCustomer[chooseDisplay].setTypeCustomer(prompt("Nhập customer muốn sửa"));
+                break;
+            }
+            case 7: {
+                arrayListCustomer[chooseDisplay].setQuatilyIncluded(prompt("Nhập số lượng đi kèmmuốn sửa"));
+                break;
+            }
+            case 8: {
+                arrayListCustomer[chooseDisplay].setRentDays(prompt("Nhập số ngày thuê muốn sửa"));
+                break;
+            }
+            case 9: {
+                arrayListCustomer[chooseDisplay].setVoucher(prompt("Nhập Khuyến mãi muốn sửa"));
+                break;
+            }
+            case 10: {
+                arrayListCustomer[chooseDisplay].setTypeService(prompt("Nhập loại dịch vụ muốn sửa"));
+                break;
+            }
+            case 11: {
+                arrayListCustomer[chooseDisplay].setKindRoom(prompt("Nhập loại phòng muốn sửa"));
+                break;
+            }
+        }editCustomer();
+    }
+    function displayCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrayListCustomer.length; i++) {
+            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert("1.name: " + arrayListCustomer[chooseDisplay].getName()+ "\n" +
+            "2.email: " + arrayListCustomer[chooseDisplay].getEmail() + "\n" +
+            "3.cmnd: " + arrayListCustomer[chooseDisplay].getCmnd() + "\n" +
+            "4.birthday: " + arrayListCustomer[chooseDisplay].getBirthday() + "\n" +
+            "5.Address: " + arrayListCustomer[chooseDisplay].getAddress() + "\n" +
+            "6.typeCustomer: " + arrayListCustomer[chooseDisplay].getTypeCustomer() + "\n" +
+            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay].getQuatilyIncluded() + "\n" +
+            "8.rentDays: " + arrayListCustomer[chooseDisplay].getRentDays() + "\n" +
+            "9.voucher: " + arrayListCustomer[chooseDisplay].getVoucher() + "\n" +
+            "10.Typeservice: " + arrayListCustomer[chooseDisplay].getTypeService() + "\n" +
+            "11.kindRoom: " + arrayListCustomer[chooseDisplay].getKindRoom());
+        displayMainMenu();
+    }
+    function displayTotalPay() {
+        let temp = "";
+        for (let i = 0; i < arrayListCustomer.length; i++) {
+            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert(arrayListCustomer[chooseDisplay].totalPay());
+        displayMainMenu();
+    }
+    function deleteCustomer() {
+        let temp = "";
+        for (let i = 0; i < arrayListCustomer.length; i++) {
+            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+        }
+        let chooseDelete = parseInt(prompt(temp));
+        let check= confirm("Are You want delete customer");
+        if (check) {
+            arrayListCustomer.splice(chooseDelete,1);
+            alert("Bạn Đã xóa customer thành công");
+        } else {
+            alert("bạn Không Muốn xóa customer")
+        }displayMainMenu()
+    }
+</script>
+</body>
+</html>

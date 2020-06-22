@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Remote {
+        constructor(code,tranferChannel,adjustSound) {
+            this.code=code;
+            this.tranferChannel=tranferChannel;
+            this.adjustSound=adjustSound;
+        }
+        tranferChannel (TiVi) {
+           alert("chuyển sang kênh"+TiVi.);
+        }
+    }
+    class TiVi {
+        constructor(channel,sound,tranferChannel,adjustSound) {
+            this.channel=channel;
+            this.sound=sound;
+            this.tranferChannel=3;
+            this.adjustSound=adjustSound;
+            this.status="tvOn"
+        }
+        getChannnel() {
+            return this.channel;
+        }
+        turnOff() {
+            this.status="tvOff"
+        }
+        turnOn() {
+            this.status="tvOn"
+        }
+
+    }
+    let tivi =new TiVi(LG-t405,7,5);
+    tivi.turnOn();
+
+    let remote =new Remote();
+</script>
+</body>
+</html>

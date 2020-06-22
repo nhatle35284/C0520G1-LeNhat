@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <img src="../img/off_bulboff.gif" height="180" width="100" id="img" alt=""/>
+    <input type="button" value="Bật/Tắt" onclick="batTat()">
+    <input type="button" value="Nối" onclick="noi()">
+</div>
+</body>
+<script>
+    class switchButton {
+        constructor() {
+        }
+        connectLamp (lamp) {
+            this.lamp =lamp;
+        }
+        switchOn() {
+            this.lamp.turnOnn();
+        }
+        switchOff() {
+            this.lamp.turnOfff();
+        }
+    }
+    class Lamp {
+        constructor() {
+            this.statuss="off_bulboff.gif";
+        }
+        turnOnn() {
+            this.statuss="on_bulbon.gif";
+        }
+        turnOfff() {
+            this.statuss="off_bulboff.gif";
+        }
+        getStatussLamp() {
+            return this.statuss;
+        }
+    }
+    let lamp1 = new Lamp();
+    let switches = new switchButton();
+    function noi() {
+        switches.connectLamp(lamp1);
+    }
+    let check = false;
+    function batTat() {
+        if (!check) {
+            switches.switchOn();
+            document.getElementById("img").src=lamp1.getStatussLamp();
+            check=true;
+        } else {
+            switches.switchOff();
+            document.getElementById("img").src=lamp1.getStatussLamp();
+            check=false;
+        }
+    }
+</script>
+</html>
