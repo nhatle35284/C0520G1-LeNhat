@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Quản Lý Nhân Viên</h1>
+<input type="button" value="thêm nhân viên mới" onclick="them()">
+<p id="display"></p>
+<script>
+    let danhSachNhanVien = [];
+    hienThi();
+
+    function hienThi() {
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Số Thứ Tự</th>\n' +
+            '        <th>Tên Nhân Viên</th>\n' +
+            '        <th>Ngày Tháng Năm Sinh</th>\n' +
+            '        <th>Địa Chỉ</th>\n' +
+            '        <th>Lương</th>\n' +
+            '        <th>Chức Vụ</th>\n' +
+            '        <th>Sửa</th>\n' +
+            '        <th>Xóa</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < danhSachNhanVien.length; i++) {
+            tableString += '<tr>\n' +
+                '        <th>' + (i + 1) + '</th>\n' +
+                '        <th>' + danhSachNhanVien[i].getTen() + '</th>\n' +
+                '        <th>' + danhSachNhanVien[i].getNgaySinh() + '</th>\n' +
+                '        <th>' + danhSachNhanVien[i].getDiaChi() + '</th>\n' +
+                '        <th>' + danhSachNhanVien[i].getLuong() + '</th>\n' +
+                '        <th>' + danhSachNhanVien[i].getChucVu() + '</th>\n' +
+                '        <th><input type="button" value="Sửa" onclick="sua(' + i + ')"></th>\n' +
+                '        <th><input type="button" value="Xóa" onclick="xoa(' + i + ')"></th>\n' +
+                '    </tr>';
+        }
+        document.getElementById("display").innerHTML = tableString;
+    }
+
+    function them() {
+        let ten = prompt("Nhập tên Công Nhân: ");
+        let ngaySinh = prompt("Nhập Ngày tháng Năm sinh: ");
+        let diaChi = prompt("Nhập dịa chỉ: ");
+        let luong = prompt("Nhập lương: ");
+        let chucVu = prompt("Nhập chức vụ: ");
+        let nhanVien = new NhanVien(ten, ngaySinh, diaChi, luong, chucVu);
+        danhSachNhanVien.push(nhanVien);
+        hienThi();
+    }
+
+    function sua(i) {
+        danhSachNhanVien[i].setTen(prompt("Vui lòng Sửa tên"));
+        danhSachNhanVien[i].setNgaySinh(prompt("Vui lòng Nhập ngày sinh muốn sửa"));
+        danhSachNhanVien[i].setDiaChi(prompt("Vui lòng Nhập ngày sinh muốn sửa"));
+        danhSachNhanVien[i].setLuong(prompt("Vui lòng Nhập ngày sinh muốn sửa"));
+        danhSachNhanVien[i].setChucVu(prompt("Vui lòng Nhập ngày sinh muốn sửa"));
+        hienThi()
+    }
+    function xoa(i) {
+        let xacNhan=confirm("bạn có muốn xóa"+danhSachNhanVien[i].getTen()+"Không?");
+        if (xacNhan) {
+            danhSachNhanVien.splice(i,1);
+        }
+        hienThi();
+    }
+
+    class NhanVien {
+        constructor(ten, ngaySinh, diaChi, luong, chucVu) {
+            this.ten = ten;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+
+        getTen() {
+            return this.ten;
+        }
+
+        setTen(ten) {
+            this.ten = ten;
+        }
+
+        getNgaySinh() {
+            return this.ngaySinh;
+        }
+
+        setNgaySinh(ngaySinh) {
+            this.ngaySinh = ngaySinh;
+        }
+
+        getDiaChi() {
+            return this.diaChi;
+        }
+
+        setDiaChi(diaChi) {
+            this.diaChi=diaChi;
+        }
+
+        getLuong() {
+            return this.luong;
+        }
+
+        setLuong(luong) {
+            this.luong=luong;
+        }
+
+        getChucVu() {
+            return this.chucVu;
+        }
+
+        setChucVu(chucVu) {
+            this.chucVu=chucVu;
+        }
+    }
+</script>
+</body>
+</html>

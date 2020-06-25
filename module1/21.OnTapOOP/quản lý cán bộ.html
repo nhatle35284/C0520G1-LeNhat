@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Quản Lý cán bộ</h1>
+<input type="button" value="Thêm cán bộ" onclick="themCanBo()">
+<p id="nuCanBo">Cán bộ nữ trong công ty có: 0 người.</p>
+<p id="hienThi"></p>
+<input type="button" value="Cán bộ được tăng lương" onclick="tangLuong()">
+<input type="button" value="Cán bộ Nữ" onclick="timNu()">
+<input type="button" value="quay lại" onclick="quayLai()">
+<input type="button" value="tính lương" onclick="tinhTongLuong()">
+<input type="button" value="Tìm cán Bộ CNTT" onclick="timCanBoCNTT()">
+<script>
+    let danhSachCanBo = [];
+    hienThi(danhSachCanBo);
+
+    function hienThi(tang) {
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Mã Cán Bộ</th>\n' +
+            '        <th>Họ Và Tên</th>\n' +
+            '        <th>Giới Tính</th>\n' +
+            '        <th>Quê Quán</th>\n' +
+            '        <th>Năm Sinh</th>\n' +
+            '        <th>Chuyên Môn</th>\n' +
+            '        <th>Trình Độ</th>\n' +
+            '        <th>Hệ Số lương</th>\n' +
+            '        <th>Phụ cấp</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < tang.length; i++) {
+            tableString += '<tr>\n' +
+                '        <th>' + tang[i].getMaCanBo() + '</th>\n' +
+                '        <th>' + tang[i].getTen() + '</th>\n' +
+                '        <th>' + tang[i].getGioiTinh() + '</th>\n' +
+                '        <th>' + tang[i].getQueQuan() + '</th>\n' +
+                '        <th>' + tang[i].getNamSinh() + '</th>\n' +
+                '        <th>' + tang[i].getChuyenMon() + '</th>\n' +
+                '        <th>' + tang[i].getTrinhDo() + '</th>\n' +
+                '        <th>' + tang[i].getHeSoLuong() + '</th>\n' +
+                '        <th>' + tang[i].getPhuCap() + '</th>\n' +
+                '    </tr>'
+        }
+        document.getElementById('hienThi').innerHTML = tableString;
+    }
+
+    function themCanBo() {
+        let maCanBo = prompt("Nhập Mã Cán Bộ");
+        let ten = prompt("Nhập tên Cán bộ");
+        let gioiTinh = prompt("Nhập giới Tính Cán Bộ");
+        let queQuan = prompt("Nhập quê Quán Cán Bộ ");
+        let Namsinh = prompt("Nhập Năm Sinh Cán Bộ");
+        let chuyenMon = prompt("Nhập chuyên Môn cán Bộ");
+        let trinhDo = parseFloat(prompt("Nhập Trình Độ Cán Bộ"));
+        let heSoLuong = prompt("Nhập Hệ Số Lương của Cán Bộ");
+        let phuCap = prompt("Nhập phụ cấp ");
+        let canBo = new CanBo(maCanBo, ten, gioiTinh, queQuan, Namsinh, chuyenMon, trinhDo, heSoLuong, phuCap);
+        danhSachCanBo.push(canBo);
+        hienThi(danhSachCanBo);
+    }
+
+    function tangLuong() {
+        let tangLuong = [];
+        for (let i = 0; i < danhSachCanBo.length; i++) {
+            if (danhSachCanBo[i].getTrinhDo() > 7) {
+                tangLuong.push(danhSachCanBo[i]);
+            }
+
+        }
+        hienThi(tangLuong);
+    }
+
+    function quayLai() {
+        hienThi(danhSachCanBo);
+    }
+    function timNu() {
+        let dem=0;
+        for(let i=0;i<danhSachCanBo.length;i++) {
+            if (danhSachCanBo[i].getGioiTinh()==="Nữ") {
+                dem++;
+            }
+        }
+        document.getElementById('nuCanBo').innerHTML="Cán bộ nữ trong công ty có: "+dem+" người.";
+    }
+    function timCanBoCNTT() {
+        for() {
+
+        }
+    }
+    class CanBo {
+        constructor(maCanBo, ten, gioiTinh, queQuan, namSinh, chuyenMon, trinhDo, heSoLuong, phuCap) {
+            this.maCanBo = maCanBo;
+            this.ten = ten;
+            this.gioiTinh = gioiTinh;
+            this.queQuan = queQuan;
+            this.namSinh = namSinh;
+            this.chuyenMon = chuyenMon;
+            this.trinhDo = trinhDo;
+            this.heSoLuong = heSoLuong;
+            this.phuCap = phuCap;
+        }
+
+        getMaCanBo() {
+            return this.maCanBo;
+        }
+
+        setMaCanBo(maCanBo) {
+            this.maCanBo = maCanBo;
+        }
+
+        getTen() {
+            return this.ten;
+        }
+
+        setTen(ten) {
+            this.ten = ten;
+        }
+
+        getGioiTinh() {
+            return this.gioiTinh;
+        }
+
+        setGioiTinh(gioiTinh) {
+            this.gioiTinh = gioiTinh;
+        }
+
+        getQueQuan() {
+            return this.queQuan;
+        }
+
+        setQueQuan(queQuan) {
+            this.queQuan = queQuan;
+        }
+
+        getNamSinh() {
+            return this.namSinh;
+        }
+
+        setNamSinh(namSinh) {
+            this.namSinh = namSinh;
+        }
+
+        getChuyenMon() {
+            return this.chuyenMon;
+        }
+
+        setChuyenMon(chuyenMon) {
+            this.chuyenMon = chuyenMon;
+        }
+
+        getTrinhDo() {
+            return this.trinhDo;
+        }
+
+        setTrinhDo(trinhDo) {
+            this.trinhDoo = trinhDo;
+        }
+
+        getHeSoLuong() {
+            return this.heSoLuong;
+        }
+
+        setHeSoLuong(heSoLuong) {
+            this.heSoLuong = heSoLuong;
+        }
+
+        getPhuCap() {
+            return this.phuCap;
+        }
+
+        setPhuCap(phuCap) {
+            this.phuCap = phuCap;
+        }
+    }
+</script>
+</body>
+</html>

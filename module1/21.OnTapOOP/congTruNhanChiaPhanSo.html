@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class PhanSo {
+        constructor(tuSo, mauSo) {
+            this.tuSo = tuSo;
+            this.mauSo = mauSo;
+        }
+        getTuSo() {
+            return this.tuSo;
+        }
+        getMauSo() {
+            return this.mauSo;
+        }
+        phepCong(phanSo1,phanSo2) {
+            let tuSo = (phanSo1.tuSo*phanSo2.mauSo+phanSo2.tuSo+phanSo1.mauSo);
+            let mauSo = phanSo1.mauSo*phanSo2.mauSo;
+            return tuSo + "/" + mauSo;
+        }
+        phepTru(number1,number2) {
+            return number1-number2;
+        }
+        phepNhan(number1,number2) {
+            return number1*number2;
+        }
+        phepChia(number1,number2) {
+            return number1/number2;
+        }
+    }
+
+    let phanSo1=new PhanSo(1,2);
+    let phanSo2=new PhanSo(2,3);
+    let phanSo3=new PhanSo(0,1);
+    alert(phanSo3.phepCong(phanSo1,phanSo2));
+    // alert("Kết quả Cộng 2 phân Số là: "+phepCong(phanSo1,phanSo2))
+</script>
+</body>
+</html>

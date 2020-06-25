@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Candidate {
+        constructor(code,name,birthday,pointMatch,pointPhysical,pointEnglish) {
+            this.code=code;
+            this.name =name;
+            this.birthday=birthday;
+            this.pointMatch=pointMatch;
+            this.pointPhysical=pointPhysical;
+            this.pointEnglish= pointEnglish;
+        }
+        getCode() {
+            return this.code;
+        }
+        getName() {
+            return this.name;
+        }
+        getBirthday() {
+            return this.birthday;
+        }
+        getPointMatch() {
+            return this.pointMatch;
+        }
+        getPointPhysical() {
+            return this.pointPhysical;
+        }
+        getPointEnglish() {
+            return this.pointEnglish;
+        }
+    }
+    class TestCandidate {
+        constructor(listStudent) {
+            this.listStudent=listStudent;
+        }
+        timSinhVien() {
+            for (let i=0;i<this.listStudent.length;i++) {
+                let tong=  this.listStudent[i].getPointMatch()+this.listStudent[i].getPointPhysical()+this.listStudent[i].getPointEnglish();
+            if (tong>15) {
+                alert(this.listStudent[i].getCode()+ "\n"
+                    +this.listStudent[i].getName())
+            }
+            }
+        }
+    }
+
+    let sinhvien = new Candidate("fd21","anh","12/12/1999",8,6,6);
+    let sinhvien1 = new Candidate("fd21","anh1","12/12/1999",8,0,6);
+    let sinhvien2 = new Candidate("fd21","anh2","12/12/1999",8,10,6);
+    let array = [];
+    array.push(sinhvien);
+    array.push(sinhvien1);
+    array.push(sinhvien2);
+    let test = new TestCandidate(array);
+    test.timSinhVien()
+
+
+    // let sinhvien2 = new Candidate("fd21","anh2","12/12/1999",8,6,6);
+    // let sinhvien3 = new Candidate("fd21","anh3","12/12/1999",8,6,6);
+    // let sinhvien4 = new Candidate("fd21","anh4","12/12/1999",8,6,6);
+    // let sinhvien5 = new Candidate("fd21","anh5","12/12/1999",8,6,6);
+    // let tongSinhVien = [];
+    // tongSinhVien.push(sinhvien);
+    // tongSinhVien.push(sinhvien1);
+    // tongSinhVien.push(sinhvien2);
+    // tongSinhVien.push(sinhvien3);
+    // tongSinhVien.push(sinhvien4);
+    // tongSinhVien.push(sinhvien5);
+    // let soSinhVien=parseInt(prompt("Nhập Số Sinh viên Muốn kiểm tra"));
+    // let dem=0;
+    // // let tongSinhVien=[sinhvien,sinhvien1,sinhvien2,sinhvien3]
+    // let testCandidate = new TestCandidate();
+    // for(let i=0;i<tongSinhVien.length;i++) {
+    //     if (dem<soSinhVien)
+    //     testCandidate.timSinhVien(tongSinhVien[i]);
+    // }
+</script>
+</body>
+</html>
