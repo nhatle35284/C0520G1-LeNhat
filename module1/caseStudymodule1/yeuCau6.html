@@ -111,6 +111,7 @@
         }
 
     }
+
     let arrayListCustomer = [];
 
     function displayMainMenu() {
@@ -131,7 +132,7 @@
             }
             case 4: {
                 editCustomer();
-                    break;
+                break;
             }
             case 5: {
                 deleteCustomer();
@@ -170,24 +171,26 @@
         alert("Bạn Đã Thêm Thành Công");
         displayMainMenu();
     }
+
     displayMainMenu();
+
     function editCustomer() {
         let temp = "";
         for (let i = 0; i < arrayListCustomer.length; i++) {
-            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+            temp += (i+1) + ". Name: " + arrayListCustomer[i].getName() + "\n";
         }
         let chooseDisplay = parseInt(prompt(temp));
-        let edit = parseInt(prompt("1.name: " + arrayListCustomer[chooseDisplay].getName()+ "\n" +
-            "2.email: " + arrayListCustomer[chooseDisplay].getEmail() + "\n" +
-            "3.cmnd: " + arrayListCustomer[chooseDisplay].getCmnd() + "\n" +
-            "4.birthday: " + arrayListCustomer[chooseDisplay].getBirthday() + "\n" +
-            "5.Address: " + arrayListCustomer[chooseDisplay].getAddress() + "\n" +
-            "6.typeCustomer: " + arrayListCustomer[chooseDisplay].getTypeCustomer() + "\n" +
-            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay].getQuatilyIncluded() + "\n" +
-            "8.rentDays: " + arrayListCustomer[chooseDisplay].getRentDays() + "\n" +
-            "9.voucher: " + arrayListCustomer[chooseDisplay].getVoucher() + "\n" +
-            "10.Typeservice: " + arrayListCustomer[chooseDisplay].getTypeService() + "\n" +
-            "11.kindRoom: " + arrayListCustomer[chooseDisplay].getKindRoom()));
+        let edit = parseInt(prompt("1.name: " + arrayListCustomer[chooseDisplay-1].getName() + "\n" +
+            "2.email: " + arrayListCustomer[chooseDisplay-1].getEmail() + "\n" +
+            "3.cmnd: " + arrayListCustomer[chooseDisplay-1].getCmnd() + "\n" +
+            "4.birthday: " + arrayListCustomer[chooseDisplay-1].getBirthday() + "\n" +
+            "5.Address: " + arrayListCustomer[chooseDisplay-1].getAddress() + "\n" +
+            "6.typeCustomer: " + arrayListCustomer[chooseDisplay-1].getTypeCustomer() + "\n" +
+            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay-1].getQuatilyIncluded() + "\n" +
+            "8.rentDays: " + arrayListCustomer[chooseDisplay-1].getRentDays() + "\n" +
+            "9.voucher: " + arrayListCustomer[chooseDisplay-1].getVoucher() + "\n" +
+            "10.Typeservice: " + arrayListCustomer[chooseDisplay-1].getTypeService() + "\n" +
+            "11.kindRoom: " + arrayListCustomer[chooseDisplay-1].getKindRoom()));
 
         switch (edit) {
             case 1: {
@@ -234,49 +237,54 @@
                 arrayListCustomer[chooseDisplay].setKindRoom(prompt("Nhập loại phòng muốn sửa"));
                 break;
             }
-        }editCustomer();
+        }
+        editCustomer();
     }
+
     function displayCustomer() {
         let temp = "";
         for (let i = 0; i < arrayListCustomer.length; i++) {
-            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+            temp += (i+1) + ". Name: " + arrayListCustomer[i].getName() + "\n";
         }
         let chooseDisplay = parseInt(prompt(temp));
-        alert("1.name: " + arrayListCustomer[chooseDisplay].getName()+ "\n" +
-            "2.email: " + arrayListCustomer[chooseDisplay].getEmail() + "\n" +
-            "3.cmnd: " + arrayListCustomer[chooseDisplay].getCmnd() + "\n" +
-            "4.birthday: " + arrayListCustomer[chooseDisplay].getBirthday() + "\n" +
-            "5.Address: " + arrayListCustomer[chooseDisplay].getAddress() + "\n" +
-            "6.typeCustomer: " + arrayListCustomer[chooseDisplay].getTypeCustomer() + "\n" +
-            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay].getQuatilyIncluded() + "\n" +
-            "8.rentDays: " + arrayListCustomer[chooseDisplay].getRentDays() + "\n" +
-            "9.voucher: " + arrayListCustomer[chooseDisplay].getVoucher() + "\n" +
-            "10.Typeservice: " + arrayListCustomer[chooseDisplay].getTypeService() + "\n" +
-            "11.kindRoom: " + arrayListCustomer[chooseDisplay].getKindRoom());
+        alert("1.name: " + arrayListCustomer[chooseDisplay-1].getName() + "\n" +
+            "2.email: " + arrayListCustomer[chooseDisplay-1].getEmail() + "\n" +
+            "3.cmnd: " + arrayListCustomer[chooseDisplay-1].getCmnd() + "\n" +
+            "4.birthday: " + arrayListCustomer[chooseDisplay-1].getBirthday() + "\n" +
+            "5.Address: " + arrayListCustomer[chooseDisplay-1].getAddress() + "\n" +
+            "6.typeCustomer: " + arrayListCustomer[chooseDisplay-1].getTypeCustomer() + "\n" +
+            "7.quatilyIncluded: " + arrayListCustomer[chooseDisplay-1].getQuatilyIncluded() + "\n" +
+            "8.rentDays: " + arrayListCustomer[chooseDisplay-1].getRentDays() + "\n" +
+            "9.voucher: " + arrayListCustomer[chooseDisplay-1].getVoucher() + "\n" +
+            "10.Typeservice: " + arrayListCustomer[chooseDisplay-1].getTypeService() + "\n" +
+            "11.kindRoom: " + arrayListCustomer[chooseDisplay-1].getKindRoom());
         displayMainMenu();
     }
+
     function displayTotalPay() {
         let temp = "";
         for (let i = 0; i < arrayListCustomer.length; i++) {
-            temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
+            temp += (i+10 + ". Name: " + arrayListCustomer[i].getName() + "\n";
         }
         let chooseDisplay = parseInt(prompt(temp));
-        alert(arrayListCustomer[chooseDisplay].totalPay());
+        alert(arrayListCustomer[chooseDisplay-1].totalPay());
         displayMainMenu();
     }
+
     function deleteCustomer() {
         let temp = "";
         for (let i = 0; i < arrayListCustomer.length; i++) {
             temp += i + ". Name: " + arrayListCustomer[i].getName() + "\n";
         }
         let chooseDelete = parseInt(prompt(temp));
-        let check= confirm("Are You want delete customer");
+        let check = confirm("Are You want delete customer");
         if (check) {
-            arrayListCustomer.splice(chooseDelete,1);
+            arrayListCustomer.splice(chooseDelete, 1);
             alert("Bạn Đã xóa customer thành công");
         } else {
             alert("bạn Không Muốn xóa customer")
-        }displayMainMenu()
+        }
+        displayMainMenu();
     }
 </script>
 </body>

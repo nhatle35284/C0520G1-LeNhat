@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan Lý Công Nhân</title>
+</head>
+<body>
+<script>
+    class CongNhan {
+        constructor(stt,hoVaTen,ngaySinh,diaChi,luong,chucVu) {
+            this.stt = stt;
+            this.hoVaTen = hoVaTen;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+        getStt() {
+            return this.stt;
+        }
+        setStt(stt) {
+            this.stt = stt;
+        }
+        geHoVaTen() {
+            return this.hoVaTen;
+        }
+        setHovaTen(hoVaTen) {
+            this.hoVaTen = hoVaTen;
+        }
+        getNgaySinh() {
+            return this.ngaySinh;
+        }
+        setNgaySinh(ngaySinh) {
+            this.ngaySinh = ngaySinh;
+        }
+        getDiaChi() {
+            return this.diaChi;
+        }
+        setDiaChi(diaChi) {
+            this.diaChi = diaChi;
+        }
+        getLuong() {
+            return this.luong
+        }
+        setLuong(luong) {
+            this.luong = luong;
+        }
+        getChucVu() {
+            return this.chucVu
+        }
+        setChucVu(chucVu) {
+            this.chucVu = chucVu;
+        }
+    }
+    let tatCaCongNhan = [];
+    let congnhan1 = new CongNhan(1,"Trương Tấn A","11-11-1997","Quảng Nam",2000,"Abc");
+    let congnhan2 = new CongNhan(2,"Trương Tấn B","11-11-1998","Đà Nẵng",2000,"Abc");
+    let congnhan3 = new CongNhan(3,"Trương Tấn C","11-11-1999","Huế",2000,"Abc");
+    tatCaCongNhan.push(congnhan1);
+    tatCaCongNhan.push(congnhan2);
+    tatCaCongNhan.push(congnhan3);
+    tatCaCongNhan.sort();
+    // alert(tatCaCongNhan[1].geHoVaTen());
+    for (let i=0;i<tatCaCongNhan.length;i++) {
+        alert(tatCaCongNhan[i]);
+    }
+</script>
+</body>
+</html>

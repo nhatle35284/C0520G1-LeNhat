@@ -10,20 +10,20 @@
     function editCustomer() {
         let temp = "";
         for (let i = 0; i < arrListCustomer.length; i++) {
-            temp += i + ". Name: " + arrListCustomer[i][0] + "\n";
+            temp += (i+1) + ". Name: " + arrListCustomer[i][0] + "\n";
         }
         let chooseDisplay = parseInt(prompt(temp));
-        let edit = parseInt(prompt("1.name: " + arrListCustomer[chooseDisplay][0] + "\n" +
-            "2.email: " + arrListCustomer[chooseDisplay][1] + "\n" +
-            "3.cmnd: " + arrListCustomer[chooseDisplay][2] + "\n" +
-            "4.birthday: " + arrListCustomer[chooseDisplay][3] + "\n" +
-            "5.Address: " + arrListCustomer[chooseDisplay][4] + "\n" +
-            "6.typeCustomer: " + arrListCustomer[chooseDisplay][5] + "\n" +
-            "7.quatilyIncluded: " + arrListCustomer[chooseDisplay][6] + "\n" +
-            "8.rentDays: " + arrListCustomer[chooseDisplay][7] + "\n" +
-            "9.voucher: " + arrListCustomer[chooseDisplay][8] + "\n" +
-            "10.Typeservice: " + arrListCustomer[chooseDisplay][9] + "\n" +
-            "11.kindRoom: " + arrListCustomer[chooseDisplay][10]));
+        let edit = parseInt(prompt("1.name: " + arrListCustomer[chooseDisplay-1][0] + "\n" +
+            "2.email: " + arrListCustomer[chooseDisplay-1][1] + "\n" +
+            "3.cmnd: " + arrListCustomer[chooseDisplay-1][2] + "\n" +
+            "4.birthday: " + arrListCustomer[chooseDisplay-1][3] + "\n" +
+            "5.Address: " + arrListCustomer[chooseDisplay-1][4] + "\n" +
+            "6.typeCustomer: " + arrListCustomer[chooseDisplay-1][5] + "\n" +
+            "7.quatilyIncluded: " + arrListCustomer[chooseDisplay-1][6] + "\n" +
+            "8.rentDays: " + arrListCustomer[chooseDisplay-1][7] + "\n" +
+            "9.voucher: " + arrListCustomer[chooseDisplay-1][8] + "\n" +
+            "10.Typeservice: " + arrListCustomer[chooseDisplay-1][9] + "\n" +
+            "11.kindRoom: " + arrListCustomer[chooseDisplay-1][10]));
         switch (edit) {
             case 1: {
                 arrListCustomer[chooseDisplay][0] = prompt('Nhập lại Tên');
@@ -105,20 +105,20 @@
         function displayCustomer() {
             let temp = "";
             for (let i = 0; i < arrListCustomer.length; i++) {
-                temp += i + ". Name: " + arrListCustomer[i][0] + "\n";
+                temp += (i+1) + ". Name: " + arrListCustomer[i][0] + "\n";
             }
             let chooseDisplay = parseInt(prompt(temp));
-            alert("name:" + arrListCustomer[chooseDisplay][0] + "\n" +
-                "email:" + arrListCustomer[chooseDisplay][1] + "\n" +
-                "cmnd: " + arrListCustomer[chooseDisplay][2] + "\n" +
-                "birthday: " + arrListCustomer[chooseDisplay][3] + "\n" +
-                "Address: " + arrListCustomer[chooseDisplay][4] + "\n" +
-                "typeCustomer: " + arrListCustomer[chooseDisplay][5] + "\n" +
-                "quatilyIncluded: " + arrListCustomer[chooseDisplay][6] + "\n" +
-                "rentDays: " + arrListCustomer[chooseDisplay][7] + "\n" +
-                "voucher: " + arrListCustomer[chooseDisplay][8] + "\n" +
-                "Typeservice: " + arrListCustomer[chooseDisplay][9] + "\n" +
-                "kindRoom: " + arrListCustomer[chooseDisplay][10]);
+            alert("name: " + arrListCustomer[chooseDisplay-1][0] + "\n" +
+                "email: " + arrListCustomer[chooseDisplay-1][1] + "\n" +
+                "cmnd: " + arrListCustomer[chooseDisplay-1][2] + "\n" +
+                "birthday: " + arrListCustomer[chooseDisplay-1][3] + "\n" +
+                "Address: " + arrListCustomer[chooseDisplay-1][4] + "\n" +
+                "typeCustomer: " + arrListCustomer[chooseDisplay-1][5] + "\n" +
+                "quatilyIncluded: " + arrListCustomer[chooseDisplay-1][6] + "\n" +
+                "rentDays: " + arrListCustomer[chooseDisplay-1][7] + "\n" +
+                "voucher: " + arrListCustomer[chooseDisplay-1][8] + "\n" +
+                "Typeservice: " + arrListCustomer[chooseDisplay-1][9] + "\n" +
+                "kindRoom: " + arrListCustomer[chooseDisplay-1][10]);
             displayMainMenu();
         }
         function deleteCustomer() {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array= new Array();
+    let total = 0;
+    let dem=0;
+    for (let i = 0; i < 5; i++) {
+            let index = parseInt(prompt("Nhập 50 Phần tử cho mảng"));
+            array.push(index);
+        if (array[i] % 3 === 0) {
+            total += array[i];
+            dem++
+        }
+    }
+    let trungbinh=total/dem;
+    alert(trungbinh);
+</script>
+</body>
+</html>

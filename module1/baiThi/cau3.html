@@ -6,16 +6,16 @@
 </head>
 <body>
 <script>
-    // let check=true;
-    let ngayThang;
+    let check=true;
+    let nhapThangNam;
     let ngayTrongThang=[31,28,31,30,31,30,31,31,30,31,30,31];
     do {
-        ngayThang = prompt("Nhập Ngày DD/MM/yyyy");
-        let patNgay=/^(([0][1-9]|[1-2]\d|[3][0-1])\/(0[1-9]|1[0-2])\/(19\d{2}|(20[0-2]\d)))$/;
-        check=patNgay.test(ngayThang);
+        nhapThangNam = prompt("Nhập Ngày MM/yyyy");
+        let patNgay=/^((0[1-9]|1[0-2])\/(19\d{2}|(20[0-2]\d)))$/;
+        check=patNgay.test(nhapThangNam);
     }while (!check);
-    let layThang = parseInt(ngayThang.substr(3,2));
-    let layNam = ngayThang.substr(6,4);
+    let layThang = parseInt(nhapThangNam.substr(0,2));
+    let layNam = nhapThangNam.substr(3,4);
     function kiemTraNamNhuan() {
         if (layNam % 4 === 0 ) {
             if (layNam % 100 === 0) {

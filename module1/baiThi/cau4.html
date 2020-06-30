@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h2 style="margin-left: 200px">Quản Lý Công Nhân</h2>
+<p id="hienThi"></p>
+<script>
+    let tatCaCongNhan = [];
+
+    class CongNhan {
+        constructor(stt, hoVaTen, ngaySinh, diaChi, luong, chucVu) {
+            this.stt = stt;
+            this.hoVaTen = hoVaTen;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+
+        getStt() {
+            return this.stt;
+        }
+
+        setStt(stt) {
+            this.stt = stt;
+        }
+
+        geHoVaTen() {
+            return this.hoVaTen;
+        }
+
+        setHovaTen(hoVaTen) {
+            this.hoVaTen = hoVaTen;
+        }
+
+        getNgaySinh() {
+            return this.ngaySinh;
+        }
+
+        setNgaySinh(ngaySinh) {
+            this.ngaySinh = ngaySinh;
+        }
+
+        getDiaChi() {
+            return this.diaChi;
+        }
+
+        setDiaChi(diaChi) {
+            this.diaChi = diaChi;
+        }
+
+        getLuong() {
+            return this.luong
+        }
+
+        setLuong(luong) {
+            this.luong = luong;
+        }
+
+        getChucVu() {
+            return this.chucVu
+        }
+
+        setChucVu(chucVu) {
+            this.chucVu = chucVu;
+        }
+    }
+
+    let congnhan1 = new CongNhan(1, "Trương Tấn A", "11-11-1997", "Quảng Nam", 2000, "Abc");
+    let congnhan2 = new CongNhan(2, "Trương Tấn B", "11-11-1998", "Đà Nẵng", 2000, "Abc");
+    let congnhan3 = new CongNhan(3, "Trương Tấn C", "11-11-1999", "Huế", 2000, "Abc");
+    tatCaCongNhan.push(congnhan1);
+    tatCaCongNhan.push(congnhan2);
+    tatCaCongNhan.push(congnhan3);
+    hienThi();
+
+    function hienThi() {
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Họ và tên</th>\n' +
+            '        <th>Ngày sinh</th>\n' +
+            '        <th>Địa chỉ</th>\n' +
+            '        <th>Lương</th>\n' +
+            '        <th>Chức vụ</th>\n' +
+            '    </tr>\n';
+        for (let i = 0; i < tatCaCongNhan.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + tatCaCongNhan[i].geHoVaTen() + '</td>\n' +
+                '        <td>' + tatCaCongNhan[i].getNgaySinh() + '</td>\n' +
+                '        <td>' + tatCaCongNhan[i].getDiaChi() + '</td>\n' +
+                '        <td>' + tatCaCongNhan[i].getLuong() + '</td>\n' +
+                '        <td>' + tatCaCongNhan[i].getChucVu() + '</td>\n' +
+                '    </tr>'
+        }
+        tableString += '</table>';
+        document.getElementById("hienThi").innerHTML = tableString;
+    }
+</script>
+</body>
+</html>

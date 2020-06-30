@@ -33,7 +33,7 @@
     }
     name=tempName;
     do {
-        cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+        cmnd = prompt('Vui Lòng  Nhập Số CMND của Bạn');
         if (!isNaN(cmnd)) {
             cmnd=Number.parseFloat(cmnd);
         }
@@ -50,9 +50,9 @@
     check=false;
     do {
         birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
-        let day= birthday.sub(0,2);
-        let month= birthday.sub(3,2);
-        let year =birthday.sub(6,4);
+        let day= birthday.substr(0,2);
+        let month= birthday.substr(3,2);
+        let year =birthday.substr(6,4);
                 if (birthday.length===10 && birthday.charAt(2)==="/" && birthday.charAt(5)==="/" &&
                 0<day<31 && 0<month<12 && 1900<year<2002) {
                     check=true;

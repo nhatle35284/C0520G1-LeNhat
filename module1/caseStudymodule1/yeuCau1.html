@@ -6,30 +6,35 @@
 </head>
 <body>
 <script>
-   let name =  prompt('Vui Lòng Nhập Tên');
-   let cmnd = prompt('Vui Lòng Sô CMND của Bạn');
-   let birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
-   let address = prompt('Address :');
-   let typecustomer = prompt('Customer Type : ');
-   let quantilyincluded = prompt('QuantilyIncluded :');
-   let voucher = prompt('Voucher');
-   let rentDays = prompt('rentDays:');
-   let typeservice = prompt('Type of service :');
-   let kindroom = prompt('Kind of room :');
-   let totalPay = 300*rentDays*(1-voucher/100);
-   alert("name "+name+"\n"+
-       "cmnd"+cmnd+"\n"+
-       "birthday"+birthday+"\n"+
-       "Address"+address+"\n"+
-       "typeCustomer"+typecustomer+"\n"+
-       "quatilyIncluded"+quantilyincluded+"\n"+
-       "rentDays"+rentDays+"\n"+
-       "voucher"+voucher+"\n"+
-       "Typeservice"+typeservice+"\n"+
-       "kindRoom"+kindroom+"\n"+
-       "totalPay"+totalPay
-   )
-
+    let name = prompt('Vui Lòng Nhập Tên');
+    let cmnd = prompt('Vui Lòng Sô CMND của Bạn');
+    let birthday = prompt('Vui Lòng Ngày Tháng Năm Sinh');
+    let address = prompt('Address :');
+    let typeCustomer = prompt('Customer Type : ');
+    let quantilyincluded = prompt('QuantilyIncluded :');
+    let voucher = prompt('Voucher');
+    let rentDays = prompt('rentDays:');
+    let typeservice = prompt('Type of service :');
+    let kindroom = prompt('Kind of room :');
+    let totalPay;
+    if (typeservice === "Villa") {
+        totalPay = 500 * rentDays * (1 - voucher / 100);
+    } else if (typeservice === "House") {
+        totalPay = 300 * rentDays * (1 - voucher / 100);
+    } else if (typeservice === "Room") {
+        totalPay = 100 * rentDays * (1 - voucher / 100);
+    }
+    alert("name: " + name + "\n" +
+        "cmnd: " + cmnd + "\n" +
+        "birthday: " + birthday + "\n" +
+        "Address: " + address + "\n" +
+        "typeCustomer: " + typeCustomer + "\n" +
+        "quatilyIncluded: " + quantilyincluded + "\n" +
+        "rentDays: " + rentDays + "\n" +
+        "voucher: " + voucher + "\n" +
+        "Typeservice: " + typeservice + "\n" +
+        "kindRoom: " + kindroom + "\n" +
+        "totalPay: " + totalPay);
 </script>
 
 </body>
