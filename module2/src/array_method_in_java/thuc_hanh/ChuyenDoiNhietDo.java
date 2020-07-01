@@ -40,11 +40,5 @@ public class ChuyenDoiNhietDo {
                     System.exit(0);
             }
         } while (choice !=0);
-//        System.out.println("Enter Fahrenheit: ");
-//        fahrenheit=input.nextDouble();
-//        System.out.println("Fahrenheit To Celsius : "+fahrenheitToCelius(fahrenheit));
-//        System.out.println("Enter Celsius: ");
-//        celsius=input.nextDouble();
-//        System.out.println("Fahrenheit To Celsius : "+celsiusToFahrenheit(celsius));
     }
 }

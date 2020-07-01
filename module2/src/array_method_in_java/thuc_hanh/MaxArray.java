@@ -2,7 +2,7 @@ package array_method_in_java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class GiaTriLonNhatTrongMang {
+public class MaxArray {
     public static void main(String[] args) {
         int size;
         int[] array;
