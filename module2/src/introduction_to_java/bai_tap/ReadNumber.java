@@ -7,8 +7,11 @@ public class ReadNumber {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập Số Cần Đọc : ");
         int number = scanner.nextInt();
-        if (number > 0 && number <= 10) {
+        if (number >= 0 && number <= 10) {
             switch (number) {
+                case 0:
+                    System.out.print("zero");
+                    break;
                 case 1:
                     System.out.println("one");
                     break;
@@ -159,10 +162,45 @@ public class ReadNumber {
                     System.out.print("Nine hundred ");
                     break;
             }
-            switch ((number / 10) % 10) {
-                case 1:
-                    System.out.print("ten");
-                    break;
+            if (number%100>=10 && number%100<20) {
+                switch (number%100) {
+                    case 10:
+                        System.out.print("and ten ");
+                        break;
+                    case 11:
+                        System.out.print("and eleven ");
+                        break;
+                    case 12:
+                        System.out.print("and twelve");
+                        break;
+                    case 13:
+                        System.out.print("and thirteen");
+                        break;
+                    case 14:
+                        System.out.print("and fourteen");
+                        break;
+                    case 15:
+                        System.out.print("and fifteen");
+                        break;
+                    case 16:
+                        System.out.print("and sixteen");
+                        break;
+                    case 17:
+                        System.out.print("and seventeen");
+                        break;
+                    case 18:
+                        System.out.print("and eighteen");
+                        break;
+                    case 19:
+                        System.out.print("and nineteen");
+                        break;
+                }
+            }
+            if (number % 100 >= 20) {
+            switch ((number % 100) / 10) {
+//                case 1:
+//                    System.out.print("ten ");
+//                    break;
                 case 2:
                     System.out.print("twenty ");
                     break;
@@ -216,6 +254,7 @@ public class ReadNumber {
                 case 9:
                     System.out.print("nine");
                     break;
+            }
             }
         }
     }
