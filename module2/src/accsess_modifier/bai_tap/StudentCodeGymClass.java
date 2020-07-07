@@ -74,7 +74,7 @@ public class StudentCodeGymClass {
         System.out.println("danh sách học viên hiện tại: ");
         System.out.println(" số học viên hiện tại là  " + count + " bạn");
         String temp = "";
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i < count; i++) {
             temp += "Tên: " + studentCodeGyms[i].getName() + "\n";
         }
         System.out.println(temp);

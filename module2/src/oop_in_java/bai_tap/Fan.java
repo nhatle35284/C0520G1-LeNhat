@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Fan {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Fan1 fan1 = new Fan1(1, true, "yellow", 10);
+        TestFan fan1 = new TestFan(1, true, "yellow", 10);
         System.out.println("quạt gốc");
         System.out.println(fan1.toString());
         System.out.println();
@@ -27,7 +27,7 @@ public class Fan {
         System.out.println(fan1.toString());
     }
 }
-class Fan1 {
+class TestFan {
     private static final int SLOW = 1;
     private static final int MEDIUM = 2;
     private static final int FAST = 3;
@@ -35,7 +35,7 @@ class Fan1 {
     private boolean on = false;
     private String color = "blue";
     private double radius = 5;
-    public Fan1(int speed, boolean on, String color, double radius) {
+    public TestFan(int speed, boolean on, String color, double radius) {
         this.speed = speed;
         this.on = on;
         this.color = color;
