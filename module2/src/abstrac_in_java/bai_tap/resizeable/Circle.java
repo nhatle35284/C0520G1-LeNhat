@@ -1,4 +1,4 @@
-package abstrac_in_java.bai_tap;
+package abstrac_in_java.bai_tap.resizeable;
 
 public class Circle extends Shape {
     private double radius = 1.0;
@@ -34,6 +34,6 @@ public class Circle extends Shape {
     }
     @Override
     public void resize(double percent) {
-        this.radius += (percent / 100);
+        this.radius += (1+percent / 100);
     }
 }

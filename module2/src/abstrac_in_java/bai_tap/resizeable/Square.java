@@ -1,4 +1,6 @@
-package abstrac_in_java.bai_tap;
+package abstrac_in_java.bai_tap.resizeable;
+
+import abstrac_in_java.bai_tap.resizeable.Shape;
 
 public class Square extends Shape {
     private double side;

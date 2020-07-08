@@ -1,4 +1,4 @@
-package abstrac_in_java.bai_tap;
+package abstrac_in_java.bai_tap.resizeable;
 
 public class ResizeableTest {
     public static void main(String[] args) {

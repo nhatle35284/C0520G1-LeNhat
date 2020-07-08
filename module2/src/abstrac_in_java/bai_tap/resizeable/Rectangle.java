@@ -1,4 +1,4 @@
-package abstrac_in_java.bai_tap;
+package abstrac_in_java.bai_tap.resizeable;
 
 public class Rectangle extends Shape {
     private double width = 1.0;
@@ -45,7 +45,7 @@ public class Rectangle extends Shape {
     }
     @Override
     public void resize(double percent) {
-        this.length += (percent / 100);
-        this.width += (percent / 100);
+        this.length += (1+percent / 100);
+        this.width += (1+percent / 100);
     }
 }

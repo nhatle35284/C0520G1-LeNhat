@@ -1,4 +1,6 @@
-package abstrac_in_java.bai_tap;
+package abstrac_in_java.bai_tap.resizeable;
+
+import abstrac_in_java.bai_tap.resizeable.Resizeable;
 
 public class Shape implements Resizeable {
     private String color = "green";
