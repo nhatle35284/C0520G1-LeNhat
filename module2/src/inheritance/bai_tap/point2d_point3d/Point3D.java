@@ -1,5 +1,7 @@
 package inheritance.bai_tap.point2d_point3d;
 
+import java.awt.*;
+
 class Point3D extends Point2D {
     float z = 0.0f;
     public Point3D (float x,float y, float z) {

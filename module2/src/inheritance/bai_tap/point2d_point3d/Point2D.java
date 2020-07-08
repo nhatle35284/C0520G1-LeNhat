@@ -47,13 +47,15 @@ class Point3D extends Point2D{
     public void setZ(float z) {
         this.z = z;
     }
-    public float[] setXYZ() {
+    public void setXYZ(float x,float y, float z) {
+        super.getX();
+        super.getY();
+        this.z = z;
+    }
+    public float[] getXYZ() {
         float[] array={super.getX(),super.getY(),z};
         return array;
     }
-//    public  float getXYZ(float x) {
-//        return x;
-//    }
 
     @Override
     public String toString() {

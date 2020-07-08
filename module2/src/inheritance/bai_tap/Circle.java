@@ -5,9 +5,20 @@ import java.util.Scanner;
 public class Circle {
     public double radius;
     public String color;
-    public Circle(double radius, String color) {
+    public Circle(double radius,String color) {
         this.radius=radius;
         this.color=color;
+    }
+
+    public Circle(double v, String indigo, boolean b) {
+    }
+
+    public Circle(double v) {
+
+    }
+
+    public Circle() {
+
     }
 
     public double getRadius() {
