@@ -10,10 +10,11 @@ public class ResizeableTest {
             System.out.println(a);
         }
         for (Shape a : shapes) {
-            a.resize(20);
-        }
-        for (Shape a : shapes){
-            System.out.println(a);
+            if (a instanceof Circle) {
+            Circle circle = (Circle)a;
+                circle.resize(Math.random()*100);
+                System.out.println(circle);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 package abstrac_in_java.bai_tap.colorable;
 
-public class Square implements Colorable {
+public class Square extends Shape implements Colorable {
     double edge=1.0;
     String color="blue";
 
@@ -39,7 +39,7 @@ public class Square implements Colorable {
     }
 
     @Override
-    public void HowToColor(String color) {
-        this.color = color;
+    public void HowToColor() {
+        System.out.println("Color all four sides");;
     }
 }

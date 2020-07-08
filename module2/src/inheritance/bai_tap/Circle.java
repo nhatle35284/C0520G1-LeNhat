@@ -83,12 +83,13 @@ class Cylinder extends Circle{
 class TestCylinder{
     public static void main(String[] args) {
         Scanner scanner= new Scanner(System.in);
-        System.out.println("Enter color: ");
-        String color=scanner.nextLine();
         System.out.println("Enter Radius :");
         double radius=scanner.nextDouble();
         System.out.println("Enter Height :");
         double height=scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Enter color: ");
+        String color=scanner.nextLine();
         Cylinder cylinder = new Cylinder(radius,height,color) ;
         System.out.println(cylinder.toString());
     }

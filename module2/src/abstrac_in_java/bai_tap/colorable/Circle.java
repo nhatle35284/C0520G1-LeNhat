@@ -1,18 +1,17 @@
-package abstrac_in_java.bai_tap.resizeable;
+package abstrac_in_java.bai_tap.colorable;
 
-import abstrac_in_java.edible.Edible;
-
-public class Circle extends Shape implements Resizeable {
-    private double radius = 1.0;
+public class Circle extends Shape {
+    double radius = 1.0;
+    String color = "red";
     public Circle() {
     }
-    public Circle(double radius) {
+    public Circle(double radius){
+    this.radius=radius;
+    }
+    public Circle(double radius,String color) {
         this.radius = radius;
     }
-    public Circle(double radius, String color, boolean filled) {
-        super(color, filled);
-        this.radius = radius;
-    }
+
     public double getRadius() {
         return radius;
     }
@@ -33,9 +32,7 @@ public class Circle extends Shape implements Resizeable {
                 + super.toString()
                 + ", Area=" +
                 + getArea();
-    }
-    @Override
-    public void resize(double percent) {
-        this.radius += (1+percent / 100);
-    }
+
+}
+
 }

@@ -1,18 +1,20 @@
-package abstrac_in_java.bai_tap.resizeable;
+package abstrac_in_java.bai_tap.colorable;
 
-public class Rectangle extends Shape implements Resizeable {
-    private double width = 1.0;
-    private double length = 1.0;
+public class Rectangle extends Shape implements Colorable {
+    @Override
+    public void HowToColor() {
+        System.out.println("Color all four sides");
+    }
+
+    double width = 1.0;
+    double length = 1.0;
     public Rectangle() {
     }
-    public Rectangle(double width, double length) {
+    public Rectangle(double width, double length,String color,boolean filled) {
+        super(color,filled);
         this.width = width;
         this.length = length;
-    }
-    public Rectangle(double width, double length, String color, boolean filled) {
-        super(color, filled);
-        this.width = width;
-        this.length = length;
+
     }
     public double getWidth() {
         return width;
@@ -42,10 +44,5 @@ public class Rectangle extends Shape implements Resizeable {
                 + super.toString()
                 + ", Area=" +
                 + getArea();
-    }
-    @Override
-    public void resize(double percent) {
-        this.length += (1+percent / 100);
-        this.width += (1+percent / 100);
     }
 }
