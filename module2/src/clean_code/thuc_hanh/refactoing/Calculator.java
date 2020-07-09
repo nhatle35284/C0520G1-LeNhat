@@ -2,15 +2,20 @@ package clean_code.thuc_hanh.refactoing;
 
 public class Calculator {
 
+    public static final char ADDITION = '+';
+    public static final char SUBTRACTION = '-';
+    public static final char MULTIPLICATION = '*';
+    public static final char DIVISION = '/';
+
     public static int calculate(int firstOperand, int secondOperand, char operator) {
         switch (operator) {
-            case '+':
+            case ADDITION:
                 return firstOperand + secondOperand;
-            case '-':
+            case SUBTRACTION:
                 return firstOperand - secondOperand;
-            case '*':
+            case MULTIPLICATION:
                 return firstOperand * secondOperand;
-            case '/':
+            case DIVISION:
                 if (secondOperand != 0)
                     return firstOperand / secondOperand;
                 else
