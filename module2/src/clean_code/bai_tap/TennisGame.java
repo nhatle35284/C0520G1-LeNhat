@@ -2,28 +2,33 @@ package clean_code.bai_tap;
 
 public class TennisGame {
 
-    public static String getScore(String player1Name, String player2Name, int scorePlayer1, int socreplayer2) {
+    public static final String ADVANTAGE_PLAYER_1 = "Advantage player1";
+    public static final String ADVANTAGE_PLAYER_2 = "Advantage player2";
+    public static final String WIN_FOR_PLAYER_1 = "Win for player1";
+    public static final String WIN_FOR_PLAYER_2 = "Win for player2";
+
+    public static String getScore(String player1Name, String player2Name, int scorePlayer1, int socrePlayer2) {
         String score = "";
         int tempScore=0;
 
-        if (scorePlayer1 == socreplayer2)
+        if (scorePlayer1 == socrePlayer2)
         {
-            score = getString(scorePlayer1);
+            score = startGame(scorePlayer1);
         }
-        else if (scorePlayer1 >=4 || socreplayer2 >=4)
+        else if (scorePlayer1 >=4 || socrePlayer2 >=4)
         {
-            score = getString(scorePlayer1, socreplayer2);
+            score = startGame(scorePlayer1, socrePlayer2);
         }
         else
         {
-            score = getString(scorePlayer1, socreplayer2, score);
+            score = startGame(scorePlayer1, socrePlayer2, score);
         }
         return score;
     }
 
 
 
-    private static String getString(int socrePlayer1, int socrePlayer2, String score) {
+    private static String startGame(int socrePlayer1, int socrePlayer2, String score) {
         int tempScore;
         for (int i = 1; i<3; i++)
         {
@@ -50,19 +55,19 @@ public class TennisGame {
 
 
 
-    private static String getString(int socrePlayer1, int socrePlayer2) {
+    private static String startGame(int socrePlayer1, int socrePlayer2) {
         String score;
         int minusResult = socrePlayer1-socrePlayer2;
-        if (minusResult==1) score ="Advantage player1";
-        else if (minusResult ==-1) score ="Advantage player2";
-        else if (minusResult>=2) score = "Win for player1";
-        else score ="Win for player2";
+        if (minusResult==1) score = ADVANTAGE_PLAYER_1;
+        else if (minusResult ==-1) score = ADVANTAGE_PLAYER_2;
+        else if (minusResult>=2) score = WIN_FOR_PLAYER_1;
+        else score = WIN_FOR_PLAYER_2;
         return score;
     }
 
 
 
-    private static String getString(int socrePlayer1) {
+    private static String startGame(int socrePlayer1) {
         String score;
         switch (socrePlayer1)
         {
