@@ -1,4 +1,4 @@
-package array_list_linked_list.bai_tap;
+package array_list_linked_list.bai_tap.array_list;
 
 import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
 
@@ -73,9 +73,10 @@ public class MyList<E> {
         size = 0;
     }
     public E clone(){
-        for (int i=0;i<size;i++){
-            data[size+i]=data[i];
+        MyList clone= new MyList(size);
+        for (int i=0;i<size;i++) {
+            clone.add(i,data[i]);
         }
-        return null;
+        return (E) clone;
     }
 }

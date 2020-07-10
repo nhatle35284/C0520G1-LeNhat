@@ -1,4 +1,6 @@
-package array_list_linked_list.bai_tap;
+package array_list_linked_list.bai_tap.array_list;
+
+import array_list_linked_list.bai_tap.array_list.MyList;
 
 public class MyListTest {
     public static void main(String[] args) {
@@ -11,7 +13,7 @@ public class MyListTest {
         list.add(4,"Student5");
         System.out.println(list);
         list.remove(2);
-        list.get(3);
-//        list.clone();
+        System.out.println(list.get(2));
+        System.out.println(list.clone());
     }
 }
