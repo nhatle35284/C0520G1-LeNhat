@@ -1,10 +1,5 @@
 package geneue_stack_queue.bai_tap;
 
-
-// Java program for insertion and
-// deletion in Circular Queue
-import java.util.*;
-
 class Solution
 {
 
@@ -66,8 +61,7 @@ class Solution
     static void displayQueue( Queue  q)
     {
         Node  temp = q .front;
-        System.out.printf("
-                Elements in Circular Queue are: ");
+        System.out.printf(" Elements in Circular Queue are: ");
         while (temp .link != q .front)
         {
             System.out.printf("%d ", temp .data);
@@ -92,10 +86,8 @@ class Solution
         displayQueue(q);
 
         // Deleting elements from Circular Queue
-        System.out.printf("
-                Deleted value = %d", deQueue(q));
-        System.out.printf("
-                Deleted value = %d", deQueue(q));
+        System.out.printf(" Deleted value = %d", deQueue(q));
+        System.out.printf(" Deleted value = %d", deQueue(q));
 
         // Remaining elements in Circular Queue
         displayQueue(q);
