@@ -9,7 +9,7 @@ import java.util.Stack;
 public class ReverseElement {
     public static void main(String[] args) {
         Stack<String> mStack = new Stack<>();
-        Stack<String> Stack = new Stack<>();
+        Stack<String> stack = new Stack<>();
         mStack.push("1");
         mStack.push("2");
         mStack.push("3");
@@ -17,9 +17,9 @@ public class ReverseElement {
         mStack.push("5");
         System.out.println(mStack);
         while (!mStack.isEmpty()){
-            Stack.push(mStack.peek());
+           stack.push(mStack.peek());
             mStack.pop();
         }
-        System.out.println(Stack);
+        System.out.println(stack);
     }
 }

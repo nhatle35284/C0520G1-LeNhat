@@ -1,4 +1,4 @@
-package collection_framework.thuc_hanh;
+package collection_framework.bai_tap.peroder;
 
 public class TreeNode<E> {
     protected E element;
@@ -10,23 +10,13 @@ public class TreeNode<E> {
     }
 }
 interface Tree<E> {
-    /**
-     * Insert element e into the binary search tree.
-     * Return true if the element is inserted successfully.
-     */
     public boolean insert(E e);
-    /**
-     * Inorder traversal from the root
-     */
-    public void inorder();
-    /**
-     * Get the number of nodes in the tree
-     */
+    public void preorder();
     public int getSize();
 }
 abstract class AbstractTree<E> implements Tree<E> {
-    @Override /** Inorder traversal from the root*/
-    public void inorder() {
+    @Override
+    public void preorder() {
     }
 }
 class BST<E extends Comparable<E>> extends AbstractTree<E> {
@@ -77,18 +67,19 @@ class BST<E extends Comparable<E>> extends AbstractTree<E> {
         return size;
     }
     @Override
-    public void inorder() {
-        inorder(root);
+    public void preorder() {
+        preorder(root);
     }
 
-    protected void inorder(TreeNode<E> root) {
+    protected void preorder(TreeNode<E> root) {
         if (root == null) return;
-        inorder(root.left);
         System.out.println(root.element + " ");
-        inorder(root.right);
+        preorder(root.left);
+        preorder(root.right);
     }
+
 }
- class TestBST {
+class TestBST {
     public static void main(String[] args) {
         //create a BST
         BST<String> tree = new BST<>();
@@ -100,10 +91,8 @@ class BST<E extends Comparable<E>> extends AbstractTree<E> {
         tree.insert("Peter");
         tree.insert("Daniel");
         //traverse tree
-        System.out.println("Inorder (sorted): ");
-        tree.inorder();
+        System.out.println("preorder (sorted): ");
+        tree.preorder();
         System.out.println("The number of nodes is: " + tree.getSize());
     }
 }
-
-
