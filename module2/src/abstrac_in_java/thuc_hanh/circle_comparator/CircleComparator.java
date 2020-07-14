@@ -1,8 +1,5 @@
 package abstrac_in_java.thuc_hanh.circle_comparator;
 
-
-
-
 import inheritance.bai_tap.Circle;
 
 import java.util.Comparator;
