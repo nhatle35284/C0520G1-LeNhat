@@ -10,7 +10,7 @@ public class Palindrome {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input String Palindrome");
         String chain = scanner.nextLine().toLowerCase();
-
+//Wrapper class Character,Integer, Double
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
         for (int i =0;i<chain.length();i++) {
@@ -25,6 +25,8 @@ public class Palindrome {
                 checkPalindrome = false;
             }
         }
+        System.out.println(checkPalindrome
+        );
         if (!checkPalindrome) {
             System.out.println("false");
         } else {

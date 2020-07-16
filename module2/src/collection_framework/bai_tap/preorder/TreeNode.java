@@ -1,4 +1,4 @@
-package collection_framework.bai_tap.peroder;
+package collection_framework.bai_tap.preorder;
 
 public class TreeNode<E> {
     protected E element;
@@ -83,13 +83,21 @@ class TestBST {
     public static void main(String[] args) {
         //create a BST
         BST<String> tree = new BST<>();
-        tree.insert("George");
-        tree.insert("Michael");
-        tree.insert("Tom");
-        tree.insert("Adam");
-        tree.insert("Jones");
-        tree.insert("Peter");
-        tree.insert("Daniel");
+//        tree.insert("George");
+//        tree.insert("Michael");
+//        tree.insert("Tom");
+//        tree.insert("Adam");
+//        tree.insert("Jones");
+//        tree.insert("Peter");
+//        tree.insert("Daniel");
+        tree.insert("5");
+        tree.insert("1");
+        tree.insert("2");
+        tree.insert("6");
+        tree.insert("4");
+        tree.insert("6");
+        tree.insert("8");
+        tree.insert("0");
         //traverse tree
         System.out.println("preorder (sorted): ");
         tree.preorder();
