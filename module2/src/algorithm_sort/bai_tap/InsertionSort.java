@@ -6,11 +6,14 @@ public class InsertionSort {
     public static int[] insertionSort(int[] arr){
         for (int i=1;i<arr.length;i++){
             int element=arr[i];
-            int k=i-1;
-            for (;k>=0&&arr[k]>element;k--){
+            int temp=-1;
+            for (int k=i-1;k>=0&&arr[k]>element;k--){
                 arr[k+1]=arr[k];
+                temp=k;
             }
-            arr[k+1]=element;
+            if (temp!=-1){
+            arr[temp]=element;
+            }
         }
         return arr;
     }
