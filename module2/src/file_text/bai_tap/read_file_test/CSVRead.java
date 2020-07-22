@@ -16,7 +16,6 @@ class CSVReader {
 
             while ((line = br.readLine()) != null) {
 
-                // use comma as separator
                 String[] country = line.split(cvsSplitBy);
 
                 System.out.println("Country [code= " + country[4] + " , name=" + country[5] + "]");
