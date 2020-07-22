@@ -23,7 +23,11 @@ public class CopyFileText {
                 bufferedReader.close();
                 fileWriter.close();
                 fileReader.close();
-            } catch (IOException e) {
+            }
+            catch (FileNotFoundException e) {
+                System.out.println("file not exist");
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
 

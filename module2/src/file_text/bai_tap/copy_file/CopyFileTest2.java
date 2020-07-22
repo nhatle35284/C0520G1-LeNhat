@@ -15,6 +15,8 @@ public class CopyFileTest2 {
                 alo+=line;
                 alo+="\n";
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("file not exist");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,7 +29,9 @@ public class CopyFileTest2 {
             bufferedWriter.write(alo);
             bufferedWriter.close();
             fileWriter.close();
-        } catch (IOException e) {
+        }  catch (FileNotFoundException e) {
+            System.out.println("file not exist");
+        }catch (IOException e) {
             e.printStackTrace();
         }
 
