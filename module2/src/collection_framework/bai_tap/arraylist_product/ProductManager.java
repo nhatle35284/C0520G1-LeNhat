@@ -48,9 +48,9 @@ public class ProductManager {
 
     private static void editProductById(List<Product> arrayList, Scanner scanner) {
         System.out.println("Input id want edit");
-        int iputId = scanner.nextInt();
+        int inputId = scanner.nextInt();
         for (int i = 0; i < arrayList.size(); i++) {
-            if (iputId == arrayList.get(i).getId()) {
+            if (inputId == arrayList.get(i).getId()) {
                 System.out.println("Input id product");
                 int idNew = scanner.nextInt();
                 arrayList.get(i).setId(idNew);
@@ -102,7 +102,7 @@ public class ProductManager {
         String name = scanner.nextLine();
         System.out.println("Input id product");
         int id = scanner.nextInt();
-        System.out.println("Iput price Product");
+        System.out.println("Input price Product");
         double price = scanner.nextDouble();
         arrayList.add(new Product(name, id, price));
         displayProduct(arrayList);

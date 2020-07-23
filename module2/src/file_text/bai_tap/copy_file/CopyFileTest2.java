@@ -1,6 +1,7 @@
 package file_text.bai_tap.copy_file;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class CopyFileTest2 {
     static String alo="";
@@ -22,6 +23,9 @@ public class CopyFileTest2 {
         }
     }
     public static void writeFile() {
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("Input file ");
+//        File file= new File(scanner.nextLine());
         File file = new File("C:\\123\\C0520G1-LeNhat\\module2\\src\\file_text\\bai_tap\\copy_file\\noName.txt");
         try {
             FileWriter fileWriter = new FileWriter(file);
