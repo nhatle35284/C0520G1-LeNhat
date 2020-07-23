@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Student implements Serializable {
     private String name;
     private int age;
-    public static String sex = "Men";
+    public static String gender = "Men";
 
     public Student(String name, int age) {
         this.name = name;

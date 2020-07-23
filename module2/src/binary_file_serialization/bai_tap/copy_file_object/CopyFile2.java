@@ -14,7 +14,7 @@ public class CopyFile2 {
             byte[] buffer=new byte[1024];
             int reader;
             while ((reader=inputStream.read(buffer))!=-1){
-                outputStream.write(reader);
+                outputStream.write(buffer,0,reader);
             }
             System.out.println("copy success");
             outputStream.close();

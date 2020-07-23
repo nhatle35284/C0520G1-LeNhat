@@ -18,10 +18,11 @@ public class ProductManage {
             try {
                 inputStream = new FileInputStream(PRODUCT);
                 objectInputStream = new ObjectInputStream(inputStream);
-                objectInputStream.readObject();
-                for (Product list : products) {
-                    System.out.println("Name Product is: "+list.getName() + " Price Product is: " + list.getPrice());
+                List<Product> listProduct =(List<Product>) objectInputStream.readObject();
+                for (Product list : listProduct) {
+                    System.out.println(list.toString());
                 }
+                objectInputStream.close();
             } catch (FileNotFoundException e) {
                 System.err.println("File not found");
             } catch (IOException e) {
@@ -37,6 +38,7 @@ public class ProductManage {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
             objectOutputStream.writeObject(products);
+            objectOutputStream.close();
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         } catch (IOException e) {
@@ -98,12 +100,7 @@ public class ProductManage {
     }
 
     private static void displayProduct() {
-        if(products.size()==0){
-            System.err.println("No products");
-        }else {
             readFile(PRODUCT);
-        }
-        return;
     }
 
     public static void addProduct(Scanner scanner, List<Product> products) {

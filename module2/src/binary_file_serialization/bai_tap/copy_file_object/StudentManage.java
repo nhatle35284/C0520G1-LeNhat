@@ -48,7 +48,7 @@ public class StudentManage {
 
             List<Student> studentList = (List<Student>) objectInputStream.readObject();
             for (Student student : studentList) {
-                System.out.println(student.getName() + " " + student.getAge() + " " + Student.sex);
+                System.out.println(student.getName() + " " + student.getAge() + " " + Student.gender);
                 newOutput.writeObject(student);
             }
             objectInputStream.close();
