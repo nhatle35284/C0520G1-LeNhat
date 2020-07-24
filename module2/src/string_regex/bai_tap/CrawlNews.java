@@ -23,7 +23,7 @@ public class CrawlNews {
             scanner.close();
             // Code here
             // regex
-            Pattern p = Pattern.compile("\">(.*?)</a>");
+            Pattern p = Pattern.compile("(.*?)</a>");
             Matcher m = p.matcher(content);
             while (m.find()) {
                 System.out.println(m.group(1));

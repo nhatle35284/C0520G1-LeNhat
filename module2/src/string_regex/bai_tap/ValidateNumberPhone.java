@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateNumberPhone {
-    public static final String REGEX_NUMBER_PHONE= "84-\\d{1}[1-9]\\{1}\\d{8}";
+    public static final String REGEX_NUMBER_PHONE= "84-0[1-9]\\d{8}";
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Number Phone: ");
