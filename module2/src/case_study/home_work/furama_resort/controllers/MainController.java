@@ -14,6 +14,8 @@ public class MainController {
     public static final String FILE_HOUSE = "C:\\123\\C0520G1-LeNhat\\module2\\src\\case_study\\home_work\\furama_resort\\data\\room.csv";
     public static final String FILE_ROOM = "C:\\123\\C0520G1-LeNhat\\module2\\src\\case_study\\home_work\\furama_resort\\data\\house.csv";
     public static List<Villa> villaList = new ArrayList<>();
+    public static List<House> houseList = new ArrayList<>();
+    public static List<Room> roomList = new ArrayList<>();
     public static void main(String[] args) {
         displayMainMenu();
     }
@@ -92,9 +94,6 @@ public class MainController {
         }
     }
 
-    private static void showAllRoom() {
-
-    }
 
     private static void showAllNameHouseNotDuplicate() {
 
@@ -108,7 +107,18 @@ public class MainController {
 
     }
 
+    private static void showAllRoom() {
+        ReadWriteFile.readerFile(FILE_ROOM);
+        for (Room room: roomList) {
+            System.out.println(room.showInform());
+        }
+    }
+
     private static void showAllHouse() {
+        ReadWriteFile.readerFile(FILE_HOUSE);
+        for (House house: houseList) {
+            System.out.println(house.showInform());
+        }
 
     }
 
@@ -117,8 +127,6 @@ public class MainController {
         for (Villa villa: villaList) {
             System.out.println(villa.showInform());
         }
-
-
     }
 
     private static void addNewService(Scanner scanner) {
@@ -137,38 +145,7 @@ public class MainController {
                 addNewHouse(scanner);
                 break;
             case 3:
-                List<Room> roomList = new ArrayList<>();
-                scanner.nextLine();
-                System.out.println("Enter Id: ");
-                int id = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter Name Villa: ");
-                String name = scanner.nextLine();
-                System.out.println("Enter the area of use");
-                double userArena = Double.parseDouble(scanner.nextLine());
-                System.out.println("Enter price: ");
-                double price = Double.parseDouble(scanner.nextLine());
-                System.out.println("Enter number People: ");
-                int maxPeople = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter Type of rent(Hour/Day/month/year: ");
-                int rentType = Integer.parseInt(scanner.nextLine());
-                System.out.println("Enter Free Service Included: ");
-                String serviceFreeIncluded = scanner.nextLine();
-                roomList.add(new Room(id,  name, userArena, price, maxPeople, rentType, serviceFreeIncluded));
-                    for (int i=0;i<roomList.size();i++){
-                        ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getId())+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(roomList.get(i).getName()+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getUserArena())+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getPrice())+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getMaxPeople())+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getRentType())+",",FILE_ROOM);
-                        ReadWriteFile.writerFile(roomList.get(i).getServiceFreeIncluded(),FILE_ROOM);
-                        ReadWriteFile.writerFile("\n",FILE_ROOM);
-                    }
-//                for (int i=0;i<roomList.size();i++){
-//                    ReadWriteFile.WriterFile(("ID : "+roomList.get(i).getId()+"Name Villa: "+roomList.get(i).getName()+
-//                            "Arena User: "+roomList.get(i).getUserArena()+"Price is: "+roomList.get(i).getPrice()+
-//                            ""+roomList.get(i).getMaxPeople()+""+roomList.get(i).getRentType()+""+roomList.get(i).getServiceFreeIncluded());
-//                }
+                addNewRoom(scanner);
                 break;
             case 4:
                 displayMainMenu();
@@ -181,9 +158,36 @@ public class MainController {
         }
     }
 
+    private static void addNewRoom(Scanner scanner) {
+        scanner.nextLine();
+        System.out.println("Enter Id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter Name Villa: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter the area of use");
+        double userArena = Double.parseDouble(scanner.nextLine());
+        System.out.println("Enter price: ");
+        double price = Double.parseDouble(scanner.nextLine());
+        System.out.println("Enter number People: ");
+        int maxPeople = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter Type of rent(Hour/Day/month/year: ");
+        int rentType = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter Free Service Included: ");
+        String serviceFreeIncluded = scanner.nextLine();
+        roomList.add(new Room(id,  name, userArena, price, maxPeople, rentType, serviceFreeIncluded));
+        for (int i=0;i<roomList.size();i++){
+            ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getId())+",",FILE_ROOM);
+            ReadWriteFile.writerFile(roomList.get(i).getName()+",",FILE_ROOM);
+            ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getUserArena())+",",FILE_ROOM);
+            ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getPrice())+",",FILE_ROOM);
+            ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getMaxPeople())+",",FILE_ROOM);
+            ReadWriteFile.writerFile(String.valueOf(roomList.get(i).getRentType())+",",FILE_ROOM);
+            ReadWriteFile.writerFile(roomList.get(i).getServiceFreeIncluded(),FILE_ROOM);
+            ReadWriteFile.writerFile("\n",FILE_ROOM);
+        }
+    }
+
     private static void addNewHouse(Scanner scanner) {
-        //addNewHouse
-        List<House> houseList = new ArrayList<>();
         scanner.nextLine();
         System.out.println("Enter Id: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -217,13 +221,6 @@ public class MainController {
             ReadWriteFile.writerFile("\n",FILE_HOUSE);
 
         }
-//        for (int i=0;i<houseList.size();i++){
-//            ReadWriteFile.WriterFile(("ID : "+houseList.get(i).getId()+"Name Villa: "+houseList.get(i).getName()+
-//                    " Arena User: "+houseList.get(i).getUserArena()+" Price is: "+houseList.get(i).getPrice()+
-//                    " Number people included : "+houseList.get(i).getMaxPeople()+" Rent Type: "+houseList.get(i).getRentType()
-//                    +" Standard Room: "+houseList.get(i).getRoomStandard()+ " Description: "+houseList.get(i).getDescription()+
-//                    " Number Floors is: "+houseList.get(i).getNumberFloors());
-//        }
     }
 
     private static void addNewVilla(Scanner scanner) {
@@ -264,12 +261,5 @@ public class MainController {
             ReadWriteFile.writerFile("\n",FILE_VILLA);
 
         }
-//        for (int i=0;i<villaList.size();i++){
-//            ReadWriteFile.WriterFile(("ID : "+villaList.get(i).getId()+"Name Villa: "+villaList.get(i).getName()+
-//                    " Arena User: "+villaList.get(i).getUserArena()+" Price is: "+villaList.get(i).getPrice()+
-//                    " Number people included : "+villaList.get(i).getMaxPeople()+" Rent Type: "+villaList.get(i).getRentType()
-//                    +" Standard Room: "+villaList.get(i).getRoomStandard()+" ArenaPool: "+villaList.get(i).getArenaPool()+
-//                    " Description: "+villaList.get(i).getDescription()+" "+villaList.get(i).getNumberFloors());
-//        }
     }
 }
