@@ -1,4 +1,4 @@
-package case_study.home_work.furama_resort.models;
+package case_study.furama_resort.models;
 
 public class Room extends Services{
     private String serviceFreeIncluded;
@@ -9,7 +9,7 @@ public class Room extends Services{
         this.serviceFreeIncluded = serviceFreeIncluded;
     }
 
-    public Room(int id , String name, double userArena, double price, int maxPeople, int rentType, String serviceFreeIncluded) {
+    public Room(String id , String name, String userArena, String price, String maxPeople, String rentType, String serviceFreeIncluded) {
         super(name, userArena, price, maxPeople, rentType, id);
         this.serviceFreeIncluded = serviceFreeIncluded;
     }
@@ -23,7 +23,14 @@ public class Room extends Services{
     }
 
     @Override
-    public String showInform() {
-        return "Phòng có kèm theo dịch vụ miễn phí kèm là: "+serviceFreeIncluded;
+    public String toString() {
+        return "Room{" +
+                "serviceFreeIncluded='" + serviceFreeIncluded + '\'' +
+                '}'+ super.toString();
+    }
+
+    @Override
+    public void showInform() {
+        System.out.println(this.toString());
     }
 }

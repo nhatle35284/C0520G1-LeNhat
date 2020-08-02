@@ -1,22 +1,22 @@
-package case_study.home_work.furama_resort.models;
+package case_study.furama_resort.models;
 
 public class Villa extends Services {
     private String roomStandard;
     private String description;
-    private double arenaPool;
-    private int numberFloors;
+    private String arenaPool;
+    private String numberFloors;
 
     public Villa() {
     }
 
-    public Villa(String roomStandard, String description, double arenaPool, int numberFloors) {
+    public Villa(String roomStandard, String description, String arenaPool, String numberFloors) {
         this.roomStandard = roomStandard;
         this.description = description;
         this.arenaPool = arenaPool;
         this.numberFloors = numberFloors;
     }
 
-    public Villa(int id,String name, double userArena, double price, int maxPeople, int rentType, String roomStandard, String description, double arenaPool, int numberFloors) {
+    public Villa(String id,String name, String userArena, String price, String maxPeople, String rentType, String roomStandard, String description, String arenaPool, String numberFloors) {
         super(name, userArena, price, maxPeople, rentType, id);
         this.roomStandard = roomStandard;
         this.description = description;
@@ -40,29 +40,33 @@ public class Villa extends Services {
         this.description = description;
     }
 
-    public double getArenaPool() {
+    public String getArenaPool() {
         return arenaPool;
     }
 
-    public void setArenaPool(double arenaPool) {
+    public void setArenaPool(String arenaPool) {
         this.arenaPool = arenaPool;
     }
 
-    public int getNumberFloors() {
+    public String getNumberFloors() {
         return numberFloors;
     }
 
-    public void setNumberFloors(int numberFloors) {
+    public void setNumberFloors(String numberFloors) {
         this.numberFloors = numberFloors;
     }
 
     @Override
-    public String showInform() {
+    public String toString() {
         return "Villa{" +
                 "roomStandard='" + roomStandard + '\'' +
                 ", description='" + description + '\'' +
-                ", arenaPool=" + arenaPool +
-                ", numberFloors=" + numberFloors +
-                '}';
+                ", arenaPool='" + arenaPool + '\'' +
+                ", numberFloors='" + numberFloors + '\'' +
+                '}'+ super.toString();
     }
-}
+
+    @Override
+    public void showInform() {
+        System.out.println(this.toString());
+}}
