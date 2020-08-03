@@ -9,6 +9,16 @@ public class Customer implements Comparable<Customer> {
     private String email;
     private String typeCustomer;
     private String address;
+    private Services userService;
+
+    public Services getUserService() {
+        return userService;
+    }
+
+    public void setUserService(Services userService) {
+        this.userService = userService;
+    }
+
 
     public Customer() {
     }
@@ -99,8 +109,10 @@ public class Customer implements Comparable<Customer> {
                 ", email='" + email + '\'' +
                 ", typeCustomer='" + typeCustomer + '\'' +
                 ", address='" + address + '\'' +
+                ", userService=" + userService +
                 '}';
     }
+
     public void showInfor(){
         System.out.println("Customer{" +
                 "name='" + name + '\'' +

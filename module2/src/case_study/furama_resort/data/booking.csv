@@ -1,0 +1,1 @@
+Customer{name='Nguyen Van A', birthday='12/12/1992', gender='123456789', id='Male', numberPhone='123241443', email='abc@abc.abc', typeCustomer='vip', address='Da Nang', userService=Villa{roomStandard='ádf', description='fsdf', arenaPool='32', numberFloors='11'}Services{name='Villa1', userArena='32', price='400', maxPeople='12', rentType='fffds', id='SVVL-1234'}},

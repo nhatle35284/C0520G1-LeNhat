@@ -1,32 +1,28 @@
 package case_study.furama_resort.models;
 
 public class Room extends Services{
-    private String serviceFreeIncluded;
-
-    public Room() {
+    private ExtraService extraService;
+    public Room(String id, String name, String userArena, String price, String maxPeople, String rentType, String freeService) {
     }
-    public Room(String serviceFreeIncluded) {
-        this.serviceFreeIncluded = serviceFreeIncluded;
-    }
-
-    public Room(String id , String name, String userArena, String price, String maxPeople, String rentType, String serviceFreeIncluded) {
+    public Room(String name, String userArena, String price, String maxPeople, String rentType, String id, ExtraService extraService) {
         super(name, userArena, price, maxPeople, rentType, id);
-        this.serviceFreeIncluded = serviceFreeIncluded;
+        this.extraService = extraService;
     }
 
-    public String getServiceFreeIncluded() {
-        return serviceFreeIncluded;
+
+    public ExtraService getExtraService() {
+        return extraService;
     }
 
-    public void setServiceFreeIncluded(String serviceFreeIncluded) {
-        this.serviceFreeIncluded = serviceFreeIncluded;
+    public void setExtraService(ExtraService extraService) {
+        this.extraService = extraService;
     }
 
     @Override
     public String toString() {
-        return "Room{" +
-                "serviceFreeIncluded='" + serviceFreeIncluded + '\'' +
-                '}'+ super.toString();
+        return "Room{" +super.toString()+
+                "extraService=" + extraService +
+                '}';
     }
 
     @Override

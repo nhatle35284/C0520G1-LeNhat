@@ -58,12 +58,12 @@ public class Villa extends Services {
 
     @Override
     public String toString() {
-        return "Villa{" +
-                "roomStandard='" + roomStandard + '\'' +
+        return "Villa{" + super.toString()+
+                " roomStandard='" + roomStandard + '\'' +
                 ", description='" + description + '\'' +
                 ", arenaPool='" + arenaPool + '\'' +
                 ", numberFloors='" + numberFloors + '\'' +
-                '}'+ super.toString();
+                '}';
     }
 
     @Override

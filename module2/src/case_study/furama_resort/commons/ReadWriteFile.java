@@ -1,16 +1,14 @@
 package case_study.furama_resort.commons;
 
 import case_study.furama_resort.controllers.MainController;
-import case_study.furama_resort.models.Customer;
-import case_study.furama_resort.models.House;
-import case_study.furama_resort.models.Room;
-import case_study.furama_resort.models.Villa;
+import case_study.furama_resort.models.*;
 
 import java.io.*;
+import java.util.List;
 
 public class ReadWriteFile {
     public static String[] arrayTemp;
-    public static void readerFile(String filePath) {
+    public static List<String> readerFile(String filePath) {
         File file = new File(filePath);
         try {
             if (!file.exists()) {
@@ -52,7 +50,7 @@ public class ReadWriteFile {
                     String maxPeople = ReadWriteFile.arrayTemp[4];
                     String rentType = ReadWriteFile.arrayTemp[5];
                     String freeService=ReadWriteFile.arrayTemp[6];
-                    MainController.roomList.add(new Room(id, name, userArena, price, maxPeople, rentType, freeService));
+                    MainController.roomList.add(new Room(id, name, userArena, price, maxPeople, rentType,freeService));
                 } else if(filePath.equals(MainController.FILE_CUSTOMER)){
                     String name = ReadWriteFile.arrayTemp[0];
                     String birthday = ReadWriteFile.arrayTemp[1];
@@ -63,6 +61,12 @@ public class ReadWriteFile {
                     String typeCustomer = ReadWriteFile.arrayTemp[6];
                     String address = ReadWriteFile.arrayTemp[7];
                     MainController.customerList.add(new Customer(name,birthday,id,gender,numberPhone,email,typeCustomer,address));
+                }else if(filePath.equals(MainController.FILE_EMPLOYEE)){
+                    String id = ReadWriteFile.arrayTemp[0];
+                    String name = ReadWriteFile.arrayTemp[1];
+                    String age= ReadWriteFile.arrayTemp[2];
+                    String address = ReadWriteFile.arrayTemp[3];
+                    MainController.employeeMap.put(id,new Employee(id,name,age,address));
                 }
             }
             bufferedReader.close();
@@ -72,6 +76,7 @@ public class ReadWriteFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
     public static void writerFile(String str,String filePath){
         File file=new File(filePath);
