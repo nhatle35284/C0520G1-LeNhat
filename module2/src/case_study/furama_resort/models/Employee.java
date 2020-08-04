@@ -1,6 +1,6 @@
 package case_study.furama_resort.models;
 
-public class Employee {
+public class Employee{
     private String id;
     private String name;
     private String age;
@@ -54,4 +54,5 @@ public class Employee {
                 ", address='" + address + '\'' +
                 '}';
     }
+
 }
