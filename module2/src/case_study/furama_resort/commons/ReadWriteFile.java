@@ -49,8 +49,10 @@ public class ReadWriteFile {
                     String  price = ReadWriteFile.arrayTemp[3];
                     String maxPeople = ReadWriteFile.arrayTemp[4];
                     String rentType = ReadWriteFile.arrayTemp[5];
-                    String freeService=ReadWriteFile.arrayTemp[6];
-                    MainController.roomList.add(new Room(id, name, userArena, price, maxPeople, rentType,freeService));
+                    String extraServiceName=ReadWriteFile.arrayTemp[6];
+                    String extraServiceUnit=ReadWriteFile.arrayTemp[7];
+                    double extraServiceMoney=Double.parseDouble(ReadWriteFile.arrayTemp[8]);
+                    MainController.roomList.add(new Room(id, name, userArena, price, maxPeople, rentType,new ExtraService(extraServiceName,extraServiceUnit,extraServiceMoney)));
                 } else if(filePath.equals(MainController.FILE_CUSTOMER)){
                     String name = ReadWriteFile.arrayTemp[0];
                     String birthday = ReadWriteFile.arrayTemp[1];

@@ -48,15 +48,15 @@ public class MainController {
     public static void displayMainMenu() {
         while (true) {
             int choose;
-            System.out.print("1.\t Add New Services\n" +
+            System.out.print("1.\tAdd New Services\n" +
                     "2.\tShow Services\n" +
                     "3.\tAdd New Customer\n" +
                     "4.\tShow Information of Customer\n" +
                     "5.\tAdd New Booking\n" +
                     "6.\tShow Information of Employee\n" +
-                    "7.\tExit\n" +
-                    "8.\tShow Queue Customer\n" +
-                    "9.\tFind find of Employee \n");
+                    "7.\tShow Queue Customer\n" +
+                    "8.\tFind find of Employee\n" +
+                    "9.\tExit\n");
             System.out.print("Enter choose: ");
             choose = scanner.nextInt();
             switch (choose) {
@@ -78,14 +78,14 @@ public class MainController {
                 case 6:
                     showInformationOfEmployee();
                     break;
-                case 7:
-                    System.exit(0);
-                    break;
                 case 8:
                     showQueueCustomer();
                     break;
                 case 9:
                     CabinetFile.findFileEmployee();
+                    break;
+                case 7:
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("The selection is not in the selection list.please reselect");
@@ -111,6 +111,7 @@ public class MainController {
 
 
     public static void showInformationOfEmployee() {
+        employeeMap.clear();
         readerFile(FILE_EMPLOYEE);
         for (Map.Entry<String, Employee> employeeEntry : employeeMap.entrySet()) {
             System.out.println(employeeEntry.getKey() + ". " + employeeEntry.getValue().toString());
@@ -118,6 +119,7 @@ public class MainController {
     }
 
     private static void addNewBooking() {
+        customerList.clear();
         readerFile(FILE_CUSTOMER);
         System.out.print("1.\tBooking Villa\n" +
                 "2.\tBooking House\n" +
@@ -140,18 +142,27 @@ public class MainController {
     }
 
     private static void bookingRoom() {
-        readerFile(FILE_ROOM);
-        for (Room room : roomList) {
-            System.out.println(room.toString());
-        }
-
+        showInformCustomer();
+        System.out.print("Enter choose customer to booking: ");
+        int iCustomer = scanner.nextInt();
+        showAllVilla();
+        System.out.print("Enter Choose House to booking: ");
+        int iRoom=scanner.nextInt();
+        Customer customer = customerList.get(iCustomer-1);
+        customer.setUserService(roomList.get(iRoom-1));
+        writerFile(customer.toString(),FILE_BOOKING);
     }
 
     private static void bookingHouse() {
-        readerFile(FILE_HOUSE);
-        for (House house : houseList) {
-            System.out.println(house.toString());
-        }
+        showInformCustomer();
+        System.out.print("Enter choose customer to booking: ");
+        int iCustomer = scanner.nextInt();
+        showAllVilla();
+        System.out.print("Enter Choose House to booking: ");
+        int iHouse=scanner.nextInt();
+        Customer customer = customerList.get(iCustomer-1);
+        customer.setUserService(houseList.get(iHouse-1));
+        writerFile(customer.toString(),FILE_BOOKING);
     }
 
     private static void bookingVilla() {
@@ -168,6 +179,7 @@ public class MainController {
     }
 
     private static void showInformCustomer() {
+        customerList.clear();
         readerFile(FILE_CUSTOMER);
         Customer customer = null;
         Collections.sort(customerList);
@@ -297,6 +309,7 @@ public class MainController {
     }
 
     private static void showAllHouse() {
+        houseList.clear();
         readerFile(FILE_HOUSE);
         House house = null;
         for (int i = 0; i < houseList.size(); i++) {
@@ -307,6 +320,7 @@ public class MainController {
     }
 
     private static void showAllRoom() {
+        roomList.clear();
         readerFile(FILE_ROOM);
         Room room=null;
         for (int i = 0; i < roomList.size(); i++) {
@@ -317,6 +331,7 @@ public class MainController {
     }
 
     private static void showAllNameVillaNotDuplicate() {
+        villaList.clear();
         readerFile(FILE_VILLA);
         Set<String> listVillaSet = new TreeSet<>();
         for (Villa villa : villaList) {
@@ -384,12 +399,22 @@ public class MainController {
         String id;
         Matcher matcher;
         Pattern pattern;
+        readerFile(FILE_VILLA);
+        boolean checkID = true;
         do {
             System.out.print("Enter ID: ");
             id = scanner.nextLine();
+            System.out.println(villaList.get(1).getId().compareTo(id)==0);
+            for(Villa villa: villaList){
+                if (villa.getId().compareTo(id)==0){
+                    checkID=false;
+                } else {
+                    checkID=true;
+                }
+            }
             pattern = Pattern.compile(REGEX_ID);
             matcher = pattern.matcher(id);
-        } while (!matcher.matches());
+        } while (!matcher.matches()||!checkID);
 
         String name;
         do {
@@ -626,7 +651,9 @@ public class MainController {
             writerFile(String.valueOf(roomList.get(i).getPrice()) + ",", FILE_ROOM);
             writerFile(String.valueOf(roomList.get(i).getMaxPeople()) + ",", FILE_ROOM);
             writerFile(String.valueOf(roomList.get(i).getRentType()) + ",", FILE_ROOM);
-            writerFile(String.valueOf(roomList.get(i).getExtraService()), FILE_ROOM);
+            writerFile(String.valueOf(roomList.get(i).getExtraService().getExtraServiceName())+",", FILE_ROOM);
+            writerFile(String.valueOf(roomList.get(i).getExtraService().getUnit())+",", FILE_ROOM);
+            writerFile(String.valueOf(roomList.get(i).getExtraService().getMoney()), FILE_ROOM);
             writerFile("\n", FILE_ROOM);
         }
         System.out.println("-----------------------------------------------------------------------------------------");

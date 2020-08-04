@@ -11,8 +11,8 @@ public class Room extends Services{
     }
 
 
-    public String getExtraService() {
-        return extraService.getExtraServiceName();
+    public ExtraService getExtraService() {
+        return extraService;
     }
 
     public void setExtraService(ExtraService extraService) {

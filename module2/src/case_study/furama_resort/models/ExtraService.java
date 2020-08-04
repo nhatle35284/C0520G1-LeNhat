@@ -34,4 +34,13 @@ public class ExtraService {
     public void setMoney(double money) {
         this.money = money;
     }
+
+    @Override
+    public String toString() {
+        return "ExtraService{" +
+                "extraServiceName='" + extraServiceName + '\'' +
+                ", unit='" + unit + '\'' +
+                ", money=" + money +
+                '}';
+    }
 }
