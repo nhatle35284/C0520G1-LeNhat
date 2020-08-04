@@ -1,5 +1,7 @@
 package case_study.furama_resort.models;
 
+import java.util.Comparator;
+
 public class Customer implements Comparable<Customer> {
     private String name;
     private String birthday;
@@ -113,7 +115,7 @@ public class Customer implements Comparable<Customer> {
                 '}';
     }
 
-    public void showInfor(){
+    public void showInfor() {
         System.out.println("Customer{" +
                 "name='" + name + '\'' +
                 ", birthday='" + birthday + '\'' +
@@ -125,8 +127,18 @@ public class Customer implements Comparable<Customer> {
                 ", address='" + address + '\'' +
                 '}');
     }
+
     @Override
-    public int compareTo(Customer o) {
-        return name.compareTo(o.name);
+    public int compareTo(Customer o1) {
+        int value=name.compareTo(o1.name);
+        if (value==0){
+            int yearFirst = Integer.parseInt(this.birthday.split("/")[2]);
+            int yearSecond = Integer.parseInt(this.birthday.split("/")[2]);
+            value=yearFirst-yearSecond;
+//            if (yearFirst>yearSecond){value=1;}
+//            else if (yearFirst<yearSecond){value=-1;}
+//            else {value=0;}
+        }
+        return value;
     }
 }

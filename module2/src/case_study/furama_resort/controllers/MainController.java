@@ -88,7 +88,7 @@ public class MainController {
                     CabinetFile.findFileEmployee();
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + choose);
+                    System.err.println("The selection is not in the selection list.please reselect");
             }
         }
     }
@@ -135,6 +135,7 @@ public class MainController {
                 bookingRoom();
                 break;
             default:
+                System.err.println("The selection is not in the selection list");
         }
     }
 
@@ -169,6 +170,7 @@ public class MainController {
     private static void showInformCustomer() {
         readerFile(FILE_CUSTOMER);
         Customer customer = null;
+        Collections.sort(customerList);
         for (int i = 0; i < customerList.size(); i++) {
             customer = customerList.get(i);
             System.out.print((i + 1) + ". ");
@@ -180,7 +182,7 @@ public class MainController {
         scanner.nextLine();
         String name;
         do {
-            System.out.println("Enter Name Customer: ");
+            System.out.print("Enter Name Customer: ");
             name = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NAME_CUSTOMER);
             matcher = pattern.matcher(name);
@@ -188,7 +190,7 @@ public class MainController {
 
         String birthday;
         do {
-            System.out.println("Enter Birthday of Customer: ");
+            System.out.print("Enter Birthday of Customer: ");
             birthday = scanner.nextLine();
             pattern = Pattern.compile(REGEX_BIRTHDAY);
             matcher = pattern.matcher(birthday);
@@ -196,7 +198,7 @@ public class MainController {
 
         String gender;
         do {
-            System.out.println("Enter Gender of Customer: ");
+            System.out.print("Enter Gender of Customer: ");
             gender = scanner.nextLine();
             pattern = Pattern.compile(REGEX_GENDER);
             matcher = pattern.matcher(gender);
@@ -204,27 +206,27 @@ public class MainController {
 
         String id;
         do {
-            System.out.println("Enter ID of Customer: ");
+            System.out.print("Enter ID of Customer: ");
             id = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ID_CUSTOMER);
             matcher = pattern.matcher(id);
         } while (!matcher.matches());
 
-        System.out.println("Enter Number Phone of Customer: ");
+        System.out.print("Enter Number Phone of Customer: ");
         String numberPhone = scanner.nextLine();
 
         String email;
         do {
-            System.out.println("Enter Email of Customer: ");
+            System.out.print("Enter Email of Customer: ");
             email = scanner.nextLine();
             pattern = Pattern.compile(REGEX_EMAIL);
             matcher = pattern.matcher(email);
         } while (!matcher.matches());
 
-        System.out.println("Enter Type of Customer: ");
+        System.out.print("Enter Type of Customer: ");
         String typeCustomer = scanner.nextLine();
 
-        System.out.println("Enter Address of Customer: ");
+        System.out.print("Enter Address of Customer: ");
         String address = scanner.nextLine();
 
         customerList.add(new Customer(name, birthday, id, gender, numberPhone, email, typeCustomer, address));
@@ -252,6 +254,7 @@ public class MainController {
                 "6.\tShow All Name Name Not Duplicate\n" +
                 "7.\tBack to menu\n" +
                 "8.\tExit\n");
+        System.out.println("Enter choose (1-8)");
         choose = scanner.nextInt();
         switch (choose) {
             case 1:
@@ -278,6 +281,8 @@ public class MainController {
             case 8:
                 System.exit(0);
                 break;
+            default:
+                System.err.println("The selection is not in the selection list");
         }
     }
     private static void showAllVilla() {
@@ -288,7 +293,6 @@ public class MainController {
             System.out.print((i + 1) + ". ");
             villa.showInform();
         }
-        System.out.println("-----------------------------------------------------------------------------------------");
 
     }
 
@@ -300,7 +304,6 @@ public class MainController {
             System.out.print((i + 1) + ". ");
             house.showInform();
         }
-        System.out.println("-----------------------------------------------------------------------------------------");
     }
 
     private static void showAllRoom() {
@@ -311,10 +314,20 @@ public class MainController {
             System.out.print((i + 1) + ". ");
             room.showInform();
         }
-        System.out.println("-----------------------------------------------------------------------------------------");
     }
 
+    private static void showAllNameVillaNotDuplicate() {
+        readerFile(FILE_VILLA);
+        Set<String> listVillaSet = new TreeSet<>();
+        for (Villa villa : villaList) {
+            listVillaSet.add(villa.getName());
+        }
+        for (String name : listVillaSet) {
+            System.out.println(name);
+        }
+    }
     private static void showAllNameHouseNotDuplicate() {
+        readerFile(FILE_HOUSE);
         Set<String> listHouseSet = new TreeSet<>();
         for (House house : houseList) {
             listHouseSet.add(house.getName());
@@ -322,10 +335,9 @@ public class MainController {
         for (String name : listHouseSet) {
             System.out.println(name);
         }
-
     }
-
     private static void showAllNameRoomNotDuplicate() {
+        readerFile(FILE_ROOM);
         Set<String> listRoomSet = new TreeSet<>();
         for (Room room : roomList) {
             listRoomSet.add(room.getName());
@@ -335,18 +347,6 @@ public class MainController {
         }
     }
 
-    private static void showAllNameVillaNotDuplicate() {
-        Set<String> listVillaSet = new TreeSet<>();
-        for (Villa villa : villaList) {
-            listVillaSet.add(villa.getName());
-        }
-        for (String name : listVillaSet) {
-            System.out.println(name);
-        }
-        System.out.println("-----------------------------------------------------------------------------------------");
-
-    }
-
     private static void addNewService() {
         int choose;
         System.out.print("1.\tAdd New Villa\n" +
@@ -354,6 +354,7 @@ public class MainController {
                 "3.\tAdd New Room\n" +
                 "4.\tBack to menu\n" +
                 "5.\tExit\n");
+        System.out.print("Enter choose service want add: ");
         choose = scanner.nextInt();
         switch (choose) {
             case 1:
@@ -374,18 +375,17 @@ public class MainController {
             default:
                 throw new IllegalStateException("Unexpected value: " + choose);
         }
-        System.out.println("-----------------------------------------------------------------------------------------");
-
     }
 
     private static void addNewVilla() {
         //addNewVilla
+        System.out.println("-----------------------------------------------------------------------------------------");
         scanner.nextLine();
         String id;
         Matcher matcher;
         Pattern pattern;
         do {
-            System.out.println("Enter ID: ");
+            System.out.print("Enter ID: ");
             id = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ID);
             matcher = pattern.matcher(id);
@@ -393,7 +393,7 @@ public class MainController {
 
         String name;
         do {
-            System.out.println("Enter Name Villa: ");
+            System.out.print("Enter Name Villa: ");
             name = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NAME_SERVICE);
             matcher = pattern.matcher(name);
@@ -401,7 +401,7 @@ public class MainController {
 
         String userArena;
         do {
-            System.out.println("Enter the area of use");
+            System.out.print("Enter the area of use");
             userArena = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ARENA);
             matcher = pattern.matcher(userArena);
@@ -409,7 +409,7 @@ public class MainController {
 
         String price;
         do {
-            System.out.println("Enter price Villa: ");
+            System.out.print("Enter price Villa: ");
             price = scanner.nextLine();
             pattern = Pattern.compile(REGEX_PRICE);
             matcher = pattern.matcher(price);
@@ -417,22 +417,29 @@ public class MainController {
 
         String maxPeople;
         do {
-            System.out.println("Enter number People: ");
+            System.out.print("Enter number People: ");
             maxPeople = scanner.nextLine();
             pattern = Pattern.compile(REGEX_MAX_PEOPLE);
             matcher = pattern.matcher(maxPeople);
         } while (!matcher.matches());
 
-        System.out.println("Enter Type of rent(Hour/Day/month/year");
+        System.out.println("Enter Type of rent(Hour/Day/month/year): ");
         String rentType = scanner.nextLine();
-        System.out.println("Enter Standard Room: ");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Enter Description Villa: ");
+
+        String roomStandard;
+        do {
+            System.out.print("Enter Standard Room: ");
+            roomStandard = scanner.nextLine();
+            pattern = Pattern.compile(REGEX_STANDARD);
+            matcher = pattern.matcher(roomStandard);
+        } while (!matcher.matches());
+
+        System.out.print("Enter Description Villa: ");
         String description = scanner.nextLine();
 
         String arenaPool;
         do {
-            System.out.println("Enter Arena Pool: ");
+            System.out.print("Enter Arena Pool: ");
             arenaPool = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ARENA);
             matcher = pattern.matcher(arenaPool);
@@ -441,7 +448,7 @@ public class MainController {
 
         String numberFloors;
         do {
-            System.out.println("Enter Number Floors :");
+            System.out.print("Enter Number Floors :");
             numberFloors = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NUMBER_FLOORS);
             matcher = pattern.matcher(numberFloors);
@@ -472,7 +479,7 @@ public class MainController {
         Matcher matcher;
         Pattern pattern;
         do {
-            System.out.println("Enter ID: ");
+            System.out.print("Enter ID: ");
             id = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ID);
             matcher = pattern.matcher(id);
@@ -480,7 +487,7 @@ public class MainController {
 
         String name;
         do {
-            System.out.println("Enter Name House: ");
+            System.out.print("Enter Name House: ");
             name = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NAME_SERVICE);
             matcher = pattern.matcher(name);
@@ -488,7 +495,7 @@ public class MainController {
 
         String userArena;
         do {
-            System.out.println("Enter the area of use");
+            System.out.print("Enter the area of use");
             userArena = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ARENA);
             matcher = pattern.matcher(userArena);
@@ -496,7 +503,7 @@ public class MainController {
 
         String price;
         do {
-            System.out.println("Enter price House: ");
+            System.out.print("Enter price House: ");
             price = scanner.nextLine();
             pattern = Pattern.compile(REGEX_PRICE);
             matcher = pattern.matcher(price);
@@ -505,24 +512,29 @@ public class MainController {
 
         String maxPeople;
         do {
-            System.out.println("Enter number People: ");
+            System.out.print("Enter number People: ");
             maxPeople = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ARENA);
             matcher = pattern.matcher(maxPeople);
         } while (!matcher.matches());
 
-        System.out.println("Enter Type of rent(Hour/Day/month/year");
+        System.out.println("Enter Type of rent(Hour/Day/month/year): ");
         String rentType = scanner.nextLine();
 
-        System.out.println("Enter Standard Room: ");
-        String roomStandard = scanner.nextLine();
+        String roomStandard;
+        do {
+            System.out.print("Enter Standard Room: ");
+            roomStandard = scanner.nextLine();
+            pattern = Pattern.compile(REGEX_STANDARD);
+            matcher = pattern.matcher(roomStandard);
+        } while (!matcher.matches());
 
-        System.out.println("Enter Description Villa: ");
+        System.out.print("Enter Description Villa: ");
         String description = scanner.nextLine();
 
         String numberFloors;
         do {
-            System.out.println("Enter Number Floors :");
+            System.out.print("Enter Number Floors :");
             numberFloors = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NUMBER_FLOORS);
             matcher = pattern.matcher(numberFloors);
@@ -549,7 +561,7 @@ public class MainController {
         scanner.nextLine();
         String id;
         do {
-            System.out.println("Enter ID: ");
+            System.out.print("Enter ID: ");
             id = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ID);
             matcher = pattern.matcher(id);
@@ -557,7 +569,7 @@ public class MainController {
 
         String name;
         do {
-            System.out.println("Enter Name Room: ");
+            System.out.print("Enter Name Room: ");
             name = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NAME_SERVICE);
             matcher = pattern.matcher(name);
@@ -565,7 +577,7 @@ public class MainController {
 
         String userArena;
         do {
-            System.out.println("Enter the area of use");
+            System.out.print("Enter the area of use: ");
             userArena = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ARENA);
             matcher = pattern.matcher(userArena);
@@ -573,7 +585,7 @@ public class MainController {
 
         String price;
         do {
-            System.out.println("Enter price Room: ");
+            System.out.print("Enter price Room: ");
             price = scanner.nextLine();
             pattern = Pattern.compile(REGEX_PRICE);
             matcher = pattern.matcher(price);
@@ -582,18 +594,29 @@ public class MainController {
 
         String maxPeople;
         do {
-            System.out.println("Enter number People: ");
+            System.out.print("Enter number People: ");
             maxPeople = scanner.nextLine();
             pattern = Pattern.compile(REGEX_MAX_PEOPLE);
             matcher = pattern.matcher(maxPeople);
         } while (!matcher.matches());
 
-        System.out.println("Enter Type of rent(Hour/Day/month/year: ");
+
+        System.out.print("Enter Type of rent(Hour/Day/month/year: ");
         String rentType = scanner.nextLine();
-        String nameExtraService=scanner.nextLine();
-        String unitExtraService=scanner.nextLine();
-        double moneyExtraService=scanner.nextDouble();
-        System.out.println("Enter Free Service Included: ");
+
+        String nameExtraService;
+        String unitExtraService;
+        double moneyExtraService;
+        do {
+            System.out.print("Enter Name Service Included: ");
+            nameExtraService=scanner.nextLine();
+            System.out.print("Enter unit service included: ");
+            unitExtraService=scanner.nextLine();
+            System.out.print("Enter money service included: ");
+            moneyExtraService=Double.parseDouble(scanner.nextLine());
+            pattern = Pattern.compile(REGEX_SERVICE_EXTRA);
+            matcher = pattern.matcher(nameExtraService);
+        } while (!matcher.matches());
         ExtraService extraService=new ExtraService(nameExtraService,unitExtraService,moneyExtraService);
         roomList.add(new Room(id, name, userArena, price, maxPeople, rentType,extraService ));
         for (int i = roomList.size() - 1; i < roomList.size(); i++) {

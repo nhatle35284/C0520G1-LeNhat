@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class ValidatecClass {
 //    public static final String REGEX_NAME_CLASS="([CAP])\\d{4}([GHIKLM])";
-    public static final String REGEX_NAME_CLASS = "";
+    public static final String REGEX_NAME_CLASS = "(([0][1-9]|[1-2]\\d|[3][0-1])/(0[1-9]|1[0-2])/(19[2-9]\\d|(20[0-2]\\d)))";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -19,6 +19,7 @@ public class ValidatecClass {
             pattern=Pattern.compile(REGEX_NAME_CLASS);
             matcher=pattern.matcher(nameClass);
         }while (!matcher.matches());
+
 //        if (matcher.matches()){
 //            System.out.println("Is Name Class");
 //        } else {
