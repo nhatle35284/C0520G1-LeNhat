@@ -404,14 +404,14 @@ public class MainController {
         do {
             System.out.print("Enter ID: ");
             id = scanner.nextLine();
-            System.out.println(villaList.get(1).getId().compareTo(id)==0);
+            if (villaList.size()>=1){
             for(Villa villa: villaList){
-                if (villa.getId().compareTo(id)==0){
+                if (id.compareTo(villa.getId())==0){
                     checkID=false;
                 } else {
                     checkID=true;
                 }
-            }
+            }}
             pattern = Pattern.compile(REGEX_ID);
             matcher = pattern.matcher(id);
         } while (!matcher.matches()||!checkID);
@@ -492,8 +492,8 @@ public class MainController {
             writerFile(String.valueOf(villaList.get(i).getArenaPool()) + ",", FILE_VILLA);
             writerFile(String.valueOf(villaList.get(i).getNumberFloors()), FILE_VILLA);
             writerFile("\n", FILE_VILLA);
-
         }
+        villaList.clear();
         System.out.println("-----------------------------------------------------------------------------------------");
     }
 
@@ -578,6 +578,7 @@ public class MainController {
             writerFile(String.valueOf(houseList.get(i).getNumberFloors()), FILE_HOUSE);
             writerFile("\n", FILE_HOUSE);
         }
+        houseList.clear();
         System.out.println("-----------------------------------------------------------------------------------------");
 
     }
@@ -656,7 +657,7 @@ public class MainController {
             writerFile(String.valueOf(roomList.get(i).getExtraService().getMoney()), FILE_ROOM);
             writerFile("\n", FILE_ROOM);
         }
+        roomList.clear();
         System.out.println("-----------------------------------------------------------------------------------------");
-
     }
 }
