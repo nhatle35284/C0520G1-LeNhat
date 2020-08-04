@@ -1,5 +1,6 @@
 package case_study.furama_resort.controllers;
 
+import case_study.furama_resort.commons.*;
 import case_study.furama_resort.models.*;
 
 import java.util.*;
@@ -192,36 +193,85 @@ public class MainController {
 
     private static void addNewCustomer() {
         scanner.nextLine();
+        boolean check;
         String name;
         do {
-            System.out.print("Enter Name Customer: ");
+            System.out.println("Enter Name Customer: ");
             name = scanner.nextLine();
             pattern = Pattern.compile(REGEX_NAME_CUSTOMER);
             matcher = pattern.matcher(name);
+            if (!matcher.matches()){
+                check=false;
+            }else {
+                check=true;
+            }
+            if (!check){
+                try {
+                    throw new NameException("Enter wrong Name of Customer");
+                } catch (NameException e) {
+                    System.err.println("Enter wrong Name of Customer");
+                }
+            }
         } while (!matcher.matches());
 
         String birthday;
         do {
-            System.out.print("Enter Birthday of Customer: ");
+            System.out.println("Enter Birthday of Customer: ");
             birthday = scanner.nextLine();
             pattern = Pattern.compile(REGEX_BIRTHDAY);
             matcher = pattern.matcher(birthday);
+            if (!matcher.matches()){
+                check=false;
+            }else {
+                check=true;
+            }
+            if (!check){
+                try {
+                    throw new BirthdayException("Enter wrong BirthDay of Customer");
+                } catch (BirthdayException e) {
+                    System.err.println("Enter wrong BirthDay of Customer");
+                }
+            }
         } while (!matcher.matches());
 
         String gender;
         do {
-            System.out.print("Enter Gender of Customer: ");
+            System.out.println("Enter Gender of Customer: ");
             gender = scanner.nextLine();
             pattern = Pattern.compile(REGEX_GENDER);
             matcher = pattern.matcher(gender);
+            if (!matcher.matches()){
+                check=false;
+            }else {
+                check=true;
+            }
+            if (!check){
+                try {
+                    throw new GenderException("Enter wrong Gender of Customer");
+                } catch (GenderException e) {
+                    System.err.println("Enter wrong Gender of Customer");
+                }
+            }
         } while (!matcher.matches());
 
         String id;
         do {
-            System.out.print("Enter ID of Customer: ");
+            System.out.println("Enter ID of Customer: ");
             id = scanner.nextLine();
             pattern = Pattern.compile(REGEX_ID_CUSTOMER);
             matcher = pattern.matcher(id);
+            if (!matcher.matches()){
+                check=false;
+            }else {
+                check=true;
+            }
+            if (!check){
+                try {
+                    throw new IDException("Enter wrong ID of Customer");
+                } catch (IDException e) {
+                    System.err.println("Enter wrong ID of Customer");
+                }
+            }
         } while (!matcher.matches());
 
         System.out.print("Enter Number Phone of Customer: ");
@@ -229,10 +279,22 @@ public class MainController {
 
         String email;
         do {
-            System.out.print("Enter Email of Customer: ");
+            System.out.println("Enter Email of Customer: ");
             email = scanner.nextLine();
             pattern = Pattern.compile(REGEX_EMAIL);
             matcher = pattern.matcher(email);
+            if (!matcher.matches()){
+                check=false;
+            }else {
+                check=true;
+            }
+            if (!check){
+                try {
+                    throw new EmailException("Enter wrong Email of Customer");
+                } catch (EmailException e) {
+                    System.err.println("Enter wrong Email of Customer");
+                }
+            }
         } while (!matcher.matches());
 
         System.out.print("Enter Type of Customer: ");
