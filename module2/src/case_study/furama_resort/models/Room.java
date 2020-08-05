@@ -2,8 +2,8 @@ package case_study.furama_resort.models;
 
 public class Room extends Services{
     private ExtraService extraService;
-    public Room(String id,String name, String userArena, String price, String maxPeople, String rentType,  ExtraService extraService) {
-        super(name, userArena, price, maxPeople, rentType, id);
+    public Room(String id,String name, String userArea, String price, String maxPeople, String rentType,  ExtraService extraService) {
+        super(name, userArea, price, maxPeople, rentType, id);
         this.extraService = extraService;
     }
 

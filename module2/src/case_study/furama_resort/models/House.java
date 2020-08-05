@@ -14,8 +14,8 @@ public class House extends Services {
         this.numberFloors = numberFloors;
     }
 
-    public House(String id,String name, String userArena, String price, String maxPeople, String rentType, String roomStandard, String description, String numberFloors) {
-        super(name, userArena, price, maxPeople, rentType, id);
+    public House(String id,String name, String userArea, String price, String maxPeople, String rentType, String roomStandard, String description, String numberFloors) {
+        super(name, userArea, price, maxPeople, rentType, id);
         this.roomStandard = roomStandard;
         this.description = description;
         this.numberFloors = numberFloors;

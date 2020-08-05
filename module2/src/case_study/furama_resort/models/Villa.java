@@ -3,24 +3,24 @@ package case_study.furama_resort.models;
 public class Villa extends Services {
     private String roomStandard;
     private String description;
-    private String arenaPool;
+    private String areaPool;
     private String numberFloors;
 
     public Villa() {
     }
 
-    public Villa(String roomStandard, String description, String arenaPool, String numberFloors) {
+    public Villa(String roomStandard, String description, String areaPool, String numberFloors) {
         this.roomStandard = roomStandard;
         this.description = description;
-        this.arenaPool = arenaPool;
+        this.areaPool = areaPool;
         this.numberFloors = numberFloors;
     }
 
-    public Villa(String id,String name, String userArena, String price, String maxPeople, String rentType, String roomStandard, String description, String arenaPool, String numberFloors) {
-        super(name, userArena, price, maxPeople, rentType, id);
+    public Villa(String id, String name, String userArea, String price, String maxPeople, String rentType, String roomStandard, String description, String areaPool, String numberFloors) {
+        super(name, userArea, price, maxPeople, rentType, id);
         this.roomStandard = roomStandard;
         this.description = description;
-        this.arenaPool = arenaPool;
+        this.areaPool = areaPool;
         this.numberFloors = numberFloors;
     }
 
@@ -40,12 +40,12 @@ public class Villa extends Services {
         this.description = description;
     }
 
-    public String getArenaPool() {
-        return arenaPool;
+    public String getAreaPool() {
+        return areaPool;
     }
 
-    public void setArenaPool(String arenaPool) {
-        this.arenaPool = arenaPool;
+    public void setAreaPool(String areaPool) {
+        this.areaPool = areaPool;
     }
 
     public String getNumberFloors() {
@@ -61,7 +61,7 @@ public class Villa extends Services {
         return "Villa{" + super.toString()+
                 " roomStandard='" + roomStandard + '\'' +
                 ", description='" + description + '\'' +
-                ", arenaPool='" + arenaPool + '\'' +
+                ", arenaPool='" + areaPool + '\'' +
                 ", numberFloors='" + numberFloors + '\'' +
                 '}';
     }

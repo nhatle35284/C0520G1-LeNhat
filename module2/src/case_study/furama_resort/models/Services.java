@@ -2,7 +2,7 @@ package case_study.furama_resort.models;
 
 public abstract class Services {
     private String name;
-    private String userArena;
+    private String userArea;
     private String price;
     private String maxPeople;
     private String rentType;
@@ -11,9 +11,9 @@ public abstract class Services {
     public Services() {
     }
 
-    public Services(String name, String userArena, String price, String maxPeople, String rentType, String id) {
+    public Services(String name, String userArea, String price, String maxPeople, String rentType, String id) {
         this.name = name;
-        this.userArena = userArena;
+        this.userArea = userArea;
         this.price = price;
         this.maxPeople = maxPeople;
         this.rentType = rentType;
@@ -28,12 +28,12 @@ public abstract class Services {
         this.name = name;
     }
 
-    public String getUserArena() {
-        return userArena;
+    public String getUserArea() {
+        return userArea;
     }
 
-    public void setUserArena(String userArena) {
-        this.userArena = userArena;
+    public void setUserArea(String userArea) {
+        this.userArea = userArea;
     }
 
     public String getPrice() {
@@ -71,7 +71,7 @@ public abstract class Services {
     public String toString() {
         return "Services{" +
                 "name='" + name + '\'' +
-                ", userArena='" + userArena + '\'' +
+                ", userArena='" + userArea + '\'' +
                 ", price='" + price + '\'' +
                 ", maxPeople='" + maxPeople + '\'' +
                 ", rentType='" + rentType + '\'' +
