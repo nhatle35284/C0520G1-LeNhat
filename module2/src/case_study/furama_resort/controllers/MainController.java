@@ -129,17 +129,18 @@ public class MainController {
         //addNewVilla
         System.out.println("-----------------------------------------------------------------------------------------");
         scanner.nextLine();
+        readerFile(FILE_VILLA);
+        System.out.println(villaList.size());
         String id;
         Matcher matcher;
         Pattern pattern;
-        readerFile(FILE_VILLA);
         boolean checkID = true;
         do {
             System.out.print("Enter ID: ");
             id = scanner.nextLine();
-            if (villaList.size() >= 1) {
+            if (villaList.size() >=1) {
                 for (Villa villa : villaList) {
-                    if (id.compareTo(villa.getId()) == 0) {
+                    if (id.equals(villa.getId())) {
                         checkID = false;
                     } else {
                         checkID = true;
@@ -438,6 +439,7 @@ public class MainController {
     }
 
     private static void showAllVilla() {
+        villaList.clear();
         readerFile(FILE_VILLA);
         Villa villa = null;
         for (int i = 0; i < villaList.size(); i++) {
@@ -483,6 +485,7 @@ public class MainController {
     }
 
     private static void showAllNameHouseNotDuplicate() {
+        villaList.clear();
         readerFile(FILE_HOUSE);
         Set<String> listHouseSet = new TreeSet<>();
         for (House house : houseList) {
@@ -494,6 +497,7 @@ public class MainController {
     }
 
     private static void showAllNameRoomNotDuplicate() {
+        villaList.clear();
         readerFile(FILE_ROOM);
         Set<String> listRoomSet = new TreeSet<>();
         for (Room room : roomList) {

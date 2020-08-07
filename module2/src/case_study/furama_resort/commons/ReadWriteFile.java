@@ -17,11 +17,11 @@ public class ReadWriteFile {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
-            while ( (line = bufferedReader.readLine()) != null ) {
+            while ( (line = bufferedReader.readLine())!=null) {
                 arrayTemp = line.split(",");
                 if (filePath.equals(MainController.FILE_VILLA)) {
                     String id = ReadWriteFile.arrayTemp[0];
-                    String name = (ReadWriteFile.arrayTemp[1]);
+                    String name = ReadWriteFile.arrayTemp[1];
                     String userArena = ReadWriteFile.arrayTemp[2];
                     String price = ReadWriteFile.arrayTemp[3];
                     String maxPeople = ReadWriteFile.arrayTemp[4];
@@ -33,7 +33,7 @@ public class ReadWriteFile {
                     MainController.villaList.add(new Villa(id, name, userArena, price, maxPeople, rentType, roomStandard, description, arenaPool, numberFloors));
                 }else if (filePath.equals(MainController.FILE_HOUSE)) {
                     String id = ReadWriteFile.arrayTemp[0];
-                    String name = (ReadWriteFile.arrayTemp[1]);
+                    String name = ReadWriteFile.arrayTemp[1];
                     String userArena = ReadWriteFile.arrayTemp[2];
                     String price = ReadWriteFile.arrayTemp[3];
                     String maxPeople = ReadWriteFile.arrayTemp[4];

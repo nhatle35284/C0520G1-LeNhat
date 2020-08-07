@@ -1,11 +1,12 @@
 package case_study.james;
 
 import java.io.*;
+import java.util.List;
 
 public class ReaderWriterFile {
     public static String[] arrTemp;
 
-    public static String readFile(String filePath) {
+    public static List<String> readFile(String filePath) {
         String result = null;
         File file = new File(filePath);
         try {
@@ -22,11 +23,13 @@ public class ReaderWriterFile {
                 String translate = ReaderWriterFile.arrTemp[2];
                 String wordType = ReaderWriterFile.arrTemp[3];
                 String synonymous = ReaderWriterFile.arrTemp[4];
-                result = "Action: " + word + "\n" +
-                        "\tPronunciation is: " + pronoun +"\n" +
-                        "\tTranslate to Vietnamese is: " + translate +"\n" +
-                        "\tType of word is: " + wordType +"\n" +
-                        "\tWord Synonymous is: "+synonymous;
+//                result = "Action: " + word + "\n" +
+//                        "\tPronunciation is: " + pronoun +"\n" +
+//                        "\tTranslate to Vietnamese is: " + translate +"\n" +
+//                        "\tType of word is: " + wordType +"\n" +
+//                        "\tWord Synonymous is: "+synonymous;
+                Controller.wordMap.put(word,new Word(word,pronoun,translate,wordType,synonymous));
+                Controller.wordList.add(new Word(word,pronoun,translate,wordType,synonymous));
             }
             bufferedReader.close();
             fileReader.close();
@@ -35,6 +38,43 @@ public class ReaderWriterFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return null;
+    }
+    public static void writeFile(String str,String filePath){
+        File file= new File(filePath);
+
+            try {
+                if (!file.exists()){
+                throw new FileNotFoundException();
+                }
+                FileWriter fileWriter = new FileWriter(file,true);
+                BufferedWriter bufferedReader = new BufferedWriter(fileWriter);
+                bufferedReader.write(str);
+                bufferedReader.close();
+                fileWriter.close();
+            } catch (FileNotFoundException e) {
+                System.err.println("File not found");;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+    } public static void writeFileNew(String str,String filePath){
+        File file= new File(filePath);
+
+            try {
+                if (!file.exists()){
+                throw new FileNotFoundException();
+                }
+                FileWriter fileWriter = new FileWriter(file);
+                BufferedWriter bufferedReader = new BufferedWriter(fileWriter);
+                bufferedReader.write(str);
+                bufferedReader.close();
+                fileWriter.close();
+            } catch (FileNotFoundException e) {
+                System.err.println("File not found");;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
     }
 }
