@@ -23,11 +23,6 @@ public class ReaderWriterFile {
                 String translate = ReaderWriterFile.arrTemp[2];
                 String wordType = ReaderWriterFile.arrTemp[3];
                 String synonymous = ReaderWriterFile.arrTemp[4];
-//                result = "Action: " + word + "\n" +
-//                        "\tPronunciation is: " + pronoun +"\n" +
-//                        "\tTranslate to Vietnamese is: " + translate +"\n" +
-//                        "\tType of word is: " + wordType +"\n" +
-//                        "\tWord Synonymous is: "+synonymous;
                 Controller.wordMap.put(word,new Word(word,pronoun,translate,wordType,synonymous));
                 Controller.wordList.add(new Word(word,pronoun,translate,wordType,synonymous));
             }
