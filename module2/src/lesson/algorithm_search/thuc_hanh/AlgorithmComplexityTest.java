@@ -1,5 +1,6 @@
 package lesson.algorithm_search.thuc_hanh;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AlgorithmComplexityTest {
@@ -21,5 +22,5 @@ public class AlgorithmComplexityTest {
             }
         }
         System.out.println("The most appearing letter is "+ character+"with a frequecy of "+max+" times");
-    }
-}
+
+    }}

@@ -65,5 +65,6 @@ public class Service {
     }
     public static void exportDatabase() {
         ReaderWriterFile.readFile(FILE_DICTIONARY);
+        for (int i=0;i<wordList.size();i++);
     }
 }
