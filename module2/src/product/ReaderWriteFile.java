@@ -1,7 +1,5 @@
 package product;
 
-import case_study.furama_resort.commons.ReadWriteFile;
-
 import java.io.*;
 import java.util.List;
 
@@ -20,25 +18,25 @@ public class ReaderWriteFile {
             while ((line = bufferedReader.readLine()) != null) {
                 arrayTemp = line.split(",");
                 if ("1".equals(arrayTemp[8])) {
-                    int id = Integer.parseInt(ReadWriteFile.arrayTemp[0]);
-                    String codeProduct = ReadWriteFile.arrayTemp[1];
-                    String name = ReadWriteFile.arrayTemp[2];
-                    double price = Double.parseDouble(ReadWriteFile.arrayTemp[3]);
-                    int amount = Integer.parseInt(ReadWriteFile.arrayTemp[4]);
-                    String producer = ReadWriteFile.arrayTemp[5];
-                    double priceExport = Double.parseDouble(ReadWriteFile.arrayTemp[6]);
-                    String exportNation = ReadWriteFile.arrayTemp[7];
+                    int id = Integer.parseInt(ReaderWriteFile.arrayTemp[0]);
+                    String codeProduct = ReaderWriteFile.arrayTemp[1];
+                    String name = ReaderWriteFile.arrayTemp[2];
+                    double price = Double.parseDouble(ReaderWriteFile.arrayTemp[3]);
+                    int amount = Integer.parseInt(ReaderWriteFile.arrayTemp[4]);
+                    String producer = ReaderWriteFile.arrayTemp[5];
+                    double priceExport = Double.parseDouble(ReaderWriteFile.arrayTemp[6]);
+                    String exportNation = ReaderWriteFile.arrayTemp[7];
                     Controller.exportProductsList.add(new exportProduct(id,codeProduct,name,price,amount,producer,priceExport,exportNation));
                 } else {
-                    int id = Integer.parseInt(ReadWriteFile.arrayTemp[0]);
-                    String codeProduct = ReadWriteFile.arrayTemp[1];
-                    String name = ReadWriteFile.arrayTemp[2];
-                    double price = Double.parseDouble(ReadWriteFile.arrayTemp[3]);
-                    int amount = Integer.parseInt(ReadWriteFile.arrayTemp[4]);
-                    String producer = ReadWriteFile.arrayTemp[5];
-                    double priceImport = Double.parseDouble(ReadWriteFile.arrayTemp[6]);
-                    String importProvince = ReadWriteFile.arrayTemp[7];
-                    double importTax = Double.parseDouble(ReadWriteFile.arrayTemp[8]);
+                    int id = Integer.parseInt(ReaderWriteFile.arrayTemp[0]);
+                    String codeProduct = ReaderWriteFile.arrayTemp[1];
+                    String name = ReaderWriteFile.arrayTemp[2];
+                    double price = Double.parseDouble(ReaderWriteFile.arrayTemp[3]);
+                    int amount = Integer.parseInt(ReaderWriteFile.arrayTemp[4]);
+                    String producer = ReaderWriteFile.arrayTemp[5];
+                    double priceImport = Double.parseDouble(ReaderWriteFile.arrayTemp[6]);
+                    String importProvince = ReaderWriteFile.arrayTemp[7];
+                    double importTax = Double.parseDouble(ReaderWriteFile.arrayTemp[8]);
                     Controller.importProductList.add(new importProduct(id,codeProduct,name,price,amount,producer,priceImport,importProvince,importTax));
                 }
             }
@@ -69,4 +67,24 @@ public class ReaderWriteFile {
             e.printStackTrace();
         }
     }
+    public static void save(String str, String filePath) {
+        File file = new File(filePath);
+
+        try {
+            if (!file.exists()) {
+                throw new FileNotFoundException();
+            }
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedReader = new BufferedWriter(fileWriter);
+            bufferedReader.write(str);
+            bufferedReader.close();
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+            ;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
