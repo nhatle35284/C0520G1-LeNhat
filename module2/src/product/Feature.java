@@ -9,80 +9,93 @@ public class Feature {
     public static void findProduct() {
         scanner.nextLine();
         System.out.println("Nhập lựa chọn");
-        System.out.println("1.Tìm Sản Phẩm Nhập khẩu\n" +
-                "2. Tìm Sản phẩm xuất khẩ\n" +
-                "3.Quay lại Menu\n" +
-                "Chọn chức năng: ");
-        int choose = scanner.nextInt();
-        switch (choose) {
 
-        }
-    }
-
-    public static void showInformationProduct() {
-        scanner.nextLine();
-        System.out.println("Nhập lựa chọn");
-        System.out.println("1.Hiển thị Sản Phẩm Nhập khẩu\n" +
-                "2. Hiển Thị Sản phẩm xuất khẩu\n" +
+        System.out.println("1.Tìm Sản Phẩm Theo tên\n" +
+                "2. Tìm Sản phẩm theo mã\n" +
                 "3.Quay lại Menu\n" +
                 "Chọn chức năng: ");
         int choose = scanner.nextInt();
         switch (choose) {
             case 1:
+                scanner.nextLine();
+                System.out.println("Nhập tên muốn tìm: ");
+                String key=scanner.nextLine();
                 importProductList.clear();
+                exportProductsList.clear();
                 ReaderWriteFile.readerFile(FILE_PRODUCT);
-                importProduct importProduct = null;
                 for (int i = 0; i < importProductList.size(); i++) {
-                    importProduct = importProductList.get(i);
-                    System.out.print((i + 1) + ". ");
-                    importProduct.showInformation();
+                    if (key.equals(importProductList.get(i).getName())) {
+                        importProductList.get(i).showInformation();
+                        break;
+                    }
+                }
+                for (int i = 0; i < exportProductsList.size(); i++) {
+                    if (key.equals(exportProductsList.get(i).getName())) {
+                        exportProductsList.get(i).showInformation();
+                        break;
+                    }
                 }
                 break;
             case 2:
+                scanner.nextLine();
+                System.out.println("Nhập mã muốn tìm: ");
+                String code=scanner.nextLine();
+                importProductList.clear();
                 exportProductsList.clear();
                 ReaderWriteFile.readerFile(FILE_PRODUCT);
-                exportProduct exportProduct = null;
+                for (int i = 0; i < importProductList.size(); i++) {
+                    if (code.equals(importProductList.get(i).getCodeProduct())) {
+                        importProductList.get(i).showInformation();
+                        break;
+                    }
+                }
                 for (int i = 0; i < exportProductsList.size(); i++) {
-                    exportProduct = exportProductsList.get(i);
-                    System.out.print((i + 1) + ". ");
-                    exportProduct.showInformation();
+                    if (code.equals(exportProductsList.get(i).getCodeProduct())) {
+                        exportProductsList.get(i).showInformation();
+                        break;
+                    }
                 }
                 break;
-            case 3:
-                Controller.displayMainMenu();
-                break;
             default:
-                System.out.println("Chọn Sai");
+        }
+    }
+
+    public static void showInformationProduct() {
+        scanner.nextLine();
+        importProductList.clear();
+        ReaderWriteFile.readerFile(FILE_PRODUCT);
+        for (importProduct importProduct1: importProductList) {
+            importProduct1.showInformation();
+        }
+        exportProductsList.clear();
+        ReaderWriteFile.readerFile(FILE_PRODUCT);
+        for (exportProduct exportProduct1: exportProductsList) {
+            exportProduct1.showInformation();
         }
     }
 
     public static void deleteProduct() {
         scanner.nextLine();
 
+        System.out.println("Nhập mã sản phẩm muốn xóa");
+        String indexImport = scanner.nextLine();
         importProductList.clear();
-        ReaderWriteFile.readerFile(FILE_PRODUCT);
-        for (importProduct importProduct : importProductList) {
-            importProduct.showInformation();
-        }
         exportProductsList.clear();
         ReaderWriteFile.readerFile(FILE_PRODUCT);
-        for (exportProduct exportProduct : exportProductsList) {
-            exportProduct.showInformation();
-        }
-        System.out.println("Nhập index muốn xóa");
-        String indexImport = scanner.nextLine();
         for (int i = 0; i < importProductList.size(); i++) {
             if (indexImport.equals(importProductList.get(i).getCodeProduct())) {
                 importProductList.remove(importProductList.get(i));
+                break;
             }
         }
         for (int i = 0; i < exportProductsList.size(); i++) {
             if (indexImport.equals(exportProductsList.get(i).getCodeProduct())) {
                 exportProductsList.remove(exportProductsList.get(i));
+                break;
             }
         }
-        ReaderWriteFile.save("",FILE_PRODUCT);
-        for (int i=0;i<importProductList.size();i++){
+        ReaderWriteFile.save("", FILE_PRODUCT);
+        for (int i = 0; i < importProductList.size(); i++) {
             ReaderWriteFile.writerFile(importProductList.get(i).getId() + ",", FILE_PRODUCT);
             ReaderWriteFile.writerFile(importProductList.get(i).getCodeProduct() + ",", FILE_PRODUCT);
             ReaderWriteFile.writerFile(importProductList.get(i).getName() + ",", FILE_PRODUCT);
@@ -95,7 +108,8 @@ public class Feature {
             ReaderWriteFile.writerFile("2", FILE_PRODUCT);
             ReaderWriteFile.writerFile("\n", FILE_PRODUCT);
         }
-        for (int i=0;i<exportProductsList.size();i++){
+        importProductList.clear();
+        for (int i = 0; i < exportProductsList.size(); i++) {
             ReaderWriteFile.writerFile(exportProductsList.get(i).getId() + ",", FILE_PRODUCT);
             ReaderWriteFile.writerFile(exportProductsList.get(i).getCodeProduct() + ",", FILE_PRODUCT);
             ReaderWriteFile.writerFile(exportProductsList.get(i).getName() + ",", FILE_PRODUCT);
@@ -107,7 +121,7 @@ public class Feature {
             ReaderWriteFile.writerFile("1", FILE_PRODUCT);
             ReaderWriteFile.writerFile("\n", FILE_PRODUCT);
         }
-
+        exportProductsList.clear();
     }
 
     public static void addNewProduct() {
@@ -162,6 +176,7 @@ public class Feature {
         ReaderWriteFile.writerFile(exportProductsList.get(0).getExportNation() + ",", FILE_PRODUCT);
         ReaderWriteFile.writerFile("1", FILE_PRODUCT);
         ReaderWriteFile.writerFile("\n", FILE_PRODUCT);
+        exportProductsList.clear();
     }
 
     private static void addNewProductImport() {
@@ -170,8 +185,12 @@ public class Feature {
         String codeProduct = scanner.nextLine();
         System.out.println("Nhập Tên Sản Phẩm");
         String name = scanner.nextLine();
-        System.out.println("Nhập Giá Sản Phẩm");
-        double price = Double.parseDouble(scanner.nextLine());
+        double price;
+        do {
+            System.out.println("Nhập Giá Sản Phẩm");
+            price = Double.parseDouble(scanner.nextLine());
+        } while (Validate.isMoreThan(price,0));
+
         System.out.println("Nhập Số lượng Sản Phẩm");
         int amount = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập Nhà Sản Xuất Sản Phẩm");
@@ -194,5 +213,6 @@ public class Feature {
         ReaderWriteFile.writerFile(importProductList.get(0).getImportTax() + ",", FILE_PRODUCT);
         ReaderWriteFile.writerFile("2", FILE_PRODUCT);
         ReaderWriteFile.writerFile("\n", FILE_PRODUCT);
+        importProductList.clear();
     }
 }

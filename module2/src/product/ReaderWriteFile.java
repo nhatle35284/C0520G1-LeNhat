@@ -17,7 +17,7 @@ public class ReaderWriteFile {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 arrayTemp = line.split(",");
-                if ("1".equals(arrayTemp[8])) {
+                if (arrayTemp.length==8) {
                     int id = Integer.parseInt(ReaderWriteFile.arrayTemp[0]);
                     String codeProduct = ReaderWriteFile.arrayTemp[1];
                     String name = ReaderWriteFile.arrayTemp[2];
