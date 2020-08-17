@@ -40,7 +40,7 @@ create table customers (
 	foreign key (sales_rep_employee_number) references employees(sales_rep_employee_number)
 );
 
-create table productlines (
+create table product_lines (
 	product_line varchar(50) not null unique primary key,
 	text_description varchar(255) not null,
 	image varchar(255) not null
@@ -79,7 +79,7 @@ create table payments (
 	foreign key (customerNumber) references customers(customerNumber)
 );
 
-create table OrderDetails(
+create table order_details(
 	order_number int not null,
 	product_code varchar(15),
 	foreign key (order_number) references orders(order_number),

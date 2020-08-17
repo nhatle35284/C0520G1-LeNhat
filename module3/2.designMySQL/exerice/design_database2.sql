@@ -83,7 +83,7 @@ foreign key(customer_number)references customers(customer_number)
 );
 
 
-create table orderDetails(
+create table order_details(
 	order_number int not null ,
 	product_code varchar(15) not null,
 	foreign key(product_code)references products(product_code),
