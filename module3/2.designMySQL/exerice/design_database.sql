@@ -56,7 +56,7 @@ create table products (
 	buy_price double not null,
 	MSRP double not null,
 	product_line varchar(50) not null,
-	foreign key (product_line) references productlines(product_line)
+	foreign key (product_line) references product_lines(product_line)
 );
 
 create table orders (
