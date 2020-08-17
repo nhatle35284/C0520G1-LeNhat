@@ -13,6 +13,3 @@ insert into sinh_vien(ten_sv,ma_sv,nam_sinh) values
 select*from sinh_vien;
 delete from sinh_vien where ma_sv;
 update sinh_vien set ten_sv="chuong",ma_sv=4,nam_sinh=1988 where ma_sv=2;
-alter table student
-add age int;
-insert into sinh_vien(ten_sv,ma_sv,nam_sinh) values ("hai",1,2001); 
