@@ -25,4 +25,7 @@ from student
 where ten="huong";
 
 -- hiển thi danh sách tên không trùng lặp
-select distinct id from student
+select distinct ten from student;
+select count(id),ten 
+from student
+group by ten
