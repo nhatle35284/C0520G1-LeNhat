@@ -1,6 +1,6 @@
-drop database if exists furama_manage;
-create database furama_manage;
-use furama_manage;
+drop database if exists furama_quan_ly;
+create database furama_quan_ly;
+use furama_quan_ly;
 create table vi_tri(
 	id_vi_tri int primary key,
 	ten_vi_tri varchar(45)
@@ -14,6 +14,7 @@ create table bo_phan(
 	ten_bo_phan varchar(45)
 );
 create table nhan_vien(
+-- 1,"Nguyen Thi Hoa",1,
 	id_nhan_vien int primary key,
 	ho_ten varchar(50),
 	id_vi_tri int,
@@ -21,7 +22,7 @@ create table nhan_vien(
 	id_bo_phan int,
 	ngay_sinh date,
 	so_cmtnd varchar(45),
-	luong varchar(45),
+	luong double,
 	sdt varchar(45),
 	email varchar(45),
 	dia_chi varchar(45),
@@ -46,7 +47,7 @@ create table khach_hang(
 create table kieu_thue(
 	id_kieu_thue int primary key ,
 	ten_kieu_thue varchar(45),
-	gia int
+	gia double
 );
 create table loai_dich_vu(
 	id_loai_dich_vu int primary key,
@@ -55,9 +56,9 @@ create table loai_dich_vu(
 create table dich_vu(
 	id_dich_vu int primary key,
 	ten_dich_vu varchar(45),
-    dien_tich int,
+    dien_tich double,
     so_nguoi_toi_da int,
-    chi_phi_thue varchar(45),
+    chi_phi_thue double,
     id_kieu_thue int,
     id_loai_dich_vu int,
     trang_thai varchar(45),
@@ -71,23 +72,26 @@ create table hop_dong(
 	id_dich_vu int,
 	ngay_lam_hop_dong date,
 	ngay_ket_hop_dong date,
-	tien_dat_coc int,
-	tong_tien int,
+	tien_dat_coc double,
+	tong_tien double,
     foreign key (id_khach_hang) references khach_hang(id_khach_hang),
     foreign key (id_dich_vu) references dich_vu(id_dich_vu)
 );
 create table dich_vu_di_kem(
 	id_dich_vu_di_kem int primary key,
     ten_dich_vu_di_kem int,
-    gia int,
+    gia double,
     don_vi int,
     trang_thai_kha_dung varchar(45)
 );
 create table hop_dong_chi_tiet(
 	id_hop_dong_chi_tiet int primary key,
 	id_hop_dong int,
-	id_dich_vu_di_kemcustomers int,
+	id_dich_vu_di_kem int,
 	so_luong int,
     foreign key(id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
     foreign key(id_hop_dong) references hop_dong(id_hop_dong)
 );
+
+-- task 2 
+select*from nhan_vien where ho_ten like "H%" or ho_ten like "T%"or ho_ten like "K%";
