@@ -1,20 +1,38 @@
 drop database if exists furama_quan_ly;
 create database furama_quan_ly;
 use furama_quan_ly;
+
+-- task 1:Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
 create table vi_tri(
 	id_vi_tri int primary key,
 	ten_vi_tri varchar(45)
+    check(ten_vi_tri="Lễ Tân" 
+    or ten_vi_tri="Phục Vụ"
+    or ten_vi_tri="Chuyên Viên"
+    or ten_vi_tri="Giám Sát"
+    or ten_vi_tri="Quản Lý"
+    or ten_vi_tri="Giám Đốc"
+	)
 );
 create table trinh_do(
 	id_trinh_do int primary key,
 	ten_trinh_do varchar(45)
+    check(ten_trinh_do="Trung Cấp" 
+    or ten_trinh_do="Cao Đẳng"
+    or ten_trinh_do="Đai Học"
+    or ten_trinh_do="sau Đai Học"
+	)
 );
 create table bo_phan(
 	id_bo_phan int primary key,
 	ten_bo_phan varchar(45)
+    check(ten_bo_phan="Sale_Marketing" 
+    or ten_bo_phan="Hành Chính"
+    or ten_bo_phan="Phục Vụ"
+    or ten_bo_phan="Quản Lý"
+	)
 );
-create table nhan_vien(
--- 1,"Nguyen Thi Hoa",1,
+create table nhan_vien( 
 	id_nhan_vien int primary key,
 	ho_ten varchar(50),
 	id_vi_tri int,
@@ -38,6 +56,7 @@ create table khach_hang(
 	id_khach_hang int primary key,
 	id_loai_khach int,
 	ho_ten varchar(50),
+    ngay_sinh date,
 	so_cmtnd varchar(45),
 	sdt varchar(45),
 	email varchar(45),
@@ -53,7 +72,7 @@ create table loai_dich_vu(
 	id_loai_dich_vu int primary key,
     ten_loai_dich_vu varchar(45)
 );
-create table dich_vu(
+create table dich_vu( 
 	id_dich_vu int primary key,
 	ten_dich_vu varchar(45),
     dien_tich double,
@@ -65,13 +84,13 @@ create table dich_vu(
     foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue),
     foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)
 );
-create table hop_dong(
+create table hop_dong( 
 	id_hop_dong int primary key,
 	id_nhan_vien int,
 	id_khach_hang int,
 	id_dich_vu int,
 	ngay_lam_hop_dong date,
-	ngay_ket_hop_dong date,
+	ngay_ket_thuc_hop_dong date,
 	tien_dat_coc double,
 	tong_tien double,
     foreign key (id_khach_hang) references khach_hang(id_khach_hang),
@@ -79,9 +98,9 @@ create table hop_dong(
 );
 create table dich_vu_di_kem(
 	id_dich_vu_di_kem int primary key,
-    ten_dich_vu_di_kem int,
+    ten_dich_vu_di_kem varchar(45),
     gia double,
-    don_vi int,
+    don_vi varchar(45),
     trang_thai_kha_dung varchar(45)
 );
 create table hop_dong_chi_tiet(
@@ -92,6 +111,116 @@ create table hop_dong_chi_tiet(
     foreign key(id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
     foreign key(id_hop_dong) references hop_dong(id_hop_dong)
 );
+-- task 1.Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
 
--- task 2 
-select*from nhan_vien where ho_ten like "H%" or ho_ten like "T%"or ho_ten like "K%";
+-- thêm vị trí
+insert into vi_tri 
+values (1,"Lễ Tân"),
+(2,"Phục Vụ"),
+(3,"Chuyên Viên"),
+(4,"Giám Sát"),
+(5,"Quản Lý"),
+(6,"Giám Đốc");
+
+-- thêm trình độ
+insert into trinh_do 
+values (1,"Trung Cấp"),
+(2,"Cao Đẳng"),
+(3,"Đại Học"),
+(4,"Sau Đại Học");
+
+-- thêm bộ phận
+insert into bo_phan 
+values (1,"Sale_Marketing"),
+(2,"Hành Chính"),
+(3,"Phục Vụ"),
+(4,"Quản Lý");
+    
+-- thêm nhân viên
+insert into nhan_vien 
+values (1,"Hoa",1,1,1,12/12/1997,"14124134",5500000,"091234556","hoa1997@gmail.com","Da Nang"),
+(2,"Khanh",1,1,1,12/12/1997,"14124134",5500000,"091234556","hoa1997@gmail.com","Da Nang"),
+(3,"Tùng",1,1,1,12/12/1997,"14124134",5500000,"091234556","hoa1997@gmail.com","Da Nang"),
+(4,"Thu",1,1,1,12/12/1997,"14124134",5500000,"091234556","hoa1997@gmail.com","Da Nang"),
+(5,"Hoang",1,1,1,12/12/1997,"14124134",5500000,"091234556","hoa1997@gmail.com","Da Nang");
+
+-- thêm loại khách 
+insert into loai_khach 
+values (1,"Diamond"),
+(2,"Platinium"),
+(3,"Gold"),
+(4,"Silver"),
+(5,"Member");
+
+-- thêm Khách hàng
+insert into khach_hang 
+values (1,1,"Hoang Thi A",12/07/1999,"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
+(2,3,"Tu Hong B",12/07/2003,"312314124","0123452432","btuhong11@gmail.com","Quảng Trị"),
+(3,1,"Khanh Thi C",12/07/1980,"312314124","0123452432","cthihoang11@gmail.com","Đà Nẵng"),
+(4,4,"Nguyen Thi D",12/07/1999,"312314124","0123452432","dthihoang11@gmail.com","Quảng Trị");
+
+-- thêm kiểu thuê
+
+insert into kieu_thue 
+values (1,"Đêm",100),
+(2,"Ngày",300),
+(3,"Tháng",2000);
+
+-- thêm loại dịch vụ 
+insert into loai_dich_vu 
+values (1,"Villa"),
+(2,"House"),
+(3,"Room");
+
+-- thêm dịch vụ 
+insert into dich_vu
+values (1,"Villa1",70,4,2000,1,1,"Tốt"),
+(2,"Villa1",65,4,2000,2,1,"Tốt"),
+(3,"Villa1",80,4,2000,1,2,"Tốt");
+
+-- thêm hợp đồng
+insert into hop_dong
+values (1,1,1,1,12/04/2020,07/05/2020,100,2000),
+(2,1,3,1,12/04/2020,07/05/2020,100,2000),
+(3,1,2,3,12/04/2020,07/05/2020,100,2000),
+(4,1,2,2,12/04/2020,07/05/2020,100,2000);
+
+-- thêm loại dịch vụ di kèm
+insert into dich_vu_di_kem
+values (1,"massage","50","USD","Tốt"),
+(2,"karaoke","45","USD","Tốt"),
+(3,"thức ăn","10","USD","Tốt"),
+(4,"nước uống","5","USD","Tốt"),
+(5,"xe di chuyển tham quan quanh resort","30","USD","Tốt");
+
+-- thêm hợp đồng chi tiết
+insert into hop_dong_chi_tiet
+values (1,1,1,2),
+(2,3,3,2),
+(3,4,2,2),
+(4,2,1,2);
+
+/* task 2 .Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”,
+ “T” hoặc “K” và có tối đa 15 ký tự.*/
+select*from nhan_vien where ho_ten like "H%" or ho_ten like "T%"or ho_ten like "K%" and length(ho_ten)<15;
+
+/* task 3.Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng”
+ hoặc “Quảng Trị”.*/
+select*
+ from khach_hang 
+ where datediff(curdate(),ngay_sinh)/365 between 18 and 50 and dia_chi in("Đà Nẵng","Quảng Trị");
+ 
+select *
+from khach_hang
+where dia_chi in("Đà Nẵng" , "Quảng Trị")
+having year(now()) - year(ngay_sinh) between 18 and 50;
+
+/*task 4.Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
+ Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng.
+ Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.*/
+ 
+select khach_hang.ho_ten , count(hop_dong.id_hop_dong) as 'tổng lần đặt phòng'
+from  khach_hang
+right join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+where khach_hang.id_khach_hang = 1
+group by khach_hang.id_khach_hang
