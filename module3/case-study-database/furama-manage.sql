@@ -208,7 +208,9 @@ select*from nhan_vien where ho_ten like "H%" or ho_ten like "T%"or ho_ten like "
  hoặc “Quảng Trị”.*/
 select*
  from khach_hang 
- where datediff(curdate(),ngay_sinh)/365 between 18 and 50 and dia_chi in("Đà Nẵng","Quảng Trị");
+ where datediff(curdate(),ngay_sinh)/365 
+ between 18 and 50 
+ and dia_chi in("Đà Nẵng","Quảng Trị");
  
 select *
 from khach_hang
