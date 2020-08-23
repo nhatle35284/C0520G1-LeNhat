@@ -1,0 +1,53 @@
+#head{
+    background: #eeeff4;
+    height: 100px;
+    width: 100%;
+    position: relative;
+}
+span{
+    background: red;
+    color: white;
+    border-radius:10px;
+}
+h1{
+    position: absolute;
+    bottom: 0;
+}
+#bar{
+    margin-top: 5px;
+    background: #eeeff4;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+#text{
+    top: 13px;
+    position: relative;
+}
+#left{
+    margin-top: 5px;
+    background: #eeeff4;
+    height: 1200px;
+    width: 30%;
+    float: left;
+}
+#right{
+    margin-top: 5px;
+    background: #eeeff4;
+    height: 1200px;
+    width: 70%;
+    float: left;
+}
+label{
+    font-weight: bold;
+}
+.mo{
+    font-style: inherit;
+}
+#footer{
+    background: #eeeff4;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    clear: both;
+}

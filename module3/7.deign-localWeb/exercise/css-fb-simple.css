@@ -28,13 +28,13 @@ input{
 }
 #left{
     background: #eeeff4;
-    height: 500px;
+    height: 580px;
     width: 60%;
     float: left;
 }
 #right{
     background: #eeeff4;
-    height: 500px;
+    height: 580px;
     width: 40%;
     float: left;
 }
@@ -67,4 +67,33 @@ h4{
 }
 .bir{
     float: left;
+    margin-top: 50px;
 }
+.why{
+    color: blue;
+    float: left;
+    margin-left: 20px;
+    font-size: 13px;
+    margin-bottom: -5px;
+    margin-top: 40px
+}
+.t{
+    color: blue;
+    float: left;
+    margin-left: 20px;
+    font-size: 13px;
+    margin-bottom: -5px;
+}
+.text{
+    float: left;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 17px;
+}.text1{
+    float: left;
+    text-align: center;
+    margin-left: -10px;
+}
+ span{
+     color: blue;
+ }
