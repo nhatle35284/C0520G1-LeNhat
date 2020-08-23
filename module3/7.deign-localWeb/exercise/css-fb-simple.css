@@ -1,0 +1,70 @@
+#main{
+    font-family: Arial;
+}
+#login{
+    background: #4d5cff;
+    color: white;
+    text-align: center;
+}
+#title{
+    background: #0c04ff;
+    color: white;
+    height: 100px;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    position: relative;
+}
+h1{
+    font-size: 50px ;
+    left: 50px;
+    position: absolute;
+}
+input{
+    margin-top: 25px;
+    margin-right: 25px;
+    float: right;
+    border-radius: 4px;
+}
+#left{
+    background: #eeeff4;
+    height: 500px;
+    width: 60%;
+    float: left;
+}
+#right{
+    background: #eeeff4;
+    height: 500px;
+    width: 40%;
+    float: left;
+}
+#text{
+    color: black;
+    font-size: 30px;
+}
+h3{
+    text-align: center;
+}
+h5{
+    line-height: 0px;
+    margin-t: 10px;
+}
+.enter{
+    width: 200px;
+    height: 25px;
+    border-radius: 3px;
+    float: left;
+}
+.tk{
+    width: 435px;
+    height: 25px;
+    border-radius: 3px;
+    float: left;
+}
+h4{
+    float: left;
+    font-size: 20px;
+}
+.bir{
+    float: left;
+}
