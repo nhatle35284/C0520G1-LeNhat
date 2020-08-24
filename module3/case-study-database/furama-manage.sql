@@ -252,7 +252,7 @@ left join loai_dich_vu on loai_dich_vu.id_loai_dich_vu=dich_vu.id_loai_dich_vu
 left join hop_dong on hop_dong.id_dich_vu=dich_vu.id_dich_vu
 where ((datediff(hop_dong.ngay_lam_hop_dong,'2019/01/01')>0)) or ((datediff(hop_dong.ngay_lam_hop_dong,'2019/31/03')<0));
 
-/*task 6a.Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu của
+/*task 7.Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu của
  tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 nhưng chưa từng được Khách hàng
  đặt phòng  trong năm 2019.*/
  
@@ -264,7 +264,7 @@ left join hop_dong on hop_dong.id_dich_vu=dich_vu.id_dich_vu
 where (hop_dong.ngay_lam_hop_dong between '2018/01/01' and '2018/31/12/2018') 
 and (hop_dong.ngay_lam_hop_dong between '2019/01/01/2019' and '2019/31/12');
 
-/* task 7.Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
+/* task 8.Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
 Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên*/
 
 -- cáchh 1:
@@ -282,4 +282,27 @@ from khach_hang;
 select khach_hang.ho_ten 
 from khach_hang
 group by khach_hang.ho_ten
-having count(ho_ten)>=1
+having count(ho_ten)>=1;
+
+/* task 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2019 thì
+ sẽ có bao nhiêu khách hàng thực hiện đặt phòng.*/
+
+select substr(hop_dong.ngay_lam_hop_dong,6,2) as thang_2019 ,count(hop_dong.id_khach_hang) as so_lan_dat 
+from hop_dong
+where hop_dong.ngay_lam_hop_dong like '2019%'
+group by substr(hop_dong.ngay_lam_hop_dong,6,2);
+
+/*task 10. Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. Kết quả 
+ hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem 
+ (được tính dựa trên việc count các IDHopDongChiTiet)*/
+ select hop_dong.id_hop_dong,hop_dong.ngay_lam_hop_dong,hop_dong.ngay_ket_thuc_hop_dong,
+ hop_dong.tien_dat_coc,hop_dong_chi_tiet.so_luong
+ from hop_dong
+ left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong;
+ 
+ /*task 11.11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng
+ bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và có địa chỉ là
+ “Vinh” hoặc “Quảng Ngãi”.*/
+select id_dich_vu_di_kem,ten_dich_vu_di_kem ,gia,don_vi,trang_thai_kha_dung 
+from dich_vu_di_kem 
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
