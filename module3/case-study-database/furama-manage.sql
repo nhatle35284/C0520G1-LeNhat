@@ -304,8 +304,9 @@ group by substr(hop_dong.ngay_lam_hop_dong,6,2);
  bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và có địa chỉ là
  “Vinh” hoặc “Quảng Ngãi”.*/
  
- select dich_vu_di_kem.id_dich_vu_di_kem,dich_vu_di_kem.ten_dich_vu_di_kem,dich_vu_di_kem.gia,
- dich_vu_di_kem.trang_thai_kha_dung
- from dich_vu_di_kem
+select dich_vu_di_kem.id_dich_vu_di_kem,dich_vu_di_kem.ten_dich_vu_di_kem,dich_vu_di_kem.gia,
+dich_vu_di_kem.trang_thai_kha_dung,loai_khach.id_loai_khach,khach_hang.id_khach_hang
+from dich_vu_di_kem
 left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
+left join khach_hang on loai_khach.id_loai_khach=khach_hang.id_loai_khach
 where khach_hang.id_loai_khach=1 and khach_hang.dia_chi = "Vinh" or khach_hang.dia_chi ="Quảng Ngãi";
