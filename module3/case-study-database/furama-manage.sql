@@ -300,13 +300,15 @@ group by substr(hop_dong.ngay_lam_hop_dong,6,2);
  from hop_dong
  left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong;
  
- /*task 11.11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng
+ /*task 11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng
  bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và có địa chỉ là
  “Vinh” hoặc “Quảng Ngãi”.*/
  
-select dich_vu_di_kem.id_dich_vu_di_kem,dich_vu_di_kem.ten_dich_vu_di_kem,dich_vu_di_kem.gia,
-dich_vu_di_kem.trang_thai_kha_dung,loai_khach.id_loai_khach,khach_hang.id_khach_hang
+select dich_vu_di_kem.id_dich_vu_di_kem,dich_vu_di_kem.ten_dich_vu_di_kem,dich_vu_di_kem.gia,dich_vu_di_kem.don_vi,
+dich_vu_di_kem.trang_thai_kha_dung,loai_khach.id_loai_khach,khach_hang.id_khach_hang,khach_hang.ho_ten
 from dich_vu_di_kem
-left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
-left join khach_hang on loai_khach.id_loai_khach=khach_hang.id_loai_khach
-where khach_hang.id_loai_khach=1 and khach_hang.dia_chi = "Vinh" or khach_hang.dia_chi ="Quảng Ngãi";
+left join hop_dong_chi_tiet on dich_vu_di_kem.id_dich_vu_di_kem=hop_dong_chi_tiet.id_dich_vu_di_kem
+left join hop_dong on hop_dong_chi_tiet.id_hop_dong=hop_dong.id_hop_dong
+left join khach_hang on khach_hang.id_loai_khach = hop_dong.id_khach_hang
+left join loai_khach on loai_khach.id_loai_khach=khach_hang.id_loai_khach
+where loai_khach.id_loai_khach="Diamond" and khach_hang.dia_chi = "Vinh" or khach_hang.dia_chi ="Quảng Ngãi";
