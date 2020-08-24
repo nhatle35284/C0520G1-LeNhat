@@ -303,6 +303,9 @@ group by substr(hop_dong.ngay_lam_hop_dong,6,2);
  /*task 11.11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng
  bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và có địa chỉ là
  “Vinh” hoặc “Quảng Ngãi”.*/
-select id_dich_vu_di_kem,ten_dich_vu_di_kem ,gia,don_vi,trang_thai_kha_dung 
-from dich_vu_di_kem 
+ 
+ select dich_vu_di_kem.id_dich_vu_di_kem,dich_vu_di_kem.ten_dich_vu_di_kem,dich_vu_di_kem.gia,
+ dich_vu_di_kem.trang_thai_kha_dung
+ from dich_vu_di_kem
 left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_dich_vu_di_kem=dich_vu_di_kem.id_dich_vu_di_kem
+where khach_hang.id_loai_khach=1 and khach_hang.dia_chi = "Vinh" or khach_hang.dia_chi ="Quảng Ngãi";
