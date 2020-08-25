@@ -180,7 +180,7 @@ values (1,"Villa1",70,4,2000,1,1,"Tốt"),
 
 -- thêm hợp đồng
 insert into hop_dong
-values (1,1,1,1,'2020/12/04','2020/07/05',100,2000),
+values (1,1,1,1,'2019/12/04','2020/07/05',100,2000),
 (2,1,3,1,'2020/12/04','2020/07/05',100,2000),
 (3,1,2,3,'2020/12/04','2020/07/05',100,2000),
 (4,1,2,2,'2020/12/04','2020/07/05',100,2000);
@@ -256,13 +256,13 @@ where ((datediff(hop_dong.ngay_lam_hop_dong,'2019/01/01')>0)) or ((datediff(hop_
  tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 nhưng chưa từng được Khách hàng
  đặt phòng  trong năm 2019.*/
  
- select dich_vu.id_dich_vu,dich_vu.ten_dich_vu,dich_vu.dien_tich,dich_vu.so_nguoi_toi_da,dich_vu.chi_phi_thue,
+select dich_vu.id_dich_vu,dich_vu.ten_dich_vu,dich_vu.dien_tich,dich_vu.so_nguoi_toi_da,dich_vu.chi_phi_thue,
 loai_dich_vu.ten_loai_dich_vu
 from dich_vu 
 left join loai_dich_vu on loai_dich_vu.id_loai_dich_vu=dich_vu.id_loai_dich_vu
 left join hop_dong on hop_dong.id_dich_vu=dich_vu.id_dich_vu
-where (hop_dong.ngay_lam_hop_dong between '2018/01/01' and '2018/31/12/2018') 
-and (hop_dong.ngay_lam_hop_dong between '2019/01/01/2019' and '2019/31/12');
+where (year(hop_dong.ngay_lam_hop_dong))=2018
+and not (year(hop_dong.ngay_lam_hop_dong) =2019);
 
 /* task 8.Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
 Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên*/
@@ -312,3 +312,39 @@ left join hop_dong on hop_dong_chi_tiet.id_hop_dong=hop_dong.id_hop_dong
 left join khach_hang on khach_hang.id_loai_khach = hop_dong.id_khach_hang
 left join loai_khach on loai_khach.id_loai_khach=khach_hang.id_loai_khach
 where loai_khach.id_loai_khach="Diamond" and khach_hang.dia_chi = "Vinh" or khach_hang.dia_chi ="Quảng Ngãi";
+
+/*12.	Hiển thị thông tin IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu, 
+SoLuongDichVuDikem (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ
+ đã từng được khách hàng đặt vào 3 tháng cuối năm 2019 nhưng chưa từng được khách hàng đặt vào 6
+ tháng đầu năm 2019.
+*/
+select hop_dong.id_hop_dong, nhan_vien.ho_ten, khach_hang.ho_ten, khach_hang.sdt, dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, count(hop_dong_chi_tiet.id_dich_vu_di_kem) as SoLuongDichVuDikem
+from hop_dong
+left join nhan_vien on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
+left join khach_hang on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+left join dich_vu on dich_vu.id_dich_vu = hop_dong.id_dich_vu
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+where (month(hop_dong.ngay_lam_hop_dong)) in (10,11,12) and year(hop_dong.ngay_lam_hop_dong)=2019
+group by hop_dong.id_hop_dong;
+
+/* task 13. Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
+      (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).*/
+
+select ten_dich_vu_di_kem ,gia, sum(so_luong) as "Số lượng đặt"
+from hop_dong_chi_tiet
+	inner join dich_vu_di_kem on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by ten_dich_vu_di_kem
+order by "Số lượng đặt" desc;
+
+/* task 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
+ Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.*/
+ 
+ select ten_dich_vu_di_kem ,gia, sum(so_luong) as "Số lượng đặt"
+from hop_dong_chi_tiet
+	inner join dich_vu_di_kem on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by ten_dich_vu_di_kem
+having "Số lượng đặt"=1;
+
+
+
+

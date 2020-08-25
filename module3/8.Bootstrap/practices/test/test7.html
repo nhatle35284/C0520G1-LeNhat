@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<form class="" role="form">
+    <div class="form-group">
+        <label class="col-md-2 col-form-label">Focused</label>
+        <div class="col-md-10">
+            <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+        </div>
+    </div>
+    <div class="form-group">
+        <label form="inputPassword" class="col-md-2 col-form-label">Disabled</label>
+        <div class="col-md-10">
+            <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..."
+                   disabled>
+        </div>
+    </div>
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="disabledTextInput" class="col-md-2 col-form-label">Disabled input (Fieldset disabled)</label>
+            <div class="col-md-10">
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="disabledSelect" class="col-md-2 col-form-label">Disabled select menu (Fieldset disabled)</label>
+            <div class="col-md-10">
+                <select id="disabledSelect" class="form-control">
+                    <option>Disabled select</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group has-success">
+        <label class="col-md-2 col-form-label" for="inputSuccess">Input with success</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="inputSuccess">
+        </div>
+    </div>
+    <div class="form-group has-warning">
+        <label class="col-md-2 col-form-label" for="inputWarning">Input with warning</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="inputWarning">
+        </div>
+    </div>
+    <div class="form-group has-error">
+        <label class="col-md-2 col-form-label" for="inputError">Input with error</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="inputError">
+        </div>
+    </div>
+</form>
+</body>
+</html>
