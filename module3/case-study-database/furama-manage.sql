@@ -44,9 +44,9 @@ create table nhan_vien(
 	sdt varchar(45),
 	email varchar(45),
 	dia_chi varchar(45),
-    foreign key (id_vi_tri) references vi_tri(id_vi_tri),
-    foreign key (id_trinh_do) references trinh_do(id_trinh_do),
-    foreign key (id_bo_phan) references bo_phan(id_bo_phan)
+    foreign key (id_vi_tri) references vi_tri(id_vi_tri) on delete cascade on update cascade,
+    foreign key (id_trinh_do) references trinh_do(id_trinh_do)on delete cascade on update cascade,
+    foreign key (id_bo_phan) references bo_phan(id_bo_phan)on delete cascade on update cascade
 );
 create table loai_khach(
 	id_loai_khach int primary key,
@@ -61,7 +61,7 @@ create table khach_hang(
 	sdt varchar(45),
 	email varchar(45),
 	dia_chi varchar(45),
-    foreign key (id_loai_khach) references loai_khach(id_loai_khach)
+    foreign key (id_loai_khach) references loai_khach(id_loai_khach) on delete cascade on update cascade
 );
 create table kieu_thue(
 	id_kieu_thue int primary key ,
@@ -81,8 +81,8 @@ create table dich_vu(
     id_kieu_thue int,
     id_loai_dich_vu int,
     trang_thai varchar(45),
-    foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue),
-    foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)
+    foreign key (id_kieu_thue) references kieu_thue(id_kieu_thue) on delete cascade on update cascade,
+    foreign key (id_loai_dich_vu) references loai_dich_vu(id_loai_dich_vu)on delete cascade on update cascade
 );
 create table hop_dong( 
 	id_hop_dong int primary key,
@@ -93,8 +93,9 @@ create table hop_dong(
 	ngay_ket_thuc_hop_dong date,
 	tien_dat_coc double,
 	tong_tien double,
-    foreign key (id_khach_hang) references khach_hang(id_khach_hang),
-    foreign key (id_dich_vu) references dich_vu(id_dich_vu)
+    foreign key (id_khach_hang) references khach_hang(id_khach_hang)on delete cascade on update cascade,
+    foreign key (id_dich_vu) references dich_vu(id_dich_vu)on delete cascade on update cascade,
+    foreign key (id_nhan_vien) references nhan_vien(id_nhan_vien) on delete cascade on update cascade
 );
 create table dich_vu_di_kem(
 	id_dich_vu_di_kem int primary key,
@@ -108,8 +109,8 @@ create table hop_dong_chi_tiet(
 	id_hop_dong int,
 	id_dich_vu_di_kem int,
 	so_luong int,
-    foreign key(id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem),
-    foreign key(id_hop_dong) references hop_dong(id_hop_dong)
+    foreign key(id_dich_vu_di_kem) references dich_vu_di_kem(id_dich_vu_di_kem) on delete cascade on update cascade,
+    foreign key(id_hop_dong) references hop_dong(id_hop_dong) on delete cascade on update cascade
 );
 -- task 1.Thêm mới thông tin cho tất cả các bảng có trong CSDL để có thể thõa mãn các yêu cầu bên dưới.
 
@@ -154,7 +155,7 @@ values (1,"Diamond"),
 
 -- thêm Khách hàng
 insert into khach_hang 
-values (1,1,"Hoang Thi A",'1999/12/07',"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
+values (1,2,"Hoang Thi A",'1999/12/07',"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
 (2,3,"Tu Hong B",'2003/12/13',"312314124","0123452432","btuhong11@gmail.com","Quảng Trị"),
 (3,1,"Khanh Thi C",'1980/12/07',"312314124","0123452432","cthihoang11@gmail.com","Đà Nẵng"),
 (4,4,"Nguyen Thi D",'1999/12/07',"312314124","0123452432","dthihoang11@gmail.com","Quảng Trị");
@@ -181,9 +182,9 @@ values (1,"Villa1",70,4,2000,1,1,"Tốt"),
 -- thêm hợp đồng
 insert into hop_dong
 values (1,1,1,1,'2019/12/04','2020/07/05',100,2000),
-(2,1,3,1,'2020/12/04','2020/07/05',100,2000),
-(3,1,2,3,'2020/12/04','2020/07/05',100,2000),
-(4,1,2,2,'2020/12/04','2020/07/05',100,2000);
+(2,2,3,1,'2020/12/04','2020/07/05',100,2000),
+(3,3,2,3,'2020/12/04','2020/07/05',100,2000),
+(4,3,2,2,'2020/12/04','2020/07/05',100,2000);
 
 -- thêm loại dịch vụ di kèm
 insert into dich_vu_di_kem
@@ -290,7 +291,7 @@ having count(ho_ten)>=1;
 select substr(hop_dong.ngay_lam_hop_dong,6,2) as thang_2019 ,count(hop_dong.id_khach_hang) as so_lan_dat 
 from hop_dong
 where hop_dong.ngay_lam_hop_dong like '2019%'
-group by substr(hop_dong.ngay_lam_hop_dong,6,2);
+group by month(hop_dong.ngay_lam_hop_dong);
 
 /*task 10. Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. Kết quả 
  hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem 
@@ -359,13 +360,40 @@ from nhan_vien
     having so_luong_hop_dong <= 3;
 
 /*task 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.*/
+select*
+from nhan_vien;
+select*
+from hop_dong;
+
+delete from nhan_vien 
+where id_nhan_vien 
+	not in (select	hop_dong.id_nhan_vien 
+		from hop_dong 
+        where year(hop_dong.ngay_lam_hop_dong) in (2017,2018,2019));
+        
+select*
+from nhan_vien;
+select*
+from hop_dong;
 
 
+/*task 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond,
+ chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn
+ 10.000.000 VNĐ.*/
+select*
+from khach_hang;
 
-/*task 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond, 
-chỉ cập nhật những khách hàng đã từng đặt */
--- select*from khach_hang;
--- update khach_hang
--- set id_loai_khach="2"
--- where id_loai_khach=1;
--- select*from khach_hang
+update khach_hang
+set id_loai_khach=1
+where id_loai_khach in
+(select id_loai_khach
+from
+(select khach_hang.id_khach_hang,sum(hop_dong.tong_tien) as tong
+from khach_hang
+inner join hop_dong on khach_hang.id_khach_hang=hop_dong.id_khach_hang
+where khach_hang.id_loai_khach=2 and year(hop_dong.ngay_lam_hop_dong)=2019
+group by khach_hang.id_khach_hang
+having tong>1) as temp);
+
+select*
+from khach_hang
