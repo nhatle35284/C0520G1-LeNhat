@@ -345,6 +345,27 @@ from hop_dong_chi_tiet
 group by ten_dich_vu_di_kem
 having "Số lượng đặt"=1;
 
+/*task 15. Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo, TenBoPhan,
+	SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019. */
+
+select nhan_vien.id_nhan_vien, nhan_vien.ho_ten, trinh_do.ten_trinh_do, bo_phan.ten_bo_phan,
+ nhan_vien.sdt,nhan_vien.dia_chi ,count(hop_dong.id_hop_dong) as so_luong_hop_dong
+from nhan_vien
+	inner join trinh_do on trinh_do.id_trinh_do = nhan_vien.id_trinh_do
+    inner join bo_phan on bo_phan.id_bo_phan = nhan_vien.id_bo_phan
+    inner join hop_dong on hop_dong.id_nhan_vien = nhan_vien.id_nhan_vien
+    where year(ngay_lam_hop_dong) in (2018,2019)
+    group by nhan_vien.ho_ten
+    having so_luong_hop_dong <= 3;
+
+/*task 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.*/
 
 
 
+/*task 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond, 
+chỉ cập nhật những khách hàng đã từng đặt */
+-- select*from khach_hang;
+-- update khach_hang
+-- set id_loai_khach="2"
+-- where id_loai_khach=1;
+-- select*from khach_hang
