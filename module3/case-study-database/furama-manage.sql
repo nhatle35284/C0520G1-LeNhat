@@ -184,7 +184,7 @@ insert into hop_dong
 values (1,1,1,1,'2019/12/04','2020/07/05',100,2000),
 (2,2,3,1,'2020/12/04','2020/07/05',100,2000),
 (3,3,2,3,'2020/12/04','2020/07/05',100,2000),
-(4,3,2,2,'2020/12/04','2020/07/05',100,2000);
+(4,3,2,2,'2019/12/04','2020/07/05',100,2000);
 
 -- thêm loại dịch vụ di kèm
 insert into dich_vu_di_kem
@@ -196,10 +196,12 @@ values (1,"massage","50","USD","Tốt"),
 
 -- thêm hợp đồng chi tiết
 insert into hop_dong_chi_tiet
-values (1,1,1,2),
+values (1,1,1,5),
 (2,3,3,2),
 (3,4,2,2),
-(4,2,1,2);
+(4,2,1,6),
+(5,2,2,6),
+(6,2,1,6);
 
 /* task 2 .Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”,
  “T” hoặc “K” và có tối đa 15 ký tự.*/
@@ -393,7 +395,48 @@ from khach_hang
 inner join hop_dong on khach_hang.id_khach_hang=hop_dong.id_khach_hang
 where khach_hang.id_loai_khach=2 and year(hop_dong.ngay_lam_hop_dong)=2019
 group by khach_hang.id_khach_hang
-having tong>1) as temp);
+having tong>10000000) as temp);
 
 select*
-from khach_hang
+from khach_hang;
+
+/*task 18.	Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràngbuộc giữa các bảng).*/
+
+delete from khach_hang 
+where khach_hang.id_khach_hang in (
+select khach_hang.id_khach_hang
+from 
+	(select khach_hang.id_khach_hang 
+	from khach_hang 
+    inner join hop_dong on khach_hang.id_khach_hang = hop_dong.id_khach_hang
+    where year(hop_dong.ngay_lam_hop_dong)<2016 
+    and (hop_dong.id_khach_hang not in 
+		(select id_khach_hang 
+		from hop_dong 
+        where year(hop_dong.ngay_lam_hop_dong)>=2016)))as temp 
+);
+
+/*task 19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.*/
+select*from dich_vu_di_kem;
+select*from hop_dong;
+select*from hop_dong_chi_tiet;
+update dich_vu_di_kem 
+set gia = gia*2
+where  dich_vu_di_kem.id_dich_vu_di_kem in (
+select dich_vu_di_kem.id_dich_vu_di_kem
+from
+	(select hop_dong_chi_tiet.id_dich_vu_di_kem,sum(hop_dong_chi_tiet.so_luong)
+	from hop_dong_chi_tiet 
+    inner join hop_dong on hop_dong_chi_tiet.id_dich_vu_di_kem=hop_dong_chi_tiet.id_dich_vu_di_kem
+    where year(hop_dong.ngay_lam_hop_dong)=2019
+	group by hop_dong_chi_tiet.id_dich_vu_di_kem
+    having sum(so_luong)>10) as temp);
+
+/*task 20.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống, thông tin hiển
+ thị bao gồm ID (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi.*/
+ 
+select  id_nhan_vien, ho_ten, email, sdt, ngay_sinh, dia_chi
+from nhan_vien
+union
+select id_khach_hang , ho_ten, email, sdt, ngay_sinh, dia_chi
+from khach_hang;
