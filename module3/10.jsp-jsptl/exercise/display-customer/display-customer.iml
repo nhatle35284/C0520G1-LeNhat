@@ -23,7 +23,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/Compressed/jstl-1.2.jar.zip!/" />
+          <root url="jar://$MODULE_DIR$/../display-customers/jstl-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
