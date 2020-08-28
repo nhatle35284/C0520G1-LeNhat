@@ -13,6 +13,7 @@
     <title>$Title$</title>
   </head>
   <body>
+  <img src="/images/temp.jpg" alt="Not available">
   $END$
   </body>
 </html>

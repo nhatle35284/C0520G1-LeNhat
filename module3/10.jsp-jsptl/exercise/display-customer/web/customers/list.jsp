@@ -7,6 +7,8 @@
 </head>
 <body>
 <form method="post" action="customerList">
+
+
     <h1 style="margin-left: 100px ">Danh Sách Khách Hàng</h1>
 <table style="border: groove">
     <tr>
@@ -20,10 +22,9 @@
             <td><c:out value="${customer.name}"></c:out></td>
             <td><c:out value="${customer.birthday}"></c:out></td>
             <td><c:out value="${customer.address}"></c:out></td>
-            <td><c:out value="${customer.img}"></c:out></td>
+            <td>${customer.img}</td>
             </tr>
         </c:forEach>
-
 </table>
 </form>
 </body>

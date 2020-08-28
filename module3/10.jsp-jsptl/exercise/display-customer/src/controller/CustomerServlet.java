@@ -19,9 +19,10 @@ public class CustomerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customers> customersList = new ArrayList<>();
-        customersList.add(new Customers("Nhat","28/04/2000","Quang Trịi","m"));
-        customersList.add(new Customers("Chuong","28/04/1988","Quang Tri","m"));
-        customersList.add(new Customers("Quang","28/04/1996","Da Nang","m"));
+        String m1 = "<img src=\"image/Bao_Anh_(2)_(2018).png\" height =\"50\" width =\"50\">";
+        customersList.add(new Customers("Nhat","28/04/2000","Quang Tri",m1));
+        customersList.add(new Customers("Chuong","28/04/1988","Quang Tri",m1));
+        customersList.add(new Customers("Quang","28/04/1996","Da Nang",m1));
         request.setAttribute("customerListServlet",customersList);
 
         request.getRequestDispatcher("customers/list.jsp").forward(request,response);
