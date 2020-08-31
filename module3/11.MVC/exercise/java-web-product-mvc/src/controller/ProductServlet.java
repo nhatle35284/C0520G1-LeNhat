@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "ProductServlet",urlPatterns = "/productServlet")
+@WebServlet(name = "ProductServlet",urlPatterns = {"","/productServlet"})
 public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -63,7 +64,7 @@ public class ProductServlet extends HttpServlet {
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("listProduct", ProductDao.getListStudent());
-        request.getRequestDispatcher("WEB-INF/list.jsp").forward(request,response);
+        request.getRequestDispatcher("list.jsp").forward(request,response);
     }
     private void registerNewStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = (int) (Math.random()*1000);
@@ -101,10 +102,9 @@ public class ProductServlet extends HttpServlet {
     }
     private void findProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-
-        Product product = ProductDao.findByName(name);
-        request.setAttribute("product",product);
-        request.getRequestDispatcher("find.jsp").forward(request,response);
+        List<Product> product = ProductDao.findByName(name);
+        request.setAttribute("listProduct",product);
+        request.getRequestDispatcher("list.jsp").forward(request,response);
 
     }
 }

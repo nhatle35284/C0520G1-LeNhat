@@ -33,12 +33,14 @@ public class ProductDao {
         productMap.remove(id);
     }
 
-    public static Product findByName(String name) {
-        for (Map.Entry<Integer, Product> entry : productMap.entrySet()) {
-            if (name.equals(entry.getValue().getName())) {
-                System.out.println(entry.getKey() + "/" + entry.getValue());
+    public static List<Product> findByName(String name) {
+        List<Product> listProduct = new ArrayList<>(productMap.values());
+        List<Product> product = new ArrayList<>();
+        for (int i=0;i<listProduct.size();i++){
+            if (name.contains(listProduct.get(i).getName())){
+                product.add(listProduct.get(i));
             }
         }
-        return null;
+        return product;
     }
 }

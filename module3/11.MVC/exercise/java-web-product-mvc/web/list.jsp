@@ -15,9 +15,11 @@
 <a href="/productServlet?action=create">Create product</a>
 <p style="color: green">${message}</p>
 
-<form action="/productServlet" method="post">
-    <input type="text" name="name" value="name">
-    <input type="submit" value="Find">
+<form action="/productServlet">
+    <h3>Search By Name</h3>
+    <input type="hidden" name="action" value="find">
+    <input type="text" name="name">
+    <input type="submit" value="find">
 </form>
 <h3>List Student</h3>
 <table style="border:solid">

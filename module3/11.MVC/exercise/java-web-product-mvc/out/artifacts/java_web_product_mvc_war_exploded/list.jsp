@@ -14,9 +14,13 @@
 <body>
 <a href="/productServlet?action=create">Create product</a>
 <p style="color: green">${message}</p>
-<input type="text" name="name" value="${product.name}">
-<input type="submit" value="find">
 
+<form action="/productServlet">
+    <h3>Search By Name</h3>
+    <input type="hidden" name="action" value="find">
+    <input type="text" name="name">
+    <input type="submit" value="find">
+</form>
 <h3>List Student</h3>
 <table style="border:solid">
     <tr>
@@ -25,14 +29,14 @@
         <th>Action</th>
     </tr>
 
-        <c:forEach var="product" items="${listProduct}">
-            <tr>
+    <c:forEach var="product" items="${listProduct}">
+        <tr>
             <td>${product.id}</td>
             <td><a href="/productServlet?action=detail&id=${product.id}">${product.name}</a></td>
             <td><a href="/productServlet?action=update&id=${product.id}">Update</a></td>
             <td><a href="/productServlet?action=delete&id=${product.id}">Delete</a></td>
-            </tr>
-        </c:forEach>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>
