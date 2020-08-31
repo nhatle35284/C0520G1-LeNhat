@@ -1,7 +1,8 @@
 package controller;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-import dao.ProductDao;
+import bo.ProductBO;
+import bo.ProductBoImpl;
+import dao.ProductDaoImpl;
 import model.Product;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet",urlPatterns = {"","/productServlet"})
+
 public class ProductServlet extends HttpServlet {
+    ProductBO productBO = new ProductBoImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
@@ -63,26 +66,26 @@ public class ProductServlet extends HttpServlet {
 
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listProduct", ProductDao.getListStudent());
+        request.setAttribute("listProduct", productBO.getListProduct());
         request.getRequestDispatcher("list.jsp").forward(request,response);
     }
     private void registerNewStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = (int) (Math.random()*1000);
         String name = request.getParameter("name");
         Product product = new Product(id,name);
-        ProductDao.save(product);
+        productBO.save(product);
         request.setAttribute("message","create new product successfully!!");
         listProduct(request,response);
     }
     private void getInfoProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = Integer.valueOf(request.getParameter("id"));
-        Product product = ProductDao.findById(id);
+        Product product = productBO.findById(id);
         request.setAttribute("product",product);
         request.getRequestDispatcher("detail.jsp").forward(request,response);
     }
     private void goUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = Integer.valueOf(request.getParameter("id"));
-        Product product = ProductDao.findById(id);
+        Product product = productBO.findById(id);
         request.setAttribute("product",product);
         request.getRequestDispatcher("update.jsp").forward(request,response);
     }
@@ -90,21 +93,20 @@ public class ProductServlet extends HttpServlet {
         Integer id = Integer.valueOf(request.getParameter("id"));
         String name = request.getParameter("name");
         Product product = new Product(id,name);
-        ProductDao.save(product);
+        productBO.save(product);
         request.setAttribute("message","Update Information product successfully!!");
         listProduct(request,response);
     }
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = Integer.valueOf(request.getParameter("id"));
-        ProductDao.deleteById(id);
+        productBO.deleteById(id);
         request.setAttribute("message","Delete product successfully!!");
         listProduct(request,response);
     }
     private void findProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-        List<Product> product = ProductDao.findByName(name);
+        List<Product> product = productBO.findByName(name);
         request.setAttribute("listProduct",product);
         request.getRequestDispatcher("list.jsp").forward(request,response);
-
     }
 }
