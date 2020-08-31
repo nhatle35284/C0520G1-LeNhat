@@ -14,6 +14,8 @@
 <body>
 <a href="/productServlet?action=create">Create product</a>
 <p style="color: green">${message}</p>
+<input type="text" name="name" value="${product.name}">
+<input type="submit" value="find">
 
 <h3>List Student</h3>
 <table style="border:solid">

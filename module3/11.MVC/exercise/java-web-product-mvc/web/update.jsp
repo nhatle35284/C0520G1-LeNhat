@@ -13,7 +13,6 @@
 </head>
 <body>
 <form action="/productServlet" method="post">
-
     <input type="hidden" name="action" value="update">
     <input type="hidden" name="id" value="${product.id}">
     <label>Name: </label>

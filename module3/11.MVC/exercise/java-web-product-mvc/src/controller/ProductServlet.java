@@ -50,6 +50,9 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 deleteProduct(request,response);
                 break;
+            case "find":
+                findProduct(request,response);
+                break;
             default:
                 listProduct(request,response);
         }
@@ -95,5 +98,13 @@ public class ProductServlet extends HttpServlet {
         ProductDao.deleteById(id);
         request.setAttribute("message","Delete product successfully!!");
         listProduct(request,response);
+    }
+    private void findProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+
+        Product product = ProductDao.findByName(name);
+        request.setAttribute("product",product);
+        request.getRequestDispatcher("find.jsp").forward(request,response);
+
     }
 }
