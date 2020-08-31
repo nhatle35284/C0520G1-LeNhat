@@ -5,7 +5,7 @@
 <head>
     <title>Title</title>
 </head>
-<body cred>
+<body>
 <form method="post" action="customerList">
 
 
@@ -25,15 +25,6 @@
             <td>${customer.img}</td>
             </tr>
         </c:forEach>
-
-
-
-
-    <img src="avatar.jpg">
-
-
-    <img src="module3/10.jsp-jsptl/exercise/display-customer/avatar.jpg <%=request.getAttribute("ur l")%>"
-         width="200px">
 </table>
 </form>
 </body>

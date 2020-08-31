@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "CalculatorServlet",urlPatterns = "/calculate")
+@WebServlet(name = "CalculatorServlet",urlPatterns = "/calculate"   )
 public class CalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         float firstOperand = Integer.parseInt(request.getParameter("first-operand"));
