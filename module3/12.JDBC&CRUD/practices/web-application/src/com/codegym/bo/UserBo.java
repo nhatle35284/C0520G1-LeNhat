@@ -43,4 +43,14 @@ public class UserBo implements IUserBo {
     public List<User> sortAllUsers() {
         return iUserDAO.sortAllUsers();
     }
+
+    @Override
+    public User getUserById(int id) {
+        return iUserDAO.getUserById(id);
+    }
+
+    @Override
+    public void insertUserStore(User user) throws SQLException {
+        iUserDAO.insertUserStore(user);
+    }
 }

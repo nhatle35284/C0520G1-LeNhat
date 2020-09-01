@@ -21,4 +21,8 @@ public interface IUserDAO {
 
     List<User> sortAllUsers();
 
+    public User getUserById(int id);
+
+    public void insertUserStore(User user) throws SQLException;
+
 }

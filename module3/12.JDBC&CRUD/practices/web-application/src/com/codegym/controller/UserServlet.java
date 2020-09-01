@@ -62,11 +62,12 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         request.setAttribute("listUser",listUser);
 //        request.setAttribute("message","List ALL Users");
+
         try {
             dispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
     }
@@ -130,7 +131,8 @@ public class UserServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        User existingUser = iUserBo.selectUser(id);
+//        User existingUser = iUserBo.selectUser(id);
+        User existingUser = iUserBo.getUserById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         request.setAttribute("user", existingUser);
         dispatcher.forward(request, response);
@@ -143,7 +145,8 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
         User newUser = new User(name, email, country);
-        iUserBo.insertUser(newUser);
+//        iUserBo.insertUser(newUser);
+        iUserBo.insertUserStore(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
         dispatcher.forward(request, response);
     }
