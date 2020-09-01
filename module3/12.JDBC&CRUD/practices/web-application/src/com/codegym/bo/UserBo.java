@@ -33,4 +33,14 @@ public class UserBo implements IUserBo {
     public boolean updateUser(User user) throws SQLException {
         return false;
     }
+
+    @Override
+    public List<User> searchByCountry(String country) {
+        return iUserDAO.searchByCountry(country);
+    }
+
+    @Override
+    public List<User> sortAllUsers() {
+        return iUserDAO.sortAllUsers();
+    }
 }

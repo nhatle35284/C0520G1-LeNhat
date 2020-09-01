@@ -47,9 +47,27 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case "search":
+                    searchByCountry(request,response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
+        String country = request.getParameter("country");
+        List<User> listUser = this.iUserBo.searchByCountry(country);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
+        request.setAttribute("listUser",listUser);
+//        request.setAttribute("message","List ALL Users");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -71,12 +89,27 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
+                case "sort":
+                    showListSort(request,response);
                 default:
                     listUser(request, response);
                     break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void showListSort(HttpServletRequest request, HttpServletResponse response) {
+        List<User> listUser = this.iUserBo.sortAllUsers();
+        request.setAttribute("listUser",listUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -21,11 +21,31 @@ public class UserDAO implements IUserDAO{
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
-    private static final String SEARCH_USERS_SQL = "search form users where country =?;";
+    private static final String SEARCH_USERS_SQL = "select id,name,email,country from users where country like %?";
+    private static final String SORT_USERS_SQL = "select * from users order by `name`";
 
     public UserDAO() {
     }
 
+
+    public List<User> sortAllUsers() {
+        List<User> users1 = new ArrayList<>();
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SORT_USERS_SQL);) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users1.add(new User(id, name, email, country));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return users1;
+    }
 
     public void insertUser(User user) throws SQLException {
         System.out.println(INSERT_USERS_SQL);
@@ -135,26 +155,25 @@ public class UserDAO implements IUserDAO{
     }
 
     @Override
-    public List<User> searchByName() {
+    public List<User> searchByCountry(String country) {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        List<User> studentList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
 
         if (connection != null) {
             try {
                 statement = connection.prepareStatement(SEARCH_USERS_SQL);
+                statement.setString(1,country);
                 resultSet = statement.executeQuery();
                 User user = null;
                 while (resultSet.next()) {
                     user = new User();
-//                    if (user.getCountry().contains())
-                    {
-                        user.setName(resultSet.getString("name"));
-                        user.setEmail(resultSet.getString("email"));
-                        user.setCountry(resultSet.getString("country"));
-                        studentList.add(user);
-                    }
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setCountry(resultSet.getString("country"));
+                    userList.add(user);
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -167,6 +186,6 @@ public class UserDAO implements IUserDAO{
                 }
             }
         }
-        return studentList;
+        return userList;
     }
 }
