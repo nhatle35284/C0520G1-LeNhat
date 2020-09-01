@@ -19,10 +19,10 @@
     <h3>Search By Name</h3>
     <input type="hidden" name="action" value="find">
     <input type="text" name="name">
-    <input type="submit" value="find">
+    <input type="submit" value="find" style="background: chartreuse;width: 50px ;height: 50px">
 </form>
 <h3>List Student</h3>
-<table style="border:solid">
+<table style="border:groove ;width: 100%">
     <tr>
         <th>id</th>
         <th>Name</th>
@@ -30,7 +30,7 @@
     </tr>
 
     <c:forEach var="product" items="${listProduct}">
-        <tr>
+        <tr sty>
             <td>${product.id}</td>
             <td><a href="/productServlet?action=detail&id=${product.id}">${product.name}</a></td>
             <td><a href="/productServlet?action=update&id=${product.id}">Update</a></td>
