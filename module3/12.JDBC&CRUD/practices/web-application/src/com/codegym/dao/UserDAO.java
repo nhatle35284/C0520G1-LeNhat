@@ -160,7 +160,7 @@ public class UserDAO implements IUserDAO{
         if (connection != null) {
             try {
                 statement = connection.prepareStatement(SEARCH_USERS_SQL);
-                statement.setString(1,country);
+                statement.setString(1,"%"+country+"%");
                 resultSet = statement.executeQuery();
                 User user = null;
                 while (resultSet.next()) {
