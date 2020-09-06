@@ -18,6 +18,7 @@
     <!--    <link rel="stylesheet" href="../Bootstrap/bootstrap-4.5.2-dist/css/bootstrap.css">-->
     <!--    <script src="../Bootstrap/bootstrap-4.5.2-dist/jquery-3.5.1.min.js"></script>-->
 </head>
+
 <body style="background-image: url('https://www.marry.vn/wp-content/uploads/2015/10/21/Furama-Resort-Danang.jpg');">
 <div class="header">
     <div class="container-fluid">
@@ -52,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Employee</a>
@@ -75,7 +76,6 @@
             </nav>
         </div>
     </div>
-
 </div>
 
 <div>
@@ -83,9 +83,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2" style="display: flex;flex-direction: column;margin-top: 85px">
-                    <a  class="btn btn-primary" style="margin: 3px">
-                        <span>Add New Customer</span></a>
-                    <a class="btn btn-primary" style="margin: 3px"><span>Add New Employee</span></a>
+                    <a  class="btn btn-primary" style="margin: 3px" href="/homePage?action=create"><span>Add New Customer</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href=""><span>Add New Employee</span></a>
                     <a class="btn btn-primary" style="margin: 3px"> <span>Add New Service</span></a>
                     <a class="btn btn-primary" style="margin: 3px">
                         <span>Add New Contract</span></a>
@@ -96,13 +95,21 @@
                     <table class="table table-striped">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">age</th>
+                            <th scope="col">Customer id</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Customer Gender</th>
                             <th scope="col">address</th>
                         </tr>
                         </thead>
                         <tbody style="background-color: #f7f5f2">
+                        <c:forEach var="customer" items="${listCustomer}">
+                            <tr>
+                                <td><c:out value="${customer.customerId}"/></td>
+                                <td><c:out value="${customer.customerName}"/></td>
+                                <td><c:out value="${customer.customerGender}"/></td>
+                                <td><c:out value="${customer.customerAddress}"/></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                     <ul id="pagination">
@@ -129,7 +136,7 @@
     </div>
 </div>
 
-
 <!--  <script src="../Bootstrap/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>-->
 </body>
+
 </html>
