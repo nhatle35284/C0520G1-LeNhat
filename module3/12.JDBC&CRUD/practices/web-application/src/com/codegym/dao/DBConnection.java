@@ -9,9 +9,7 @@ public class DBConnection {
     private static String jdbcURL = "jdbc:mysql://localhost:3306/demo";
     private static String jdbcUsername = "root";
     private static String jdbcPassword = "nhatle";
-    private static final String HOST = "localhost";
-    private static final String PORT = "3306";
-    private static final String DATABASE = "user";
+
     public static Connection getConnection() {
         Connection connection = null;
         try {
@@ -25,8 +23,6 @@ public class DBConnection {
             e.printStackTrace();
         }
         return connection;
-
-
     }
 
 
