@@ -84,8 +84,8 @@
             <div class="row">
                 <div class="col-2" style="display: flex;flex-direction: column;margin-top: 85px">
                     <a  class="btn btn-primary" style="margin: 3px" href="/homePage?action=create"><span>Add New Customer</span></a>
-                    <a class="btn btn-primary" style="margin: 3px" href=""><span>Add New Employee</span></a>
-                    <a class="btn btn-primary" style="margin: 3px"> <span>Add New Service</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create-employee"><span>Add New Employee</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create-service"> <span>Add New Service</span></a>
                     <a class="btn btn-primary" style="margin: 3px">
                         <span>Add New Contract</span></a>
                     <a class="btn btn-primary" style="margin: 3px"> <span>Add New Contract Detail</span></a>

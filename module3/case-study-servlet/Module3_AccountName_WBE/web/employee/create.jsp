@@ -9,60 +9,78 @@
     <form method="post">
         <table border="1" cellpadding="5">
             <caption>
-                <h2>Add New Customer</h2>
+                <h2>Add New Employee</h2>
             </caption>
             <tr>
-                <th>Customer ID:</th>
+                <th>Employee ID:</th>
                 <td>
-                    <input type="text" name="customer_id" id="id" size="45"/>
+                    <input type="text" name="employee_id" id="id" size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Type ID:</th>
+                <th>Employee Name:</th>
                 <td>
-                    <input type="text" name="customer_type_id" id="type_id" size="45"/>
+                    <input type="text" name="employee_name" id="name" size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Name:</th>
+                <th>Employee Birthday:</th>
                 <td>
-                    <input type="text" name="customer_name" id="name" size="15"/>
+                    <input type="text" name="employee_birthday" id="birthday" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Birthday:</th>
+                <th>Employee Id Card:</th>
                 <td>
-                    <input type="text" name="customer_birthday" id="birthday" size="15"/>
+                    <input type="text" name="employee_id_card" id="id_card" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Gender:</th>
+                <th>Employee Salary:</th>
                 <td>
-                    <input type="text" name="customer_gender" id="gender" size="15"/>
+                    <input type="text" name="employee_salary" id="salary" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer ID Card:</th>
+                <th>Employee Phone:</th>
                 <td>
-                    <input type="text" name="customer_id_card" id="id_card" size="15"/>
+                    <input type="text" name="employee_phone" id="phone" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Phone:</th>
+                <th>Employee Email:</th>
                 <td>
-                    <input type="text" name="customer_phone" id="phone" size="15"/>
+                    <input type="text" name="employee_email" id="email" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Email:</th>
+                <th>Employee Address:</th>
                 <td>
-                    <input type="text" name="customer_email" id="email" size="15"/>
+                    <input type="text" name="employee_address" id="address" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Address:</th>
+                <th>Position ID:</th>
                 <td>
-                    <input type="text" name="customer_address" id="address" size="15"/>
+                    <input type="text" name="position_id" id="position_id" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Education Degree ID:</th>
+                <td>
+                    <input type="text" name="education_degree_id" id="education_degree_id" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Division ID:</th>
+                <td>
+                    <input type="text" name="division_id" id="division_id" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>User Name:</th>
+                <td>
+                    <input type="text" name="user_name" id="user_name" size="15"/>
                 </td>
             </tr>
             <tr>
