@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add New</title>
+    <title>Add New Customer</title>
 </head>
 <body>
 <div align="center">
@@ -54,13 +54,13 @@
                 </td>
             </tr>
             <tr>
-                <th>Customer Phone:</th>
+                <th>Customer Email:</th>
                 <td>
                     <input type="text" name="customer_email" id="email" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>Customer Phone:</th>
+                <th>Customer Address:</th>
                 <td>
                     <input type="text" name="customer_address" id="address" size="15"/>
                 </td>
@@ -71,6 +71,7 @@
                 </td>
             </tr>
         </table>
+        <button><a href="/homePage">Go Home</a></button>
     </form>
 </div>
 </body>

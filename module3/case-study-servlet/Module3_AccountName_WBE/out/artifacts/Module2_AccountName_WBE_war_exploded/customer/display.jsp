@@ -59,7 +59,7 @@
                             <a class="nav-link" href="#">Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Customer</a>
+                            <a class="nav-link" href="/homePage?action=list">Customer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Service</a>
