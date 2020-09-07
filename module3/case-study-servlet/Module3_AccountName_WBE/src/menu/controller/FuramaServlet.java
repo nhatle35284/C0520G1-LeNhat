@@ -49,7 +49,7 @@ public class FuramaServlet extends HttpServlet {
     }
 
     private void createEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int employeeId = Integer.parseInt(request.getParameter("employee_Id"));
+        int employeeId = Integer.parseInt(request.getParameter("employee_id"));
         String employeeName = request.getParameter("employee_name");
         String employeeBirthday = request.getParameter("employee_birthday");
         String employeeIdCard = request.getParameter("employee_id_card");
@@ -58,18 +58,13 @@ public class FuramaServlet extends HttpServlet {
         String employeeEmail = request.getParameter("employee_email");
         String employeeAddress = request.getParameter("employee_address");
         int positionId = Integer.parseInt(request.getParameter("position_id"));
-        int educationDegreeId = Integer.parseInt(request.getParameter("education_degreeId"));
+        int educationDegreeId = Integer.parseInt(request.getParameter("education_degree_id"));
         int divisionId = Integer.parseInt(request.getParameter("division_id"));
         String userName = request.getParameter("user_name");
         Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
         iEmployeeBo.insertEmployee(employee);
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee/create.jsp");
         dispatcher.forward(request, response);
-        try {
-            response.sendRedirect("/homePage");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void createService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -126,19 +121,19 @@ public class FuramaServlet extends HttpServlet {
     }
 
     private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer customerId = Integer.valueOf(request.getParameter("customer_id"));
-        Integer customerTypeId = Integer.valueOf(request.getParameter("customer_type_id"));
+        int customerId = Integer.parseInt(request.getParameter("customer_id"));
+        int customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
         String customerName = request.getParameter("customer_name");
         String customerBirthday = request.getParameter("customer_birthday");
-        Integer customerGender = Integer.valueOf(request.getParameter("customer_gender"));
-        Integer customerIdCard = Integer.valueOf(request.getParameter("customer_id_card"));
+        int customerGender = Integer.parseInt(request.getParameter("customer_gender"));
+        int customerIdCard = Integer.parseInt(request.getParameter("customer_id_card"));
         String customerPhone = request.getParameter("customer_phone");
         String customerEmail = request.getParameter("customer_email");
         String customerAddress = request.getParameter("customer_address");
 
         Customer customerAdd = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
         iCustomerBo.insertCustomer(customerAdd);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("furama/create_customer.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -151,11 +146,14 @@ public class FuramaServlet extends HttpServlet {
             case "create":
                 showNewCustomer(request, response);
                 break;
-            case "create-service":
+            case "create_service":
                 showNewService(request, response);
                 break;
-            case "create-employee":
+            case "create_employee":
                 showNewEmployee(request, response);
+                break;
+            case "list_employee":
+                showListEmployee(request,response);
                 break;
             case "list":
                 showList(request, response);
@@ -173,6 +171,19 @@ public class FuramaServlet extends HttpServlet {
             default:
                 showAllCustomer(request, response);
                 break;
+        }
+    }
+
+    private void showListEmployee(HttpServletRequest request, HttpServletResponse response) {
+        List<Employee> listEmployee = iEmployeeBo.selectAllEmployee();
+        request.setAttribute("listEmployee", listEmployee);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -197,7 +208,7 @@ public class FuramaServlet extends HttpServlet {
     private void showList(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> listCustomer = this.iCustomerBo.selectAllCustomer();
         request.setAttribute("listCustomer", listCustomer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

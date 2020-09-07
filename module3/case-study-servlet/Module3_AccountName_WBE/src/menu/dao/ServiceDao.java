@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class ServiceDao implements  IServiceDao {
     public static String SELECT_ALL_SERVICE = "select * from service";
-    public static String INSERT_SERVICE_SQL= "insert into service(service_id,service_name,service_area,service_cost,service_max_people,rent_type_id,\n" +
-            "    service_type_id,standard_room,description_order_conveninece,pool_area,number_floors) values (?,?,?,?,?,?,?,?,?,?,?)";
+    public static String INSERT_SERVICE_SQL= "insert into service(service_id,service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,standard_room,description_order_convenience ,pool_area,number_floors) " +
+            "values (?,?,?,?,?,?,?,?,?,?,?)";
 
     @Override
     public void insertService(Service service) {

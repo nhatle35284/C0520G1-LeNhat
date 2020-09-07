@@ -56,7 +56,7 @@
                             <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Employee</a>
+                            <a class="nav-link" href="/homePage?action=list_employee">Employee</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/homePage?action=list">Customer</a>
@@ -84,8 +84,8 @@
             <div class="row">
                 <div class="col-2" style="display: flex;flex-direction: column;margin-top: 85px">
                     <a  class="btn btn-primary" style="margin: 3px" href="/homePage?action=create"><span>Add New Customer</span></a>
-                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create-employee"><span>Add New Employee</span></a>
-                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create-service"> <span>Add New Service</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create_employee"><span>Add New Employee</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create_service"> <span>Add New Service</span></a>
                     <a class="btn btn-primary" style="margin: 3px">
                         <span>Add New Contract</span></a>
                     <a class="btn btn-primary" style="margin: 3px"> <span>Add New Contract Detail</span></a>
