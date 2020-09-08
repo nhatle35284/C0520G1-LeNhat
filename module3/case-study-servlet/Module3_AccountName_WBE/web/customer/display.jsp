@@ -86,9 +86,9 @@
                     <a  class="btn btn-primary" style="margin: 3px" href="/homePage?action=create"><span>Add New Customer</span></a>
                     <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create_employee"><span>Add New Employee</span></a>
                     <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create_service"> <span>Add New Service</span></a>
-                    <a class="btn btn-primary" style="margin: 3px">
+                    <a class="btn btn-primary" style="margin: 3px"href="/homePage?action=create_contract">
                         <span>Add New Contract</span></a>
-                    <a class="btn btn-primary" style="margin: 3px"> <span>Add New Contract Detail</span></a>
+                    <a class="btn btn-primary" style="margin: 3px" href="/homePage?action=create_contract_detail"> <span>Add New Contract Detail</span></a>
                 </div>
                 <div class="col-10" style="margin-top: 28px">
                     <h2 style="color: darkcyan ;text-align: center">List All Customers Use Services</h2>

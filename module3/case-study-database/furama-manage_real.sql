@@ -51,10 +51,10 @@ create table employee(
     education_degree_id int,
     division_id int,
     user_name varchar(45),
-    foreign key (position_id) references `position`(position_id) on delete cascade on update cascade,
-    foreign key (education_degree_id) references education_degree(education_degree_id) on delete cascade on update cascade,
-    foreign key (division_id) references division(division_id) on delete cascade on update cascade,
-    foreign key (user_name) references user(user_name) on delete cascade on update cascade
+    foreign key (position_id) references `position`(position_id) on delete cascade,
+    foreign key (education_degree_id) references education_degree(education_degree_id) on delete cascade,
+    foreign key (division_id) references division(division_id) on delete cascade,
+    foreign key (user_name) references user(user_name) on delete cascade
 );
 
 create table customer_type(
@@ -71,8 +71,8 @@ create table customer(
 	customer_id_card varchar(45),
 	customer_phone varchar(45),
 	customer_email varchar(45),
-	employee_address varchar(45),
-    foreign key (customer_type_id) references customer_type(customer_type_id) on delete cascade on update cascade
+	customer_address varchar(45),
+    foreign key (customer_type_id) references customer_type(customer_type_id) on delete cascade
 );
 
 create table `role`(
@@ -113,35 +113,34 @@ create table service(
     rent_type_id int,
     service_type_id int,
     standard_room varchar(45),
-    description_order_conveninece varchar(45),
+    description_order_convenience varchar(45),
     pool_area double,
     number_floors int,
-    foreign key (rent_type_id) references rent_type(rent_type_id) on delete cascade on update cascade,
-    foreign key (service_type_id) references service_type(service_type_id) on delete cascade on update cascade
+    foreign key (rent_type_id) references rent_type(rent_type_id) on delete cascade,
+    foreign key (service_type_id) references service_type(service_type_id) on delete cascade
 );
 
 create table contract(
 	contract_id int primary key,
-    contrac_start_date datetime,
-    contrac_end_date datetime,
+    contract_start_date datetime,
+    contract_end_date datetime,
     contract_deposit double,
     contract_total_money double,
     employee_id int,
     customer_id int,
     service_id int,
-    foreign key (employee_id) references employee(employee_id)on delete cascade on update cascade,
-    foreign key (customer_id) references customer(customer_id)on delete cascade on update cascade,
-    foreign key (service_id) references service(service_id)on delete cascade on update cascade
+    foreign key (employee_id) references employee(employee_id)on delete cascade,
+    foreign key (customer_id) references customer(customer_id)on delete cascade,
+    foreign key (service_id) references service(service_id)on delete cascade
 );
 
 create table contract_detail(
 	contract_detail_id int primary key,
 	contract_id int,
     attach_service_id int,
-    quatily int,
-    foreign key (contract_id) references contract(contract_id)on delete cascade on update cascade,
-    foreign key (attach_service_id) references attach_service(attach_service_id)on delete cascade on update cascade
-);
+    quantity int,
+    foreign key (contract_id) references contract(contract_id)on delete cascade,
+    foreign key (attach_service_id) references attach_service(attach_service_id)on delete cascade);
 
 -- thêm vị trí 
 insert into `position`(position_id,position_name) 
@@ -173,7 +172,8 @@ values ("minhminh32","123456a"),
 ("chuonghoang1234","123456d"),
 ("haitien123","123456e"),
 ("tungtu1234","123456f"),
-("hientran123","123456g");
+("hientran123","123456g"),
+("toan123","123456g");
 
 -- thêm nhân viên
 insert into employee (employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,
@@ -195,7 +195,7 @@ values (1,"Diamond"),
 
 -- thêm Khách hàng
 insert into customer (customer_id,customer_type_id,customer_name,customer_birthday,customer_gender,
-	customer_id_card,customer_phone,customer_email,employee_address)
+	customer_id_card,customer_phone,customer_email,customer_address)
 values (1,2,"Hoang Thi A",'1999/12/07',1,"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
 (2,3,"Tu Hong B",'2003/12/13',0,"312314124","0123452432","btuhong11@gmail.com","Quảng Trị"),
 (3,1,"Khanh Thi C",'1980/12/07',1,"312314124","0123452432","cthihoang11@gmail.com","Đà Nẵng"),
@@ -224,18 +224,29 @@ values (1,"Đêm",100),
 
 -- thêm dịch vụ
 insert into  service(service_id,service_name,service_area,service_cost,service_max_people,rent_type_id,
-    service_type_id,standard_room,description_order_conveninece,pool_area,number_floors) 
+    service_type_id,standard_room,description_order_convenience,pool_area,number_floors) 
 values (1,"Villa1",32.3,12000,4,1,1,"CUD","măt hàng",7.5,3),
 (2,"Villa2",32.3,12000,4,1,1,"CPD","măt hàng",7,3),
 (3,"House1",25.3,8000,4,1,1,"CRD","măt hàng",4.5,1),
 (4,"House",23.3,9000,4,1,1,"CUD","măt hàng",4,2);
 
 -- thêm hợp đồng
-insert into contract(contract_id,contrac_start_date,contrac_end_date,contract_deposit,contract_total_money,
+insert into contract(contract_id,contract_start_date,contract_end_date,contract_deposit,contract_total_money,
     employee_id,customer_id,service_id)
 values (1,'2019/12/04','2020/07/05',100,2000,1,1,1),
 (2,'2020/12/04','2020/07/05',100,2000,2,3,1),
 (3,'2020/12/04','2020/07/05',100,2000,3,2,3),
 (4,'2019/12/04','2020/07/05',100,2000,3,2,2);
 
+insert into contract_detail(contract_detail_id,contract_id,attach_service_id,quantity) 
+values (1,1,1,5),
+(2,3,3,2),
+(3,4,2,2),
+(4,2,1,3),
+(5,2,2,3),
+(6,2,1,3);
 select * from customer;
+
+select * from employee;
+
+select * from service;

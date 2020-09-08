@@ -2,10 +2,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>List Customer</title>
 </head>
 <body>
-
+<center>
+    <h2>List All Customer</h2>
+    <input type="hidden" name="action" value="search">
+    <input type="text" name="name">
+    <input type="submit" value="List Customer Using Service" style="background: chartreuse;width: 50px ;height: 25px">
+</center>
 <table border="1" cellpadding="5">
     <tr>
         <th>Customer id:</th>

@@ -14,6 +14,9 @@ public class Employee {
     private  int divisionId;
     private  String userName;
 
+    public Employee() {
+    }
+
     public Employee(int employeeId, String employeeName, String employeeBirthday, String employeeIdCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, int positionId, int educationDegreeId, int divisionId, String userName) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
@@ -29,20 +32,20 @@ public class Employee {
         this.userName = userName;
     }
 
-    public int getEmployee_Id() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployee_Id(int employee_Id) {
-        this.employeeId = employee_Id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getEmployee_Name() {
+    public String getEmployeeName() {
         return employeeName;
     }
 
-    public void setEmployee_Name(String employee_Name) {
-        this.employeeName = employee_Name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
     public String getEmployeeBirthday() {
