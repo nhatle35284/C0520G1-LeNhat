@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>List Employee</title>
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.min.css"/>
 </head>
 <body>
 <form action="/homePage?action=search_employee" method="post">
@@ -11,27 +13,48 @@
     <input type="text" name="name">
     <input type="submit" value="Search" style="background: chartreuse;width: 50px ;height: 25px">
 </form>
-<table border="1" cellpadding="5">
-    <tr>
-        <th>Employee id:</th>
-        <th>Employee name:</th>
-        <th>Employee ID Card:</th>
-        <th>Employee Address:</th>
-        <th>action:</th>
-    </tr>
-    <c:forEach var="employee1" items="${listEmployee}">
-        <tr>
-            <td>${employee1.employeeId}</td>
-            <td>${employee1.employeeName}</td>
-            <td>${employee1.employeeIdCard}</td>
-            <td>${employee1.employeeAddress}</td>
-            <td>
-                <a href="/homePage?action=edit_employee&id=${employee1.employeeId}">Edit</a>
-                <a href="/homePage?action=delete_employee&id=${employee1.employeeId}">Delete</a>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="tableStudent" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Employee id:</th>
+                    <th>Employee name:</th>
+                    <th>Employee ID Card:</th>
+                    <th>Employee Address:</th>
+                    <th>action:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="employee1" items="${listEmployee}">
+                    <tr>
+                        <td>${employee1.employeeId}</td>
+                        <td>${employee1.employeeName}</td>
+                        <td>${employee1.employeeIdCard}</td>
+                        <td>${employee1.employeeAddress}</td>
+                        <td>
+                            <a href="/homePage?action=edit_employee&id=${employee1.employeeId}">Edit</a>
+                            <a href="/homePage?action=delete_employee&id=${employee1.employeeId}">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../jquery/jquery-3.5.1.min.js"></script>
+<script src="../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableStudent').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 3
+        });
+    });</script>
 
 </body>
 </html>

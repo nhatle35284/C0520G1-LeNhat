@@ -23,6 +23,10 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
+    public Customer() {
+
+    }
+
     public int getCustomerId() {
         return customerId;
     }

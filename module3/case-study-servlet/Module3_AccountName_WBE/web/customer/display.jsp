@@ -62,14 +62,21 @@
                             <a class="nav-link" href="/homePage?action=list">Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Service</a>
+                            <a class="nav-link" href="/homePage?action=list_service">Service</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contract</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+<%--                    <form action="/homePage?action=search_customer" method="post">--%>
+<%--                        <h3>Search By Name</h3>--%>
+<%--                        <input type="hidden" name="action" value="search">--%>
+<%--                        <input type="text" name="name">--%>
+<%--                        <input type="submit" value="Search" style="background: chartreuse;width: 50px ;height: 25px">--%>
+<%--                    </form>--%>
+                    <form class="form-inline my-2 my-lg-0" action="/homePage?action=search_customer" method="post">
+                        <input type="hidden" name="action" value="search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="name">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>

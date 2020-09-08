@@ -3,6 +3,7 @@ package menu.bo.customerBo;
 import menu.dao.customerDao.CustomerDao;
 import menu.dao.customerDao.ICustomerDao;
 import menu.model.Customer;
+import menu.model.Employee;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -33,5 +34,10 @@ public class CustomerBo implements ICustomerBo {
     @Override
     public void deleteCustomer(int id) throws SQLException {
         iCustomerDao.deleteCustomer(id);
+    }
+
+    @Override
+    public List<Customer> searchByName(String name) {
+        return iCustomerDao.searchByName(name);
     }
 }

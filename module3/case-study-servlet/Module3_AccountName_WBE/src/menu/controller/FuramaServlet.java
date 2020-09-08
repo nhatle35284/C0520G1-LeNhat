@@ -6,6 +6,8 @@ import menu.bo.contractDetailBo.ContractDetailBo;
 import menu.bo.contractDetailBo.IContractDetailBo;
 import menu.bo.customerBo.CustomerBo;
 import menu.bo.customerBo.ICustomerBo;
+import menu.bo.customerUserServiceBo.CustomerUserServiceBo;
+import menu.bo.customerUserServiceBo.ICustomerUserServiceBo;
 import menu.bo.employeeBo.EmployeeBo;
 import menu.bo.employeeBo.IEmployeeBo;
 import menu.bo.serviceBo.IServiceBo;
@@ -29,6 +31,7 @@ public class FuramaServlet extends HttpServlet {
     IEmployeeBo iEmployeeBo = new EmployeeBo();
     IContractBo iContractBo = new ContractBo();
     IContractDetailBo iContractDetailBo = new ContractDetailBo();
+    ICustomerUserServiceBo iCustomerUserServiceBo = new CustomerUserServiceBo();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,6 +45,9 @@ public class FuramaServlet extends HttpServlet {
                 break;
             case "create_service":
                 createService(request, response);
+                break;
+            case "edit_service":
+                updateService(request, response);
                 break;
             case "create_contract":
                 createContract(request, response);
@@ -65,9 +71,80 @@ public class FuramaServlet extends HttpServlet {
             case "search_employee":
                 searchByName(request, response);
                 break;
+            case "search_service":
+                searchByNameService(request, response);
+                break;
+            case "search_customer":
+                searchByNameCustomer(request, response);
+                break;
             default:
                 break;
         }
+    }
+
+    private void searchByNameCustomer(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<Customer> listCustomer = null;
+        listCustomer = iCustomerBo.searchByName(name);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
+        request.setAttribute("listCustomer", listCustomer);
+//        request.setAttribute("message","List ALL Users");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void searchByNameService(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<Service> listService = null;
+        listService = iServiceBo.searchByName(name);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/list.jsp");
+        request.setAttribute("listService", listService);
+//        request.setAttribute("message","List ALL Users");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int serviceId = Integer.parseInt(request.getParameter("service_id"));
+        String serviceName = request.getParameter("service_name");
+        double serviceArea = Double.parseDouble(request.getParameter("service_area"));
+        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
+        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rentType_id"));
+        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
+        String standardRoom = request.getParameter("standard_room");
+        String descriptionOrderConvenience = request.getParameter("description_order_convenience");
+        int poolArea = Integer.parseInt(request.getParameter("pool_area"));
+        int numberFloor = Integer.parseInt(request.getParameter("number_floor"));
+        Service service = new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloor);
+        try {
+            iServiceBo.updateService(service);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/edit.jsp");
+
+        dispatcher.forward(request, response);
+    }
+
+    private void deleteService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+//        iServiceBo.deleteCustomer(id);
+
+        List<Service> listService = iServiceBo.selectAllService();
+        request.setAttribute("listService", listService);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/list.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void createContractDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,7 +153,7 @@ public class FuramaServlet extends HttpServlet {
         int contract_id = Integer.parseInt(request.getParameter("contract_id"));
         int quantity = Integer.parseInt(request.getParameter("attach_service_id"));
         int attach_service_id = Integer.parseInt(request.getParameter("quantity"));
-        ContractDetail contractDetail = new ContractDetail(attach_service_id,contract_detail_id, contract_id, quantity);
+        ContractDetail contractDetail = new ContractDetail(attach_service_id, contract_detail_id, contract_id, quantity);
         iContractDetailBo.insertContractDetail(contractDetail);
         RequestDispatcher dispatcher = request.getRequestDispatcher("contract_detail/create.jsp");
         dispatcher.forward(request, response);
@@ -192,7 +269,7 @@ public class FuramaServlet extends HttpServlet {
 
         List<Customer> ListCustomer = iCustomerBo.selectAllCustomer();
         request.setAttribute("ListCustomer", ListCustomer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -250,6 +327,12 @@ public class FuramaServlet extends HttpServlet {
             case "list_employee":
                 showListEmployee(request, response);
                 break;
+            case "list_user_service":
+                showListUserService(request, response);
+                break;
+            case "list_service":
+                showListService(request, response);
+                break;
             case "list":
                 showList(request, response);
                 break;
@@ -266,8 +349,14 @@ public class FuramaServlet extends HttpServlet {
             case "edit_employee":
                 showUpdateEmployee(request, response);
                 break;
+            case "edit_service":
+                showUpdateService(request, response);
+                break;
             case "delete_employee":
                 deleteEmployee(request, response);
+                break;
+            case "delete_service":
+                deleteService(request, response);
                 break;
             default:
                 showAllCustomer(request, response);
@@ -275,13 +364,51 @@ public class FuramaServlet extends HttpServlet {
         }
     }
 
-    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) {
+    private void showUpdateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Service existingService = iServiceBo.getServiceById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/edit.jsp");
+        request.setAttribute("service", existingService);
+        dispatcher.forward(request, response);
+    }
+
+    private void showListService(HttpServletRequest request, HttpServletResponse response) {
+        List<Service> listService = iServiceBo.selectAllService();
+        request.setAttribute("listService", listService);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showListUserService(HttpServletRequest request, HttpServletResponse response) {
+        List<CustomerUserService> listUserService = iCustomerUserServiceBo.selectCustomerUserService();
+        request.setAttribute("listUserService", listUserService);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/customer_using_service.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             iEmployeeBo.deleteEmployee(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        List<Employee> listEmployee = iEmployeeBo.selectAllEmployee();
+        request.setAttribute("listEmployee", listEmployee);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/list.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void showUpdateEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

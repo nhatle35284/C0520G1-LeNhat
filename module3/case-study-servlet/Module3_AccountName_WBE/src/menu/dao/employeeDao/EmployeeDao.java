@@ -1,7 +1,6 @@
 package menu.dao.employeeDao;
 
 import menu.dao.DBConnection;
-import menu.model.Customer;
 import menu.model.Employee;
 
 import java.sql.Connection;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class EmployeeDao implements IEmployeeDao {
     public static String SELECT_ALL_EMPLOYEE = "select * from employee";
-    public static String DELETE_CUSTOMER_SQL = "delete from employee where employee_id=?";
+    public static String DELETE_EMPLOYEE_SQL = "delete from employee where employee_id=?";
     public static String SEARCH_EMPLOYEE_SQL = "select *from employee where employee_name like ?";
     public static String FIND_EMPLOYEE_SQL = "select employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,employee_address,position_id,education_degree_id,division_id,user_name from employee where employee_id=?";
     private static final String INSERT_EMPLOYEE_SQL = "insert into employee (employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,employee_address,position_id,education_degree_id,division_id,user_name) vvalues (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -124,7 +123,7 @@ public class EmployeeDao implements IEmployeeDao {
     public void deleteEmployee(int id) throws SQLException {
         try {
             Connection connection = DBConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_SQL);
+            PreparedStatement statement = connection.prepareStatement(DELETE_EMPLOYEE_SQL);
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {

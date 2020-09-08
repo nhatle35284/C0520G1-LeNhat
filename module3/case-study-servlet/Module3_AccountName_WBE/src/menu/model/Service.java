@@ -27,6 +27,10 @@ public class Service {
         this.numberFloor = numberFloor;
     }
 
+    public Service() {
+
+    }
+
     public int getServiceId() {
         return serviceId;
     }

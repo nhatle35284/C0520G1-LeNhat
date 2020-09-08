@@ -2,6 +2,7 @@ package menu.dao.customerDao;
 
 import menu.dao.DBConnection;
 import menu.model.Customer;
+import menu.model.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,8 @@ public class CustomerDao implements ICustomerDao {
     public static String DELETE_CUSTOMER_SQL = "delete from customer where customer_id=?";
     public static String UPDATE_CUSTOMER_SQL = "update customer set customer_type_id=?,customer_name=?,customer_birthday=?,customer_gender=?,customer_id_card=?,customer_phone=?,customer_email=?,customer_address=? where customer_id=?";
     public static String FIND_CUSTOMER_SQL = "select customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address from customer where customer_id=?";
+    public static String SEARCH_CUSTOMER_SQL = "select * from customer where customer_name like ?";
+
 
     @Override
     public void insertCustomer(Customer customer) {
@@ -119,4 +122,44 @@ public class CustomerDao implements ICustomerDao {
         }
 
     }
+    @Override
+    public List<Customer> searchByName(String name) {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Customer> customerList = new ArrayList<>();
+
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(SEARCH_CUSTOMER_SQL);
+                statement.setString(1, "%" + name + "%");
+                resultSet = statement.executeQuery();
+                Customer customer = null;
+                while (resultSet.next()) {
+                    customer = new Customer();
+                    customer.setCustomerId(resultSet.getInt("customer_id"));
+                    customer.setCustomerTypeId(resultSet.getInt("customer_type_id"));
+                    customer.setCustomerName(resultSet.getString("customer_name"));
+                    customer.setCustomerBirthday(resultSet.getString("customer_birthday"));
+                    customer.setCustomerGender(resultSet.getInt("customer_gender"));
+                    customer.setCustomerIdCard(resultSet.getInt("customer_id_card"));
+                    customer.setCustomerPhone(resultSet.getString("customer_phone"));
+                    customer.setCustomerEmail(resultSet.getString("customer_email"));
+                    customer.setCustomerAddress(resultSet.getString("customer_address"));
+                    customerList.add(customer);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    resultSet.close();
+                    statement.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        return customerList;
+    }
+
 }
