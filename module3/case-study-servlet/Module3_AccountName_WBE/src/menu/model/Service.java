@@ -1,7 +1,7 @@
 package menu.model;
 
 public class Service {
-    private int serviceId;
+    private String serviceId;
     private String serviceName;
     private double serviceArea;
     private double serviceCost;
@@ -13,7 +13,7 @@ public class Service {
     private double poolArea;
     private int numberFloor;
 
-    public Service(int serviceId, String serviceName, double serviceArea, double serviceCost, int serviceMaxPeople, int rentTypeId, int serviceTypeId, String standardRoom, String descriptionOrderConvenience, double poolArea, int numberFloor) {
+    public Service(String serviceId, String serviceName, double serviceArea, double serviceCost, int serviceMaxPeople, int rentTypeId, int serviceTypeId, String standardRoom, String descriptionOrderConvenience, double poolArea, int numberFloor) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
@@ -31,11 +31,11 @@ public class Service {
 
     }
 
-    public int getServiceId() {
+    public String getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(String serviceId) {
         this.serviceId = serviceId;
     }
 

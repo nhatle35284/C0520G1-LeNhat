@@ -21,7 +21,7 @@ public class ServiceBo implements IServiceBo {
     }
 
     @Override
-    public Service getServiceById(int id) {
+    public Service getServiceById(String id) {
         return iServiceDao.getServiceById(id);
     }
 

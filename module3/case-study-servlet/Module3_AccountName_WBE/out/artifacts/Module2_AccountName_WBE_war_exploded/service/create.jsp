@@ -11,6 +11,11 @@
             <caption>
                 <h2>Add New Service</h2>
             </caption>
+            <p>
+                <c:if test="${message != null}">
+                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
+                </c:if>
+            </p>
             <tr>
                 <th>Service ID:</th>
                 <td>

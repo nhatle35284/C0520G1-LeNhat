@@ -1,8 +1,6 @@
 package menu.dao.customerUserService;
 
-import jdk.management.resource.internal.inst.ServerSocketChannelImplRMHooks;
 import menu.dao.DBConnection;
-import menu.model.Customer;
 import menu.model.CustomerUserService;
 import menu.model.Service;
 
@@ -30,9 +28,9 @@ public class CustomerUserServiceDao implements ICustomerUserServiceDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                int customerId = rs.getInt("customer_id");
+                String customerId = rs.getString("customer_id");
                 String customerName = rs.getString("customer_name");
-                int serviceId = rs.getInt("service_id");
+                String serviceId = rs.getString("service_id");
                 String serviceName = rs.getString("service_name");
                 int contractId = rs.getInt("contract_id");
                 String attachServiceName = rs.getString("attach_service_name");
@@ -52,7 +50,7 @@ public class CustomerUserServiceDao implements ICustomerUserServiceDao {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVCIE);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int serviceId = rs.getInt("service_id");
+                String serviceId = rs.getString("service_id");
                 String serviceName = rs.getString("service_name");
                 double serviceArea = rs.getDouble("service_area");
                 double serviceCost = rs.getDouble("service_cost");

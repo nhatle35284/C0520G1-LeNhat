@@ -2,7 +2,6 @@ package menu.dao.customerDao;
 
 import menu.dao.DBConnection;
 import menu.model.Customer;
-import menu.model.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,7 +24,7 @@ public class CustomerDao implements ICustomerDao {
         Connection connection = DBConnection.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL);
-            preparedStatement.setInt(1, customer.getCustomerId());
+            preparedStatement.setString(1, customer.getCustomerId());
             preparedStatement.setInt(2, customer.getCustomerTypeId());
             preparedStatement.setString(3, customer.getCustomerName());
             preparedStatement.setString(4, customer.getCustomerBirthday());
@@ -49,7 +48,7 @@ public class CustomerDao implements ICustomerDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                int customerId = rs.getInt("customer_id");
+                String customerId = rs.getString("customer_id");
                 int customerTypeId = rs.getInt("customer_type_id");
                 String customerName = rs.getString("customer_name");
                 String customerBirthday = rs.getString("customer_birthday");
@@ -79,18 +78,18 @@ public class CustomerDao implements ICustomerDao {
         statement.setString(6, customer.getCustomerPhone());
         statement.setString(7, customer.getCustomerEmail());
         statement.setString(8, customer.getCustomerAddress());
-        statement.setInt(9, customer.getCustomerId());
+        statement.setString(9, customer.getCustomerId());
         statement.executeUpdate();
     }
 
     @Override
-    public Customer getCustomerById(int id) {
+    public Customer getCustomerById(String id) {
         Customer customer = null;
         Connection connection = DBConnection.getConnection();
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(FIND_CUSTOMER_SQL);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int customerTypeId = rs.getInt("customer_type_id");
@@ -137,7 +136,7 @@ public class CustomerDao implements ICustomerDao {
                 Customer customer = null;
                 while (resultSet.next()) {
                     customer = new Customer();
-                    customer.setCustomerId(resultSet.getInt("customer_id"));
+                    customer.setCustomerId(resultSet.getString("customer_id"));
                     customer.setCustomerTypeId(resultSet.getInt("customer_type_id"));
                     customer.setCustomerName(resultSet.getString("customer_name"));
                     customer.setCustomerBirthday(resultSet.getString("customer_birthday"));

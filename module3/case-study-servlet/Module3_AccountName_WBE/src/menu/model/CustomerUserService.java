@@ -2,14 +2,14 @@ package menu.model;
 
 public class CustomerUserService {
 //    customer.customer_id,customer.customer_name,service.service_id,service.service_name,contract.contract_id,attach_service.attach_service_name
-    private int customerId;
+    private String customerId;
     private String customerName;
-    private int serviceId;
+    private String serviceId;
     private String serviceName;
     private int contractId;
     private String attachServiceName;
 
-    public CustomerUserService(int customerId, String customerName, int serviceId, String serviceName, int contractId, String attachServiceName) {
+    public CustomerUserService(String customerId, String customerName, String serviceId, String serviceName, int contractId, String attachServiceName) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.serviceId = serviceId;
@@ -18,11 +18,11 @@ public class CustomerUserService {
         this.attachServiceName = attachServiceName;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
@@ -34,11 +34,11 @@ public class CustomerUserService {
         this.customerName = customerName;
     }
 
-    public int getServiceId() {
+    public String getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(String serviceId) {
         this.serviceId = serviceId;
     }
 

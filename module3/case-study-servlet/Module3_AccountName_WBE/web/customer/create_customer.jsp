@@ -11,6 +11,11 @@
             <caption>
                 <h2>Add New Customer</h2>
             </caption>
+            <p>
+                <c:if test="${message != null}">
+                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
+                </c:if>
+            </p>
             <tr>
                 <th>Customer ID:</th>
                 <td>
@@ -32,7 +37,7 @@
             <tr>
                 <th>Customer Birthday:</th>
                 <td>
-                    <input type="text" name="customer_birthday" id="birthday" size="15"/>
+                    <input type="date" name="customer_birthday" id="birthday" size="15"/>
                 </td>
             </tr>
             <tr>

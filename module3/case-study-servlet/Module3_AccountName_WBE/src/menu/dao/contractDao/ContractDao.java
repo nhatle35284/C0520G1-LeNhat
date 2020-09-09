@@ -20,8 +20,8 @@ public class ContractDao implements  IContractDao {
             preparedStatement.setDouble(4, contract.getContractDeposit());
             preparedStatement.setDouble(5, contract.getContractTotalMoney());
             preparedStatement.setInt(6, contract.getEmployeeId());
-            preparedStatement.setInt(7, contract.getCustomerId());
-            preparedStatement.setInt(8, contract.getServiceId());
+            preparedStatement.setString(7, contract.getCustomerId());
+            preparedStatement.setString(8, contract.getServiceId());
             preparedStatement.executeUpdate();
         } catch (
                 SQLException e) {

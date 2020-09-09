@@ -1,5 +1,6 @@
 package menu.controller;
 
+import menu.bo.common.Validate;
 import menu.bo.contractBo.ContractBo;
 import menu.bo.contractBo.IContractBo;
 import menu.bo.contractDetailBo.ContractDetailBo;
@@ -43,21 +44,6 @@ public class FuramaServlet extends HttpServlet {
             case "create":
                 insertCustomer(request, response);
                 break;
-            case "create_service":
-                createService(request, response);
-                break;
-            case "edit_service":
-                updateService(request, response);
-                break;
-            case "create_contract":
-                createContract(request, response);
-                break;
-            case "create_contract_detail":
-                createContractDetail(request, response);
-                break;
-            case "create_employee":
-                createEmployee(request, response);
-                break;
             case "edit":
                 try {
                     updateCustomer(request, response);
@@ -65,21 +51,81 @@ public class FuramaServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "search_customer":
+                searchByNameCustomer(request, response);
+                break;
+            case "create_service":
+                createService(request, response);
+                break;
+            case "edit_service":
+                updateService(request, response);
+                break;
+            case "search_service":
+                searchByNameService(request, response);
+                break;
+            case "create_employee":
+                createEmployee(request, response);
+                break;
             case "edit_employee":
                 updateEmployee(request, response);
                 break;
             case "search_employee":
                 searchByName(request, response);
                 break;
-            case "search_service":
-                searchByNameService(request, response);
+            case "create_contract":
+                createContract(request, response);
                 break;
-            case "search_customer":
-                searchByNameCustomer(request, response);
+            case "create_contract_detail":
+                createContractDetail(request, response);
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * CRUD Customer Do Post
+     **/
+    private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String customerId = request.getParameter("customer_id");
+        int customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
+        String customerName = request.getParameter("customer_name");
+        String customerBirthday = request.getParameter("customer_birthday");
+        int customerGender = Integer.parseInt(request.getParameter("customer_gender"));
+        int customerIdCard = Integer.parseInt(request.getParameter("customer_id_card"));
+        String customerPhone = request.getParameter("customer_phone");
+        String customerEmail = request.getParameter("customer_email");
+        String customerAddress = request.getParameter("customer_address");
+        if (Validate.isValid(customerId, Validate.REGEX_ID_CUSTOMER)) {
+            Customer customerAdd = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
+            iCustomerBo.insertCustomer(customerAdd);
+        } else {
+            request.setAttribute("message", "Enter the wrong customer id!!");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String customerId = request.getParameter("customer_id");
+        int customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
+        String customerName = request.getParameter("customer_name");
+        String customerBirthday = request.getParameter("customer_birthday");
+        int customerGender = Integer.parseInt(request.getParameter("customer_gender"));
+        int customerIdCard = Integer.parseInt(request.getParameter("customer_id_card"));
+        String customerPhone = request.getParameter("customer_phone");
+        String customerEmail = request.getParameter("customer_email");
+        String customerAddress = request.getParameter("customer_address");
+        if (Validate.isValid(customerId, Validate.REGEX_ID_CUSTOMER)) {
+            Customer customer = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
+
+            iCustomerBo.updateCustomer(customer);
+        } else {
+            request.setAttribute("message", "Enter wrong customer id!!(KH_XXXX)");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
+
+        dispatcher.forward(request, response);
     }
 
     private void searchByNameCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -98,6 +144,67 @@ public class FuramaServlet extends HttpServlet {
         }
     }
 
+    /**
+     * END CRUD Customer Do Post
+     * <p>
+     * /** CRUD Service do do Post
+     **/
+
+    private void createService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String serviceId = request.getParameter("service_id");
+        String serviceName = request.getParameter("service_name");
+        double serviceArea = Double.parseDouble(request.getParameter("service_area"));
+        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
+        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
+        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
+        String standardRoom = request.getParameter("standard_room");
+        String descriptionOrderConvenience = request.getParameter("description_order_convenience");
+        double poolArea = Double.parseDouble(request.getParameter("pool_area"));
+        int numberFloors = Integer.parseInt(request.getParameter("number_floors"));
+        if (Validate.isValid(serviceId, Validate.REGEX_ID_SERVICE)) {
+            Service service = new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloors);
+            iServiceBo.insertService(service);
+        } else {
+            request.setAttribute("message", "Enter wrong Service id!!(SV_XXXX)");
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/create.jsp");
+        dispatcher.forward(request, response);
+        try {
+            response.sendRedirect("/homePage");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String serviceId = request.getParameter("service_id");
+        String serviceName = request.getParameter("service_name");
+        double serviceArea = Double.parseDouble(request.getParameter("service_area"));
+        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
+        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
+        int rentTypeId = Integer.parseInt(request.getParameter("rentType_id"));
+        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
+        String standardRoom = request.getParameter("standard_room");
+        String descriptionOrderConvenience = request.getParameter("description_order_convenience");
+        int poolArea = Integer.parseInt(request.getParameter("pool_area"));
+        int numberFloor = Integer.parseInt(request.getParameter("number_floor"));
+        if (Validate.isValid(serviceId, Validate.REGEX_ID_SERVICE)) {
+            Service service = new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloor);
+            try {
+                iServiceBo.updateService(service);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            request.setAttribute("message", "Enter wrong service id!!(SV_XXXX");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/edit.jsp");
+
+        dispatcher.forward(request, response);
+    }
+
     private void searchByNameService(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         List<Service> listService = null;
@@ -113,64 +220,59 @@ public class FuramaServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    /** END CRUD Service do Post**/
 
-    private void updateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int serviceId = Integer.parseInt(request.getParameter("service_id"));
-        String serviceName = request.getParameter("service_name");
-        double serviceArea = Double.parseDouble(request.getParameter("service_area"));
-        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
-        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
-        int rentTypeId = Integer.parseInt(request.getParameter("rentType_id"));
-        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
-        String standardRoom = request.getParameter("standard_room");
-        String descriptionOrderConvenience = request.getParameter("description_order_convenience");
-        int poolArea = Integer.parseInt(request.getParameter("pool_area"));
-        int numberFloor = Integer.parseInt(request.getParameter("number_floor"));
-        Service service = new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloor);
-        try {
-            iServiceBo.updateService(service);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    /**
+     * CRUD Employee do Post
+     **/
+    private void createEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int employeeId = Integer.parseInt(request.getParameter("employee_id"));
+        String employeeName = request.getParameter("employee_name");
+        String employeeBirthday = request.getParameter("employee_birthday");
+        String employeeIdCard = request.getParameter("employee_id_card");
+        double employeeSalary = Double.parseDouble(request.getParameter("employee_salary"));
+        String employeePhone = request.getParameter("employee_phone");
+        String employeeEmail = request.getParameter("employee_email");
+        String employeeAddress = request.getParameter("employee_address");
+        int positionId = Integer.parseInt(request.getParameter("position_id"));
+        int educationDegreeId = Integer.parseInt(request.getParameter("education_degree_id"));
+        int divisionId = Integer.parseInt(request.getParameter("division_id"));
+        String userName = request.getParameter("user_name");
+        if (Validate.isValid(employeePhone, Validate.REGEX_NUMBER_PHONE)) {
+            Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
+            iEmployeeBo.insertEmployee(employee);
+        } else {
+            request.setAttribute("message", "Enter wrong Number Phone");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/create.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int employeeId = Integer.parseInt(request.getParameter("employee_id"));
+        String employeeName = request.getParameter("employee_name");
+        String employeeBirthday = request.getParameter("employee_birthday");
+        String employeeIdCard = request.getParameter("employee_id_card");
+        double employeeSalary = Double.parseDouble(request.getParameter("employee_salary"));
+        String employeePhone = request.getParameter("employee_phone");
+        String employeeEmail = request.getParameter("employee_email");
+        String employeeAddress = request.getParameter("employee_address");
+        int positionId = Integer.parseInt(request.getParameter("position_id"));
+        int educationDegreeId = Integer.parseInt(request.getParameter("education_degree_id"));
+        int divisionId = Integer.parseInt(request.getParameter("division_id"));
+        String userName = request.getParameter("user_name");
+        if (Validate.isValid(employeePhone, Validate.REGEX_NUMBER_PHONE)) {
+            Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
+            try {
+                iEmployeeBo.updateEmployee(employee);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            request.setAttribute("message", "Enter Wrong number phone!!!");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee/edit.jsp");
 
-        dispatcher.forward(request, response);
-    }
-
-    private void deleteService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-//        iServiceBo.deleteCustomer(id);
-
-        List<Service> listService = iServiceBo.selectAllService();
-        request.setAttribute("listService", listService);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("service/list.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void createContractDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //contract_detail_id,contract_id,attach_service_id,quantity
-        int contract_detail_id = Integer.parseInt(request.getParameter("contract_detail_id"));
-        int contract_id = Integer.parseInt(request.getParameter("contract_id"));
-        int quantity = Integer.parseInt(request.getParameter("attach_service_id"));
-        int attach_service_id = Integer.parseInt(request.getParameter("quantity"));
-        ContractDetail contractDetail = new ContractDetail(attach_service_id, contract_detail_id, contract_id, quantity);
-        iContractDetailBo.insertContractDetail(contractDetail);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("contract_detail/create.jsp");
-        dispatcher.forward(request, response);
-    }
-
-    private void createContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int contract_id = Integer.parseInt(request.getParameter("contract_id"));
-        String contract_start_date = request.getParameter("contract_start_date");
-        String contract_end_date = request.getParameter("contract_end_date");
-        double contract_deposit = Double.parseDouble(request.getParameter("contract_deposit"));
-        double contract_total_money = Double.parseDouble(request.getParameter("contract_total_money"));
-        int employee_id = Integer.parseInt(request.getParameter("employee_id"));
-        int customer_id = Integer.parseInt(request.getParameter("customer_id"));
-        int service_id = Integer.parseInt(request.getParameter("service_id"));
-        Contract contract = new Contract(contract_id, contract_start_date, contract_end_date, contract_deposit, contract_total_money, employee_id, customer_id, service_id);
-        iContractBo.insertContract(contract);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("contract/create.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -194,74 +296,55 @@ public class FuramaServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    /** END CRUD Employee do Post**/
 
-    private void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int employeeId = Integer.parseInt(request.getParameter("employee_id"));
-        String employeeName = request.getParameter("employee_name");
-        String employeeBirthday = request.getParameter("employee_birthday");
-        String employeeIdCard = request.getParameter("employee_id_card");
-        double employeeSalary = Double.parseDouble(request.getParameter("employee_salary"));
-        String employeePhone = request.getParameter("employee_phone");
-        String employeeEmail = request.getParameter("employee_email");
-        String employeeAddress = request.getParameter("employee_address");
-        int positionId = Integer.parseInt(request.getParameter("position_id"));
-        int educationDegreeId = Integer.parseInt(request.getParameter("education_degree_id"));
-        int divisionId = Integer.parseInt(request.getParameter("division_id"));
-        String userName = request.getParameter("user_name");
-
-        Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
-        try {
-            iEmployeeBo.updateEmployee(employee);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/edit.jsp");
-
+    /**
+     * Create Contract doPost
+     **/
+    private void createContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int contract_id = Integer.parseInt(request.getParameter("contract_id"));
+        String contract_start_date = request.getParameter("contract_start_date");
+        String contract_end_date = request.getParameter("contract_end_date");
+        double contract_deposit = Double.parseDouble(request.getParameter("contract_deposit"));
+        double contract_total_money = Double.parseDouble(request.getParameter("contract_total_money"));
+        int employee_id = Integer.parseInt(request.getParameter("employee_id"));
+        String customer_id = request.getParameter("customer_id");
+        String service_id = request.getParameter("service_id");
+        Contract contract = new Contract(contract_id, contract_start_date, contract_end_date, contract_deposit, contract_total_money, employee_id, customer_id, service_id);
+        iContractBo.insertContract(contract);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("contract/create.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void createEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int employeeId = Integer.parseInt(request.getParameter("employee_id"));
-        String employeeName = request.getParameter("employee_name");
-        String employeeBirthday = request.getParameter("employee_birthday");
-        String employeeIdCard = request.getParameter("employee_id_card");
-        double employeeSalary = Double.parseDouble(request.getParameter("employee_salary"));
-        String employeePhone = request.getParameter("employee_phone");
-        String employeeEmail = request.getParameter("employee_email");
-        String employeeAddress = request.getParameter("employee_address");
-        int positionId = Integer.parseInt(request.getParameter("position_id"));
-        int educationDegreeId = Integer.parseInt(request.getParameter("education_degree_id"));
-        int divisionId = Integer.parseInt(request.getParameter("division_id"));
-        String userName = request.getParameter("user_name");
-        Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
-        iEmployeeBo.insertEmployee(employee);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("employee/create.jsp");
+    /**
+     * End
+     **/
+    private void createContractDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //contract_detail_id,contract_id,attach_service_id,quantity
+        int contract_detail_id = Integer.parseInt(request.getParameter("contract_detail_id"));
+        int contract_id = Integer.parseInt(request.getParameter("contract_id"));
+        int quantity = Integer.parseInt(request.getParameter("attach_service_id"));
+        int attach_service_id = Integer.parseInt(request.getParameter("quantity"));
+        ContractDetail contractDetail = new ContractDetail(attach_service_id, contract_detail_id, contract_id, quantity);
+        iContractDetailBo.insertContractDetail(contractDetail);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("contract_detail/create.jsp");
+        dispatcher.forward(request, response);
+    }
+    /** Create Contract Detail**/
+
+    /**
+     * End Create Contract
+     **/
+    private void deleteService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+//        iServiceBo.deleteCustomer(id);
+
+        List<Service> listService = iServiceBo.selectAllService();
+        request.setAttribute("listService", listService);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("service/list.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void createService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int serviceId = Integer.parseInt(request.getParameter("service_id"));
-        String serviceName = request.getParameter("service_name");
-        double serviceArea = Double.parseDouble(request.getParameter("service_area"));
-        double serviceCost = Double.parseDouble(request.getParameter("service_cost"));
-        int serviceMaxPeople = Integer.parseInt(request.getParameter("service_max_people"));
-        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
-        int serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
-        String standardRoom = request.getParameter("standard_room");
-        String descriptionOrderConvenience = request.getParameter("description_order_convenience");
-        double poolArea = Double.parseDouble(request.getParameter("pool_area"));
-        int numberFloors = Integer.parseInt(request.getParameter("number_floors"));
-
-        Service service = new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloors);
-        iServiceBo.insertService(service);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("service/create.jsp");
-        dispatcher.forward(request, response);
-        try {
-            response.sendRedirect("/homePage");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -273,41 +356,6 @@ public class FuramaServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int customerId = Integer.parseInt(request.getParameter("customer_id"));
-        int customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
-        String customerName = request.getParameter("customer_name");
-        String customerBirthday = request.getParameter("customer_birthday");
-        int customerGender = Integer.parseInt(request.getParameter("customer_gender"));
-        int customerIdCard = Integer.parseInt(request.getParameter("customer_id_card"));
-        String customerPhone = request.getParameter("customer_phone");
-        String customerEmail = request.getParameter("customer_email");
-        String customerAddress = request.getParameter("customer_address");
-
-        Customer customer = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
-
-        iCustomerBo.updateCustomer(customer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
-
-        dispatcher.forward(request, response);
-    }
-
-    private void insertCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int customerId = Integer.parseInt(request.getParameter("customer_id"));
-        int customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
-        String customerName = request.getParameter("customer_name");
-        String customerBirthday = request.getParameter("customer_birthday");
-        int customerGender = Integer.parseInt(request.getParameter("customer_gender"));
-        int customerIdCard = Integer.parseInt(request.getParameter("customer_id_card"));
-        String customerPhone = request.getParameter("customer_phone");
-        String customerEmail = request.getParameter("customer_email");
-        String customerAddress = request.getParameter("customer_address");
-
-        Customer customerAdd = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
-        iCustomerBo.insertCustomer(customerAdd);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
-        dispatcher.forward(request, response);
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -315,26 +363,11 @@ public class FuramaServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "create":
-                showNewCustomer(request, response);
-                break;
-            case "create_service":
-                showNewService(request, response);
-                break;
-            case "create_employee":
-                showNewEmployee(request, response);
-                break;
-            case "list_employee":
-                showListEmployee(request, response);
-                break;
-            case "list_user_service":
-                showListUserService(request, response);
-                break;
-            case "list_service":
-                showListService(request, response);
-                break;
             case "list":
                 showList(request, response);
+                break;
+            case "create":
+                showNewCustomer(request, response);
                 break;
             case "edit":
                 showUpdateCustomer(request, response);
@@ -346,26 +379,73 @@ public class FuramaServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "edit_employee":
-                showUpdateEmployee(request, response);
+
+            case "list_service":
+                showListService(request, response);
+                break;
+            case "create_service":
+                showNewService(request, response);
                 break;
             case "edit_service":
                 showUpdateService(request, response);
                 break;
-            case "delete_employee":
-                deleteEmployee(request, response);
-                break;
             case "delete_service":
                 deleteService(request, response);
                 break;
+
+
+            case "create_employee":
+                showNewEmployee(request, response);
+                break;
+            case "list_employee":
+                showListEmployee(request, response);
+                break;
+            case "edit_employee":
+                showUpdateEmployee(request, response);
+                break;
+            case "delete_employee":
+                deleteEmployee(request, response);
+                break;
+
+
+            case "create_contract":
+                showNewContract(request, response);
+                break;
+
+            case "create_contract_detail":
+                showNewContractDetail(request, response);
+                break;
+
+            case "list_user_service":
+                showListUserService(request, response);
+                break;
+
             default:
                 showAllCustomer(request, response);
                 break;
         }
     }
 
+    /** CRUD Customer doGet**/
+    /**End CRUD Customer doGet**/
+    /** CRUD Customer doGet**/
+    /**End CRUD Customer doGet**/
+    /** CRUD Customer doGet**/
+    /**End CRUD Customer doGet**/
+    /** CRUD Customer doGet**/
+    /**End CRUD Customer doGet**/
+    private void showNewContractDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("contract_details/create.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showNewContract(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("contract/create.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private void showUpdateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Service existingService = iServiceBo.getServiceById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("service/edit.jsp");
         request.setAttribute("service", existingService);
@@ -443,7 +523,7 @@ public class FuramaServlet extends HttpServlet {
     }
 
     private void showUpdateCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Customer existingUser = iCustomerBo.getCustomerById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/edit.jsp");
         request.setAttribute("customer", existingUser);

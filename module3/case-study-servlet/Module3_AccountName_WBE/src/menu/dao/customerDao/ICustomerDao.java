@@ -1,7 +1,6 @@
 package menu.dao.customerDao;
 
 import menu.model.Customer;
-import menu.model.Employee;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +12,7 @@ public interface ICustomerDao {
 
     void updateCustomer(Customer customer) throws SQLException;
 
-    public  Customer getCustomerById(int id);
+    public  Customer getCustomerById(String id);
 
     void deleteCustomer(int id) throws SQLException;
 

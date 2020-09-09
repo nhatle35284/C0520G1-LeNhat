@@ -1,7 +1,6 @@
 package menu.dao.serviceDao;
 
 import menu.dao.DBConnection;
-import menu.model.Employee;
 import menu.model.Service;
 
 import java.sql.Connection;
@@ -36,7 +35,7 @@ public class ServiceDao implements IServiceDao {
                 Service service = null;
                 while (resultSet.next()) {
                     service = new Service();
-                    service.setServiceId(resultSet.getInt("service_id"));
+                    service.setServiceId(resultSet.getString("service_id"));
                     service.setServiceName(resultSet.getString("service_name"));
                     service.setServiceArea(resultSet.getDouble("service_area"));
                     service.setServiceCost(resultSet.getDouble("service_cost"));
@@ -66,7 +65,7 @@ public class ServiceDao implements IServiceDao {
     public void insertService(Service service) {
         try {
             PreparedStatement preparedStatement = DBConnection.getConnection().prepareStatement(INSERT_SERVICE_SQL);
-            preparedStatement.setInt(1,service.getServiceId());
+            preparedStatement.setString(1,service.getServiceId());
             preparedStatement.setString(2,service.getServiceName());
             preparedStatement.setDouble(3,service.getServiceArea());
             preparedStatement.setDouble(4,service.getServiceCost());
@@ -91,7 +90,7 @@ public class ServiceDao implements IServiceDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                int serviceId = rs.getInt("service_id");
+                String serviceId = rs.getString("service_id");
                 String serviceName = rs.getString("service_name");
                 double serviceArea = rs.getDouble("service_area");
                 double serviceCost = rs.getDouble("service_cost");
@@ -123,17 +122,17 @@ public class ServiceDao implements IServiceDao {
         statement.setDouble(8, service.getPoolArea());
         statement.setDouble(9, service.getPoolArea());
         statement.setInt(10, service.getNumberFloor());
-        statement.setInt(11, service.getServiceId());
+        statement.setString(11, service.getServiceId());
         statement.executeUpdate();
     }
     @Override
-    public Service getServiceById(int id) {
+    public Service getServiceById(String id) {
         Service service = null;
         Connection connection = DBConnection.getConnection();
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(FIND_SERVICE_SQL);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String serviceName = rs.getString("service_name");

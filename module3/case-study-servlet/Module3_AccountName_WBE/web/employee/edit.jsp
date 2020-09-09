@@ -19,8 +19,13 @@
                     Edit Customer
                 </h2>
             </caption>
+            <p>
+                <c:if test="${message != null}">
+                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
+                </c:if>
+            </p>
             <c:if test="${employee != null}">
-                <input type="hidden" name="customer_id" value="<c:out value='${employee.employeeId}' />"/>
+                <input type="hidden" name="employee_id" value="<c:out value='${employee.employeeId}' />"/>
             </c:if>
             <tr>
                 <th>customer Type Id:</th>
@@ -41,7 +46,7 @@
             <tr>
                 <th>Customer Birthday:</th>
                 <td>
-                    <input type="text" name="customer_birthday" size="15"
+                    <input type="date" name="customer_birthday" size="15"
                            value="<c:out value='${employee.employeeIdCard}' />"
                     />
                 </td>

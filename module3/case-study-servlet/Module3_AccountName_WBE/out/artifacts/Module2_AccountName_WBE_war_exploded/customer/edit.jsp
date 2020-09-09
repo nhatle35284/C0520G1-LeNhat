@@ -48,7 +48,7 @@
             <tr>
                 <th>Customer Birthday:</th>
                 <td>
-                    <input type="text" name="customer_birthday" size="15"
+                    <input type="date" name="customer_birthday" size="15"
                            value="<c:out value='${customer.customerBirthday}' />"
                     />
                 </td>

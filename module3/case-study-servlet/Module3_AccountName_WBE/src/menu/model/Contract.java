@@ -7,10 +7,10 @@ public class Contract {
     private double contractDeposit;
     private double contractTotalMoney;
     private int EmployeeId;
-    private int CustomerId;
-    private int ServiceId;
+    private String CustomerId;
+    private String ServiceId;
 
-    public Contract(int contractId, String contractStartDate, String contractEndDate, double contractDeposit, double contractTotalMoney, int employeeId, int customerId, int serviceId) {
+    public Contract(int contractId, String contractStartDate, String contractEndDate, double contractDeposit, double contractTotalMoney, int employeeId, String customerId, String serviceId) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
@@ -69,19 +69,19 @@ public class Contract {
         EmployeeId = employeeId;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return CustomerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         CustomerId = customerId;
     }
 
-    public int getServiceId() {
+    public String getServiceId() {
         return ServiceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(String serviceId) {
         ServiceId = serviceId;
     }
 }

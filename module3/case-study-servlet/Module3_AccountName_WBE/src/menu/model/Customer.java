@@ -1,7 +1,7 @@
 package menu.model;
 
 public class Customer {
-    private int customerId;
+    private String customerId;
     private int customerTypeId;
     private String customerName;
     private String customerBirthday;
@@ -11,7 +11,7 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
 
-    public Customer(int customerId, int customerTypeId, String customerName, String customerBirthday, int customerGender, int customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
+    public Customer(String customerId, int customerTypeId, String customerName, String customerBirthday, int customerGender, int customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
@@ -27,11 +27,11 @@ public class Customer {
 
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

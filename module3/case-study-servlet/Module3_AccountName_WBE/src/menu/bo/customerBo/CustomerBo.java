@@ -3,7 +3,6 @@ package menu.bo.customerBo;
 import menu.dao.customerDao.CustomerDao;
 import menu.dao.customerDao.ICustomerDao;
 import menu.model.Customer;
-import menu.model.Employee;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -27,7 +26,7 @@ public class CustomerBo implements ICustomerBo {
     }
 
     @Override
-    public Customer getCustomerById(int id) {
+    public Customer getCustomerById(String id) {
         return iCustomerDao.getCustomerById(id);
     }
 

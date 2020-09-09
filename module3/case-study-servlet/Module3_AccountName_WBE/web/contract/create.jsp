@@ -21,13 +21,13 @@
             <tr>
                 <th>Contract Start Date:</th>
                 <td>
-                    <input type="text" name="contract_start_date" id="start_date" size="45"/>
+                    <input type="date" name="contract_start_date" id="start_date" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Contract End Date:</th>
                 <td>
-                    <input type="text" name="contract_end_date" id="end_date" size="15"/>
+                    <input type="date" name="contract_end_date" id="end_date" size="15"/>
                 </td>
             </tr>
             <tr>
