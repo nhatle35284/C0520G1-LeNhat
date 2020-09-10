@@ -19,13 +19,8 @@
                     Edit Customer
                 </h2>
             </caption>
-            <p>
-                <c:if test="${message != null}">
-                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
-                </c:if>
-            </p>
             <c:if test="${employee != null}">
-                <input type="hidden" name="customer_id" value="<c:out value='${employee.employeeId}' />"/>
+                <input type="hidden" name="employee_id" value="<c:out value='${employee.employeeId}' />"/>
             </c:if>
             <tr>
                 <th>customer Type Id:</th>
@@ -61,6 +56,7 @@
             </tr>
             <tr>
                 <th>customer Id Card:</th>
+                <p style="color: red"><c:out value="${message1}"></c:out></p>
                 <td>
                     <input type="text" name="customer_id_card" size="15"
                            value="<c:out value='${employee.employeePhone}' />"
@@ -69,6 +65,7 @@
             </tr>
             <tr>
                 <th>Customer Phone:</th>
+                <p style="color: red"><c:out value="${message}"></c:out></p>
                 <td>
                     <input type="text" name="customer_phone" size="15"
                            value="<c:out value='${employee.employeeEmail}' />"
@@ -77,6 +74,7 @@
             </tr>
             <tr>
                 <th>Customer Email:</th>
+                <p style="color: red"><c:out value="${message2}"></c:out></p>
                 <td>
                     <input type="text" name="customer_email" size="15"
                            value="<c:out value='${employee.employeeAddress}' />"

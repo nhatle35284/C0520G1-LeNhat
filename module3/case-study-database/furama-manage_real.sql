@@ -63,7 +63,7 @@ create table customer_type(
 );
 
 create table customer(
-	customer_id int primary key,
+	customer_id varchar(45) primary key,
 	customer_type_id int,
 	customer_name varchar(45),
 	customer_birthday date,
@@ -105,7 +105,7 @@ create table rent_type(
 );
 
 create table service(
-	service_id int primary key,
+	service_id varchar(45) primary key,
     service_name varchar(45),
     service_area double,
     service_cost double,
@@ -115,7 +115,7 @@ create table service(
     standard_room varchar(45),
     description_order_convenience varchar(45),
     pool_area double,
-    number_floors int,
+    number_floors varchar(45),
     foreign key (rent_type_id) references rent_type(rent_type_id) on delete cascade,
     foreign key (service_type_id) references service_type(service_type_id) on delete cascade
 );
@@ -127,8 +127,8 @@ create table contract(
     contract_deposit double,
     contract_total_money double,
     employee_id int,
-    customer_id int,
-    service_id int,
+    customer_id varchar(45),
+    service_id varchar(45),
     foreign key (employee_id) references employee(employee_id)on delete cascade,
     foreign key (customer_id) references customer(customer_id)on delete cascade,
     foreign key (service_id) references service(service_id)on delete cascade
@@ -138,7 +138,7 @@ create table contract_detail(
 	contract_detail_id int primary key,
 	contract_id int,
     attach_service_id int,
-    quantity int,
+    quantity varchar(45),
     foreign key (contract_id) references contract(contract_id)on delete cascade,
     foreign key (attach_service_id) references attach_service(attach_service_id)on delete cascade);
 
@@ -196,10 +196,10 @@ values (1,"Diamond"),
 -- thêm Khách hàng
 insert into customer (customer_id,customer_type_id,customer_name,customer_birthday,customer_gender,
 	customer_id_card,customer_phone,customer_email,customer_address)
-values (1,2,"Hoang Thi A",'1999/12/07',1,"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
-(2,3,"Tu Hong B",'2003/12/13',0,"312314124","0123452432","btuhong11@gmail.com","Quảng Trị"),
-(3,1,"Khanh Thi C",'1980/12/07',1,"312314124","0123452432","cthihoang11@gmail.com","Đà Nẵng"),
-(4,4,"Nguyen Thi D",'1999/12/07',1,"312314124","0123452432","dthihoang11@gmail.com","Quảng Trị");
+values ("1",2,"Hoang Thi A",'1999/12/07',1,"312314124","0123452432","athihoang11@gmail.com","Quảng Nam"),
+("2",3,"Tu Hong B",'2003/12/13',0,"312314124","0123452432","btuhong11@gmail.com","Quảng Trị"),
+("3",1,"Khanh Thi C",'1980/12/07',1,"312314124","0123452432","cthihoang11@gmail.com","Đà Nẵng"),
+("4",4,"Nguyen Thi D",'1999/12/07',1,"312314124","0123452432","dthihoang11@gmail.com","Quảng Trị");
 
 -- thêm loại dịch vụ di kèm
 insert into attach_service(attach_service_id,attach_service_name,attach_service_cost,attach_service_unti,
@@ -225,28 +225,35 @@ values (1,"Đêm",100),
 -- thêm dịch vụ
 insert into  service(service_id,service_name,service_area,service_cost,service_max_people,rent_type_id,
     service_type_id,standard_room,description_order_convenience,pool_area,number_floors) 
-values (1,"Villa1",32.3,12000,4,1,1,"CUD","măt hàng",7.5,3),
-(2,"Villa2",32.3,12000,4,1,1,"CPD","măt hàng",7,3),
-(3,"House1",25.3,8000,4,1,1,"CRD","măt hàng",4.5,1),
-(4,"House",23.3,9000,4,1,1,"CUD","măt hàng",4,2);
+values ("DV_1234","Villa1",32.3,12000,4,1,1,"CUD","măt hàng",7.5,"3"),
+("DV_1235","Villa2",32.3,12000,4,1,1,"CPD","măt hàng",7,"3"),
+("DV_1236","House1",25.3,8000,4,1,1,"CRD","măt hàng",4.5,"1"),
+("DV_1237","House",23.3,9000,4,1,1,"CUD","măt hàng",4,"2");
 
 -- thêm hợp đồng
 insert into contract(contract_id,contract_start_date,contract_end_date,contract_deposit,contract_total_money,
     employee_id,customer_id,service_id)
-values (1,'2019/12/04','2020/07/05',100,2000,1,1,1),
-(2,'2020/12/04','2020/07/05',100,2000,2,3,1),
-(3,'2020/12/04','2020/07/05',100,2000,3,2,3),
-(4,'2019/12/04','2020/07/05',100,2000,3,2,2);
+values (1,'2019/12/04','2020/07/05',100,2000,1,"1","DV_1234"),
+(2,'2020/12/04','2020/07/05',100,2000,2,"3","DV_1234"),
+(3,'2020/12/04','2020/07/05',100,2000,3,"2","DV_1236"),
+(4,'2019/12/04','2020/07/05',100,2000,3,"2","DV_1235");
 
 insert into contract_detail(contract_detail_id,contract_id,attach_service_id,quantity) 
-values (1,1,1,5),
-(2,3,3,2),
-(3,4,2,2),
-(4,2,1,3),
-(5,2,2,3),
-(6,2,1,3);
+values (1,1,1,"5"),
+(2,3,3,"2"),
+(3,4,2,"2"),
+(4,2,1,"3"),
+(5,2,2,"3"),
+(6,2,1,"3");
 select * from customer;
 
 select * from employee;
 
 select * from service;
+
+select customer.customer_id,customer.customer_name,service.service_id,service.service_name,contract.contract_id,attach_service.attach_service_name
+from customer
+inner join contract on customer.customer_id = contract.customer_id
+inner join service on service.service_id = contract.service_id
+inner join contract_detail on contract.contract_id = contract_detail.contract_id
+inner join attach_service on contract_detail.attach_service_id = attach_service.attach_service_id;

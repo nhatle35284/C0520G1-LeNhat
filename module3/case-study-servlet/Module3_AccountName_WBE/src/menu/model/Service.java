@@ -11,9 +11,9 @@ public class Service {
     private String standardRoom;
     private String descriptionOrderConvenience;
     private double poolArea;
-    private int numberFloor;
+    private String numberFloor;
 
-    public Service(String serviceId, String serviceName, double serviceArea, double serviceCost, int serviceMaxPeople, int rentTypeId, int serviceTypeId, String standardRoom, String descriptionOrderConvenience, double poolArea, int numberFloor) {
+    public Service(String serviceId, String serviceName, double serviceArea, double serviceCost, int serviceMaxPeople, int rentTypeId, int serviceTypeId, String standardRoom, String descriptionOrderConvenience, double poolArea, String numberFloor) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
@@ -111,11 +111,11 @@ public class Service {
         this.poolArea = poolArea;
     }
 
-    public int getNumberFloor() {
+    public String getNumberFloor() {
         return numberFloor;
     }
 
-    public void setNumberFloor(int numberFloor) {
+    public void setNumberFloor(String numberFloor) {
         this.numberFloor = numberFloor;
     }
 }

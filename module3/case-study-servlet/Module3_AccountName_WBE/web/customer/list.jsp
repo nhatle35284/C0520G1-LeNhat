@@ -9,9 +9,7 @@
 </head>
 <body>
 <center>
-<h2>List All Customer</h2>
-<%--    <input type="hidden" name="action" value="search">--%>
-<%--    <input type="text" name="name">--%>
+    <h2>List All Customer</h2>
 </center>
 <form action="/homePage?action=search_customer" method="post">
     <h3>Search By Name</h3>
@@ -32,6 +30,7 @@
                     <th>Customer gender:</th>
                     <th>Customer address:</th>
                     <th>action:</th>
+                    <th>action:</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,8 +42,37 @@
                         <td><c:out value="${customer.customerAddress}"/></td>
                         <td>
                             <button><a href="/homePage?action=edit&id=${customer.customerId}">Edit</a></button>
-                            <button><a href="/homePage?action=delete&id=${customer.customerId}">Delete</a></button>
                         </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#a${customer.customerId}">
+                                Delete
+                            </button>
+                            <!-- Modal -->
+                        </td>
+                        <div class="modal fade" id="a${customer.customerId}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want delete?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Customer : ${customer.customerName}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary"><a
+                                                href="/homePage?action=delete&id=${customer.customerId}" style="color: black">Delete</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -52,9 +80,11 @@
         </div>
     </div>
 </div>
+
 <script src="../jquery/jquery-3.5.1.min.js"></script>
 <script src="../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#tableStudent').dataTable({
@@ -63,6 +93,7 @@
             "pageLength": 3
         });
     });
+
 </script>
 
 </body>

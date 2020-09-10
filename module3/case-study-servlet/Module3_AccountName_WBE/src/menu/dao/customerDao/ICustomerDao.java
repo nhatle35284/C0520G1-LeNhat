@@ -14,7 +14,7 @@ public interface ICustomerDao {
 
     public  Customer getCustomerById(String id);
 
-    void deleteCustomer(int id) throws SQLException;
+    void deleteCustomer(String id) throws SQLException;
 
     public List<Customer> searchByName(String name);
 }

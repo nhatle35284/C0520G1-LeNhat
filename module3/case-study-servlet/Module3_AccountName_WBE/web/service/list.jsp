@@ -9,8 +9,8 @@
 <body>
 <center>
     <h2>List All Service</h2>
-<%--    <button style="background: chartreuse;width: 200px ;height: 50px">--%>
-<%--        <a href="/homePage" style="color: black">List Customer Using Service</a></button>--%>
+    <%--    <button style="background: chartreuse;width: 200px ;height: 50px">--%>
+    <%--        <a href="/homePage" style="color: black">List Customer Using Service</a></button>--%>
 </center>
 <form action="/homePage?action=search_service" method="post">
     <h3>Search By Name</h3>
@@ -36,6 +36,7 @@
                     <th>Pool Area:</th>
                     <th>Number Floor:</th>
                     <th>action:</th>
+                    <th>action:</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,7 +55,33 @@
                         <td><c:out value="${service.numberFloor}"/></td>
                         <td>
                             <button><a href="/homePage?action=edit_service&id=${service.serviceId}">Edit</a></button>
-                            <button><a href="/homePage?action=delete_service&id=${service.serviceId}">Delete</a></button>
+                        </td>
+                        <td>
+<%--                            <button><a href="/homePage?action=delete_service&id=${service.serviceId}">Delete</a>--%>
+<%--                            </button>--%>
+                            <div class="modal fade" id="a${service.serviceId}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Do you want delete?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Service : ${service.serviceName}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary"><a
+                                                    href="/homePage?action=delete_employee&id=${service.serviceId}" style="color: black">Delete</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </c:forEach>
@@ -66,6 +93,7 @@
 <script src="../jquery/jquery-3.5.1.min.js"></script>
 <script src="../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#tableStudent').dataTable({

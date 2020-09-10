@@ -24,6 +24,7 @@
                     <th>Employee ID Card:</th>
                     <th>Employee Address:</th>
                     <th>action:</th>
+                    <th>action:</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,8 +35,38 @@
                         <td>${employee1.employeeIdCard}</td>
                         <td>${employee1.employeeAddress}</td>
                         <td>
-                            <a href="/homePage?action=edit_employee&id=${employee1.employeeId}">Edit</a>
-                            <a href="/homePage?action=delete_employee&id=${employee1.employeeId}">Delete</a>
+                            <a href="/homePage?action=edit_employee&id=${employee1.employeeId}">Edit</a></td>
+                        <td>
+<%--                            <a href="/homePage?action=delete_employee&id=${employee1.employeeId}">Delete</a>--%>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#a${employee1.employeeId}">
+                                Delete
+                            </button>
+                            <!-- Modal -->
+                        </td>
+                        <div class="modal fade" id="a${employee1.employeeId}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want delete?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Employee : ${employee1.employeeName}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary"><a
+                                                href="/homePage?action=delete_employee&id=${employee1.employeeId}" style="color: black">Delete</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </td>
                     </tr>
                 </c:forEach>
@@ -47,6 +78,7 @@
 <script src="../jquery/jquery-3.5.1.min.js"></script>
 <script src="../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="../bootstrap413/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#tableStudent').dataTable({

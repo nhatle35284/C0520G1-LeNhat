@@ -26,7 +26,7 @@ public class ServiceBo implements IServiceBo {
     }
 
     @Override
-    public void deleteService(int id) {
+    public void deleteService(String id) {
         iServiceDao.deleteService(id);
     }
 

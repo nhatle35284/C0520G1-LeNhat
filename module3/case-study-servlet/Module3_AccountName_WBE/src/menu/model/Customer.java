@@ -6,12 +6,12 @@ public class Customer {
     private String customerName;
     private String customerBirthday;
     private int customerGender;
-    private int customerIdCard;
+    private String customerIdCard;
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
 
-    public Customer(String customerId, int customerTypeId, String customerName, String customerBirthday, int customerGender, int customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
+    public Customer(String customerId, int customerTypeId, String customerName, String customerBirthday, int customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
@@ -67,11 +67,11 @@ public class Customer {
         this.customerGender = customerGender;
     }
 
-    public int getCustomerIdCard() {
+    public String getCustomerIdCard() {
         return customerIdCard;
     }
 
-    public void setCustomerIdCard(int customerIdCard) {
+    public void setCustomerIdCard(String customerIdCard) {
         this.customerIdCard = customerIdCard;
     }
 

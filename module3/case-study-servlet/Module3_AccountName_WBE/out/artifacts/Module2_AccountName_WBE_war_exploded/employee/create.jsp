@@ -11,11 +11,6 @@
             <caption>
                 <h2>Add New Employee</h2>
             </caption>
-            <p>
-                <c:if test="${message != null}">
-                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
-                </c:if>
-            </p>
             <tr>
                 <th>Employee ID:</th>
                 <td>
@@ -36,6 +31,7 @@
             </tr>
             <tr>
                 <th>Employee Id Card:</th>
+                <p style="color: red"><c:out value="${message1}"></c:out></p>
                 <td>
                     <input type="text" name="employee_id_card" id="id_card" size="15"/>
                 </td>
@@ -48,12 +44,14 @@
             </tr>
             <tr>
                 <th>Employee Phone:</th>
+                <p style="color: red"><c:out value="${message}"></c:out></p>
                 <td>
                     <input type="text" name="employee_phone" id="phone" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Employee Email:</th>
+                <p style="color: red"><c:out value="${message2}"></c:out></p>
                 <td>
                     <input type="text" name="employee_email" id="email" size="15"/>
                 </td>

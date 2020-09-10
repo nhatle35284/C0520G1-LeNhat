@@ -9,7 +9,7 @@ public interface IServiceBo {
     public void insertService(Service service);
     public List<Service> selectAllService();
     public Service getServiceById(String id);
-    public void deleteService(int id);
+    public void deleteService(String id);
     public void updateService(Service service) throws SQLException;
     public List<Service> searchByName(String name);
 }

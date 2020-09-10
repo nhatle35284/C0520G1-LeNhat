@@ -45,7 +45,7 @@ public class ServiceDao implements IServiceDao {
                     service.setStandardRoom(resultSet.getString("standard_room"));
                     service.setDescriptionOrderConvenience(resultSet.getString("description_order_convenience"));
                     service.setPoolArea(resultSet.getInt("pool_area"));
-                    service.setNumberFloor(resultSet.getInt("number_floors"));
+                    service.setNumberFloor(resultSet.getString("number_floors"));
                     serviceList.add(service);
                 }
             } catch (SQLException throwables) {
@@ -75,7 +75,7 @@ public class ServiceDao implements IServiceDao {
             preparedStatement.setString(8,service.getStandardRoom());
             preparedStatement.setString(9,service.getDescriptionOrderConvenience());
             preparedStatement.setDouble(10,service.getPoolArea());
-            preparedStatement.setInt(11,service.getNumberFloor());
+            preparedStatement.setString(11,service.getNumberFloor());
             preparedStatement.executeUpdate();
         } catch ( SQLException throwables) {
             throwables.printStackTrace();
@@ -100,7 +100,7 @@ public class ServiceDao implements IServiceDao {
                 String standardRoom = rs.getString("standard_room");
                 String descriptionOrderConvenience = rs.getString("description_order_convenience");
                 double poolArea = rs.getDouble("pool_area");
-                int numberFloor = rs.getInt("number_floors");
+                String numberFloor = rs.getString("number_floors");
                 listService.add(new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience,poolArea,numberFloor));
             }
         } catch (SQLException e) {
@@ -121,7 +121,7 @@ public class ServiceDao implements IServiceDao {
         statement.setString(7, service.getDescriptionOrderConvenience());
         statement.setDouble(8, service.getPoolArea());
         statement.setDouble(9, service.getPoolArea());
-        statement.setInt(10, service.getNumberFloor());
+        statement.setString(10, service.getNumberFloor());
         statement.setString(11, service.getServiceId());
         statement.executeUpdate();
     }
@@ -144,7 +144,7 @@ public class ServiceDao implements IServiceDao {
                 String standardRoom = rs.getString("standard_room");
                 String descriptionOrderConvenience = rs.getString("description_order_convenience");
                 double poolArea = rs.getDouble("pool_area");
-                int numberFloor = rs.getInt("number_floors");
+                String numberFloor = rs.getString("number_floors");
                 service = new Service(id, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience, poolArea, numberFloor);
             }
 
@@ -154,11 +154,11 @@ public class ServiceDao implements IServiceDao {
         return service;
     }
     @Override
-    public void deleteService(int id) {
+    public void deleteService(String id) {
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement statement = connection.prepareStatement(DELETE_SERVICE_SQL);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

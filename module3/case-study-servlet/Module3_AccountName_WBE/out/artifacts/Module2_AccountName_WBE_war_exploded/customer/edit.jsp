@@ -26,6 +26,11 @@
                     Edit Customer
                 </h2>
             </caption>
+            <p>
+                <c:if test="${message != null}">
+                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
+                </c:if>
+            </p>
             <c:if test="${customer != null}">
                 <input type="hidden" name="customer_id" value="<c:out value='${customer.customerId}' />"/>
             </c:if>
@@ -63,6 +68,7 @@
             </tr>
             <tr>
                 <th>customer Id Card:</th>
+                <p style="color: red"><c:out value="${message1}"></c:out></p>
                 <td>
                     <input type="text" name="customer_id_card" size="15"
                            value="<c:out value='${customer.customerIdCard}' />"
@@ -71,6 +77,7 @@
             </tr>
             <tr>
                 <th>Customer Phone:</th>
+                <p style="color: red"><c:out value="${message}"></c:out></p>
                 <td>
                     <input type="text" name="customer_phone" size="15"
                            value="<c:out value='${customer.customerPhone}' />"
@@ -79,6 +86,7 @@
             </tr>
             <tr>
                 <th>Customer Email:</th>
+                <p style="color: red"><c:out value="${message2}"></c:out></p>
                 <td>
                     <input type="text" name="customer_email" size="15"
                            value="<c:out value='${customer.customerEmail}' />"

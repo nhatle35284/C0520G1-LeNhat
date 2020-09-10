@@ -17,7 +17,7 @@ public static String INSERT_CONTRACT_DETAIL_SQL= "insert into contract_detail(co
             preparedStatement.setInt(1, contractDetail.getContractDetailId());
             preparedStatement.setInt(2, contractDetail.getContractId());
             preparedStatement.setInt(3, contractDetail.getAttachServiceId());
-            preparedStatement.setInt(4, contractDetail.getQuantity());
+            preparedStatement.setString(4, contractDetail.getQuantity());
             preparedStatement.executeUpdate();
         } catch (
                 SQLException e) {

@@ -29,7 +29,7 @@ public class CustomerDao implements ICustomerDao {
             preparedStatement.setString(3, customer.getCustomerName());
             preparedStatement.setString(4, customer.getCustomerBirthday());
             preparedStatement.setInt(5, customer.getCustomerGender());
-            preparedStatement.setInt(6, customer.getCustomerIdCard());
+            preparedStatement.setString(6, customer.getCustomerIdCard());
             preparedStatement.setString(7, customer.getCustomerPhone());
             preparedStatement.setString(8, customer.getCustomerEmail());
             preparedStatement.setString(9, customer.getCustomerAddress());
@@ -53,7 +53,7 @@ public class CustomerDao implements ICustomerDao {
                 String customerName = rs.getString("customer_name");
                 String customerBirthday = rs.getString("customer_birthday");
                 int customerGender = rs.getInt("customer_gender");
-                int customerIdCard = rs.getInt("customer_id_card");
+                String customerIdCard = rs.getString("customer_id_card");
                 String customerPhone = rs.getString("customer_phone");
                 String customerEmail = rs.getString("customer_email");
                 String customerAddress = rs.getString("customer_address");
@@ -74,7 +74,7 @@ public class CustomerDao implements ICustomerDao {
         statement.setString(2, customer.getCustomerName());
         statement.setString(3, customer.getCustomerBirthday());
         statement.setInt(4, customer.getCustomerGender());
-        statement.setInt(5, customer.getCustomerIdCard());
+        statement.setString(5, customer.getCustomerIdCard());
         statement.setString(6, customer.getCustomerPhone());
         statement.setString(7, customer.getCustomerEmail());
         statement.setString(8, customer.getCustomerAddress());
@@ -96,7 +96,7 @@ public class CustomerDao implements ICustomerDao {
                 String customerName = rs.getString("customer_name");
                 String customerBirthday = rs.getString("customer_birthday");
                 int customerGender = rs.getInt("customer_gender");
-                int customerIdCard = rs.getInt("customer_id_card");
+                String customerIdCard = rs.getString("customer_id_card");
                 String customerPhone = rs.getString("customer_phone");
                 String customerEmail = rs.getString("customer_email");
                 String customerAddress = rs.getString("customer_address");
@@ -110,11 +110,11 @@ public class CustomerDao implements ICustomerDao {
     }
 
     @Override
-    public void deleteCustomer(int id) throws SQLException {
+    public void deleteCustomer(String id) throws SQLException {
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_SQL);
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -141,7 +141,7 @@ public class CustomerDao implements ICustomerDao {
                     customer.setCustomerName(resultSet.getString("customer_name"));
                     customer.setCustomerBirthday(resultSet.getString("customer_birthday"));
                     customer.setCustomerGender(resultSet.getInt("customer_gender"));
-                    customer.setCustomerIdCard(resultSet.getInt("customer_id_card"));
+                    customer.setCustomerIdCard(resultSet.getString("customer_id_card"));
                     customer.setCustomerPhone(resultSet.getString("customer_phone"));
                     customer.setCustomerEmail(resultSet.getString("customer_email"));
                     customer.setCustomerAddress(resultSet.getString("customer_address"));

@@ -10,6 +10,6 @@ public interface ICustomerBo {
     void insertCustomer(Customer customer);
     void updateCustomer(Customer customer) throws SQLException;
     public  Customer getCustomerById(String id);
-    void deleteCustomer(int id) throws SQLException;
+    void deleteCustomer(String id) throws SQLException;
     public List<Customer> searchByName(String name);
 }

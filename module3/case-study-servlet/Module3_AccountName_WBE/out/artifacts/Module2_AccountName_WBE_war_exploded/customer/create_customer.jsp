@@ -11,13 +11,9 @@
             <caption>
                 <h2>Add New Customer</h2>
             </caption>
-            <p>
-                <c:if test="${message != null}">
-                    <a href="/homePage" class="message"><input type="button" value="${message}" style="color: red" ></a>
-                </c:if>
-            </p>
             <tr>
                 <th>Customer ID:</th>
+                <p style="color: red"><c:out value="${message}"></c:out></p>
                 <td>
                     <input type="text" name="customer_id" id="id" size="45"/>
                 </td>
@@ -36,6 +32,7 @@
             </tr>
             <tr>
                 <th>Customer Birthday:</th>
+                <p style="color: red"><c:out value="${message1}"></c:out></p>
                 <td>
                     <input type="date" name="customer_birthday" id="birthday" size="15"/>
                 </td>
@@ -48,18 +45,21 @@
             </tr>
             <tr>
                 <th>Customer ID Card:</th>
+                <p style="color: red"><c:out value="${message2}"></c:out></p>
                 <td>
                     <input type="text" name="customer_id_card" id="id_card" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer Phone:</th>
+                <p style="color: red"><c:out value="${message1}"></c:out></p>
                 <td>
                     <input type="text" name="customer_phone" id="phone" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Customer Email:</th>
+                <p style="color: red"><c:out value="${message3}"></c:out></p>
                 <td>
                     <input type="text" name="customer_email" id="email" size="15"/>
                 </td>

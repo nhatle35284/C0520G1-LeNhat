@@ -31,7 +31,7 @@ public class CustomerBo implements ICustomerBo {
     }
 
     @Override
-    public void deleteCustomer(int id) throws SQLException {
+    public void deleteCustomer(String id) throws SQLException {
         iCustomerDao.deleteCustomer(id);
     }
 

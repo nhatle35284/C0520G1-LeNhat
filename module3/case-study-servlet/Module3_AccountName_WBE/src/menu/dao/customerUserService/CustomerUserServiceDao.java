@@ -60,7 +60,7 @@ public class CustomerUserServiceDao implements ICustomerUserServiceDao {
                 String standardRoom = rs.getString("standard_room");
                 String descriptionOrderConvenience = rs.getString("description_order_convenience");
                 double poolArea = rs.getDouble("pool_area");
-                int numberFloor = rs.getInt("number_floor");
+                String numberFloor = rs.getString("number_floor");
                 services.add(new Service(serviceId, serviceName, serviceArea, serviceCost, serviceMaxPeople, rentTypeId, serviceTypeId, standardRoom, descriptionOrderConvenience,poolArea,numberFloor));
             }
         } catch (SQLException e) {
