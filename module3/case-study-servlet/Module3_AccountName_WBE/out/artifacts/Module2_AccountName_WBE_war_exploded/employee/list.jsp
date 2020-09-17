@@ -55,7 +55,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Customer : ${employee1.employeeName}
+                                        Employee : ${employee1.employeeName}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close

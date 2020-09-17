@@ -13,9 +13,11 @@
             </caption>
             <tr>
                 <th>Customer ID:</th>
-                <p style="color: red"><c:out value="${message}"></c:out></p>
+
                 <td>
                     <input type="text" name="customer_id" id="id" size="45"/>
+                </td><td>
+                <p style="color: red"><c:out value="${message}"></c:out></p>
                 </td>
             </tr>
             <tr>
@@ -31,8 +33,8 @@
                 </td>
             </tr>
             <tr>
-                <th>Customer Birthday:</th>
                 <p style="color: red"><c:out value="${message1}"></c:out></p>
+                <th>Customer Birthday:</th>
                 <td>
                     <input type="date" name="customer_birthday" id="birthday" size="15"/>
                 </td>

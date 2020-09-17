@@ -94,23 +94,20 @@ public class FuramaServlet extends HttpServlet {
         String customerPhone = request.getParameter("customer_phone");
         String customerEmail = request.getParameter("customer_email");
         String customerAddress = request.getParameter("customer_address");
+        boolean check = true;
         if (!Validate.isValid(customerId, Validate.REGEX_ID_CUSTOMER)) {
             request.setAttribute("message", "Enter the wrong customer id!!(KH_XXXX)");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
-            dispatcher.forward(request, response);
-        } else if (!Validate.isValid(customerPhone, Validate.REGEX_NUMBER_PHONE)) {
+            check = false;
+        }if (!Validate.isValid(customerPhone, Validate.REGEX_NUMBER_PHONE)) {
             request.setAttribute("message1", "Enter the wrong number phone!!(090XXXXXXX)");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
-            dispatcher.forward(request, response);
-        }else if (!Validate.isValid(customerIdCard, Validate.REGEX_ID)) {
+            check = false;
+        } if (!Validate.isValid(customerIdCard, Validate.REGEX_ID)) {
             request.setAttribute("message2", "Enter the wrong ID Card!!(XXXXXXXXX-XXXXXXXXXXXX)");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
-            dispatcher.forward(request, response);
-        }else if (!Validate.isValid(customerEmail, Validate.REGEX_EMAIL)) {
+            check = false;
+        } if (!Validate.isValid(customerEmail, Validate.REGEX_EMAIL)) {
             request.setAttribute("message3", "Enter the wrong email!!(wwwwwww@ww.ww)");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
-            dispatcher.forward(request, response);
-        }else {
+            check = false;
+        } if (check){
             Customer customerAdd = new Customer(customerId, customerTypeId, customerName, customerBirthday, customerGender, customerIdCard, customerPhone, customerEmail, customerAddress);
             iCustomerBo.insertCustomer(customerAdd);
             List<Customer> listCustomer = iCustomerBo.selectAllCustomer();
@@ -118,7 +115,10 @@ public class FuramaServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("customer/list.jsp");
             dispatcher.forward(request, response);
         }
-
+        else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create_customer.jsp");
+            dispatcher.forward(request, response);
+        }
 
     }
 
@@ -268,7 +268,7 @@ public class FuramaServlet extends HttpServlet {
         String employeeName = request.getParameter("employee_name");
         String employeeBirthday = request.getParameter("employee_birthday");
         String employeeIdCard = request.getParameter("employee_id_card");
-        double employeeSalary = Double.parseDouble(request.getParameter("employee_salary"));
+        String employeeSalary = request.getParameter("employee_salary");
         String employeePhone = request.getParameter("employee_phone");
         String employeeEmail = request.getParameter("employee_email");
         String employeeAddress = request.getParameter("employee_address");
@@ -289,7 +289,7 @@ public class FuramaServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("employee/create.jsp");
             dispatcher.forward(request, response);
         } else {
-            Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
+            Employee employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, Double.parseDouble(employeeSalary), employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, userName);
             iEmployeeBo.insertEmployee(employee);
             List<Employee> listEmployee = iEmployeeBo.selectAllEmployee();
             request.setAttribute("listEmployee", listEmployee);

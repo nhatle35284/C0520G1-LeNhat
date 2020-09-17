@@ -1,0 +1,14 @@
+package menu.bo;
+
+import menu.model.Product;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public interface IProductBo {
+    public List<Product> selectAllProduct();
+    public Product getProductById(int id);
+    public void deleteProduct(int id) throws SQLException;
+    public void insertProduct(Product product);
+    public void updateProduct(Product product) throws SQLException;
+}

@@ -14,5 +14,6 @@
         </div>
     </div>
 </div>
+<script src="../jquery/jquery-3.5.1.min.js"></script>
 </body>
 </html>
