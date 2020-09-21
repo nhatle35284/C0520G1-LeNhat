@@ -13,7 +13,7 @@
 <body>
 <form action="/result" method="post">
 <input type="number" name="number" value="${number}">
-<input type="number" name="number1" value="22000">
+<input type="number" name="number1" value="22000" readonly>
 <input type="text" name="result" value="${result}">
 <input type="submit" value="oke">
 </form>
