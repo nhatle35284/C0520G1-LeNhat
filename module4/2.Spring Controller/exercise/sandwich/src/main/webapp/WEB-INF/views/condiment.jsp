@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/xml_rt" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jstl/xml_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -15,10 +14,16 @@
 <body>
 
 <h2>Sandwich has condiment is: </h2>
-<p>${condiment[0]}</p>
-<p>${condiment[1]}</p>
-<p>${condiment[2]}</p>
-<p>${condiment[3]}</p>
+<c:if test="${condiment==null}">
+    <p>not condiment</p>
+</c:if>
+<c:forEach var="value" items="${condiment}">
+    <p>${value}</p>
+</c:forEach>
+<%--<p>${condiment[0]}</p>--%>
+<%--<p>${condiment[1]}</p>--%>
+<%--<p>${condiment[2]}</p>--%>
+<%--<p>${condiment[3]}</p>--%>
 <form action="/sandwich"><input type="submit" value="back"></form>
 </body>
 </html>
