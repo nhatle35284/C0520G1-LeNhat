@@ -1,11 +1,14 @@
 package nhat.coder.model;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import javax.persistence.*;
 
 @Entity
 @Table
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int mark;
     private String author;

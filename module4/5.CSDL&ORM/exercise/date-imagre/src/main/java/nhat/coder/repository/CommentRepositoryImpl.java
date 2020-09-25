@@ -47,4 +47,43 @@ public class CommentRepositoryImpl implements CommentRepository{
         }
         return commentList;
     }
+    @Override
+    public Comment findById(int id) {
+        Session session = null;
+        Comment comment = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+
+            comment = session.get(Comment.class, id);
+
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return comment;
+    }
+    @Override
+    public void update(int id, Comment comment) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            session.update(comment);
+
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+    }
 }
