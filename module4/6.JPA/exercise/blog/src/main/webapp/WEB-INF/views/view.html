@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>View Blog</h3>
+<p>
+    <a th:href="@{/}">
+        <input type="submit" value="<<Back to customer list">
+    </a>
+</p>
+<div id="detail">
+    <div >
+        <label>Title:</label>
+        <p th:text="${blog.getTitleBlog()}"></p>
+    </div>
+    <div >
+        <label>Content Blog:</label>
+        <p th:text="${blog.getContentBlog()}"></p>
+    </div>
+</div>
+</body>
+</html>

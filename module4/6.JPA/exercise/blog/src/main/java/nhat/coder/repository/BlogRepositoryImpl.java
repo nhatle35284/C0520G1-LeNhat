@@ -32,12 +32,12 @@ public class BlogRepositoryImpl implements BlogRepository {
     }
 
     @Override
-    public void update(int id, Blog blog) {
+    public void update(Long id, Blog blog) {
         entityManager.merge(blog);
     }
 
     @Override
     public void remove(Blog blog) {
-        entityManager.remove(blog);
+        entityManager.remove(entityManager.merge(blog));
     }
 }

@@ -37,6 +37,19 @@ public class BlogController {
         redirect.addFlashAttribute("success", "Saved customer successfully!");
         return "redirect:/";
     }
+
+    @GetMapping("/update/{id}")
+    public String edit(@PathVariable Long id, Model model) {
+        model.addAttribute("blog", blogService.findById(id));
+        return "edit";
+    }
+    @PostMapping("/update")
+    public String update(Blog blog, RedirectAttributes redirect) {
+        blogService.update(blog.getId(), blog);
+        redirect.addFlashAttribute("success", "Modified customer successfully!");
+        return "redirect:/";
+    }
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
@@ -47,5 +60,10 @@ public class BlogController {
         blogService.remove(blog);
         redirect.addFlashAttribute("success", "Removed customer successfully!");
         return "redirect:/";
+    }
+    @GetMapping("/view/{id}")
+    public String view(@PathVariable Long id, Model model) {
+        model.addAttribute("blog", blogService.findById(id));
+        return "/view";
     }
 }

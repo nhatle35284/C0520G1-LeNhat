@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img-of-the-day" style="width: 500px" height="400px">
+<script>
+    let query = "https://api.nasa.gov/planetary/apod?api_key=rNXk3n7TRk20SkgxRSgdGNqaB309u07GTfMx5crY";
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function() {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+        }
+    };
+    request.send();
+</script>
+<form action="/comment/save" method="post" th:object="${comment}">
+    <select th:field="*{mark}">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br>
+    Author: <input type="text" th:field="*{author}">
+    <br>
+    Feedback: <textarea th:field="*{feedback}"></textarea>
+    <br>
+    <button type="submit">Comment</button>
+</form>
+<table>
+    <tr >
+        <th>Mark</th>
+        <th>Author</th>
+        <th>Feedback</th>
+        <th>Like</th>
+        <th>Button</th>
+    </tr>
+    <tr  th:each="comment:${comments}">
+        <td th:text="${comment.getMark()}"></td>
+        <td th:text="${comment.getAuthor()}"></td>
+        <td th:text="${comment.getFeedback()}"></td>
+        <td th:text="${comment.getLikes()}"></td>
+        <td><a th:href="@{/update-like/{id}(id=${comment.id})}">LIKE</a></td>
+    </tr>
+</table>
+<div>
+    <a th:href="@{'/'(page=${comments.number - 1})}" th:if="${comments.hasPrevious()}">Previous</a>
+    <span th:text="${comments.number + 1}"></span>/<span th:text="${comments.totalPages}"></span>
+    <a th:href="@{'/'(page=${comments.number + 1})}" th:if="${comments.hasNext()}">Next</a>
+</div>
+<!--<p th:each="comment:${comments}">-->
+<!--    <label th:text="${comment.getMark()}"></label>-->
+<!--    <label th:text="${comment.getAuthor()}"></label>-->
+<!--    <label th:text="${comment.getFeedback()}"></label>-->
+<!--&lt;!&ndash;    <label th:text="${comment.getMark()}"></label>&ndash;&gt;-->
+<!--</p>-->
+</body>
+</html>

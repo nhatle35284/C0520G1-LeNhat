@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Category</title>
+</head>
+<body>
+<p>
+    <a th:href="@{category/create}"><input type="submit"   value="Add New Blog"></a>
+</p>
+<!--<form action="/search">-->
+<!--    <label>Input Search</label>-->
+<!--    <input type="text" th:name="search">-->
+<!--</form>-->
+<table style="width: 500px;" border="1">
+    <tr>
+        <th>Name</th>
+        <th>edit </th>
+        <th>Delete</th>
+        <th>view</th>
+    </tr>
+    <tr th:each="category : ${listCategory}">
+        <td th:text="${category.getName()}"><a th:href="@{categoy/view/{id}(id=${category.getId()})}"></td>
+        <td><a th:href="@{category/update/{id}(id=${category.id})}">Edit</a></td>
+        <td><a th:href="@{category/delete/{id}(id=${category.id})}">Delete</a></td>
+<!--        <td><a th:href="@{categoy/view/{id}(id=${category.getId()})}">view</a></td>-->
+    </tr>
+</table>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void update(int id, Blog blog) {
+    public void update(Long id, Blog blog) {
         blogRepository.update(id,blog);
     }
 
