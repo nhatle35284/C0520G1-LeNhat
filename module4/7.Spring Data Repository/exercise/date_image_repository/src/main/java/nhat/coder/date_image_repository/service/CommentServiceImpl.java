@@ -16,12 +16,16 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentRepository commentRepository;
-static List<Long> list;
+public static List<String> listErr;
 static {
-    list = new ArrayList<>();
-    list.add((long) 3);
-    list.add((long) 4);
-    list.add((long) 7);
+    listErr = new ArrayList<>();
+    listErr.add("dm");
+    listErr.add("clmm");
+    listErr.add("vcl");
+    listErr.add("sv");
+    listErr.add("fuck you");
+    listErr.add("fuck");
+    listErr.add("con cac");
 }
     @Override
     public void save(Comment comment) {
@@ -47,8 +51,8 @@ static {
         return commentRepository.findAll(pageable);
     }
 
-    @Override
-    public void deleteList() {
-        commentRepository.deleteByIdIn(list);
-    }
+//    @Override
+//    public void deleteList() {
+//        commentRepository.deleteByIdIn(list);
+//    }
 }

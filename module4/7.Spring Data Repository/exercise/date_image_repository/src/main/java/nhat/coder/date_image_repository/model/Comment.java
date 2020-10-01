@@ -69,5 +69,11 @@ public class Comment {
 
     public void setLikes(int likes) {
         this.likes = likes;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Author is: "+this.author + " Content Feedback is: " +this.feedback;
     }
 }

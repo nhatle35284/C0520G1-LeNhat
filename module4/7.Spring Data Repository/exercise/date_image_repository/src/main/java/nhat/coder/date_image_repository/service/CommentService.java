@@ -12,5 +12,5 @@ public interface CommentService {
     public Comment findById(Long id);
     public void update(Long id, Comment comment);
     public Page<Comment> findAll(Pageable pageable);
-    public void deleteList();
+//    public void deleteList();
 }

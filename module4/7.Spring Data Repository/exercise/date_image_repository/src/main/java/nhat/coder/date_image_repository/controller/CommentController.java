@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.text.Format;
+import java.util.DuplicateFormatFlagsException;
+import java.util.Formatter;
+
+import static nhat.coder.date_image_repository.service.CommentServiceImpl.listErr;
+
+
 @Controller
 public class CommentController {
     @Autowired
@@ -27,8 +34,11 @@ public class CommentController {
     }
     @PostMapping("/comment/save")
     public String save(Comment comment, RedirectAttributes redirect) {
+        for (int i = 0;i<listErr.size();i++){
+            if (comment.getFeedback().contains(listErr.get(i)))
+                throw new DuplicateFormatFlagsException("Err");
+        }
         commentService.save(comment);
-//        commentService.deleteList();
         redirect.addFlashAttribute("success", "Saved customer successfully!");
         return "redirect:/";
     }
