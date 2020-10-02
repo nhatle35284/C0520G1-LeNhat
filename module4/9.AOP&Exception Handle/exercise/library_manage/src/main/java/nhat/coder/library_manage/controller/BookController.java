@@ -41,7 +41,7 @@ public class BookController {
     public ModelAndView viewRentBook(@PathVariable Long id) {
         Book book = bookService.findById(id);
         Random rand = new Random();
-        int random = rand.nextInt(99999 - 10000) + 10000;
+        int random = rand.nextInt(89999) + 10000;
         if (book == null) {
             return new ModelAndView("error");
         }
