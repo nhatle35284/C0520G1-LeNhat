@@ -12,4 +12,8 @@ public interface BookService {
     public Book findById(Long id);
     public void update(Long id, Book book);
     public Page<Book> findAll(Pageable pageable);
+
+
+   boolean rentBook(Book book);
+   void payBook(Book book);
 }

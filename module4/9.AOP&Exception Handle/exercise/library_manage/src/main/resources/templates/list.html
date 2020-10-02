@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<p>
+    <a th:href="@{/book/create}"><input type="submit" value="Create"></a>
+</p>
+<table border="1">
+    <tr>
+        <th>Book Name</th>
+        <th>Amount</th>
+        <th>Rent</th>
+        <th>Pay</th>
+    </tr>
+    <tr th:each="book: ${list}">
+        <td th:text="${book.getName()}"></td>
+        <td th:text="${book.getAmount()}"></td>
+        <td> <a th:href="@{/book/rentBook/{id}(id=${book.id})}">Rent</a></td>
+        <td><a th:href="@{/book/pay}">Pay</a></td>
+    </tr>
+</table>
 </body>
 </html>

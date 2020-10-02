@@ -5,10 +5,15 @@ import nhat.coder.library_manage.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Service
 public class BookServiceImpl implements BookService{
+    public static Map<Long,Book> bookMap = new HashMap<>();
     @Autowired
     BookRepository bookRepository;
     @Override
@@ -29,6 +34,35 @@ public class BookServiceImpl implements BookService{
     @Override
     public void update(Long id, Book book) {
         bookRepository.save(book);
+    }
+
+    @Override
+    public boolean rentBook(Book book) {
+        for (Book temp: bookRepository.findAll()){
+            bookMap.put(temp.getId(),temp);
+        }
+        if (bookMap==null){
+            throw new NullPointerException();
+        } else {
+            Book temp =bookMap.get(book.getId());
+            if (temp.getAmount()==0){
+                return false;
+            }
+            else {
+                temp.setAmount(temp.getAmount()-1);
+                bookRepository.save(temp);
+                return true;
+            }
+        }
+
+    }    @Override
+    public void payBook(Book book) {
+        Book temp = bookMap.get(book.getId());
+        if (temp != null) {
+            temp.setAmount(temp.getAmount() + 1);
+            bookRepository.save(temp);
+        }
+
     }
 
     @Override

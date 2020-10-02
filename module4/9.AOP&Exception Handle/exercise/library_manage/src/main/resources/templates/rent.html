@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/book/rentBook}" th:object="${book}">
+    <label>Code</label>
+    <input type="text" name="code" title="title" th:value="${random}" readonly/>
+
+    <label>Name book :</label>
+    <input type="hidden" th:value="*{id}" th:field="*{id}">
+    <input type="text"  name="name" title="title"
+           th:field="*{name}" th:value="*{name}" readonly/>
+
+    <label >Amount :</label>
+    <input th:field="*{amount}" th:value="*{amount}"  name="amount"
+           id="inputContent"
+           title="Content" readonly>
+    <input type="submit" value="Rent">
+</form>
+</body>
+</html>
