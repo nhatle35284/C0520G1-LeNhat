@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Component
 @Aspect
 public class BlogAspect {
-    @Pointcut("execution(* nhat.coder.date_image_repository.controller.CommentController.*(..))")
+    @Pointcut("execution(* nhat.coder..CommentController.*(..))")
     public void studentControllerMethod() {}
 
     @Before("studentControllerMethod()")
