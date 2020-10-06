@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>View province: <span th:text="${category.name}"></span></h1>
+<a href="/blog">Blog list</a>
+<table border="1">
+    <tr>
+        <th>Title Blog</th>
+        <th>Content Blog</th>
+    </tr>
+    <th:block th:each="blog : ${blogs}">
+        <tr>
+            <td th:text="${blog.titleBlog}"></td>
+            <td th:text="${blog.contentBlog}"></td>
+            <td th:text="${blog.category.name}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

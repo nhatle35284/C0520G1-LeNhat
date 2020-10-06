@@ -57,8 +57,6 @@ public class BlogController {
         }
         currentBlog.setTitleBlog(blog.getTitleBlog());
         currentBlog.setContentBlog(blog.getContentBlog());
-        currentBlog.setCategory(blog.getCategory());
-
         blogService.save(currentBlog);
 
         return new ResponseEntity<>(currentBlog, HttpStatus.OK);
