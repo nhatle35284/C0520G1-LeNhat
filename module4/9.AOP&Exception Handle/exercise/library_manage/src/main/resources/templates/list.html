@@ -5,22 +5,24 @@
     <title>Title</title>
 </head>
 <body>
+<h1 th:text="#{list.title}">Books</h1>
 <p>
-    <a th:href="@{/book/create}"><input type="submit" value="Create"></a>
+    <a th:href="@{/book/create}"><input type="submit" th:value="#{list.create}"></a>
 </p>
 <table border="1">
     <tr>
-        <th>Book Name</th>
-        <th>Amount</th>
-        <th>Rent</th>
-        <th>Pay</th>
+        <th th:text="#{list.book_name}">Book Name</th>
+        <th th:text="#{list.amount}">Amount</th>
+        <th th:text="#{list.rent}">Rent</th>
+        <th th:text="#{list.pay}">Pay</th>
     </tr>
     <tr th:each="book: ${list}">
         <td th:text="${book.getName()}"></td>
         <td th:text="${book.getAmount()}"></td>
-        <td> <a th:href="@{/book/rentBook/{id}(id=${book.id})}">Rent</a></td>
-        <td><a th:href="@{/book/pay}">Pay</a></td>
+        <td> <a th:href="@{/book/rentBook/{id}(id=${book.id})}" th:text="#{list.rent}">Rent</a></td>
+        <td><a th:href="@{/book/pay}" th:text="#{list.pay}">Pay</a></td>
     </tr>
 </table>
+Language :<a href="?lang=vn">Vn</a>|<a href="?lang=en">En</a>
 </body>
 </html>

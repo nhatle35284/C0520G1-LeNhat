@@ -6,19 +6,19 @@
 </head>
 <body>
 <form method="post" th:action="@{/book/rentBook}" th:object="${book}">
-    <label>Code</label>
+    <label th:text="#{pay.code}"></label>
     <input type="text" name="code" title="title" th:value="${random}" readonly/>
 
-    <label>Name book :</label>
+    <label th:text="#{create.name}">Name book :</label>
     <input type="hidden" th:value="*{id}" th:field="*{id}">
     <input type="text"  name="name" title="title"
            th:field="*{name}" th:value="*{name}" readonly/>
 
-    <label >Amount :</label>
+    <label th:text="#{create.amount}">Amount :</label>
     <input th:field="*{amount}" th:value="*{amount}"  name="amount"
            id="inputContent"
            title="Content" readonly>
-    <input type="submit" value="Rent">
+    <input type="submit" th:value="#{rent.rent}">
 </form>
 </body>
 </html>

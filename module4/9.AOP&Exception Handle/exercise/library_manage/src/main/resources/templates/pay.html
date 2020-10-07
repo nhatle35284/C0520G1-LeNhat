@@ -5,12 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<a th:href="@{/book}" >List Book</a>
+<a th:href="@{/book}" th:text="#{create.list}">Books</a>
 <form method="post" th:action="@{/book/pay}">
-    <label>Code Book :</label>
+    <label th:text="#{pay.code}"></label>
     <input type="text" name="random" title="title"/>
 
-    <input type="submit" value="Pay Book">
+    <input type="submit" th:text="#{pay.pay}">
     </form>
 </body>
 </html>

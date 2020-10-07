@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Add B;og</h3>
+<h3 th:text="#{create.title}">Add Book</h3>
 <p>
     <a th:href="@{/book}">
-        <input type="submit" value="<<Back to Book list">
+        <input type="submit" th:value="#{create.list}">
     </a>
 </p>
 <div id="form">
@@ -16,14 +16,14 @@
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label>Name</label>
+            <label th:text="#{create.name}">Name</label>
             <input type="text" th:field="*{name}"/>
         </div>
         <div>
-            <label>Amount</label>
+            <label th:text="#{create.amount}">Amount</label>
             <input type="text" th:field="*{amount}"/>
         </div>
-        <input type="submit" value="Save"></input>
+        <input type="submit" th:value="#{create.save}">`
     </form>
 </div>
 </body>
