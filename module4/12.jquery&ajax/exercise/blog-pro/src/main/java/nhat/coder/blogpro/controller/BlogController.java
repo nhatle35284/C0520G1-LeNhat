@@ -1,5 +1,6 @@
 package nhat.coder.blogpro.controller;
 
+import nhat.coder.blogpro.model.Account;
 import nhat.coder.blogpro.model.Blog;
 import nhat.coder.blogpro.model.Category;
 import nhat.coder.blogpro.service.AccountService;
@@ -35,7 +36,10 @@ public class BlogController {
     public ModelAndView listBog(@PageableDefault(value = 5) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("blog/list");
         Page<Blog> list = blogService.findAll(pageable);
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String password = passwordEncoder.encode("123");
+//        accountService.save(new Account("nhat", password, "ROLE_ADMIN", true));
+//        accountService.save(new Account("hai", password, "ROLE_USER", true));
         modelAndView.addObject("list",list);
         return modelAndView;
     }

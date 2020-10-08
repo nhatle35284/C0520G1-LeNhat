@@ -1,6 +1,6 @@
 package nhat.coder.blogpro.service;
 
-import nhat.coder.blogpro.controller.Account;
+import nhat.coder.blogpro.model.Account;
 import nhat.coder.blogpro.controller.MyAccountDetail;
 import nhat.coder.blogpro.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;

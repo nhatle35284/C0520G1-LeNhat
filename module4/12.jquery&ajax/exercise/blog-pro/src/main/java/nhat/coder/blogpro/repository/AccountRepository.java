@@ -1,6 +1,6 @@
 package nhat.coder.blogpro.repository;
 
-import nhat.coder.blogpro.controller.Account;
+import nhat.coder.blogpro.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {

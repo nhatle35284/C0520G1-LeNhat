@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="common/layout :: head"></head>
 <head>
     <meta charset="UTF-8">
@@ -12,6 +13,8 @@
 </form>
 </body>
 <body id="nhatlolList">
+
+    <a th:href="@{/login}">Login</a>
 
 
 <h1 style="margin-left: 150px">List Blog</h1>
@@ -37,7 +40,7 @@
         <td th:text="${blog.getTitleBlog()}">Title Blog</td>
         <td><a th:href="@{/category/view-category/__${blog.category.id}__}" th:text="${blog.category.name}"></a></td>
 <!--        <td th:text="${blog.getCategory().name}">Title Blog</td>-->
-        <td><a th:href="@{blog/update/{id}(id=${blog.id})}">Edit</a></td>
+        <td><a th:href="@{blog/update/{id}(id=${blog.id})}" >Edit</a></td>
         <td><a th:href="@{blog/delete/{id}(id=${blog.id})}">Delete</a></td>
         <td><a th:href="@{blog/view/{id}(id=${blog.getId()})}">view</a></td>
     </tr>
@@ -46,6 +49,9 @@
     <a th:href="@{'/'(page=${list.number - 1})}" th:if="${list.hasPrevious()}">Previous</a>
     <span th:text="${list.number + 1}"></span>/<span th:text="${list.totalPages}"></span>
     <a th:href="@{'/'(page=${list.number + 1})}" th:if="${list.hasNext()}">Next</a>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Logout</a>
 </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

@@ -1,4 +1,4 @@
-package nhat.coder.blogpro.controller;
+package nhat.coder.blogpro.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
