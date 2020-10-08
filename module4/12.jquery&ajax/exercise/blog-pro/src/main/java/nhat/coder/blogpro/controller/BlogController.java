@@ -2,12 +2,14 @@ package nhat.coder.blogpro.controller;
 
 import nhat.coder.blogpro.model.Blog;
 import nhat.coder.blogpro.model.Category;
+import nhat.coder.blogpro.service.AccountService;
 import nhat.coder.blogpro.service.BlogService;;
 import nhat.coder.blogpro.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/blog")
+@RequestMapping({"/","/blog"})
 public class BlogController {
+    @Autowired
+    AccountService accountService;
     @Autowired
     BlogService blogService;
     @Autowired
@@ -31,6 +35,7 @@ public class BlogController {
     public ModelAndView listBog(@PageableDefault(value = 5) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("blog/list");
         Page<Blog> list = blogService.findAll(pageable);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         modelAndView.addObject("list",list);
         return modelAndView;
     }

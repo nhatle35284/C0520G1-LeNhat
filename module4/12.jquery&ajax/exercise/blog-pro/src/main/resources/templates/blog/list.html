@@ -13,15 +13,21 @@
 </body>
 <body id="nhatlolList">
 
+
 <h1 style="margin-left: 150px">List Blog</h1>
     <p>
         <a th:href="@{/blog/create}"><input type="submit"   value="Add New Blog"></a>
+        <a th:href="@{/blog}">
+            <input type="submit" value="<<Back to Blog list">
+        </a>
     </p>
+
 
 <table style="width: 500px;" border="1">
     <tr>
         <th>ID</th>
-        <th>Title Bolg</th>
+        <th>Title Blog</th>
+        <th>Category</th>
         <th>edit </th>
         <th>Delete</th>
         <th>view</th>
@@ -33,7 +39,7 @@
 <!--        <td th:text="${blog.getCategory().name}">Title Blog</td>-->
         <td><a th:href="@{blog/update/{id}(id=${blog.id})}">Edit</a></td>
         <td><a th:href="@{blog/delete/{id}(id=${blog.id})}">Delete</a></td>
-<!--        <td><a th:href="@{blog/view/{id}(id=${blog.getId()})}">view</a></td>-->
+        <td><a th:href="@{blog/view/{id}(id=${blog.getId()})}">view</a></td>
     </tr>
 </table>
 <div>
