@@ -1,6 +1,9 @@
 package nhat.coder.baithi.model;
 
+import nhat.coder.baithi.day.ValidateBirthday18;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -13,8 +16,10 @@ public class Product {
     private String productName;
 
 //    @NotNull(message = "nhaplai")
+    @Min(value = 1,message = "Giá đó có đéo")
     private double price;
     private int quantity;
+    @ValidateBirthday18()
     private String color;
     private String description;
     private boolean status;

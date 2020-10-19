@@ -1,5 +1,6 @@
 package nhat.coder.casestudyspring.model;
 
+import nhat.coder.casestudyspring.common.day.ValidateBirthday18;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -21,6 +22,7 @@ public class Customer{
     private Collection<Contract> contracts;
 
     private String customerName;
+    @ValidateBirthday18()
     private String customerBirthday;
     private int customerGender;
     private String customerIdCard;

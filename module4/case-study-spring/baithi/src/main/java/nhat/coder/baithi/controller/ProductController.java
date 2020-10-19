@@ -61,12 +61,12 @@ public class ProductController {
         return modelAndView;
         }
     }
-
-    @GetMapping("/update/{id}")
-    public String edit(@PathVariable String id, Model model) {
-        model.addAttribute("product2", productService.findById(id));
-        return "product/list";
-    }
+//
+//    @GetMapping("/update/{id}")
+//    public String edit(@PathVariable String id, Model model) {
+//        model.addAttribute("product2", productService.findById(id));
+//        return "product/list";
+//    }
 
     @PostMapping("/edit")
     public ModelAndView update(@Validated @ModelAttribute("product2") Product product, BindingResult bindingResult, RedirectAttributes redirect,@PageableDefault(value = 2) Pageable pageable) {

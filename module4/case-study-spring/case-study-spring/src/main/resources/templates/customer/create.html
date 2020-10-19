@@ -47,6 +47,8 @@
 <!--                            <th>Customer Birthday:</th>-->
 <!--                            <td>-->
 <!--                                <input type="date" class="input-group-text" id="birthday" size="45" th:field="*{customerBirthday}"/>-->
+<!--                                <span style="color: red" th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></span>-->
+
 <!--                            </td>-->
 <!--                        </tr>-->
 <!--                        <tr>-->
