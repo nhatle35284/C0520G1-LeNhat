@@ -9,7 +9,9 @@ import nhat.coder.blogpro.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class BlogController {
     }
 
     @GetMapping
-    public ModelAndView listBog(@PageableDefault(value = 5) Pageable pageable) {
+    public ModelAndView listBog(@PageableDefault(value = 5)  @SortDefault(sort ="customerId",direction = Sort.Direction.DESC) Pageable pageable )  {
         ModelAndView modelAndView = new ModelAndView("blog/list");
         Page<Blog> list = blogService.findAll(pageable);
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

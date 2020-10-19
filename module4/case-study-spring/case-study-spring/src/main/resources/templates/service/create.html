@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<caption>
+    <h2 style="text-align: center">Add New Service</h2>
+</caption>
+<form  th:method="post" th:action="@{/service/save}" th:object="${service}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Service ID:</th>
+
+                            <td>
+                                <input type="text" class="input-group-text" id="id" size="45" th:field="*{serviceId}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('serviceId')}" th:errors="*{serviceId}"></span>
+                            </td>
+<!--                            <td>-->
+<!--                                <p style="color: red" th:value="${message}"></p>-->
+<!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <th>Service Name:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="name" size="45" th:field="*{serviceName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Pool Area:</th>
+                            <td>
+                                <input type="text" class="input-group-text"  id="birthday" size="45" th:field="*{poolArea}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <th>Service Cost:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="idCard" size="45" th:field="*{serviceCost}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Service Max People:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="salary" size="45" th:field="*{serviceMaxPeople}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Rent Type ID:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message2}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="Phone" size="45" th:field="*{rentType.rentTypeId}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Service Type ID:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="email" size="45" th:field="*{serviceType.serviceTypeId}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Standard Room:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message3}"></c:out>-->
+                            <!--                    </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="address" size="45" th:field="*{standardRoom}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Description Order Convenience:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="division" size="45" th:field="*{descriptionOrderConvenience}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Number Floor:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="position" size="45" th:field="*{numberFloor}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('numberFloor')}" th:errors="*{numberFloor}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary"/>
+                                <button class="btn btn-primary"><a style="color: white" th:href="@{/service}"> Service List</a></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

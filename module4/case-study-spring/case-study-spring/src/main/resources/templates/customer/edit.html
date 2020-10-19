@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<caption>
+    <h2 style="text-align: center">Edit Customer</h2>
+</caption>
+<form method="post" th:action="@{/customer/edit}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Customer ID:</th>
+
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_id" id="id" size="100px"
+                                       th:field="*{customer.customerId}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('customer.customerId')}" th:errors="*{customer.customerId}"></span>
+
+                            </td>
+<!--                            <td>-->
+<!--                                <p style="color: red" th:value="${message}"></p>-->
+<!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <th>Customer Type ID:</th>
+                            <td>
+<!--                                <input type="text" class="input-group-text" name="customer_type_id" id="type_id" size="100px"-->
+<!--                                       th:field="*{customer.customerType.customerTypeId}"/>-->
+                                <select class="custom-select" th:field="*{customer.customerType}">
+                                    <option th:each="customerType:${listCustomerType}" th:value="${customerType.customerTypeId}" th:text="${customerType.customerTypeName}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Name:</th>
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_name" id="name" size="100px"
+                                       th:field="*{customer.customerName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <th>Customer Birthday:</th>
+                            <td>
+                                <input type="date" class="input-group-text" name="customer_birthday" id="birthday" size="100px"
+                                       th:field="*{customer.customerBirthday}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Gender:</th>
+                            <td>
+<!--                                <input type="text" class="input-group-text" name="customer_gender" id="gender" size="100px"-->
+<!--                                       th:field="*{customer.customerGender}"/>-->
+                                <select class="custom-select" th:field="*{customer.customerGender}">
+                                    <option  value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer ID Card:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message2}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_id_card" id="id_card" size="100px"
+                                       th:field="*{customer.customerIdCard}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Phone:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_phone" id="phone" size="100px"
+                                       th:field="*{customer.customerPhone}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Email:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message3}"></c:out>-->
+                            <!--                    </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_email" id="email" size="100px"
+                                       th:field="*{customer.customerEmail}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Address:</th>
+                            <td>
+                                <input type="text" class="input-group-text" name="customer_address" id="address" size="100px"
+                                       th:field="*{customer.customerAddress}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <button class="btn btn-primary" ><a th:href="@{/customer}" style="color: white">List Customer</a></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

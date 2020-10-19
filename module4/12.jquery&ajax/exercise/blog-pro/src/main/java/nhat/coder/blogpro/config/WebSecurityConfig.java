@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailServiceImpl userDetailServiceImp;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -32,17 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
 //                   .loginPage("/dang-nhap")
-                    .defaultSuccessUrl("/blog")
-                    .permitAll()
+                .defaultSuccessUrl("/blog")
+                .permitAll()
                 .and()
-                    .authorizeRequests().antMatchers("/blog","/blog/search","/blog/view/*","/category/view-category/*").permitAll()
-                .antMatchers("/blog/create","blog/update/*").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/blog", "/blog/search", "/category/view-category/*").permitAll()
+                .antMatchers("/blog/create", "/blog/update/*").hasRole("ADMIN")
+                .antMatchers("/blog/view/*").hasAnyRole("USER", "ADMIN")
+//                .anyRequest().authenticated()
 //                .and()
 //                    .authorizeRequests().antMatchers("/search").permitAll()
 //                    .anyRequest().authenticated()
                 .and()
-                    .logout()
-                    .permitAll();
+                .logout()
+                .permitAll();
     }
 }

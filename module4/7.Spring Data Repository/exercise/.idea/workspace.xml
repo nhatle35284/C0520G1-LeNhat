@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d0b87dd-4f67-43d7-a8c9-39ed9bcf2c9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../module3/bai_thi/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../case-study-spring/case-study-spring/src/main/java/nhat/coder/casestudyspring/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../case-study-spring/case-study-spring/src/main/java/nhat/coder/casestudyspring/model/CustomerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module3/bai_thi/bai_thi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../module3/bai_thi/bai_thi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../module3/bai_thi/out/production/bai_thi/META-INF/bai_thi.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../12.jquery&amp;ajax/exercise/blog-pro/src/main/java/nhat/coder/blogpro/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../12.jquery&amp;ajax/exercise/blog-pro/src/main/java/nhat/coder/blogpro/config/WebSecurityConfig.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1iceRKnWYyIXUlY62tSavkmvQdz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-pro" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d0b87dd-4f67-43d7-a8c9-39ed9bcf2c9c" name="Default Changelist" comment="" />
+      <created>1602211297916</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602211297916</updated>
+      <workItem from="1602211299495" duration="25000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1602211323448">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602211323448" />
+  </component>
+</project>

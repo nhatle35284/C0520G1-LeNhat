@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<caption>
+    <h2 style="text-align: center">Add New Employee</h2>
+</caption>
+<form  th:method="post" th:action="@{/employee/save}" th:object="${employee}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Employee ID:</th>
+
+                            <td>
+                                <input type="text" class="input-group-text" id="id" size="45" th:field="*{employeeId}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}"></span>
+                            </td>
+<!--                            <td>-->
+<!--                                <p style="color: red" th:value="${message}"></p>-->
+<!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <th>Employee Name:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="name" size="45" th:field="*{employeeName}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Birthday:</th>
+                            <td>
+                                <input type="date" class="input-group-text"  id="birthday" size="45" th:field="*{employeeBirthday}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <th>Employee ID Card:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="idCard" size="45" th:field="*{employeeIdCard}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Salary:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="salary" size="45" th:field="*{employeeSalary}"/>
+                                <span style="color:red;" th:if="${#fields.hasErrors('employeeSalary')}" th:errors="*{employeeSalary}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Phone:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message2}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="Phone" size="45" th:field="*{employeePhone}"/>
+                                <span style="color:red;" th:if="${#fields.hasErrors('employeePhone')}" th:errors="*{employeePhone}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Email:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="email" size="45" th:field="*{employeeEmail}"/>
+                                <span style="color:red;" th:if="${#fields.hasErrors('employeeEmail')}" th:errors="*{employeeEmail}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Address:</th>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message3}"></c:out>-->
+                            <!--                    </p>-->
+                            <td>
+                                <input type="text" class="input-group-text" id="address" size="45" th:field="*{employeeAddress}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Division ID:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="division" size="45" th:field="*{division.divisionId}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Position ID:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="position" size="45" th:field="*{position.positionId}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Education Degree Id:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="educationDegree" size="45" th:field="*{educationDegree.educationDegreeId}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary"/>
+                                <button class="btn btn-primary"><a style="color: white" th:href="@{/employee}"> Employee List</a></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

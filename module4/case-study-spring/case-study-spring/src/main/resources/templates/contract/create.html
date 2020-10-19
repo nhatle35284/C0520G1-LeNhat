@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<caption>
+    <h2>Add New Contract</h2>
+</caption>
+<form  th:method="post" th:action="@{/contract/save}" th:object="${contract}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Contract ID:</th>
+
+                            <td>
+                                <input type="text" class="input-group-text"  id="id" size="45" th:field="*{contractId}"/>
+                            </td>
+<!--                            <td>-->
+<!--                                <p style="color: red" th:value="${message}"></p>-->
+<!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <th>Contract Start Date:</th>
+                            <td>
+                                <input type="date" class="input-group-text" id="type_id" size="45" th:field="*{contractStartDate}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Contract End Date:</th>
+                            <td>
+                                <input type="date" class="input-group-text" id="name" size="45" th:field="*{contractEndDate}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <th>Contract Total Money:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="birthday" size="45" th:field="*{contractTotalMoney}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Customer Name:</th>
+                            <td>
+                                <select class="custom-select" th:field="${contract.customer}">
+                                    <option th:each="customer:${listCustomer}" th:text="${customer.customerName}" th:value="${customer.customerId}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Employee Name:</th>
+
+                            <td>
+                                <select class="custom-select" th:field="${contract.employee}">
+                                    <option th:each="employee:${listEmployee}" th:text="${employee.employeeName}" th:value="${employee.employeeId}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Service Name:</th>
+                            <td>
+                                <select class="custom-select" th:field="${contract.service}">
+                                    <option th:each="service:${listService}" th:text="${service.serviceName}" th:value="${service.serviceId}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary"/>
+                                <button class="btn btn-primary"><a style="color: white" th:href="@{/contract}">Contract List</a></button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

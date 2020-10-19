@@ -1,0 +1,86 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="~{/common/layout::header}">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<caption>-->
+<!--    <h2 style="text-align: center">Edit Contract</h2>-->
+<!--</caption>-->
+<!--<form method="post" th:action="@{/product/edit}">-->
+<!--    <div class="menu container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-12">-->
+<!--                <div class="col-12" style="margin-top: 28px">-->
+<!--                    <table class="table table-striped">-->
+<!--                        <tr>-->
+<!--                            <th>Product ID:</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text" id="id" size="100px"-->
+<!--                                       th:field="*{product.productId}"/>-->
+<!--                                <span style="color: red" th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}"></span>-->
+<!--                            </td>-->
+<!--                            &lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <p style="color: red" th:value="${message}"></p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Product Name:</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text" id="type_id" size="100px"-->
+<!--                                       th:field="*{product.productName}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Product Price:</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text" id="name" size="100px"-->
+<!--                                       th:field="*{product.price}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            &lt;!&ndash;                <p style="color: red">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                    <c:out value="${message1}"></c:out>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                </p>&ndash;&gt;-->
+<!--                            <th>Contract Deposit:</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text"  id="birthday" size="100px"-->
+<!--                                       th:field="*{product.quantity}"/>-->
+<!--                            </td>-->
+<!--                        </tr><tr>-->
+<!--                        <th>Product Color:</th>-->
+<!--                        <td>-->
+<!--                            <input type="text" class="input-group-text"  id="total" size="100px"-->
+<!--                                   th:field="*{product.color}"/>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Description :</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text"  id="description" size="100px"-->
+<!--                                       th:field="*{product.description}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Category :</th>-->
+<!--                            <td>-->
+<!--                                <select class="custom-select" th:field="*{product.category}">-->
+<!--                                    <option th:each="category: ${listCateGory}" th:text="${category.name}" th:value="${category.id}"></option>-->
+<!--                                </select>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td colspan="2" align="center">-->
+<!--                                <input type="submit" value="Save" class="btn btn-primary" />-->
+<!--                                <button class="btn btn-primary" ><a th:href="@{/product}" style="color: white">List</a></button>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
