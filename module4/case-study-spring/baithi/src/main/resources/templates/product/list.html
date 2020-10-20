@@ -23,6 +23,7 @@
 <!--    <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add New </button>-->
 <!--</a>-->
 
+<!--Table List-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -31,12 +32,14 @@
                     <thead>
                     <tr>
                         <th>Product ID:</th>
+                        <th>Code:</th>
                         <th>Product Name:</th>
                         <th>Price :</th>
                         <th>Quantity:</th>
                         <th>Color:</th>
                         <th>Description:</th>
                         <th>Category:</th>
+                        <th>Detail:</th>
                         <th>action:</th>
                         <th>action:</th>
                         <th><a><i class="fas fa-trash" data-toggle="modal"
@@ -49,16 +52,27 @@
                     <tbody>
                     <tr th:each="product : ${listProduct}">
                         <td th:text="${product.productId}"></td>
+                        <td th:text="${product.codeId}" scope="row"></td>
                         <td th:text="${product.productName}"></td>
                         <td th:text="${product.price}"></td>
                         <td th:text="${product.quantity}"></td>
                         <td th:text="${product.color}"></td>
                         <td th:text="${product.description}"></td>
                         <td th:text="${product.category.name}"></td>
+                        <td style="text-align: center">
+                            <span class="detail"
+                                  th:data-id="${product.productId}"
+                                  th:data-name="${product.productName}"
+                                  th:data-price="${product.price}"
+                                  th:data-quantity="${product.quantity}"
+                                  th:data-color="${product.color}"
+                                  th:data-description="${product.description}"
+                                  th:data-category_id="${product.category.id}">
+                            <a href="" data-toggle="modal" data-target="#detailModalForm"
+                               id="detail"><i class="far fa-eye"></i></a></span>
+                        </td>
                         <td>
-                            <!--                        Modal-->
-                            <a href="" data-toggle="modal" data-target="#darkModalForm" class="btn btn-dark"
-                               id="update">
+                            <!--  Modal-->
                             <span class="update"
                                   th:data-id="${product.productId}"
                                   th:data-name="${product.productName}"
@@ -66,8 +80,9 @@
                                   th:data-quantity="${product.quantity}"
                                   th:data-color="${product.color}"
                                   th:data-description="${product.description}"
-                                  th:data-category="${product.category.getName()}"
-                            ><i class="fas fa-edit"></i></span></a>
+                                  th:data-category_id="${product.category.id}">
+                            <a href="" data-toggle="modal" data-target="#darkModalForm" class="btn btn-dark"
+                               id="update"><i class="fas fa-edit"></i></a></span>
                             <!--                        END-->
 
 
@@ -75,6 +90,7 @@
                             <!--                            <button class="btn btn-dark"><i-->
                             <!--                                    class="fas fa-edit"></i></button>-->
                             <!--                        </a>-->
+
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
@@ -146,7 +162,9 @@
         </div>
     </div>
 </div>
+<!--End Table List-->
 
+<!--Create Modal-->
 <div th:if="${product}">
     <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -170,14 +188,14 @@
                             <div class="col-xl-1"></div>
                             <div class="row col-xl-10">
                                 <div class="col-xl-5">
-                                    <div class="form-group">
-                                        <label>Product ID:</label>
-                                        <input type="text" th:field="*{productId}"
-                                               class="form-control"
-                                               placeholder="Example: SP-1234">
-                                        <span style="color: red" th:field="*{#fields.hasErrors('productId')}"
-                                              th:errors="*{productId}"></span>
-                                    </div>
+                                    <!--                                    <div class="form-group">-->
+                                    <!--                                        <label>Product ID:</label>-->
+                                    <!--                                        <input type="text" th:field="*{productId}"-->
+                                    <!--                                               class="form-control"-->
+                                    <!--                                               placeholder="Example: SP-1234">-->
+                                    <!--                                        <span style="color: red" th:field="*{#fields.hasErrors('productId')}"-->
+                                    <!--                                              th:errors="*{productId}"></span>-->
+                                    <!--                                    </div>-->
                                     <div class="form-group">
                                         <label for="nameAdd">Product Name :</label>
                                         <input type="text" th:field="*{productName}" class="form-control" id="nameAdd">
@@ -222,21 +240,16 @@
                                                     th:text="${category.name}"></option>
                                         </select>
                                     </div>
-                                    <!--                                <div class="form-group">-->
-                                    <!--                                    <label for="email">Email Customer :</label>-->
-                                    <!--                                    <input type="text" th:field="*{customerEmail}" class="form-control" id="email">-->
-                                    <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerEmail')}"-->
-                                    <!--                                          th:errors="*{customerEmail}"></span>-->
-                                    <!--                                </div>-->
-                                    <div style="padding-top:11px">
-                                        <br>
-                                        <input class="btn btn-danger" style="width: 80px;float: left" type="submit"
-                                               role="button"
-                                               value="Save">
-                                        <a role="button" th:href="@{/product}" class="btn btn-success"
-                                           style="width: 80px;float: right">Back</a>
-                                    </div>
                                 </div>
+                                <div style="padding-top:11px">
+                                    <br>
+                                    <input class="btn btn-danger" style="width: 80px;float: left" type="submit"
+                                           role="button"
+                                           value="Save">
+                                    <a role="button" th:href="@{/product}" class="btn btn-success"
+                                       style="width: 80px;float: right">Back</a>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-xl-1"></div>
@@ -251,6 +264,7 @@
         </div>
     </div>
 </div>
+<!--End Modal-->
 
 <!--Edit Modal-->
 <div th:if="${product2}">
@@ -298,7 +312,7 @@
                                         <!--                                              th:errors="*{price}"></span>-->
                                     </div>
                                     <div class="form-group">
-                                        <label for="colorAdd">Color :</label>
+                                        <label>Color :</label>
                                         <input type="text" th:field="*{color}" class="form-control"
                                                id="color">
                                         <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerBirthday')}"-->
@@ -322,7 +336,7 @@
                                         <!--                                          th:errors="*{customerPhone}"></span>-->
                                     </div>
                                     <div class="form-group">
-                                        <label for="typeId">Type Customer :</label><br>
+                                        <label for="typeId">Category :</label><br>
                                         <select id="category" th:field="*{category}" style="width: 100%; height: 37px">
                                             <option th:each="category : ${listCateGory}" th:value="${category.id}"
                                                     th:text="${category.name}"></option>
@@ -358,6 +372,112 @@
     </div>
 </div>
 <!--End Modal-->
+<!--Detail Modal-->
+<div th:if="${product2}">
+    <div class="modal fade" id="detailModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" id="myModalLabel2"
+                        style="color: darkblue"><strong>View Product</strong></h3>
+                    <!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--                        <span aria-hidden="true">&times;</span>-->
+                    <!--                    </button>-->
+                </div>
+                <!--Body-->
+                <div class="modal-body" style="text-align:center">
+                    <!--Body-->
+                    <!--                    <form th:object="${product2}" th:action="@{/product/edit}" method="post">-->
+                    <!--                        <input type="hidden" id="validEdit" th:value="${#fields.hasErrors()}" readonly>-->
+                    <div class="row">
+                        <div class="col-xl-1"></div>
+                        <div class="row col-xl-10">
+                            <div class="col-xl-5">
+                                <div class="form-group">
+                                    <label>Product ID:</label>
+                                    <input type="text" id="productIdDetail"
+                                           class="form-control" readonly>
+                                    <!--                                        <span style="color: red" th:field="*{#fields.hasErrors('productId')}"-->
+                                    <!--                                              th:errors="*{productId}"></span>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Name :</label>
+                                    <input type="text" id="productNameDetail"
+                                           class="form-control" readonly>
+                                    <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerName')}"-->
+                                    <!--                                          th:errors="*{customerName}"></span>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Product Price :</label>
+                                    <input type="text" class="form-control"
+                                           id="priceDetail" readonly>
+                                    <!--                                        <span style="color: red" th:field="*{#fields.hasErrors('price')}"-->
+                                    <!--                                              th:errors="*{price}"></span>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="colorAdd">Color :</label>
+                                    <input type="text" class="form-control"
+                                           id="colorDetail" readonly>
+                                    <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerBirthday')}"-->
+                                    <!--                                          th:errors="*{customerBirthday}"></span>-->
+                                </div>
+                            </div>
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-5">
+                                <div class="form-group">
+                                    <label for="quantity">Quantity :</label>
+                                    <input type="text" class="form-control" id="quantityDetail" readonly>
+                                    <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerIdCard')}"-->
+                                    <!--                                          th:errors="*{customerIdCard}"></span>-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="descriptionAdd">Description :</label>
+                                    <input type="text" class="form-control"
+                                           id="descriptionDetail" readonly>
+                                    <!--                                           placeholder="Example: (090|091)XXXXXXX">-->
+                                    <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerPhone')}"-->
+                                    <!--                                          th:errors="*{customerPhone}"></span>-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Detail :</label><br>
+                                    <select id="categoryDetail"  style="width: 100%; height: 37px" r>
+                                        <option th:each="category : ${listCateGory}" th:value="${category.id}"
+                                                th:text="${category.name}"></option>
+                                    </select>
+                                </div>
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <label for="email">Email Customer :</label>-->
+                                <!--                                    <input type="text" th:field="*{customerEmail}" class="form-control" id="email">-->
+                                <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerEmail')}"-->
+                                <!--                                          th:errors="*{customerEmail}"></span>-->
+                                <!--                                </div>-->
+                                <!--                                    <div style="padding-top:11px">-->
+                                <!--                                        <br>-->
+                                <!--                                        <input class="btn btn-danger" style="width: 80px;float: left" type="submit"-->
+                                <!--                                               role="button"-->
+                                <!--                                               value="Save">-->
+                                <!--                                        <a role="button" th:href="@{/product}" class="btn btn-success"-->
+                                <!--                                           style="width: 80px;float: right">Back</a>-->
+                                <!--                                    </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-1"></div>
+                    <!--                    </form>-->
+                    <!--Footer-->
+                    <div class="modal-footer mx-5 pt-3 mb-1 text-center">
+                        <h4 class="font-small grey-text d-flex justify-content-end"></h4>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
 </body>
 <footer th:replace="~{/common/layout::footer}"></footer>
 <script>
@@ -368,11 +488,37 @@
         $("#darkModalForm input[id='quantity']").val($(this).data("quantity"));
         $("#darkModalForm input[id='color']").val($(this).data("color"));
         $("#darkModalForm input[id='description']").val($(this).data("description"));
-        var category = $(this).data("category");
+        var category = $(this).data("category_id");
         $("#darkModalForm select[id='category'] option").each(function () {
             console.log(this.value);
-            if (this.value === category) {
-                $(this).prop("selected", "true");
+            if (this.value == category) {
+                $(this).prop("selected", true);
+                return;
+            }
+        })
+        // var typeCategory = $(this).data("category")
+        // $("#darkModalForm select[id='category'] option").each(function () {
+        //     console.log(typeCategory)
+        //     console.log(this.value)
+        //     if (this.value == typeCategory) {
+        //         $(this).prop("selected", true);
+        //         return;
+        //     }
+    })
+</script>
+<script>
+    $(".detail").click(function () {
+        $("#detailModalForm input[id='productIdDetail']").val($(this).data("id"));
+        $("#detailModalForm input[id='productNameDetail']").val($(this).data("name"));
+        $("#detailModalForm input[id='priceDetail']").val($(this).data("price"));
+        $("#detailModalForm input[id='quantityDetail']").val($(this).data("quantity"));
+        $("#detailModalForm input[id='colorDetail']").val($(this).data("color"));
+        $("#detailModalForm input[id='descriptionDetail']").val($(this).data("description"));
+        var category = $(this).data("category_id");
+        $("#detailModalForm select[id='categoryDetail'] option").each(function () {
+            console.log(this.value);
+            if (this.value == category) {
+                $(this).prop("selected", true);
                 return;
             }
         })

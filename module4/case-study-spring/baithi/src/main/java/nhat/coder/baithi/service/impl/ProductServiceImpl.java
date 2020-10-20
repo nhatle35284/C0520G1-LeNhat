@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(String id) {
+    public Product findById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
 
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void remove(String id) {
+    public void remove(Long id) {
         Product product= productRepository.findById(id).orElse(null);
         product.setStatus(false);
         productRepository.save(product);
@@ -61,6 +61,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<Product> findAllByStatusTrue(Pageable pageable) {
         return productRepository.findAllByStatusTrue(pageable);
+    }
+
+    @Override
+    public Page<Product> findAllByProductNameContainingOrColorContaining(String name, String color, Pageable pageable) {
+        return productRepository.findAllByProductNameContainingOrColorContaining(name,name,pageable);
     }
 
     @Override

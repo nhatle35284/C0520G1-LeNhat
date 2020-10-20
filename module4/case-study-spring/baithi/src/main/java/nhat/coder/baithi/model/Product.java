@@ -11,11 +11,21 @@ import javax.validation.constraints.Pattern;
 @Entity
 public class Product {
     @Id
-    @Pattern(regexp = "(SP-\\d{4})",message = "Please enter the correct format (SP-XXXX)")
-    private String productId;
+//    @Pattern(regexp = "(SP-\\d{4})",message = "Please enter the correct format (SP-XXXX)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long productId;
     private String productName;
+    private String codeId;
 
-//    @NotNull(message = "nhaplai")
+    public String getCodeId() {
+        return codeId;
+    }
+
+    public void setCodeId(String codeId) {
+        this.codeId = codeId;
+    }
+
+    //    @NotNull(message = "nhaplai")
     @Min(value = 1,message = "Giá đó có đéo")
     private double price;
     private int quantity;
@@ -30,11 +40,11 @@ public class Product {
     public Product() {
     }
 
-    public String getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

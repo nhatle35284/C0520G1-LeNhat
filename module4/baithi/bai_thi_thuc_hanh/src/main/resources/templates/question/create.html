@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Add New</title>
+</head>
+<body>
+<caption>
+    <h2 style="text-align: center">Add New</h2>
+</caption>
+<form th:method="post" th:action="@{/question/save}" th:object="${question}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Title:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="type_id" size="100px"
+                                       th:field="*{title}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Question Context:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="name" size="100px"
+                                       th:field="*{questionContext}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('questionContext')}" th:errors="*{questionContext}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--                <p style="color: red">-->
+                            <!--                    <c:out value="${message1}"></c:out>-->
+                            <!--                </p>-->
+                            <th>Tye Question :</th>
+                            <td>
+                                <select class="custom-select" th:field="*{questionType}">
+                                    <option th:each="type: ${listQuestionType}" th:text="${type.name}"
+                                            th:value="${type.id}"></option>
+                                </select>
+                            </td>
+
+                        </tr>
+<!--                        <tr>-->
+<!--                            <th>Product Color:</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text" id="total" size="100px"-->
+<!--                                       th:field="*{color}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Description :</th>-->
+<!--                            <td>-->
+<!--                                <input type="text" class="input-group-text" id="description" size="100px"-->
+<!--                                       th:field="*{description}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>Category :</th>-->
+<!--                            <td>-->
+<!--                                <select class="custom-select" th:field="*{category}">-->
+<!--                                    <option th:each="category: ${listCateGory}" th:text="${category.name}"-->
+<!--                                            th:value="${category.id}"></option>-->
+<!--                                </select>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary"/>
+                                <button class="btn btn-primary"><a th:href="@{/question}" style="color: white">List</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

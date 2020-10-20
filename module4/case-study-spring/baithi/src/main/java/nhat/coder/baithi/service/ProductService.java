@@ -15,15 +15,17 @@ public interface ProductService {
 
     void save(Product product);
 
-    Product findById(String id);
+    Product findById(Long id);
 
     void update(Product product);
 
-    void remove(String id);
+    void remove(Long id);
 
     Page<Product> findAllByStatusTrue(Pageable pageable);
 
-//    List<Product> findAllByOrOrderByProductNameDesc();
+    Page<Product> findAllByProductNameContainingOrColorContaining(String name,String color,Pageable pageable);
+
+    //    List<Product> findAllByOrOrderByProductNameDesc();
 List<Product> findByStatusTrueOrOrderByProductNameDesc();
 
 }

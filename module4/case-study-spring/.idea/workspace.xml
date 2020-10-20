@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="223a3df5-ecfb-4b12-bfaf-7fc1bbbd7d94" name="Default Changelist" comment="" />
+    <list default="true" id="223a3df5-ecfb-4b12-bfaf-7fc1bbbd7d94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/java/nhat/coder/bai_thi_thuc_hanh/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/img/anh1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/img/anh2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/img/anh3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/jquery-3.5.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/templates/common/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/bai_thi_thuc_hanh/src/main/resources/templates/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baithi'baithi/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baithi'baithi/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baithi'baithi/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baithi'baithi/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/model/Code.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/config/ValidatorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/config/ValidatorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/java/nhat/coder/baithi/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/resources/templates/common/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/resources/templates/common/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baithi/src/main/resources/templates/product/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/baithi/src/main/resources/templates/product/list.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,13 +76,17 @@
       <option name="presentableId" value="Default" />
       <updated>1602507302728</updated>
       <workItem from="1602507304366" duration="22000" />
+      <workItem from="1603178742968" duration="181000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1602507325233">
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1603178942231">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602507325233" />
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603178942231" />
   </component>
 </project>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="~{/common/layout::head}"></div>
+<h1 style="text-align: center">List Question</h1>
+<span style="color: red;float: right;font-size: 20px" th:text="${success}"></span>
+<a th:href="@{/question/create}">
+    <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Add New</button>
+</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="tableStudent" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>STT:</th>
+                    <th>Title:</th>
+                    <th>Question:</th>
+                    <th>Answer :</th>
+                    <th>Question Type:</th>
+                    <th>Date Create:</th>
+                    <th>User Create:</th>
+                    <th>User Feedback:</th>
+                    <th>action:</th>
+                    <th>action:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="question : ${listQuestion}">
+                    <td th:text="${question.idQuestion}"></td>
+                    <td th:text="${question.title}"></td>
+                    <td th:text="${question.questionContext}"></td>
+                    <td th:text="${question.answer}"></td>
+                    <td th:text="${question.questionType.name}"></td>
+                    <td th:text="${question.dateCreate}"></td>
+                    <td th:text="${question.userCreate}"></td>
+                    <td th:text="${question.userFeedback}"></td>
+                    <td style="text-align: center">
+                                                <span class="detail"
+                                                      th:data-id_question="${question.idQuestion}"
+                                                      th:data-title="${question.title}"
+                                                      th:data-question_context="${question.questionContext}"
+                                                      th:data-answer="${question.answer}"
+                                                      th:data-date_create="${question.dateCreate}"
+                                                      th:data-status="${question.status}"
+                                                      th:data-user_create="${question.userCreate}"
+                                                      th:data-user_feedback="${question.userFeedback}"
+                                                      th:data-question_type_id="${question.questionType.id}">
+                                                <a href="" data-toggle="modal" data-target="#detailModalForm"
+                                                   id="detail"><i class="far fa-eye"></i></a></span>
+                    </td>
+                    <td>
+                        <a th:href="@{/question/update/{id}(id=${question.questionContext})}">
+                            <button class="btn btn-dark"><i
+                                    class="fas fa-edit"></i></button>
+                        </a>
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                th:data-target="'#del'+${question.idQuestion}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="'del'+${question.idQuestion}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want delete?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Customer : <span th:text="${question.title}"></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <a th:href="@{/question/delete/{id}(id=${question.idQuestion})}">
+                                            <button type="button" class="btn btn-primary">Delete</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <a th:href="@{'/question'(page=${listQuestion.number - 1})}"
+                   th:if="${listQuestion.hasPrevious()}">Previous</a>
+                <span th:text="${listQuestion.number + 1}"></span>/<span th:text="${listQuestion.totalPages}"></span>
+                <a th:href="@{'/question'(page=${listQuestion.number + 1})}" th:if="${listQuestion.hasNext()}">Next</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <!--Content-->
+        <div class="modal-content form-elegant">
+            <!--Header-->
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-2" id="myModalLabel2"
+                    style="color: darkblue"><strong>View Product</strong></h3>
+                <!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                <!--                        <span aria-hidden="true">&times;</span>-->
+                <!--                    </button>-->
+            </div>
+            <!--Body-->
+            <div class="modal-body" style="text-align:center">
+                <!--Body-->
+                <!--                    <form th:object="${product2}" th:action="@{/product/edit}" method="post">-->
+                <!--                        <input type="hidden" id="validEdit" th:value="${#fields.hasErrors()}" readonly>-->
+                <div class="row">
+                    <div class="col-xl-1"></div>
+                    <div class="row col-xl-10">
+                        <div class="col-xl-5">
+                            <div class="form-group">
+                                <label>Product ID:</label>
+                                <input type="text" id="id"
+                                       class="form-control" readonly>
+                                <!--                                        <span style="color: red" th:field="*{#fields.hasErrors('productId')}"-->
+                                <!--                                              th:errors="*{productId}"></span>-->
+                            </div>
+                            <div class="form-group">
+                                <label>Product Name :</label>
+                                <input type="text" id="title"
+                                       class="form-control" readonly>
+                                <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerName')}"-->
+                                <!--                                          th:errors="*{customerName}"></span>-->
+                            </div>
+                            <div class="form-group">
+                                <label>Product Price :</label>
+                                <input type="text" class="form-control"
+                                       id="question" readonly>
+                                <!--                                        <span style="color: red" th:field="*{#fields.hasErrors('price')}"-->
+                                <!--                                              th:errors="*{price}"></span>-->
+                            </div>
+                            <div class="form-group">
+                                <label>Color :</label>
+                                <input type="text" class="form-control"
+                                       id="answer" readonly>
+                                <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerBirthday')}"-->
+                                <!--                                          th:errors="*{customerBirthday}"></span>-->
+                            </div>
+                        </div>
+                        <div class="col-xl-2"></div>
+                        <div class="col-xl-5">
+                            <div class="form-group">
+                                <label>Quantity :</label>
+                                <input type="text" class="form-control" id="date" readonly>
+                                <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerIdCard')}"-->
+                                <!--                                          th:errors="*{customerIdCard}"></span>-->
+                            </div>
+                            <div class="form-group">
+                                <label>Description :</label>
+                                <input type="text" class="form-control"
+                                       id="status" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Description :</label>
+                                <input type="text" class="form-control"
+                                       id="create" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Description :</label>
+                                <input type="text" class="form-control"
+                                       id="feedback" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Detail :</label><br>
+                                <select id="type" style="width: 100%; height: 37px" r>
+                                    <option th:each="category : ${listQuestionType}" th:value="${category.id}"
+                                            th:text="${category.name}"></option>
+                                </select>
+                            </div>
+                            <!--                                <div class="form-group">-->
+                            <!--                                    <label for="email">Email Customer :</label>-->
+                            <!--                                    <input type="text" th:field="*{customerEmail}" class="form-control" id="email">-->
+                            <!--                                    <span style="color: red" th:field="*{#fields.hasErrors('customerEmail')}"-->
+                            <!--                                          th:errors="*{customerEmail}"></span>-->
+                            <!--                                </div>-->
+                            <!--                                    <div style="padding-top:11px">-->
+                            <!--                                        <br>-->
+                            <!--                                        <input class="btn btn-danger" style="width: 80px;float: left" type="submit"-->
+                            <!--                                               role="button"-->
+                            <!--                                               value="Save">-->
+                            <!--                                        <a role="button" th:href="@{/product}" class="btn btn-success"-->
+                            <!--                                           style="width: 80px;float: right">Back</a>-->
+                            <!--                                    </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-1"></div>
+                <!--                    </form>-->
+                <!--Footer-->
+                <div class="modal-footer mx-5 pt-3 mb-1 text-center">
+                    <h4 class="font-small grey-text d-flex justify-content-end"></h4>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+</div>
+</body>
+<footer th:replace="~{/common/layout::footer}"></footer>
+<script>
+    $(".detail").click(function () {
+        $("#detailModalForm input[id='id']").val($(this).data("id_question"));
+        $("#detailModalForm input[id='title']").val($(this).data("title"));
+        $("#detailModalForm input[id='question']").val($(this).data("question_context"));
+        $("#detailModalForm input[id='answer']").val($(this).data("answer"));
+        $("#detailModalForm input[id='date']").val($(this).data("date_create"));
+        $("#detailModalForm input[id='status']").val($(this).data("status"));
+        $("#detailModalForm input[id='create']").val($(this).data("user_create"));
+        $("#detailModalForm input[id='feedback']").val($(this).data("user_feedback"));
+        $("#detailModalForm input[id='type']").val($(this).data("question_type_id"));
+        var type = $(this).data("question_type_id");
+        $("#detailModalForm select[id='type'] option").each(function () {
+            console.log(this.value);
+            if (this.value == type) {
+                $(this).prop("selected", true);
+                return;
+            }
+        })
+    })
+</script>
+</html>

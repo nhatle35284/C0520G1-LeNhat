@@ -1,10 +1,12 @@
 package nhat.coder.baithi.controller;
 
 import nhat.coder.baithi.model.Category;
+import nhat.coder.baithi.model.Code;
 import nhat.coder.baithi.model.Product;
 import nhat.coder.baithi.service.CategoryService;
 import nhat.coder.baithi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -38,6 +40,11 @@ public class ProductController {
         modelAndView.addObject("listProduct",productService.findAllByStatusTrue(pageable));
         modelAndView.addObject("product", new Product());
         modelAndView.addObject("product2", new Product());
+        Page<Product> products = productService.findAllByStatusTrue(pageable);
+        for (Product product :products){
+            product.setCodeId(Code.setUpCode(product));
+            productService.save(product);
+        }
         return modelAndView;
     }
     @GetMapping("/create")
@@ -77,6 +84,7 @@ public class ProductController {
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("redirect:/product");
+            product.setStatus(true);
             productService.update(product);
             redirect.addFlashAttribute("success", "Modified successfully!");
             return modelAndView;
@@ -84,14 +92,14 @@ public class ProductController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable String id, Model model) {
+    public String delete(@PathVariable Long id, Model model) {
         productService.remove(id);
         return "redirect:/product";
     }
     @GetMapping("/deleteSelect")
     public String delete(@RequestParam String[] select, Model model) {
         for (int i = 0; i<select.length; i++){
-        productService.remove(select[i]);
+        productService.remove(Long.valueOf(select[i]));
         }
         return "redirect:/product";
     }
@@ -117,6 +125,8 @@ public class ProductController {
         model.addAttribute("inputSearch",inputSearch);
         return modelAndView;
     }
+
+
 
 //    BT
 

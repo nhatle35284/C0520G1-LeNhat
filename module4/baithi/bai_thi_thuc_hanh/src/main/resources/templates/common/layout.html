@@ -19,24 +19,26 @@
             <!--            <div class="col-3"></div>-->
             <div class="col-3 row"><h3 style="color: blue;margin-top: 30px">Lê Nhật</h3><a
                     style="margin-top: 30px;margin-bottom: 50px;margin-left: 10px" class="btn btn-outline-dark"
-                    th:href="@{/product}"> <i class="fa fa-house-user"></i> Home</a></div>
+                    th:href="@{/}"> <i class="fa fa-house-user"></i> Home</a></div>
 
             <div class="col-6" style="display: flex;align-items: center">
 
-                <form class="form-inline my-2 my-lg-0" th:action="@{/product/search}">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <select class="custom-select" name="choose" style="width: 100%">
+                <form class="form-inline" th:action="@{/question/search}">
+
+
+                            <select class="custom-select" name="choose" style="float: right">
                                 <option value="1" th:selected="${choose==1}">ID</option>
                                 <option value="2" th:selected="${choose==2}">Name</option>
                                 <option value="3" th:selected="${choose==3}">Color</option>
                             </select>
-                        </div>
-                        <div class="col-md-8"><input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                                     aria-label="Search" name="inputSearch" th:value="${inputSearch}">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </div>
-                    </div>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                               name="inputSearch" th:value="${inputSearch}">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<!--                        <div class="col-md-8">-->
+<!--                            <input class="form-control mr-sm-2" type="search" placeholder="Search"-->
+<!--                                                     aria-label="Search" name="inputSearch" th:value="${inputSearch}">-->
+<!--                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--                        </div>-->
                 </form>
 
             </div>
