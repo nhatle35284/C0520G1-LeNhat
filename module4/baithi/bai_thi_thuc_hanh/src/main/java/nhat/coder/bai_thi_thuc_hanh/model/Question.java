@@ -15,7 +15,7 @@ public class Question {
     private String questionContext;
     private String answer;
     private String dateCreate;
-    private String Status;
+    private String status;
     private String userCreate;
     private String userFeedback;
     @ManyToOne()
@@ -66,11 +66,11 @@ public class Question {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public QuestionType getQuestionType() {

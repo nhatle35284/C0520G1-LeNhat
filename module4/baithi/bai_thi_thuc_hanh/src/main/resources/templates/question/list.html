@@ -25,6 +25,7 @@
                     <th>Date Create:</th>
                     <th>User Create:</th>
                     <th>User Feedback:</th>
+                    <th>Detail :</th>
                     <th>action:</th>
                     <th>action:</th>
                 </tr>
@@ -214,7 +215,7 @@
     </div>
 </div>
 </body>
-<footer th:replace="~{/common/layout::footer}"></footer>
+    <footer th:replace="~{/common/layout::footer}"></footer>
 <script>
     $(".detail").click(function () {
         $("#detailModalForm input[id='id']").val($(this).data("id_question"));

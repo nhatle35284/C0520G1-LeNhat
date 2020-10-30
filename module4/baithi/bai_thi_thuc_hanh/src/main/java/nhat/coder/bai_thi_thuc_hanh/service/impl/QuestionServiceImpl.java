@@ -45,6 +45,16 @@ public class QuestionServiceImpl implements QuestionService {
         return questionRepository.findQuestionByTitleContainingOrQuestionContextOrAnswerContaining(title,title,title,pageable);
     }
 
+    @Override
+    public Page<Question> findAllByTitleContaining(String title, Pageable pageable) {
+        return questionRepository.findAllByTitleContaining(title,pageable);
+    }
+
+    @Override
+    public Page<Question> findAllByQuestionContextContaining(String question, Pageable pageable) {
+        return questionRepository.findAllByQuestionContextContaining(question,pageable);
+    }
+
 //    @Override
 //    public Page<Question> findAllByTitleOrQuestionContextOrAnswerOrUserCreate(String title) {
 //        return questionRepository.findAllByTitleOrQuestionContextOrAnswerOrUserCreate(title,title,title,title);

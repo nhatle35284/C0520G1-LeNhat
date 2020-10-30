@@ -8,13 +8,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product,Long> {
-    Page<Product> findAllByProductIdContaining(String search,Pageable pageable);
-    Page<Product> findAllByProductNameContaining(String search,Pageable pageable);
-    Page<Product> findAllByColorContaining(String search,Pageable pageable);
-    Page<Product> findAllByStatusTrue(Pageable pageable);
-    Page<Product> findAllByProductNameContainingOrColorContaining(String name,String color,Pageable pageable);
-//    Page<Product> findAllByStatusTrueOrderByProductNameDesc();
-    List<Product> findByStatusTrueOrderByProductNameDesc();
+//    Page<Product> findAllByProductIdContaining(String search,Pageable pageable);
+//    Page<Product> findAllByProductNameContaining(String search,Pageable pageable);
+//    Page<Product> findAllByColorContaining(String search,Pageable pageable);
+//    Page<Product> findAllByStatusTrue(Pageable pageable);
+//    Page<Product> findAllByProductNameContainingOrColorContaining(String name,String color,Pageable pageable);
+////    Page<Product> findAllByStatusTrueOrderByProductNameDesc();
+//    List<Product> findByStatusTrueOrderByProductNameDesc();
 }
 
 

@@ -22,19 +22,24 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findAllByProductId(String search,Pageable pageable) {
-        return productRepository.findAllByProductIdContaining(search,pageable);
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
-
-    @Override
-    public Page<Product> findAllByProductName(String search,Pageable pageable) {
-        return productRepository.findAllByProductNameContaining(search,pageable);
-    }
-
-    @Override
-    public Page<Product> findAllByColor(String search,Pageable pageable) {
-        return productRepository.findAllByColorContaining(search,pageable);
-    }
+//
+//    @Override
+//    public Page<Product> findAllByProductId(String search,Pageable pageable) {
+//        return productRepository.findAllByProductIdContaining(search,pageable);
+//    }
+//
+//    @Override
+//    public Page<Product> findAllByProductName(String search,Pageable pageable) {
+//        return productRepository.findAllByProductNameContaining(search,pageable);
+//    }
+//
+//    @Override
+//    public Page<Product> findAllByColor(String search,Pageable pageable) {
+//        return productRepository.findAllByColorContaining(search,pageable);
+//    }
 
     @Override
     public void save(Product product) {
@@ -58,20 +63,25 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
-    @Override
-    public Page<Product> findAllByStatusTrue(Pageable pageable) {
-        return productRepository.findAllByStatusTrue(pageable);
-    }
-
-    @Override
-    public Page<Product> findAllByProductNameContainingOrColorContaining(String name, String color, Pageable pageable) {
-        return productRepository.findAllByProductNameContainingOrColorContaining(name,name,pageable);
-    }
-
-    @Override
-    public List<Product> findByStatusTrueOrOrderByProductNameDesc() {
-        return productRepository.findByStatusTrueOrderByProductNameDesc();
-    }
+//    @Override
+//    public List<Product> findByStatusTrueOrOrderByProductNameDesc() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Page<Product> findAllByStatusTrue(Pageable pageable) {
+//        return productRepository.findAllByStatusTrue(pageable);
+//    }
+//
+//    @Override
+//    public Page<Product> findAllByProductNameContainingOrColorContaining(String name, String color, Pageable pageable) {
+//        return productRepository.findAllByProductNameContainingOrColorContaining(name,name,pageable);
+//    }
+//
+//    @Override
+//    public List<Product> findByStatusTrueOrOrderByProductNameDesc() {
+//        return productRepository.findByStatusTrueOrderByProductNameDesc();
+//    }
 
 
 //    @Override

@@ -17,5 +17,10 @@ public interface QuestionService {
 
     Page<Question> findAllByTitleOrQuestionContextOrAnswer(String title,Pageable pageable);
 
+
+    Page<Question> findAllByTitleContaining(String title,Pageable pageable);
+
+
+    Page<Question> findAllByQuestionContextContaining(String question,Pageable pageable);
 //    Page<Question> findAllByTitleOrQuestionContextOrAnswerOrUserCreate(String title);
 }

@@ -1,0 +1,21 @@
+<h2>AweSome Calculator</h2>
+<div class="row">
+<div>
+  <input type="number" class="form-input" [value]="first" (change)="onFirstChange($event.target.value)">
+</div>
+<select class="form-input" [(ngModel)]="operator">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<input type="number" class="form-input" [(ngModel)]="second">
+</div>
+<div>
+  <button class="form-input" (click)="calculate()">
+    Zô
+  </button>
+</div>
+<div>
+    {{output}}
+</div>

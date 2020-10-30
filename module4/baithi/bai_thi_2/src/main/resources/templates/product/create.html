@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Add New</title>
+</head>
+<body>
+<caption>
+    <h2 style="text-align: center">Add New</h2>
+</caption>
+<form  th:method="post" th:action="@{/product/save}" th:object="${product}">
+    <div class="menu container">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12" style="margin-top: 28px">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                <input type="hidden" class="input-group-text" id="id" size="100px"
+                                       th:field="*{productId}"/>
+<!--                                <span style="color: red" th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}"></span>-->
+                            </td>
+                            <!--                            <td>-->
+                            <!--                                <p style="color: red" th:value="${message}"></p>-->
+                            <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <th>Product Name <span style="color: red">*</span>: </th>
+                            <td>
+                                <input type="text" class="input-group-text" id="type_id" size="100px"
+                                       th:field="*{productName}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Start Price <span style="color: red">*</span>:</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="name" size="100px"
+                                       th:field="*{price}"/>
+                                <span style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Category <span style="color: red">*</span>:</th>
+                            <td>
+                                <select class="custom-select" th:field="*{category}">
+                                    <option th:each="category: ${listCateGory}" th:text="${category.name}" th:value="${category.id}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <button class="btn btn-primary" ><a th:href="@{/product}" style="color: white">List</a></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

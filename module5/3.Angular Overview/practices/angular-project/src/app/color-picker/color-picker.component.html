@@ -1,0 +1,7 @@
+<p>Color Picker</p>
+<div>
+  <label>Chọn Màu</label>
+  <input [value]="background" type="color" (change)="onChange($event.target.value)">
+</div>
+<p>Output</p>
+<div class="color-preview" [style.background]="background" >{{background}}</div>

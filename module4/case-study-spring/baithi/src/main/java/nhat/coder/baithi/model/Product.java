@@ -15,23 +15,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
     private String productName;
-    private String codeId;
-
-    public String getCodeId() {
-        return codeId;
-    }
-
-    public void setCodeId(String codeId) {
-        this.codeId = codeId;
-    }
 
     //    @NotNull(message = "nhaplai")
-    @Min(value = 1,message = "Giá đó có đéo")
     private double price;
-    private int quantity;
-    @ValidateBirthday18()
-    private String color;
-    private String description;
     private boolean status;
     @ManyToOne()
     @JoinColumn(name = "id")
@@ -62,30 +48,6 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Category getCategory() {

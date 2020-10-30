@@ -33,7 +33,7 @@ public class QuestionController {
 
     @GetMapping
     public ModelAndView getList(@PageableDefault(value = 4)
-                                    @SortDefault(sort = "dateCreate",direction = Sort.Direction.ASC)
+                                    @SortDefault(sort = {"dateCreate","status"},direction = Sort.Direction.ASC)
                                             Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("question/list");
         modelAndView.addObject("question", new Question());
@@ -75,23 +75,23 @@ public class QuestionController {
 
     @GetMapping("/search")
     public ModelAndView search(@PageableDefault(value = 4) Pageable pageable,
-                               @RequestParam("inputSearch") String inputSearch)
-//                               ,@RequestParam(value = "choose", defaultValue = "-1") int choose)
+                               @RequestParam("inputSearch") String inputSearch
+                               ,@RequestParam(value = "choose", defaultValue = "-1") int choose)
     {
         ModelAndView modelAndView = new ModelAndView("/question/list");
         modelAndView.addObject("listQuestion",questionService.findAllByTitleOrQuestionContextOrAnswer(inputSearch,pageable));
-//        switch (choose){
-//            case 1:
-//                modelAndView.addObject("listProduct",productService.findAllByProductId(inputSearch,pageable));
-//                break;
-//            case 2:
-//                modelAndView.addObject("listProduct",productService.findAllByProductName(inputSearch,pageable));
-//                break;
-//            case 3:
-//                modelAndView.addObject("listProduct",productService.findAllByColor(inputSearch,pageable));
-//                break;
-//        }
-//        model.addAttribute("choose",choose);
+        switch (choose){
+            case 1:
+                modelAndView.addObject("listQuestion",questionService.findAllByTitleOrQuestionContextOrAnswer(inputSearch,pageable));
+                break;
+            case 2:
+                modelAndView.addObject("listQuestion",questionService.findAllByTitleContaining(inputSearch,pageable));
+                break;
+            case 3:
+                modelAndView.addObject("listQuestion",questionService.findAllByQuestionContextContaining(inputSearch,pageable));
+                break;
+        }
+        modelAndView.addObject("choose",choose);
         modelAndView.addObject("inputSearch",inputSearch);
         return modelAndView;
     }

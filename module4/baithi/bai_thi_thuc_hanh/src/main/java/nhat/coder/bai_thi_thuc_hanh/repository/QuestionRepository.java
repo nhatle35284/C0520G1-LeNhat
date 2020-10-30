@@ -7,5 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuestionRepository extends JpaRepository<Question,Long> {
     Page<Question> findQuestionByTitleContainingOrQuestionContextOrAnswerContaining(String title,String questionContext,String answer,Pageable pageable);
-//    Page<Question> findAllByTitleOrQuestionContextOrAnswerOrUserCreate(String title,String questionContext,String answer,String user);
+    Page<Question> findAllByTitleContaining(String title,Pageable pageable);
+    Page<Question> findAllByQuestionContextContaining(String question,Pageable pageable);
+    Page<Question> findQuestionByQuestionTypeContains(String question,Pageable pageable);
+//    Page<Question> findAllByTitleContaining(String title,Pageable pageable);
+    //    Page<Question> findAllByTitleOrQuestionContextOrAnswerOrUserCreate(String title,String questionContext,String answer,String user);
 }

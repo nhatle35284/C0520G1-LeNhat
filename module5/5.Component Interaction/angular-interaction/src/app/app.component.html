@@ -1,0 +1,8 @@
+<app-name-card cardName="Lê Nhật" email="nhatlend@gmail.com" phone="0123456789"></app-name-card>
+<hr>
+<app-progress-bar width="65"></app-progress-bar>
+<app-rating [max]="10" (rateChange)="onRateChange($event)"></app-rating>
+
+<!--<app-countdown-timer [seconds]="6"></app-countdown-timer>-->
+<app-countdown-timer-event-alias seconds="10" (timerEnd)="endCountdown()">
+</app-countdown-timer-event-alias>

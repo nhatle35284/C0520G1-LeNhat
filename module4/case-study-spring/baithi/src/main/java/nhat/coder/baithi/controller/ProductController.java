@@ -37,14 +37,10 @@ public class ProductController {
     @GetMapping
     public ModelAndView getList(@PageableDefault(value = 2) Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("product/list");
-        modelAndView.addObject("listProduct",productService.findAllByStatusTrue(pageable));
+        modelAndView.addObject("listProduct",productService.findAll(pageable));
         modelAndView.addObject("product", new Product());
         modelAndView.addObject("product2", new Product());
-        Page<Product> products = productService.findAllByStatusTrue(pageable);
-        for (Product product :products){
-            product.setCodeId(Code.setUpCode(product));
-            productService.save(product);
-        }
+        Page<Product> products = productService.findAll(pageable);
         return modelAndView;
     }
     @GetMapping("/create")
@@ -58,7 +54,7 @@ public class ProductController {
         if (bindingResult.hasErrors()){
             ModelAndView modelAndView = new ModelAndView("/product/list");
             modelAndView.addObject("product2", new Product());
-            modelAndView.addObject("listProduct", productService.findAllByStatusTrue(pageable));
+            modelAndView.addObject("listProduct", productService.findAll(pageable));
             return modelAndView;
         }else {
         ModelAndView modelAndView = new ModelAndView("redirect:/product");
@@ -79,7 +75,7 @@ public class ProductController {
     public ModelAndView update(@Validated @ModelAttribute("product2") Product product, BindingResult bindingResult, RedirectAttributes redirect,@PageableDefault(value = 2) Pageable pageable) {
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("product/list");
-            modelAndView.addObject("listProduct", productService.findAllByStatusTrue(pageable));
+            modelAndView.addObject("listProduct", productService.findAll(pageable));
             modelAndView.addObject("product", new Product());
             return modelAndView;
         } else {
@@ -104,27 +100,27 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    @GetMapping("/search")
-    public ModelAndView search(@PageableDefault(value = 2) Pageable pageable,
-                         @RequestParam(value = "inputSearch", defaultValue = "") String inputSearch,
-                         @RequestParam(value = "choose", defaultValue = "-1") int choose,Model model) {
-        ModelAndView modelAndView = new ModelAndView("/product/list");
-
-        switch (choose){
-            case 1:
-                modelAndView.addObject("listProduct",productService.findAllByProductId(inputSearch,pageable));
-                break;
-            case 2:
-                modelAndView.addObject("listProduct",productService.findAllByProductName(inputSearch,pageable));
-                break;
-            case 3:
-                modelAndView.addObject("listProduct",productService.findAllByColor(inputSearch,pageable));
-                break;
-        }
-        model.addAttribute("choose",choose);
-        model.addAttribute("inputSearch",inputSearch);
-        return modelAndView;
-    }
+//    @GetMapping("/search")
+//    public ModelAndView search(@PageableDefault(value = 2) Pageable pageable,
+//                         @RequestParam(value = "inputSearch", defaultValue = "") String inputSearch,
+//                         @RequestParam(value = "choose", defaultValue = "-1") int choose,Model model) {
+//        ModelAndView modelAndView = new ModelAndView("/product/list");
+//
+//        switch (choose){
+//            case 1:
+//                modelAndView.addObject("listProduct",productService.findAllByProductId(inputSearch,pageable));
+//                break;
+//            case 2:
+//                modelAndView.addObject("listProduct",productService.findAllByProductName(inputSearch,pageable));
+//                break;
+//            case 3:
+//                modelAndView.addObject("listProduct",productService.findAllByColor(inputSearch,pageable));
+//                break;
+//        }
+//        model.addAttribute("choose",choose);
+//        model.addAttribute("inputSearch",inputSearch);
+//        return modelAndView;
+//    }
 
 
 
